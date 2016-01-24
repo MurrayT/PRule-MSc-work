@@ -71,3 +71,7 @@ def coincidences_to_dictionary(coincidences):
         if not any(k in p for p in coincdict_clean.values()):
             coincdict_clean[k] = coincdict[k]
     return coincdict_clean
+
+def printclass(x,classlist):
+    for p in classlist[x]:
+        print str(p) + "\n"
