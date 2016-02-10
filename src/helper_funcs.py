@@ -70,8 +70,15 @@ def coincidences_to_dictionary(coincidences):
     for k in coincdict:
         if not any(k in p for p in coincdict_clean.values()):
             coincdict_clean[k] = coincdict[k]
-    return coincdict_clean
+    return {k:[k]+v for k,v in coincdict_clean.iteritems()}
 
 def printclass(x,classlist):
     for p in classlist[x]:
         print str(p) + "\n"
+
+def mpdict(classes):
+    mpdict = {}
+    for i,classi in enumerate(classes):
+        for patt in classi:
+            mpdict[patt] = i
+    return mpdict
