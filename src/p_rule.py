@@ -33,7 +33,7 @@ def p_rule_check_base_class(class0,classlist,coincdict,p=Permutation([2,3,1])):
 def p_rule_coincidences(meshpattdict,p=Permutation([2,3,1])):
     thiscoincdict = {k:[] for k in range(len(set(meshpattdict.values())))}
     mpperm = meshpattdict.keys()[0].perm
-    for mp in MeshPatterns(2):
+    for mp in MeshPatterns(len(meshpattdict.keys()[0].perm)):
         if mp.perm == mpperm:
             prule = p_rule(mp,p)
             for mpmod in prule:
@@ -104,7 +104,11 @@ def can_pslide(pos,dx,dy,mp,perm):
     x,y = pos
     slidybox = (x+dx, y+dy)
     slidypoint = (x+-1*(dx<0),y+int(dy>0))
-    return (slidybox not in mp.mesh) and slidypoint in enumerate(perm)
+    # print (slidybox not in mp.mesh)
+    # print slidypoint in enumerate(perm)
+    # print list(enumerate(perm))
+    # print slidypoint
+    return (slidybox not in mp.mesh) and slidypoint in enumerate(mp.perm)
 
 def can_vslide(pos, dx, dy, mp):
     x,y = pos
@@ -127,6 +131,9 @@ def can_hslide(pos, dx, dy, mp):
     return all((b,y) in mp.mesh for b in hboxes) # vertical line is free to slide
 
 def can_allslide(pos,dx,dy,mp,perm):
+    # print can_pslide(pos,dx,dy,mp,perm)
+    # print can_vslide(pos, dx, dy, mp)
+    # print can_hslide(pos, dx, dy, mp)
     return can_pslide(pos,dx,dy,mp,perm) and can_vslide(pos, dx, dy, mp) and can_hslide(pos, dx, dy, mp)
 
 def p_rule2(mp, p = Permutation([2,3,1])): # should be generic now.
@@ -135,18 +142,20 @@ def p_rule2(mp, p = Permutation([2,3,1])): # should be generic now.
         if not box in mp.mesh: # otherwise we can't choose a point in this box
             thismp = mp.add_increase(box)
             if thismp.perm.contains(p): # we can only have a decrease in this box
-                if can_allslide(box,1,-1,mp,perm):
+                # print "only decrease"
+                if can_allslide(box,1,-1,mp,p):
                     # This checks to see if we can slide the points SE
                     possibilities.append(mp.shade(box))
-                if can_allslide(box,-1,1,mp,perm):
+                if can_allslide(box,-1,1,mp,p):
                     # This checks to see if we can slide the points NW
                     possibilities.append(mp.shade(box))
             thismp = mp.add_decrease(box)
             if thismp.perm.contains(p): # we can only have an increase in this box
-                if can_allslide(box,-1,-1,mp,perm):
+                # print "only increase"
+                if can_allslide(box,-1,-1,mp,p):
                     # This checks to see if we can slide the points SW
                     possibilities.append(mp.shade(box))
-                if can_allslide(box,-1,-1,mp,perm):
+                if can_allslide(box,-1,-1,mp,p):
                     # This checks to see if we can slide the points NE
                     possibilities.append(mp.shade(box))
     return possibilities
@@ -172,12 +181,12 @@ def p_2_rule_checker(class0,class1,classlist,p=Permutation([2,3,1])):
         sys.stderr.flush()
         return None
 
-def p_2_rule_coincidences(meshpattdict,p=Permutation([2,3,1])):
+def p_2_rule_coincidences(meshpattdict,p=Permutation([2,3,1]),method=p_rule2):
     thiscoincdict = {k:[] for k in range(len(set(meshpattdict.values())))}
     mpperm = meshpattdict.keys()[0].perm
     for mp in MeshPatterns(2):
         if mp.perm == mpperm:
-            prule = p_rule231v2(mp,p)
+            prule = method(mp,p)
             for mpmod in prule:
                 # print mp
                 if meshpattdict[mpmod] not in thiscoincdict[meshpattdict[mp]]:
