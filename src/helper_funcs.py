@@ -50,10 +50,10 @@ class MyCounter(object):
 def get_representatives(classes):
     return [clas[0] for clas in classes]
 
-def get_coincidences(representatives, length):
+def get_coincidences(representatives, length, perm):
     counters = [MyCounter() for representative in representatives]
 
-    for p in PermutationsAvoiding231(length):
+    for p in AvoidanceClass(length,perm):
         for i,v in enumerate(representatives):
             counters[i] + p.avoids(v)
 
@@ -82,3 +82,6 @@ def mpdict(classes):
         for patt in classi:
             mpdict[patt] = i
     return mpdict
+
+def countclasses(coincidict):
+    return 220 - sum(map(len,coincidict.values())) + len(coincidict)
