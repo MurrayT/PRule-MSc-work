@@ -53,13 +53,26 @@ def get_representatives(classes):
 def get_coincidences(representatives, length, perm):
     counters = [MyCounter() for representative in representatives]
 
-    for p in AvoidanceClass(length,perm):
+    for permlength in range(1,length+1):
+        for p in AvoidanceClass(permlength,perm):
+            for i,v in enumerate(representatives):
+                counters[i] + p.avoids(v)
+
+    coinc = [(p1,p2) for p1,p2 in itertools.combinations(enumerate(counters),2) if p1[1] == p2[1]]
+
+    return coinc
+
+def get_all_coincidences(representatives, length):
+    counters = [MyCounter() for representative in representatives]
+
+    for p in Permutations(length):
         for i,v in enumerate(representatives):
             counters[i] + p.avoids(v)
 
     coinc = [(p1,p2) for p1,p2 in itertools.combinations(enumerate(counters),2) if p1[1] == p2[1]]
 
     return coinc
+
 
 def coincidences_to_dictionary(coincidences):
     coincdict = {}

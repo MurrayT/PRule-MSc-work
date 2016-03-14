@@ -1,0 +1,134 @@
+\section{Introduction}
+\subsection{What is a Permutation?}
+In \emph{The Art of Computer Programming} Donald Knuth defines
+A \emph{permutation of \(n\) objects} is an arrangement of \(n\) distinct
+objects in a row. When considering permutations we can consider them as
+occuring on the set \(\nrange{n} = \setrange{1}{n}\), therefore a permutation
+is a \emph{bijection} \(\pi:\nrange{n} \mapsto \nrange{n}\). We can write a
+permutation \(\pi\) in two line notation
+\begin{equation*}
+\pi = \twoline{1,2,\dotso,n}{\pi(1),\pi(2),\dotso,\pi(n)}
+\end{equation*}
+However, the most frequent notation used in computer science is
+\emph{one-line notation}, in this form we drop the top line of the two line
+notation so are left with the following.
+\begin{equation*}
+\pi = \perm{\pi(1),\pi(2),\dotso,\pi(n)}
+\end{equation*}
+
+\begin{example}
+There are 6 permutations on \(\nrange{3}\).
+\begin{equation*}
+\perm{1,2,3},\perm{1,3,2},\perm{2,1,3},\perm{2,3,1}, \perm{3,1,2}, \perm{3,2,1}
+\end{equation*}
+\end{example}
+
+We can display a permutation on a \emph{figure} in order to give a graphical
+representation of the permutation. In such a figure we let the \(x\)-axis
+denote the index in the permutation, and the \(y\)-axis denotes the values of
+\(\pi(x)\). The figure of the permutation \(\pi = \perm{2,3,1}\) is shown below
+\begin{equation*}
+    \pattern{}{2,3,1}{}
+\end{equation*}
+
+The class of all permutations of length \(n\) is \(\mathfrak{S}_n\) and
+the class has size \(n!\). The class of all permutations is
+\(\mathfrak{S}=\bigcup_{i=0}^{\infty}\mathfrak{S}_i\).
+
+\subsection{Classical Permutation Patterns}
+Classical Permutation Patterns began to be studied as a result of Knuth's
+statements about stack-sorting in [The Art of Computer Programming].
+
+\begin{definition}{Order isomorphism.}
+    Two sequences \(\range{\alpha_1,\alpha_2}{\alpha_n}\) and
+    \(\range{\beta_1,\beta_2}{\beta_n}\) are said to be \emph{order isomorphic}
+    if they share the same relative order,i.e.,\(\alpha_r<\alpha_s\) if and
+    only if \(\beta_r<\beta_s\).
+\end{definition}
+
+A permutation \(\pi\) us said to \emph{contain} the permutation \(\sigma\) of
+length \(k\) as a pattern (denoted \(\sigma \preceq \pi\)) if there is some
+an increasing subsequence \(\range{i_1,i_2}{i_n}\) such that the sequence
+\(\range{\pi(i_1),\pi(i_2)}{\pi(i_k)}\) is order isomorphic to
+\(\range{\sigma(1),\sigma(2)}{\sigma(k)}\). If \(\pi\) does not contain
+\(\sigma\), we say that \(\pi\) \emph{avoids} \(\sigma\).
+
+For example the permutation \(\pi = \perm{2,4,1,5,3}\) contains the pattern
+\(\sigma = \perm{2,3,1}\), since the second, fourth and fifth entries
+(\(4,5,\) and \(3\)) share the same relative order as the entries of \(\sigma\).
+This can be seen graphically below, the points order isomorphic to \(\sigma\)
+are highlighted.
+\begin{equation*}
+    \pattern{2,4,5}{2,4,1,5,3}{}
+\end{equation*}
+
+We denote the set of permutations of length \(n\) avoiding a pattern \(\sigma\)
+as \(\Av_n(\sigma)\) and \(\av{\sigma} = \bigcup_{i=0}^{\infty}\Av_i(\sigma)\).
+
+\subsection{Mesh Patterns}
+Mesh Patterns were introduced by Brändén and Claesson to capture explicit expansions
+for certain permutation statistics. They are a natural extension of Classical
+permutation patterns. A \emph{mesh-pattern} is a pair
+\begin{equation*}
+    p = (\tau,R)\text{ with } \tau \in \mathfrak{S} \text{ and } R \subseteq
+    [0,k]\times [0,k].
+\end{equation*}
+By this definition the empty permutation \(\varepsilon\) as a mesh pattern consisting solely of the
+box \((0,0)\).
+
+The figure for a mesh pattern looks similar to that for a classical pattern with the
+addition that we shade the unit square with bottom corner \((i,j)\) for each \((i,j) \in R\):
+\begin{equation*}
+    \pattern{}{ 2, 1, 3 }{ 0/1, 0/2, 1/0, 1/1, 2/1, 2/2 }
+\end{equation*}
+
+We define containment, and avoidance, of the pattern \(p\) in the permutation
+\(\pi\) on mesh patterns analogously to classical containment, and avoidance,
+of \(\tau\) in \(\pi\) with the additional restrictions on the relative
+position of the occurence of \(\tau\) in \(\pi\). These restrictions say that
+the shaded regions of the figure above contain no points from \(\pi\).
+
+\begin{example}
+    The pattern \(p=\mperm{2,1,3}{\{(0,1),(0,2),(1,0),(1,1),(2,1),(2,2)\}}=
+    \textpattern{}{ 2, 1, 3 }{ 0/1, 0/2, 1/0, 1/1, 2/1, 2/2 }\) is contained in
+    \(\pi = \perm{3,4,2,1,5}\) but is not contained in \(\sigma = \perm{4,2,3,1,5}\).
+\end{example}
+\begin{proof}
+    Let us consider the figure for the permutation \(\pi\) we only need to find one occurence.
+    \begin{equation*}
+        \pattern{1,3,5}{3,4,2,1,5}{0/2,0/3,0/4,
+                                   1/0,1/1,1/2,
+                                   2/0,2/1,2/2,
+                                   3/2,3/3,3/4,
+                                   4/2,4/3,4/4}
+    \end{equation*}
+    We have found an occurence of the pattern \(p\) in \(\pi\) and therefore
+    \(\pi\) contains \(p\).
+
+    Now we consider the figure for the permutation \(\sigma\). This permutation
+    avoids \(p\) since for every occurence of the classical pattern \(\perm{2,1,3}\)
+    there is at least one point in one of the shaded boxes. Consider the subsequence
+    \(315\) in \(\sigma\), this is an occurence of \(\perm{2,1,3}\) but not the mesh
+    pattern since the points with values \(4\) and \(2\) are in the shaded areas.
+    This is shown in the figure below.
+
+    \begin{equation*}
+        \pattern{3,4,5}{4,2,3,1,5}{0/1,0/2,0/3,0/4,
+                                   1/1,1/2,1/3,1/4,
+                                   2/1,2/2,2/3,2/4,
+                                   3/0,3/1,3/2,
+                                   4/1,4/2,4/3,4/4}
+    \end{equation*}
+    This is true for all occurences of \(\perm{2,1,3}\) in \(\sigma\) and
+    therefore \(\sigma\) avoids \(p\).
+\end{proof}
+
+We denote the avoidance sets for mesh patterns in the same way as for
+classical patterns.
+
+\begin{note}
+    \label{not:classmesh}
+    Classical patterns are just a subclass of mesh patterns where the mesh
+    set \(R\) is empty. The classical pattern \(\pi\) can be represented
+    by a mesh pattern as \((\pi,\emptyset)\).
+\end{note}

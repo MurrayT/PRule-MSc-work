@@ -1,0 +1,123 @@
+\section{Coincidences amongst families of mesh patterns and classical patterns}
+One interesting question to ask about permutation patterns considers when a
+pattern may be avoided by, or contained in, arbitrary permutations. Two
+patterns \(\pi\) and \(\sigma\) are said to be \emph{coincident} if the set
+of permutations that avoid \(\pi\) is the same as the set of permutations that
+avoid \(\sigma\). This extends to sets of patterns as well as single patterns.
+
+We consider the avoidance sets, \(\av{p,q}\) where \(p\) is a classical pattern
+of length \(3\) and \(q\) is a mesh pattern of length \(2\) in order to
+establish some rules about when these two sets give the same avoidance set.
+
+We first define some operations on mesh patterns.
+\begin{definition}
+Given a pattern \(p\), let \(\addp[D]{p}{(a,b)}\) be the operation that returns
+a mesh pattern equivalent to placing a point in the center of box \((a,b)\) in
+\(p\), with shading defined by \(D\subseteq\{N,E,S,W\}\).
+\end{definition}
+The set \(D\) defines the shading by indicating that the boxes in the cardinal
+directions in \(D\) next to the point are shaded in the resulting pattern.
+Since there is no ambiguity we let \(\addpe[D]\) be equivalent to \(\addp[D]{\varepsilon}{(0,0)}\).
+This operation fails if the box \((a,b)\) is in the mesh set of \(p\).
+
+\begin{example}
+    The result of adding a single point to the empty permutation for each cardinal direction.
+ \begin{align*}
+     \addpe[\{N\}] = \textpattern{}{1}{0/1,1/1} &\qquad\addpe[\{E\}] =\textpattern{}{1}{1/1,1/0} \qquad \\
+     \addpe[\{S\}] = \textpattern{}{1}{0/0,1/0} &\qquad\addpe[\{W\}] =\textpattern{}{1}{0/0,0/1} \qquad
+\end{align*}
+    A more complex example for \texttt{add\_point}
+\begin{equation*}
+\addp[\{N,E\}]{\pattern{}{2,1,3}{0/3}}{(2,3)} = \pattern{}{2,1,4,3}{0/3,0/4,2/4,3/4,3/3}
+\end{equation*}
+\end{example}
+
+\begin{definition}
+    Given a pattern \(p\), define \(\addd{p}{(a,b)}\), and \(\addi{p}{(a,b)}\),
+    as the operations that return a mesh pattern equivalent to placing an
+    decrease, or increase, in the center of box \((a,b)\) in \(p\).
+\end{definition}
+
+\begin{example}
+    \begin{align*}
+        \addie = \pattern{}{1,2}{0/1,1/0,1/1,1/2,2/1}\\
+        \addde = \pattern{}{2,1}{0/1,1/0,1/1,1/2,2/1}
+    \end{align*}
+\end{example}
+
+We now attempt to fully classify coincidences in families characterised by avoidance
+of a classical pattern of length \(3\) and a mesh pattern of length \(2\).
+
+It can be easily seen that in order to classify set equivalences one need only
+consider coincidences within the family of mesh patterns with the same underlying
+classical pattern, this is due to the fact that \(\perm{2,1}\in\av{\mperm{1,2}{R}}\)
+and \(\perm{1,2}\in\av{\mperm{2,1}{R}}\) for all mesh-sets \(R\). So
+\(\av{\mperm{1,2}{R}}\setminus \av{\mperm{2,1}{S}}\neq \emptyset\ \forall
+R,S\in [0,2]\times [0,2]\), and hence the sets are disjoint.
+
+We know that there are a total of \(512\) mesh-sets for each underlying classical
+pattern. By use of the shading lemma, simultaneous shading lemma, and
+one special case, we can reduce the number of equivalence classes to \(220\).
+
+\subsection{Equivalence classes of Av(\{321, (21, \textit{R})\}).}
+
+\begin{proposition}[First Dominating Pattern Rule]
+    \label{prop:dom1}
+    Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
+    and a dominating classical pattern \(\pi = (\pi,\emptyset)\) such that
+    \(\setsize{\pi} \le \setsize{\sigma} + 1\), the sets \(\av{\{\pi,m_1\}}\) and
+    \(\av{\{\pi,m_2\}}\) are coincident if
+
+    \begin{enumerate}
+        \item \(R_1 \triangle R_2 = \{(a,b)\}\)
+        \item \(\pi \preceq \addp{\sigma}{(a,b)}\)
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+\end{proof}
+
+\subsection{Equivalence classes of Av(\{231, (21, \textit{R})\}).}
+
+\begin{lemma}
+    Given a mesh pattern \(m =(\sigma, R)\), where the box \((a,b)\) is not
+    in \(R\), and a dominating classical pattern \(\pi = (\pi,\emptyset)\) if
+    \(\pi \preceq \addi{\sigma}{(a,b)}\)(\(\pi \preceq \addd{\sigma}{(a,b)}\))
+    then in any occurrence of \(m\) in a permutation \(\varrho\) the region
+    corresponding to the box \((a,b)\) can only contain an increasing
+    (decreasing) subsequence of \(\varrho\).
+\end{lemma}
+The proof is analogous to the proof of Proposition~\ref{prop:dom1}.
+
+\begin{proposition}[Second Dominating Pattern Rule]
+    \label{prop:dom2}
+    Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
+    and a dominating classical pattern \(\pi = (\pi,\emptyset)\) such that
+    \(\setsize{\pi} \le \setsize{\sigma} + 2\), the sets \(\av{\{\pi,m_1\}}\) and
+    \(\av{\{\pi,m_2\}}\) are coincident if
+
+    \begin{enumerate}
+        \item \(R_1 \triangle R_2 = \{(a,b)\}\)
+        \item   \begin{enumerate}
+                    \item \(\pi \preceq \addi{\sigma}{(a,b)}\) and
+                        \begin{enumerate}
+                            \item \((a+1,b) \in \sigma\) and \\
+                                \((x,b-1)\in R \implies (x,b) \in R \) (where \(x\neq a,a+1\)) and\\
+                                  \((a+1,y)\in R \implies (a,y) \in R\) (where \(y\neq b-1,b\)).
+                            \item \((a,b+1) \in \sigma\) and \\
+                                  \((x,b+1)\in R \implies (x,b) \in R\) (where \(x\neq a-1,a\)) and\\
+                                  \((a-1,y)\in R \implies (a,y) \in R\) (where \(y\neq b,b+1\)).
+                        \end{enumerate}
+                    \item \(\pi \preceq \addd{\sigma}{(a,b)}\) and
+                        \begin{enumerate}
+                            \item \((a+1,b+1) \in \sigma\) and \\
+                                  \((x,b+1)\in R \implies (x,b) \in R\) (where \(x\neq a,a+1\)) and\\
+                                  \((a+1,y)\in R \implies (a,y) \in R\) (where \(y\neq b,b+1\)).
+                            \item \((a,b) \in \sigma\) and \\
+                                  \((x,b+1)\in R \implies (x,b) \in R\) (where \(x\neq a-1,a\)) and\\
+                                  \((a-1,y)\in R \implies (a,y) \in R\)  (where \(y\neq b-1,b\)).
+                        \end{enumerate}
+                \end{enumerate}
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+\end{proof}
