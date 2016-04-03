@@ -70,10 +70,55 @@ one special case, we can reduce the number of equivalence classes to \(220\).
 
     \begin{enumerate}
         \item \(R_1 \triangle R_2 = \{(a,b)\}\)
-        \item \(\pi \preceq \addp{\sigma}{(a,b)}\)
+        \item \(\pi \preceq \addp{\sigma}{(a,b)}\)\label{prop:dom1:cont}
     \end{enumerate}
 \end{proposition}
+In order to prove this proposition we must first make the following note.
+
+\begin{note}
+    \label{not:downcmesh}
+    Let \(R^\prime \subseteq R\). Then any occurence of \((\tau, R)\) in a permutation
+    is an occurence of \((\tau,R^\prime)\).
+\end{note}
 \begin{proof}
+    Assume without meaningful loss of generality that \(R^\prime\) is a proper
+    subset of \(R\).
+
+    Consider an occurence of \((\tau, R)\) in a permutation \(\sigma\), obviously
+    this corresponds to an occurrence of \(\tau\) in \(\sigma\). Now consider
+    the mesh sets \(R\) and \(R^\prime\), since \(R^\prime \subseteq R\) then
+    there are more restrictions on where points are in an occurrence of \((\tau,R)\).
+    Namely, for every shaded box in \(R\) the corresponding region in \(\sigma\)
+    must contain no points, since \(R^\prime\) has less shading than \(R\) there
+    exists a region in the occurence of \((\tau,R)\) in \(\sigma\) that is
+    now devoid of restrictions. However, by removing restrictions we cannot
+    make an occurence become not an occurence, and therefore the same occurrence
+    of \(\tau \) in \(\sigma\) is now an occurence of \((\tau, R^\prime)\).
+
+\end{proof}
+\begin{proof}[Proof of Proposition~\ref{prop:dom1}]
+
+    We need to prove that \(\av{\{\pi,m_1\}} = \av{\{\pi,m_2\}}\), or equivalently
+    \(\mathfrak{S}\setminus \av{\{\pi,m_1\}} = \mathfrak{S}\setminus \av{\{\pi,m_1\}}\).
+
+    Assume without meaningful loss of generality that \(R_2 = R_1 \cup \{(a,b)\}\).
+
+    Consider a permutation \(\omega\) that contains an occurrence of \(m_2\)
+    by Note~\ref{not:downcmesh} any of these occurrences is also an occurence
+    of \(m_1\). This proves that every occurence of \(m_2\) is also an
+    occurence of \(m_1\) and \(\mathfrak{S}\setminus \av{\{\pi,m_2\}}
+    \subseteq \mathfrak{S}\setminus \av{\{\pi,m_1\}}\).
+
+    Now we consider a permutation \(\omega^\prime\) containing an occurence of
+    \(m_1\). Consider placing a point in the region corresponding to the box
+    \((a,b)\), regardless of where in this region we place the point by
+    condition~\ref{prop:dom1:cont} of the Proposition we create an occurrence
+    of \(\pi\), therefore there can be no points in this region, which
+    could have been represented in the mesh set \(R_1\) by adding the box
+    \((a,b)\), and therefore every occurrence of \(m_1\) is in fact an
+    occurrence of \(m_2\).\qedhere
+
+
 \end{proof}
 
 \subsection{Equivalence classes of Av(\{231, (21, \textit{R})\}).}
