@@ -7,7 +7,7 @@ def p_rule(mp,p):
     for box in itertools.product(range(len(mp)+1),range(len(mp)+1)):
         if not box in mp.mesh:
             thismp = mp.add_point(box)
-            if thismp.perm == p:
+            if thismp.perm.contains(p):
                 possibilities.append(mp.shade(box))
     return possibilities
 

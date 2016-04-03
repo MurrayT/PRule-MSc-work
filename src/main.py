@@ -3,6 +3,7 @@ import sys
 from classes import *
 from helper_funcs import *
 from p_rule import *
+from wilf import *
 
 def stderrwrite(string,end="\n"):
     sys.stderr.write(string+end)
@@ -55,3 +56,11 @@ resolved231_12 = resolve_fundict(unexplained231_12, p2_coincs231_12)
 resolved321_12 = resolve_fundict(unexplained321_12, p2_coincs321_12)
 resolved231_21 = resolve_fundict(unexplained231_21, p2_coincs231_21)
 resolved321_21 = resolve_fundict(unexplained321_21, p2_coincs321_21)
+
+# need to prune by symmetries
+#
+reprs231 = [classes[x[0]][0] for x in coincsdict231_12.values()] + [classes[x[0]][0] for x in coincsdict231_21.values()]
+reprs321 = [classes[x[0]][0] for x in coincsdict321_21.values()] #+ [classes[x[0]][0] for x in coincsdict321_12.values()]
+
+wilf231 = [WilfCounter(Permutation([2,3,1]),x ) for x in reprs231]
+wilf321 = [WilfCounter(Permutation([3,2,1]),x ) for x in reprs321]
