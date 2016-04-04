@@ -247,13 +247,13 @@ of mesh patterns in cases where there is a dominating classical pattern.
     condition~\ref{prop:dom2:condc} of the proposition this region must contain
     a decreasing subsequence.
     We can choose the topmost point in the region to replace the corresponding
-    point in the mesh pattern and move the points from the subsequence into
+    point in the mesh pattern and the points from the subsequence are now in
     the box southeast of the point. The other conditions allow this to be done
-    without moving points into regions that were shaded.Hence there are no
+    without points being present in regions that were shaded. Hence there are no
     points in the region corresponding to the box \((a,b)\) in the mesh
     pattern, and therefore we can shade this region. This implies that every
     occurrence of \(m_1\) in \(\av{\pi}\) is in fact an occurrence of \(m_2\)
-    so \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\).
+    so \(\av{\{\pi,m_2\}} \subseteq \av{\{\pi,m_1\}}\).
 
     Similar arguments satisfy the remainder of the branches.
 
@@ -335,7 +335,7 @@ This gives us the following mesh pattern.
 By application of the \PropositionRef{prop:dom1} we then achieve the following
 mesh pattern
 \begin{equation*}
-    \pattern{2,3}{2,1,3}{0/3,2/0,2/1,3/0,3/1,3/2}
+    \pattern{2,3}{2,1,3}{0/3,1/3,2/0,2/1,3/0,3/1,3/2}
 \end{equation*}
 If we look at the highlighted points we see that the subpattern is an occurrence
 of the mesh pattern that we originally desired. This gives rise to the following
@@ -349,8 +349,9 @@ rule:
     \(\av{\{\pi,m_1\}}\) and \(\av{\{\pi,m_2\}}\) are coincident if
     \begin{enumerate}
         \item \(R_1 \triangle R_2 = \{(a,b)\}\)
-        \item \(\addp[D]{\mperm{\sigma}{R_1}}{(a,b)}\) is coincident with a
-            mesh pattern containing an occurrence of \(\mperm{\sigma}{R_2}\).
+        \item\label{prop:dom3:condocc} \(\addp[D]{\mperm{\sigma}{R_1}}{(a,b)}\)
+            is coincident with a mesh pattern containing an occurrence of
+            \(\mperm{\sigma}{R_2}\).
     \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -363,7 +364,16 @@ rule:
     of \(m_1\). This proves that every occurence of \(m_2\) is also an
     occurence of \(m_1\) and therefore \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\).
 
-    Now consider a permutation in \(\av{\pi}\)
+    Now consider a permutation \(\varrho\) in \(\av{\pi}\) that contains an
+    occurrence of \(m_1\). If the region corresponding to the box \((a,b)\)
+    is empty then we have an occurrence of \(m_2\). If the region is non-empty
+    then by condition~\ref{prop:dom3:condocc}  of the proposition there exists
+    a direction such that there exists an occurrence of a mesh pattern of
+    length one longer than \(m_1\) in this position. This mesh pattern is
+    coincident with another mesh pattern. This mesh pattern contains an
+    occurrence of \(m_2\) so every occurrence of \(m_1\) is also an occurrence
+    of \(m_2\).  Thus \(\av{\{\pi,m_2\}} \subseteq \av{\{\pi,m_1\}}\) and the
+    two patterns are coincident.
 \end{proof}
 
 \section{Equivalence classes of Av(\{321, (12, \textit{R})\}).}
@@ -381,7 +391,7 @@ gain an occurrence of \(\pi = \perm{3,2,1}\). It is also impossible to have
 a position where addition of an increase, or decrease, provides extra
 shading power.
 
-The patterns \fxnote{Is this dom3?}
+The patterns
 \begin{equation*}
     \pattern{}{1,2}{0/0, 0/2, 1/1, 1/2, 2/1} \text { and } \pattern{}{1,2}{0/0, 0/1, 0/2, 1/1, 1/2, 2/1}
 \end{equation*}
@@ -407,55 +417,44 @@ we originally desired, and hence the two patterns are coincident.
 
 The other reasoning applies to the patterns
 \begin{equation*}
-    \pattern{}{1,2}{0/1,0/2,2/0,2/1} \text{ and } \pattern{}{1,2}{0/1,0/2,1/1,2/0,2/1}
+    m_1 = \pattern{}{1,2}{0/1,0/2,2/0,2/1} \text{ and } m_2 = \pattern{}{1,2}{0/1,0/2,1/1,2/0,2/1}
 \end{equation*}
 which are coincident by expermentation.
 
-In order to explain this we need to consider the middle box, and
-any points that it may contain. If the box is empty, then the coincidence
-is trivially true. Hence, consider if there is a point in the box. This
-gives us a mesh pattern
-\begin{equation*}
-    \raisebox{0.6ex}{
-    \begin{tikzpicture}[scale=0.5, baseline=(current bounding box.center)]
-        \modpattern[4]{}{1,2,3}{0/1,0/2,0/3,3/0,3/1,3/2}
-        \draw (1.5,3.5) node {\(A\)};
-        \draw (2.5,0.5) node {\(B\)};
-    \end{tikzpicture}}
-\end{equation*}
-
-Where at most one of \(A\) or \(B\) contains an increasing subsequence.
-If both are empty we can \emph{a posteriori} make our point in the center
-box be either the leftmost, or the rightmost. Now consider if the box \(A\)
-were to contain any points, we now know that the box labelled \(B\) contains
-no points and can be shaded. By previously established rules we can also obtain
-other shadings, leading to the following mesh pattern.
-\begin{equation*}
-    \raisebox{0.6ex}{
-    \begin{tikzpicture}[scale=0.5, baseline=(current bounding box.center)]
-        \modpattern[4]{}{1,2,3}{0/1,0/2,0/3,3/0,3/1,3/2}
-        \filldraw (1.5,3.5) circle (4 pt);
-        \shadeboxes{2/0,2/1}
-    \end{tikzpicture}}
-\end{equation*}
-Now we can \emph{a posteriori} say that our point in the center box was the
-rightmost, giving
-\begin{equation*}
-    \raisebox{0.6ex}{
-    \begin{tikzpicture}[scale=0.5, baseline=(current bounding box.center)]
-        \modpattern[4]{1,2}{1,2,3}{0/1,0/2,0/3,3/0,3/1,3/2}
-        \filldraw (1.5,3.5) circle (4 pt);
-        \shadeboxes{1/1,1/2,2/0,2/1}
-    \end{tikzpicture}}
-\end{equation*}
-This gives shading that when we choose the highlighted points we
-get an occurrence of the required mesh pattern, and as such the
-two patterns are coincident.
-
-This argument applies to another pair of classes. Therefore in
+In order to prove this coincidence we will proceed by mathematical
+induction on the number of points in the middle box we call this number \(n\).
+\begin{description}
+    \item [Base Case \((n=0)\):] The base case hold since we can freely shade the
+        box if it contains no points.
+    \item [Inductive Hypothesis \((n=k)\):] Suppose that the we can find an occurrence
+        of the second pattern if we have an occurrence of the first with \(k\) points
+        in the middle box.
+    \item [Inductive Step \((n=k+1)\)] Suppose that we have \((k+1)\) points in
+        the middle box. Choose the bottom most point in the middle box, this gives a
+        mesh pattern equivalent to
+     \begin{equation*}
+        \begin{tikzpicture}[scale=0.5]
+            \modpattern[5]{}{1,2,3}{0/1,0/2,0/3,1/1,2/1,3/0,3/1,3/2}
+            \draw (2.5,0.5) node {\(X\)};
+        \end{tikzpicture}
+    \end{equation*}
+        Now we need to consider the box labelled \(X\) if this box is empty then
+        we have an occurrence of \(m_2\) and are done. If this box contains
+        any points then we gain some extra shading on the mesh pattern
+        due to the dominating pattern
+     \begin{equation*}
+        \begin{tikzpicture}[scale=0.5]
+            \modpattern[5]{2,3}{1,2,3}{0/1,0/2,0/3,1/1,1/2,1/3,2/1,3/0,3/1,3/2}
+            \filldraw (2.5,0.5) circle (4 pt);
+        \end{tikzpicture}
+    \end{equation*}
+        The two highlighted points form an occurrence of \(m_1\) with \(k\)
+        points in the middle box, and thus by the Inductive Hypothesis we
+        are done.
+\end{description}
+By induction we have that every occurrence of \(m_1\) is an occurrence of \(m_2\)
+and by \NoteRef{not:downcmesh} every occurrence of \(m_2\) is an occurrence of
+\(m_1\) so the two patterns are coincident.
+This argument applies to another two pairs of classes. Therefore in
 total in \(\av{\perm{3,2,1}, \mperm{1,2}{R}}\) there are \(213\) equivalence
 classes.
-
-
-
-
