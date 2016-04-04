@@ -1,0 +1,33 @@
+\chapter{Code}\label{cha:code}
+You can put code in your document using the listings package, which is
+loaded by default in \path{custom.tex}.  Be aware that the listings
+package does not put code in your document if you are in draft mode
+unless you set the \texttt{forcegraphics} option.
+
+There is an example java (Listing~\ref{src:Data_Bus.java}) and XML
+file (Listing~\ref{src:AndroidManifest.xml}).  Thanks to the
+\texttt{url} package, you can typeset OSX and unix paths like this:
+\path{/afs/rnd.ru.is/project/thesis-template}.  Windows paths:
+\path{C:\windows\temp\ }.  You can also typeset them using the menukey
+package, but it tends to delete the last separator and has other
+complications.\footnote{The menukey package has issues with biblatex,
+  read \path{custom.tex} for more information.}
+
+If you are trying to include multiple different languages, you should
+go read the documentation and set these up in \path{custom.tex}.  You
+will save yourself a lot of effort, especially if you have to fix
+anything.
+
+%I have put the source code in the \directory{src/} folder.
+\lstinputlisting[language=Java, firstline=1,
+lastline=40, caption={Data\_Bus.java: Setting up the class.},
+label={src:Data_Bus.java}]{src/Data_Bus.java}
+
+\lstinputlisting[language={[android]XML}, firstline=1, lastline=20,
+caption={AndroidManifest.xml: Configuration for the Android UI.},
+label={src:AndroidManifest.xml}]{src/AndroidManifest.xml}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "msc-tannock-2016"
+%%% End: 

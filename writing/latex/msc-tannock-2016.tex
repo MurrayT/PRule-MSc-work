@@ -1,0 +1,538 @@
+%% ---------------------------------------------------------------
+%% $URL: https://repository.cs.ru.is/svn/thesis-template/trunk/ruthesis/latex/DEGREE-NAME-YEAR.tex $
+%% $Id: DEGREE-NAME-YEAR.tex 289 2016-02-17 12:49:46Z foley $
+%% This is a template LaTeX file for theses or reports at Reykjavík University
+%% Particularly the Computer Science or Science and Engineering departments
+%% The template and ruthesis.cls file have been designed to be compatible with
+%%   LaTeX, PDFTeX, and XeTeX.
+%%
+%% Comments and questions can be sent to
+%% General: the RU LaTeX group (latex AT list.ru.is)
+%% Computer Science: the Graduate Study Council (cs-grad AT ru.is)
+%% Science and Engineering: graduate administrator: Kristín Kristinsdóttir (kristinkri AT ru.is)
+%% See the README for information on final preparation for PhD Dissertations
+%%
+%% Original Author: Bjórn Þór Jónsson (bjorn AT ru.is)
+%% Modified by: Eyjólfur Ingi Ásgeirsson <eyjo AT ru.is>
+%% Modified and Maintained by: Joseph Timothy Foley <foley AT ru.is>
+%% ---------------------------------------------------------------
+
+%% METHOD:
+%% 0) Read README.TXT
+%% 0.1) !!!NO REALLY, READ README.TXT!!!
+%% 0.2) Subscribe to the announcements email list at
+%%    https://list.ru.is/mailman/listinfo/latex-announcements
+%% 1 LaTeX instructions.tex or goto http://afs.rnd.ru.is/project/thesis-template/trunk/ruthesis/latex/instructions.pdf
+%% 2) Copy the template (or unzip) to your working area
+%% 3) Rename this file (if needed) with your information e.g. MSC-FOLEY-2007.tex
+%% 4) Modify this file to fit your needs (please follow all comments below in the text)
+%% 5) For making bibliographies, run "biber".  You can also change
+%% this back to "bibtex".  See below in "Bibliography options".
+
+%% Options for ruthesis class:
+
+%%%%%%% CHOOSE ONE OF THESE %%%%%%%%%%%%%%%
+%% projectreport: Project report (CS)
+%% bachelors: Bachelor of Science thesis
+%% masters: Master of Science thesis
+%% doctorate: Doctor of Philosophy dissertation
+%%
+%%%%%%% CHOOSE ONE OF THESE %%%%%%
+%%
+%% draft: speed up processing by skipping graphics and adding useful
+%%     information for editing.  Also sets spacing to double so that it is easier to
+%%     write editing marks on paper copy.
+%% proof:  proofreading version (final formatting with warnings)
+%% final: generate document for submission, removing FIXMEs, and
+%%     other markup.  Throw error if any fatal FIXMEs still in document.
+%%
+%%%%%%%% CHOOSE ANY COMBINATION OF THESE %%%%%%%%%%%%
+%%
+%% booklet: set the stock/font size for booklets (experimental, DO NOT USE)
+%% forcegraphics: force graphics, etc. to be included, even in draft mode
+%% debug:  writes more messages to the log file, adds debugging output
+%%     and sizing boxes
+%% miktex: disable some packages that cause problems for (older) MikTeX
+%% icelandic: thesis is in Icelandic
+%% oldstyle:  use the PhD headers and footers from the old CS template
+%% online: for online versions (skip additional signature pages)
+\documentclass[masters,forcegraphics,draft]{ruthesis}
+
+%%%%%%% HACKS:  USE THESE ONLY IF INSTRUCTED TO DO SO!!!! %%%%%%%%%%%%%%%
+%% yngvihack:  Proposed changes to the template from Dean Yngvi
+%\setboolean{yngvihack}{true}
+
+%% Note, if you are writing a PhD thesis, it will be reduced at the
+%% printers when it is bound into a book: B5 240x170mm (aka Programme
+%% or Book economy) See the README.TXT for details.  Plan your figures
+%% and diagrams for this size.  In a future release of this template,
+%% setting booklet will allow you to see what it would look like.
+
+%% For other thesis, print them out in A4, then they will be cut down
+%% to 293x206mm by the binder.  Make sure you use "acid-free" paper or
+%% the book will yellow and fall apart in a few years.
+%% TODO: instructions to the printer about bleed
+
+%%%%%%%%%%%%%%%%%%%% Bibliography options %%%%%%%%%%%%%%%%%%%%%
+%% We suggest switching from bibtex to biblatex/biber because it is better able
+%% to deal with Icelandic characters and other bibliography issues
+%% As long as you use biblatex instead of bibtex by itself, it will at least
+%%  generate a document without errors.
+\usepackage[backend=biber,bibencoding=utf8,style=ieee]{biblatex}
+%\DeclareLanguageMapping{american}{american-apa}
+% need to declare mapping for style=apa to alphabetize properly
+% If you set backend=bibtex, it will use bibtex for processing (old way)
+%    this can work with Icelandic characters, but you may get weird results.
+%    bibtex does not know how to sort Þ and ð
+% if you set backend=biber, you can use UTF8 characters such as Þ and
+%     ð  but you will have to remember to switch from using bibtex to
+%     biber in your client
+% If you use JabRef, make sure the file is encoded in UTF-8 which is
+%    not the default.
+
+% Where is your reference library?
+\addbibresource{references.bib}
+
+%%%%%%%%%%%%%%%%%%% CUSTOMIZATIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% It is not recommended that you customize this file
+%%   nor ruthesis.cls.   You should put your macros and packages into
+%%   a separate file so that it is easier to use updates to the template.
+%% The custom.tex file was created for this reason.
+%% We load this much later so that it can overrite any existing settings
+\InputIfExists{custom.tex}
+
+%%%%%%%%%%%%%%% INFORMATION %%%%%%%%%%%%%%%%%%5
+%% University information must be multilingual to deal with the
+%%  required cover pages and abstract on thesis
+%% NOTE: This may not be required for other reports!!!
+
+%% Babel Icelandic macros are setup  on RedHat at
+%% /usr/share/texlive/texmf-dist/tex/generic/babel/icelandic.sty
+%% /usr/share/texlive/texmf-dist/tex/generic/babel-icelandic/icelandic.ldf
+
+
+%% Multilingual macros
+%\newML{macroname}{englishword}{icelandicword}
+%  creates \macronameML
+%    \MLmacroname[english] - returns the english word
+%    \MLmacroname[icelandic] - returns the icelandic word
+%    \MLmacroname  - uses the current language setting
+% Some useful ones have already been defined, but can be redefined
+%% Predefined: \MLIceland \MLReykjavikUniversity \MLUniversityIceland
+
+%% What institute?  Default is RU.
+%\setInstitution{\MLReykjavikUniversity}
+% \newML{InstitutionAddress}{Menntavegur 1\\101 Reykjavík, Iceland}
+% {Menntavegi 1\\101 Reykjavík, Ísland}
+% \setInstitutionAddress{\MLInstitutionAddress}
+% \newML{Tel}{Tel.}{Sími}
+% \setInstitutionPhone{\MLTel{} +354 599 6200\\
+% Fax +354 599 6201}
+% \setInstitutionURL{www.ru.is}
+
+
+%% Department and degree program
+
+%% School of Computer Science: \MLCS
+% Programs:  Computer Science, Software Engineering, Language Technology
+%\program{Computer Science}
+
+%% School of Science and Engineering \MLSSE
+%% Programs:
+%% Bioinformatics, Biomedical Engineering
+%% Civil Engineering with specialization in Concrete Technology
+%% Civil Engineering with specialization in Construction Management
+%% Civil Engineering with specialization in Structural Design
+%% Civil Engineering with specialization in Transport and Urban Planning
+%% Construction Management
+%% Electrical Engineering
+%% Mechatronics
+%% Engineering Management
+%% Exercise Science and Coaching
+%% Financial Engineering
+%% Mechanical Engineering
+%% Sustainable Energy Engineering - REYST
+%% Sustainable Science - REYST
+%% Urban Planning and Transport
+
+\setSchool{\MLSSE}
+\newML{program}{Computer Science}{tölvunarfræði}
+\program{\MLprogram}
+
+%% Degree long name.  If not already defined, you can create a macro
+%\newML{DEGREE}{English Degree Name}{Icelandic Degree Name}
+%% Default is set based upon doctorate vs masters option
+%% Predefined: \MLMSc \MLPhd
+%\setDegreelong{\MLMSc}
+
+%% Degree abb, change if default is not right
+%% Default is set based upon doctorate vs masters option
+%\degreeabbrv{Sc.D.}
+
+
+%\setFrontLogo{reyst-logo}
+%% Use this if you need a different front logo on the first page
+%% e.g. reyst-logo
+
+%% Date in english and icelandic
+%% NOTE: THIS IS THE DATE OF THE SUPERVISOR'S SIGNATURE!!!!!!
+%% Predefined: \MLjan, \MLfeb, \MLmar, ... \MLdec
+%\whensigned{day}{month}{year} %day is only used on some formats, but you must put something.
+\whensigned{10}{\MLdec}{2015}
+
+%% Title in english and icelandic
+%% This is required on Thesis, but not necessarily elsewhere.
+%%
+%% Note that title length is limited to what can fit in three lines in the inside page
+%% Also note that the capitalization of the text on the front page is a potential source
+%% of latex errors as it may not deal well with math, international letters,
+%% and other latex constructs
+%% Warning: capitalization does not always work anyway
+\newML{Title}{Working Title}{Titll verkefnis}
+\newML{TITLE}{WORKING TITLE}{TITLL VERKEFNIS}
+%% If you have the title in just one language, put it into \setTitle{} directly e.g.
+%%  \setTitle{Working Title}
+%%
+\setTitle{\MLTitle}
+%% If you need to adjust the main title later, you can use
+%% \setMainTitle{}
+%% ***** Special Titles ******
+%% If the title must be formatted specifically for the cover page or internal pages
+%% (typically via line-breaks using the \newline command) then the following commands must be used
+%%
+%% This one for the online/PhD front page:
+%%  and should usually be kept short per line
+%% The template specified that a PhD cover should have the title in capitals, but
+%%  the physical copies have not done this.  This macro is in case that
+%%  turns out to be important
+%\setTitleCover{\MLTITLE}
+%% These two for the internal cover pages, usually not needed
+%\newML{TitleInternal}{Internal Title}{Icelandic Internal Title}
+%\setTitleInternal{\MLTitleInternal}
+
+%% Author name (should be the same in any language, if not use \newML)
+%% If you are writing a Project report with multiple authors, separate them with \\:
+%% To keep the names typeset together, you want to use non-breaking spaces
+%\author{Firstname1~Lastname1\\Firstname2~Lastname2}
+\author{Murray~Tannock}
+
+%% If the name must be formatted specifically for the signature page
+%% (typically via line-breaks) then the following command must be used
+%\setAuthorSignature{Student\\Name}
+%% This macro adjusts the author name in the headers of the oldstyle formatting
+%\setAuthorHeader{StudentLast}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Project Report or Bachelor's Only!!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \setCourse{VT LOK 1012}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Project Report Only!!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Bachelors Only!!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \setID{010105--9999}%kennitala
+% \setSemester{2015--1}
+
+% \setOrganization{Marel ehf.\\Austurhrauni 9\\210 Garðabær}
+% \setSubProgram{Tæknifræði}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Masters Only!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% How many credits (ECTS) on Master's degree
+%% Usually 30 or 60
+\ects{60}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Doctorate Only!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Some Computer Science Thesis have an ISSN number.
+%% Most other documents do not.
+%\bookidnumber{ISSN: 1670-8539}
+%% ID numbers are optional, but nice for sorting in libraries
+
+%% International Standard Book Number (ISBN)
+%% This is what most people should use if the thesis is being published.
+
+%% International Standard Serial Number (ISSN)
+%% This is usually only for a PhD dissertation as part of a series when published
+%%   Computer Science: 1670-8539
+
+%% Additional degrees?  (optional, usually not needed)
+%\adddegree{(list of degrees in appendix)}{(sjá lista yfir prófgraður í viðauka)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% List the entire committee.  Each member has a name (degree should be omitted, unless it is not PhD),
+%% Supervisor(s) must appear first
+%% On a Bachelors, there is usually only one supervisor and one examiner.
+
+%% Format for each entry:
+%%  \personinfo{Name}{Role}{Job Title}{Company/institution}{Country}
+%% Predefined macros: \MLSupervisor \MLSupervisors \MLExaminer \MLExaminers
+
+%% Change these to singular/plural as needed.
+%% Just uncomment and change the plurality of the macro.
+%\setSupervisorHeading{\MLSupervisors}
+%\setExaminerHeading{\MLExaminer}
+
+%% Predefined macros:
+%% \MLSeniorProfessor \MLProfessor \MLAssociateProfessor \MLAdjunctProfessor \MLEmeritusProfessor \Iceland
+%% \MLReykjavikUniversity \MLUniversityIceland
+
+%% Bachelors: primary advisor (Umsjónarkennari), ONLY ONE!
+%% All others: As many as you want
+\supervisors{
+  \personinfo{Henning Ulfarsson}{\MLSupervisor}{\MLProfessor}{\MLReykjavikUniversity}{\MLIceland}
+%  \personinfo{Helpful A. Teacher}{Co-advisor}{\MLAssistantProfessor}{\MLUniversityIceland}{\MLIceland}
+%  \personinfo{Ian M. Great}{Co-advisor}{\MLProfessor}{Hochschule Düsseldorf}{Germany}
+}
+
+%% Bachelors: secondary advisor (Leiðbeinandi), ONLY ONE
+%% All others: As many as you want
+\examiners{
+  \personinfo{Michael H. Albert}{\MLExaminer}{\MLProfessor}{University of Otago}{New Zealand}
+  \personinfo{Anders Claesson}{\MLExaminer}{Docent}{\MLUniversityIceland}{\MLIceland}
+
+}
+
+%% An abstract is required to be in both Icelandic and English for most degrees.
+%% It is considered good form to limit the abstract to a single paragraph in each language,
+%%   around 250 words or so.  Refer to your degree's instructions.
+%% Note: Icelandic quotation marks cannot be typeset using "` and "'.  You should use \enquote{}
+%%   this is probably due to interactions with the MultiLingual macros.
+\newML{AbstractText}{\lipsum[1]}
+% ipsum generaes text text
+{\lipsum[1]} % Icelandic abstract goes here
+\setAbstract{\MLAbstractText}
+
+
+%%%%%%%%%%%%%%INDEX SETUP %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Indexes, and other auto-generated material
+%% You will need two components:
+%% 1) a program to extract the index entries and sort them
+%% 2) LaTeX package to parse them
+
+%% 1) Index generation programs: xindy, makeindex
+%% Warning: makeindex and other traditional latex indexing
+%%   does not know how to deal with accented characters
+%% You will need to run this when you want to generate/update the index.
+%%
+%% For abbreviations, you may want to try
+%%\usepackage[intoc]{nomencl} % intoc: In Table of Contents
+%% remember to run:
+%% makeindex filename.nlo  -s nomencl.ist -o filename.nls
+
+%% 2) PICK ONE OF THESE INDEX PACKAGES: imakeidx, makeidx, index (is default)
+%%  imakeidx does not need makeindex to be run seperately but
+%%  it means that generating your document is slower when you are not updating the index
+%\RequirePackage{imakeidx}
+%\makeindex[intoc]  % add index to toc
+
+\finalifforcegraphics{hyperref} %hyperlinks even in draft mode
+\usepackage[hidelinks]{hyperref}
+%% !!!Must be the last package loaded except otherwise mentioned!!!!
+%% \usepackage{hypcap}  %% puts link at top of figure, must be after hyperref
+
+%%%%%%%%%%%%%GLOSSARY SETUP%%%%%%%%%%%%%%%%%%%%
+%% A glossary is a nice thing to have in larger documents.
+%% Unfortunately, it seems to cause problems on many TeX installations
+%%  so it is disabled by default.
+%% Uncomment the lines that start with \% in order to re-enable it
+
+% % add an autogenerated glossary (separate from main index)
+%% Warning: package glossaries doesn't like it when they are defined in the document
+%% http://mirror.ctan.org/macros/latex/contrib/glossaries/glossaries-user.html#sec%3adocdefs
+%%
+%% WARNING!  Memoir has an internal "index" option which conflicts with glossaries
+%% Loading the package must go after hyperref (it is special).
+% \RequirePackage[acronym,toc]{glossaries}
+%% nomain: no main glossary
+%% acronym: acronym glossary
+%% toc: add entry in Table of Contents
+%% automake: try to run makeindex using \write18 shell escape
+%% without automake, run "makeglossaries" to process them
+%% or the right makeindex options
+% \newglossary[slg]{symbols}{sym}{sbl}{List of Symbols}
+% \makeglossaries{}  % intitialize the glossary.  Must be in the main file!!!
+% \input{glossary}  % load glossary definitions in preamble
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%% DOCUMENT START %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+%% Some elements have different names on the RU Masters rules
+%% They will be annotated with RUM: "name"
+\frontmatter{} % setup formatting at beginning
+
+\frontcover{}%% The MSc/BSc cover can be gotten from the front desk and has a window in it
+%%RUM: Front cover (standard)
+\frontrequiredpages{}  % the various signature pages
+
+% \ifdraft{\coverchapter{Important!!!  Read the Instructions!!!} If you
+%   have not already done so, \LaTeX{} the \path{instructions.tex} to
+%   learn how to setup your document and use some of the features.  You
+%   can see a (somewhat recent) rendered PDF of the instructions at
+%   \url{http://afs.rnd.ru.is/project/thesis-template/trunk/ruthesis/latex/instructions.pdf}.
+%   There is also more information on working with \LaTeX{} at
+%   \url{http://afs.rnd.ru.is/project/htgaru/trunk/how-to-get-around-projects.pdf}.
+%   This includes common problems and fixes.
+
+%   This page will disappear in anything other than draft mode.}{}
+
+
+
+% \newML{child}{child}{barn}
+% %% Dedication is optional, comment out if it is absent
+% %% RUM: Not mentioned
+% \begin{dedications}
+%   I dedicate this to my spouse/\MLchild{}/pet/power animal.
+% \end{dedications}
+
+\enableindents{}% turn on/off paragraph indents
+% RUM: "Acknowledgements (optional)"
+\coverchapter{Acknowledgements}
+\begin{quotation}
+So long, and thanks for all the fish.
+\end{quotation}\sourceatright{Douglas Adams\cite{adams84fish}}
+\vspace{\baselineskip}
+
+\draftnote{Acknowledgements are optional; comment this chapter out if they are absent
+  Note that it is important to acknowledge any funding that helped in the work}
+
+% This work was funded by \the\year~RANNIS grant ``Survey of man-eating Minke whales'' 1415550.
+% Additional equipment was generously donated by the Icelandic Tourism Board.
+
+% \coverchapter{Preface}
+% % RUM: "Preface (optional)"
+% This dissertation is original work by the author, Firstname~Lastname.
+% Portions of the introductory text are used with permission from
+% Student et al.\cite{student2015awesome} of which I am an author.
+
+
+% \draftnote{The preface is an optional element
+%   explaining a little who performed what work.  See
+%   \url{https://www.grad.ubc.ca/sites/default/files/materials/thesis_sample_prefaces.pdf}
+%   for suggestions.
+
+%   List of publications as part of the preface is
+%   optional unless elements of the work have already been published.
+%   It should be a comprehensive list of all publications in which
+%   material in the thesis has appeared, preferably with references to
+%   sections as appropriate.  This is also a good place to state
+%   contribution of student and contribution of others to the work
+%   represented in the thesis.}
+
+
+%\coverchapter{Publications}
+%% RUM: Not mentioned, this was found in the CS thesis template.
+%% Maybe more applicable to PhD dissertations?
+%%% Probably a duplication from before Preface became standard.
+
+
+\starttables{} % setup formatting
+%% TOC, list of figures and list of tables are required
+\tableofcontents{}%%RUM: "Table of contents"
+\thesislistoffigures{}%%RUM: "List of figures"
+\thesislistoftables{}%%RUM: "List of tables"
+
+%\coverchapter{List of drawings and enclosed material}
+%RUM: "List of drawings and enclosed material, e.g. CD(as appropriate)"
+
+\listoffixmes{}
+% if using fixme package, lists what needs to be done
+
+%% The list of abbreviations is an example of a special list
+%% Other lists may be added, such as lists of algorithms, symbols, theorems, etc.
+%% IN CS PhD, this is sometimes centered.
+% \newtoclist{Abbreviations}%%RUM: Not mentioned
+% \begin{tabular}{ll}
+% MSc &Masters of Science\\
+% PhD &Doctor of Philosophy\\
+% \end{tabular}
+
+% \newtoclist{Symbols}%%RUM: Not mentioned
+% \begin{tabular}{lll}
+% Symbol &Description &Value/Units\\
+% $E$ &Energy &\si{\joule}\\
+% $m$ &Mass &\si{gram}\\
+% $c$ &Speed of Light &\SI{2.99E8}{\meter\per\second\square}\\
+% \end{tabular}
+
+%% This command prepares for the actual text, e.g. by
+%% calling \mainmatter{}
+\starttext{}
+
+%% ---------------------------------------------------------------
+%% From this point on, it is standard Latex, except the very end.
+%% This is a "report"-based template, so the top-level heading
+%% is \chapter{}
+
+%% WARNING: Make sure that all of these files (and any new ones)
+%% are UTF-8 otherwise you will get weird encoding errors.
+%\part{The First Part} % Parts optional but useful in longer documents
+
+%% The default division is IMRAD, you may want to divide differently
+%% See the introduction for guidance.
+
+%% This file only is included if we are draft mode.
+%% The instructions.tex file contains instructions and examples.
+%\ifdraft{\input{instructions}}{}
+
+\input{introduction}%%RUM: Introduction
+\input{coincidence}
+\input{wilf}
+%\input{methods}%%RUM: "Methods"
+%%\part{The Second Part}
+%\input{results}%%RUM: "Results"
+%\input{discussion}%%RUM: "Discussion"
+
+
+
+%% ---------------------------------------------------------------
+\printbibliography{} %%RUM: "References"
+
+%% If appendices are needed, uncomment the following line
+%% and include the appendices in separate files
+\appendix{}%%RUM: "Appendicies (as appropriate)
+% \input{code} % as an example, perhaps some of your code
+
+%\backmatter{} % Sections after this don't get numbers
+%% We prefer that all elements be numbered
+
+%%%%%%%%%%%%% SHOW GLOSSARY %%%%%%%%%%%%%%%%%
+%% Glossary, optional.  A good idea on longer documents
+%% Remember to run "makeglossaries <DEGREE-NAME-YEAR>"
+%%   to update the glossary
+% \printglossary{}%%RUM: Not mentioned
+% \printacronyms{}%%RUM: Not mentioned
+
+%% Glossary debugging code
+%% Uncomment this to figure out of one of the glossary entries is broken
+%% by putting all of the entries in the glossary.
+%\ifthenelse{\boolean{debug}}{%
+%  \glsaddall{} %put all entries in
+%  \printglossaries{}}{}% dump them all
+%% This command dumps all of the glossaries
+
+%%%%%%%%%%%%% SHOW INDEX %%%%%%%%%%%%%%%%%%
+%% Index, optional.  A good idea on longer documents
+
+% You can put instructions at the beginning of the index:
+%\renewcommand{\preindexhook}{%
+%  The first page number is usually, but not always,
+%  the primary reference to the indexed topic.\vskip\onelineskip}
+
+%% You may have to run "makeindex <FILENAME>" to have it be generated
+%% Depending upon which package you chose.
+%%
+\clearforchapter{}
+\printindex{}%%RUM: Not mentioned
+
+\backcover{}%%RUM: "Back cover (standard)
+\end{document}
+
+%% ---------------------------------------------------------------
+
+%%% This is information for the emacs editor
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+%%% You can change TeX-engine if you want to use xetex for extra font powers

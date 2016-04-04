@@ -1,0 +1,39 @@
+\documentclass[projectreport,online,forcegraphics,miktex,draft]{ruthesis}
+\usepackage[backend=biber,bibencoding=utf8,style=ieee]{biblatex}
+\addbibresource{references.bib}
+\InputIfExists{custom.tex}
+\setTitle{My Title}
+\setDocumentType{Final Report}
+\author{Firstname1~Lastname1, Firstname1~Lastname2}
+\setCourse{T-411-MECH}
+\setSchool{\MLSSE{}}
+\whensigned{17}{\MLdec}{2015}
+\finalifforcegraphics{hyperref} %hyperlinks even in draft mode
+\usepackage[hidelinks]{hyperref} 
+\begin{document}
+\frontmatter{}
+\frontcover{}
+\enableindents{}
+\starttables{} % setup formatting
+\tableofcontents{}
+\thesislistoffigures{}
+\thesislistoftables{}
+\starttext{}
+\listoffixmes{}
+\chapter{Some Chapter}
+\section{Some section}
+\subsection{Some Subsection}
+Some text goes here with a citation~\cite{adams84fish}.
+\printbibliography{}
+\appendix{}
+\input{code} % as an example, perhaps some of your code
+\clearforchapter{}
+\printindex{}
+\backcover{}
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,461 @@
+\chapter{Coincidences amongst families of mesh patterns and classical patterns}
+One interesting question to ask about permutation patterns considers when a
+pattern may be avoided by, or contained in, arbitrary permutations. Two
+patterns \(\pi\) and \(\sigma\) are said to be \emph{coincident} if the set
+of permutations that avoid \(\pi\) is the same as the set of permutations that
+avoid \(\sigma\). This extends to sets of patterns as well as single patterns.
+
+We consider the avoidance sets, \(\av{p,q}\) where \(p\) is a classical pattern
+of length \(3\) and \(q\) is a mesh pattern of length \(2\) in order to
+establish some rules about when these two sets give the same avoidance set.
+We fix \(p\) in order to define the equivalences, we say that \(p\) is the
+\emph{Dominating Pattern}. We fix \(p\) in order to calculate the coincidences.
+We never consider occurrences with different \emph{Dominating Patterns}.
+
+We first define some operations on mesh patterns.
+\begin{definition}
+Given a pattern \(p\), let \(\addp[D]{p}{(a,b)}\) be the operation that returns
+a mesh pattern equivalent to placing a point in the center of box \((a,b)\) in
+\(p\), with shading defined by \(D\subseteq\{N,E,S,W\}\).
+\end{definition}
+The set \(D\) defines the shading by indicating that the boxes in the cardinal
+directions in \(D\) next to the point are shaded in the resulting pattern.
+Since there is no ambiguity we let \(\addpe[D]\) be equivalent to \(\addp[D]{\varepsilon}{(0,0)}\).
+This operation fails if the box \((a,b)\) is in the mesh set of \(p\).
+
+\begin{example}
+    The result of adding a single point to the empty permutation for each cardinal direction.
+ \begin{align*}
+     \addpe[\{N\}] = \textpattern{}{1}{0/1,1/1} &\qquad\addpe[\{E\}] =\textpattern{}{1}{1/1,1/0} \qquad \\
+     \addpe[\{S\}] = \textpattern{}{1}{0/0,1/0} &\qquad\addpe[\{W\}] =\textpattern{}{1}{0/0,0/1} \qquad
+\end{align*}
+    A more complex example for \texttt{add\_point}
+\begin{equation*}
+\addp[\{N,E\}]{\pattern{}{2,1,3}{0/3}}{(2,3)} = \pattern{}{2,1,4,3}{0/3,0/4,2/4,3/4,3/3}
+\end{equation*}
+\end{example}
+
+\begin{definition}
+    Given a pattern \(p\), define \(\addd{p}{(a,b)}\), and \\ \(\addi{p}{(a,b)}\),
+    as the operations that return a mesh pattern equivalent to placing an
+    decrease, or increase, in the center of box \((a,b)\) in \(p\).
+\end{definition}
+
+\begin{example}
+    \begin{align*}
+        \addie = \pattern{}{1,2}{0/1,1/0,1/1,1/2,2/1}\\
+        \addde = \pattern{}{2,1}{0/1,1/0,1/1,1/2,2/1}
+    \end{align*}
+\end{example}
+
+We now attempt to fully classify coincidences in families characterised by avoidance
+of a classical pattern of length \(3\) and a mesh pattern of length \(2\).
+
+It can be easily seen that in order to classify set equivalences one need only
+consider coincidences within the family of mesh patterns with the same underlying
+classical pattern, this is due to the fact that \(\perm{2,1}\in\av{\mperm{1,2}{R}}\)
+and \(\perm{1,2}\in\av{\mperm{2,1}{R}}\) for all mesh-sets \(R\). So
+\(\av{\mperm{1,2}{R}}\setminus \av{\mperm{2,1}{S}}\neq \emptyset\ \forall
+R,S\in [0,2]\times [0,2]\), and hence the sets are disjoint.
+
+We know that there are a total of \(512\) mesh-sets for each underlying classical
+pattern. By use of the shading lemma, simultaneous shading lemma, and
+one special case, we can reduce the number of equivalence classes to \(220\).
+
+\section{Equivalence classes of Av(\{321, (21, \textit{R})\}).}
+Through expermentation we discover that there are a total of 29 equivalence
+classes of mesh patterns with underlying classical pattern \(\perm{2,1}\).
+
+\begin{proposition}[First Dominating Pattern Rule]
+    \label{prop:dom1}
+    Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
+    and a dominating classical pattern \(\pi = (\pi,\emptyset)\) such that
+    \(\setsize{\pi} \le \setsize{\sigma} + 1\), the sets \(\av{\{\pi,m_1\}}\) and
+    \(\av{\{\pi,m_2\}}\) are coincident if
+
+    \begin{enumerate}
+        \item \(R_1 \triangle R_2 = \{(a,b)\}\)
+        \item \(\pi \preceq \addp{\sigma}{(a,b)}\)\label{prop:dom1:cont}
+    \end{enumerate}
+\end{proposition}
+In order to prove this proposition we must first make the following note.
+
+\begin{note}
+    \label{not:downcmesh}
+    Let \(R^\prime \subseteq R\). Then any occurence of \((\tau, R)\) in a permutation
+    is an occurence of \((\tau,R^\prime)\).
+\end{note}
+\begin{proof}
+    Assume without meaningful loss of generality that \(R^\prime\) is a proper
+    subset of \(R\).
+
+    Consider an occurence of \((\tau, R)\) in a permutation \(\sigma\), obviously
+    this corresponds to an occurrence of \(\tau\) in \(\sigma\). Now consider
+    the mesh sets \(R\) and \(R^\prime\), since \(R^\prime \subseteq R\) then
+    there are more restrictions on where points are in an occurrence of \((\tau,R)\).
+    Namely, for every shaded box in \(R\) the corresponding region in \(\sigma\)
+    must contain no points, since \(R^\prime\) has less shading than \(R\) there
+    exists a region in the occurence of \((\tau,R)\) in \(\sigma\) that is
+    now devoid of restrictions. However, by removing restrictions we cannot
+    make an occurence become not an occurence, and therefore the same occurrence
+    of \(\tau \) in \(\sigma\) is now an occurence of \((\tau, R^\prime)\).
+\end{proof}
+\begin{proof}[Proof of \PropositionRef{prop:dom1}]
+    We need to prove that \(\av{\{\pi,m_1\}} = \av{\{\pi,m_2\}}\).
+
+    Assume without meaningful loss of generality that \(R_2 = R_1 \cup \{(a,b)\}\).
+
+    Consider a permutation \(\omega\) that contains an occurrence of \(m_2\)
+    by \NoteRef{not:downcmesh} any of these occurrences is also an occurence
+    of \(m_1\). This proves that every occurence of \(m_2\) is also an
+    occurence of \(m_1\) and therefore \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\).
+
+    Now we consider a permutation \(\omega^\prime\in \av{\pi}\),
+    suppose we have an occurrence of \(m_1\). Consider placing a point in the
+    region corresponding to the box \((a,b)\), regardless of where in this
+    region we place the point by condition~\ref{prop:dom1:cont} of the
+    Proposition we create an occurrence of \(\pi\), therefore there can be no
+    points in this region, which could have been represented in the mesh set
+    \(R_1\) by adding the box \((a,b)\). Hence every occurrence of
+    \(m_1\) is in fact an occurrence of \(m_2\), and we have that
+    \(\av{\{\pi,m_2\}} \subseteq \av{\{\pi,m_1\}}\).
+
+    Taking both directions of the containment we can therefore draw the
+    conclusion that \(\av{\{\pi,m_1\}} = \av{\{\pi,m_2\}}\).
+\end{proof}
+
+By using this rule we completely capture the equivalence classes of
+\(\av{\{\perm{3,2,1}, \mperm{2,1}{R}\}}\).
+
+This rule is understood very easily by seeing it in graphical form. In the
+pattern in \FigureRef{fig:rule1} we can gain shading in three boxes since if
+there is a point in any of these boxes we would gain an occurrence of the
+dominating pattern \(\perm{3,2,1}\).
+
+\begin{figure}[htb]
+    \begin{center}
+    \begin{tikzpicture}[scale=\picscale]
+        \modpattern{}{2,1}{}
+    \end{tikzpicture}
+        \raisebox{2ex}{\(\mapsto\)}
+    \begin{tikzpicture}[scale=\picscale]
+        \filldraw (0.5,2.5) circle (3pt);
+        \filldraw (1.5,1.5) circle (3pt);
+        \filldraw (2.5,0.5) circle (3pt);
+        \modpattern{}{2,1}{0/2,1/1,2/0}
+    \end{tikzpicture}
+
+        \caption{Visual Depiction of first dominating pattern rule.}
+        \label{fig:rule1}
+    \end{center}
+\end{figure}
+
+\section{Equivalence classes of Av(\{231, (21, \textit{R})\}).}
+By application of \PropositionRef{prop:dom1} we obtain \(43\) equivalence
+classes. Experimentation shows that there are in fact \(39\) equivalence
+classes, for example the following two patterns are coincident in
+\(\av{\perm{2,3,1}}\) but this is not explained by \PropositionRef{prop:dom1}.
+\begin{equation*}
+    \pattern{}{2,1}{0/0,0/2,1/0,2/1} \text{ and } \pattern{}{2,1}{0/0,0/2,1/0,1/1,2/1}
+\end{equation*}
+
+Consider the box \((1,1)\), this is the box that we need to find reasoning
+to allow shading. If this box were to be empty then we could shade it freely,
+consider what happens if there are points in this box.  If there is any
+increase in this box then we would have an occurrence of \(\perm{2,3,1}\),
+however, since we are in \(\av{\perm{2,3,1}}\) this is not possible. This box
+must contain a decreasing subsequence. This gives rise to the following lemma:
+
+\begin{lemma}
+    \label{lem:incdec}
+    Given a mesh pattern \(m =(\sigma, R)\), where the box \((a,b)\) is not
+    in \(R\), and a dominating classical pattern \(\pi = (\pi,\emptyset)\) if
+    \(\pi \preceq \addi{\sigma}{(a,b)}\)\\(\(\pi \preceq \addd{\sigma}{(a,b)}\))
+    then in any occurrence of \(m\) in a permutation \(\varrho\) the region
+    corresponding to the box \((a,b)\) can only contain an increasing
+    (decreasing) subsequence of \(\varrho\).
+\end{lemma}
+The proof is analogous to the proof of \PropositionRef{prop:dom1}.
+
+Going back to our example mesh patterns
+\begin{equation*}
+    \begin{tikzpicture}[scale=\picscale]
+        \modpattern{}{2,1}{0/0,0/2,1/0,2/1}
+        \filldraw (1.66,1.33) circle (3pt);
+        \filldraw (1.33,1.66) circle (3pt);
+    \end{tikzpicture}
+\end{equation*}
+We know that the box \((1,1)\) contains an decreasing subsequence. The top point
+of this decrease can be chosen to act as the second point in the mesh pattern,
+and therefore there are no points between the first point and the new second point.
+Hence, we can shade this box as it is guaranteed to be empty. This shows that our
+two example patterns are coincident.
+
+This result generalises into the following rule for categorising equivalences
+of mesh patterns in cases where there is a dominating classical pattern.
+
+\begin{proposition}[Second Dominating Pattern Rule]
+    \label{prop:dom2}
+    Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
+    and a dominating classical pattern \(\pi = (\pi,\emptyset)\) such that
+    \(\setsize{\pi} \le \setsize{\sigma} + 2\), the sets \(\av{\{\pi,m_1\}}\) and
+    \(\av{\{\pi,m_2\}}\) are coincident if
+
+    \begin{enumerate}
+        \item \(R_1 \triangle R_2 = \{(a,b)\}\)
+        \item   \begin{enumerate}
+                \item\label{prop:dom2:condc} \(\pi \preceq \addi{\sigma}{(a,b)}\) and
+                        \begin{enumerate}
+                            \item \((a+1,b) \in \sigma\) and \((a+1,b-1)\notin R\) and \\
+                                \((x,b-1)\in R \implies (x,b) \in R \) (where \(x\neq a,a+1\)) and\\
+                                  \((a+1,y)\in R \implies (a,y) \in R\) (where \(y\neq b-1,b\)).
+                            \item \((a,b+1) \in \sigma\) and \((a-1,b+1)\notin R\) and \\
+                                  \((x,b+1)\in R \implies (x,b) \in R\) (where \(x\neq a-1,a\)) and\\
+                                  \((a-1,y)\in R \implies (a,y) \in R\) (where \(y\neq b,b+1\)).
+                        \end{enumerate}
+                    \item \(\pi \preceq \addd{\sigma}{(a,b)}\) and
+                        \begin{enumerate}
+                            \item \((a+1,b+1) \in \sigma\) and \((a+1,b+1)\notin R\) and \\
+                                  \((x,b+1)\in R \implies (x,b) \in R\) (where \(x\neq a,a+1\)) and\\
+                                  \((a+1,y)\in R \implies (a,y) \in R\) (where \(y\neq b,b+1\)).
+                            \item \((a,b) \in \sigma\) and \((a-1,b-1)\notin R\) and \\
+                                  \((x,b+1)\in R \implies (x,b) \in R\) (where \(x\neq a-1,a\)) and\\
+                                  \((a-1,y)\in R \implies (a,y) \in R\)  (where \(y\neq b-1,b\)).
+                        \end{enumerate}
+                \end{enumerate}
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    We need to prove that \(\av{\{\pi,m_1\}} = \av{\{\pi,m_2\}}\).
+
+    Assume without meaningful loss of generality that \(R_2 = R_1 \cup \{(a,b)\}\).
+
+    Consider a permutation \(\omega\) that contains an occurrence of \(m_2\)
+    by \NoteRef{not:downcmesh} any of these occurrences is also an occurence
+    of \(m_1\). This proves that every occurence of \(m_2\) is also an
+    occurence of \(m_1\) and therefore \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\).
+
+    We will consider taking the first branch of every choice.
+    Now consider a permutation in \(\omega^\prime \in \av{\pi}\). Suppose
+    \(\omega^\prime\) contains \(m_1\) consider the region corresponding to
+    \((a,b)\) in \(R_1\).
+
+    If the region is empty, then we can freely shade the corresponding
+    box \((a,b)\) in \(m_1\) and hence have an occurence of \(m_2\).
+
+    Now consider if the region is non-empty, by \LemmaRef{lem:incdec} and
+    condition~\ref{prop:dom2:condc} of the proposition this region must contain
+    a decreasing subsequence.
+    We can choose the topmost point in the region to replace the corresponding
+    point in the mesh pattern and move the points from the subsequence into
+    the box southeast of the point. The other conditions allow this to be done
+    without moving points into regions that were shaded.Hence there are no
+    points in the region corresponding to the box \((a,b)\) in the mesh
+    pattern, and therefore we can shade this region. This implies that every
+    occurrence of \(m_1\) in \(\av{\pi}\) is in fact an occurrence of \(m_2\)
+    so \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\).
+
+    Similar arguments satisfy the remainder of the branches.
+
+\end{proof}
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale = 0.75]
+
+     % Make the grid
+     \draw[step=1cm,gray!50] (2/3,2/3) grid (5+1/3,5+1/3);
+
+     % Make black cross in the middle
+     \draw[-,very thick] (3,2/3) -- (3,5+1/3);
+     \draw[-,very thick] (2/3,3) -- (5+1/3,3);
+     \draw[-,very thick,gray] (4,2) -- (2,2) -- (2,4) -- (4,4) -- (4,2);
+
+     \fill[black] (3,3) circle (0.1);
+     \fill[red] (2,3) circle (0.1);
+
+     % Draw the dots on the side
+     \foreach \x in {1,2,4,5}{
+         \draw[dotted, gray!50] (\x, 0) -- (\x, 2/3);
+         \draw[dotted, gray!50] (\x, 5+1/3) -- (\x, 6);
+         \draw[dotted, gray!50] (0,\x) -- (2/3,\x);
+         \draw[dotted, gray!50] (5+1/3,\x) -- (6,\x);
+        }
+     % Draw black dots next to the cross
+     \draw[dotted, black, very thick] (3, 0) -- (3, 2/3);
+     \draw[dotted, black, very thick] (3, 5+1/3) -- (3, 6);
+     \draw[dotted, black, very thick] (0, 3) -- (2/3, 3);
+     \draw[dotted, black, very thick] (5+1/3, 3) -- (6, 3);
+
+     \draw[->-=.5,thick] (3,3) to[bend right=15](2,4);
+
+     \draw[->, thick] (5,3) -- (5,4);
+     \draw[->, thick] (1,3) -- (1,4);
+     \draw[->, thick] (3,5) -- (2,5);
+     \draw[->, thick] (3,1) -- (2,1);
+
+     \node [black,right] at (6,3) {$b$};
+     \node [black,below] at (2,0) {$a$};
+
+\end{tikzpicture}
+    \caption{An illustration of how lines and points move by this proposition.}
+\end{figure}
+
+This proposition essentially states that we slide all of the points in the box we desire
+to shade diagonally, and chose the topmost/bottommost point to replace the original
+point in the mesh pattern.
+
+By taking the First Dominating Pattern Rule and the Second Dominating Pattern
+rule together coincidences of classes of the form \(\av{\{\perm{1,3,2},\mperm{2,1}{R}\}}\)
+are fully explained, obtaining 39 equivalence classes of mesh patterns.
+
+\section{Equivalence classes of Av(\{231, (12, \textit{R})\}).}
+When considering the equivalence classes of \(\av{\perm{2,3,1},\mperm{1,2}{R}}\)
+we first apply the two Dominating Pattern rules previously established.
+Starting from \(220\) classes, application of the first Dominating Pattern rule
+gives \(85\) classes. Following this with the second Dominating Pattern rule
+reduces the number of classes to \(59\). However we know that there are patterns
+where the coincidences are not explained by the rules given above.
+
+For example the patterns
+\begin{equation*}
+    \pattern{}{1,2}{0/2,2/0,2/1} \text{ and } \pattern{}{1,2}{0/2,1/0,2/0,2/1}
+\end{equation*}
+are experimentally coincident. This coincidence is not explained by our rules,
+it is necessary to attempt to capture these coincidences by establishing more
+rules.
+
+In order to rigorously establish this coincidence we need to consider what would
+happen if we were to choose a point in the box \((1,0)\) that we would like to shade.
+In order to get a chance of getting the shading we want consider choosing the
+rightmost point in the box.
+This gives us the following mesh pattern.
+\begin{equation*}
+    \pattern{}{2,1,3}{0/3,2/0,2/1,3/0,3/1,3/2}
+\end{equation*}
+By application of the \PropositionRef{prop:dom1} we then achieve the following
+mesh pattern
+\begin{equation*}
+    \pattern{2,3}{2,1,3}{0/3,2/0,2/1,3/0,3/1,3/2}
+\end{equation*}
+If we look at the highlighted points we see that the subpattern is an occurrence
+of the mesh pattern that we originally desired. This gives rise to the following
+rule:
+
+\begin{proposition}[Third Dominating Pattern Rule]
+    \label{prop:dom3}
+    Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
+    and a dominating classical pattern \(\pi = (\pi,\emptyset)\)\footnote{The
+    permutation \(\pi\) may be the empty permutation}, the sets
+    \(\av{\{\pi,m_1\}}\) and \(\av{\{\pi,m_2\}}\) are coincident if
+    \begin{enumerate}
+        \item \(R_1 \triangle R_2 = \{(a,b)\}\)
+        \item \(\addp[D]{\mperm{\sigma}{R_1}}{(a,b)}\) is coincident with a
+            mesh pattern containing an occurrence of \(\mperm{\sigma}{R_2}\).
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    We need to prove that \(\av{\{\pi,m_1\}} = \av{\{\pi,m_2\}}\).
+
+    Assume without meaningful loss of generality that \(R_2 = R_1 \cup \{(a,b)\}\).
+
+    Consider a permutation \(\omega\) that contains an occurrence of \(m_2\)
+    by \NoteRef{not:downcmesh} any of these occurrences is also an occurence
+    of \(m_1\). This proves that every occurence of \(m_2\) is also an
+    occurence of \(m_1\) and therefore \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\).
+
+    Now consider a permutation in \(\av{\pi}\)
+\end{proof}
+
+\section{Equivalence classes of Av(\{321, (12, \textit{R})\}).}
+When considering equivalences of mesh patterns with underlying classical
+pattern \(\perm{1,2}\) in \(\av{\perm{3,2,1}}\) application of the previously
+established rules give no coincidences. Through experimentation we discover
+that there are \(7\) equivalence classes which can be explained through the
+use of two different lines of reasoning. Since the number of coincidences is
+so small we will reason for these equivalences without attempting to generalise
+into concrete rules.
+
+Intuitively it is easy to see why our previous rules have no
+power here. There is nowhere that it is possible to add a single point to
+gain an occurrence of \(\pi = \perm{3,2,1}\). It is also impossible to have
+a position where addition of an increase, or decrease, provides extra
+shading power.
+
+The patterns \fxnote{Is this dom3?}
+\begin{equation*}
+    \pattern{}{1,2}{0/0, 0/2, 1/1, 1/2, 2/1} \text { and } \pattern{}{1,2}{0/0, 0/1, 0/2, 1/1, 1/2, 2/1}
+\end{equation*}
+are equivalent in \(\av{\perm{3,2,1}}\). (There are 3 symmetries of these
+patterns that are also equivalent to each other by the same reasoning.)
+
+Consider the contents of the box \((0,1)\), by \LemmaRef{lem:incdec} it
+must contain an increasing subsequence. If there is only one point in the box
+we can choose this to replace the \(1\) in the mesh pattern to get the
+required shading. If there is more than one point then choosing the
+two leftmost points give us the following mesh pattern.
+\begin{equation*}
+    \pattern{3,4}{2,3,1,4}{0/0, 0/1, 0/2, 0/3, 0/4,
+                            1/0, 1/1, 1/2, 1/3, 1/4,
+                            2/0, 2/1,2/2, 2/4,
+                            3/1, 3/2, 3/3, 3/4,
+                            4/1, 4/2, 4/3}
+\end{equation*}
+Where the two highlighted points are the original two points.
+Now if we take the other two points as the points in our
+mesh permutation then we get an occurrence of the pattern
+we originally desired, and hence the two patterns are coincident.
+
+The other reasoning applies to the patterns
+\begin{equation*}
+    \pattern{}{1,2}{0/1,0/2,2/0,2/1} \text{ and } \pattern{}{1,2}{0/1,0/2,1/1,2/0,2/1}
+\end{equation*}
+which are coincident by expermentation.
+
+In order to explain this we need to consider the middle box, and
+any points that it may contain. If the box is empty, then the coincidence
+is trivially true. Hence, consider if there is a point in the box. This
+gives us a mesh pattern
+\begin{equation*}
+    \raisebox{0.6ex}{
+    \begin{tikzpicture}[scale=0.5, baseline=(current bounding box.center)]
+        \modpattern[4]{}{1,2,3}{0/1,0/2,0/3,3/0,3/1,3/2}
+        \draw (1.5,3.5) node {\(A\)};
+        \draw (2.5,0.5) node {\(B\)};
+    \end{tikzpicture}}
+\end{equation*}
+
+Where at most one of \(A\) or \(B\) contains an increasing subsequence.
+If both are empty we can \emph{a posteriori} make our point in the center
+box be either the leftmost, or the rightmost. Now consider if the box \(A\)
+were to contain any points, we now know that the box labelled \(B\) contains
+no points and can be shaded. By previously established rules we can also obtain
+other shadings, leading to the following mesh pattern.
+\begin{equation*}
+    \raisebox{0.6ex}{
+    \begin{tikzpicture}[scale=0.5, baseline=(current bounding box.center)]
+        \modpattern[4]{}{1,2,3}{0/1,0/2,0/3,3/0,3/1,3/2}
+        \filldraw (1.5,3.5) circle (4 pt);
+        \shadeboxes{2/0,2/1}
+    \end{tikzpicture}}
+\end{equation*}
+Now we can \emph{a posteriori} say that our point in the center box was the
+rightmost, giving
+\begin{equation*}
+    \raisebox{0.6ex}{
+    \begin{tikzpicture}[scale=0.5, baseline=(current bounding box.center)]
+        \modpattern[4]{1,2}{1,2,3}{0/1,0/2,0/3,3/0,3/1,3/2}
+        \filldraw (1.5,3.5) circle (4 pt);
+        \shadeboxes{1/1,1/2,2/0,2/1}
+    \end{tikzpicture}}
+\end{equation*}
+This gives shading that when we choose the highlighted points we
+get an occurrence of the required mesh pattern, and as such the
+two patterns are coincident.
+
+This argument applies to another pair of classes. Therefore in
+total in \(\av{\perm{3,2,1}, \mperm{1,2}{R}}\) there are \(213\) equivalence
+classes.
+
+
+
+
