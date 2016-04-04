@@ -1,3 +1,13 @@
 .DS_Store
 *.pyc
-writing/tex/out/
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.lof
+*.log
+*.lot
+*.lox
+*.out
+*.run.xml
+*.toc
