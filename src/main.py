@@ -57,10 +57,24 @@ resolved321_12 = resolve_fundict(unexplained321_12, p2_coincs321_12)
 resolved231_21 = resolve_fundict(unexplained231_21, p2_coincs231_21)
 resolved321_21 = resolve_fundict(unexplained321_21, p2_coincs321_21)
 
-# need to prune by symmetries
-#
-reprs231 = [classes[x[0]][0] for x in coincsdict231_12.values()] + [classes[x[0]][0] for x in coincsdict231_21.values()]
-reprs321 = [classes[x[0]][0] for x in coincsdict321_21.values()] #+ [classes[x[0]][0] for x in coincsdict321_12.values()]
+wilf_equivs231_12 = wilf_equivs231(classes, meshpd_12)
+wilf_equivs321_12 = wilf_equivs321(classes, meshpd_12)
+wilf_equivs231_21 = wilf_equivs231(classes2, meshpd_21)
+wilf_equivs321_21 = wilf_equivs321(classes2, meshpd_21)
 
-wilf231 = [WilfCounter(Permutation([2,3,1]),x ) for x in reprs231]
-wilf321 = [WilfCounter(Permutation([3,2,1]),x ) for x in reprs321]
+pre_test_wilf231_12 = resolve_all_prewilf_classes(coincsdict231_12, wilf_equivs231_12)
+pre_test_wilf321_12 = resolve_all_prewilf_classes(coincsdict321_12, wilf_equivs321_12)
+pre_test_wilf231_21 = resolve_all_prewilf_classes(coincsdict231_21, wilf_equivs231_21)
+pre_test_wilf321_21 = resolve_all_prewilf_classes(coincsdict321_21, wilf_equivs321_21)
+
+wreprs231_12 = [sorted(classes[sorted(list(x))[0]])[0] for x in pre_test_wilf231_12]
+wreprs321_12 = [sorted(classes[sorted(list(x))[0]])[0] for x in pre_test_wilf321_12]
+wreprs231_21 = [sorted(classes[sorted(list(x))[0]])[0] for x in pre_test_wilf231_21]
+wreprs321_21 = [sorted(classes[sorted(list(x))[0]])[0] for x in pre_test_wilf321_21]
+
+wreprs231 = wreprs231_12 + wreprs231_21
+wreprs321 = wreprs321_12 + wreprs231_21
+
+wilfcounters231 = [WilfCounter(Permutation(2,3,1), mperm) for mperm in wreprs231]
+wilfcounters321 = [WilfCounter(Permutation(3,2,1), mperm) for mperm in wreprs321]
+

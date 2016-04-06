@@ -24,3 +24,50 @@ class WilfCounter(object):
             return self.record == other.record
         else:
             raise TypeError("Cannot compare WilfCounter with %s" % type(other))
+
+
+def wilf_equivs231(classes,meshpd):
+    wilf_equiv231 = set()
+    for classn, thisclass in enumerate(classes):
+        currset = frozenset(map(lambda x: meshpd[x.reverse().complement().inverse()], thisclass)) | frozenset(map(lambda x: meshpd[x],thisclass))
+        if len(currset) > 1:
+            wilf_equiv231.add(currset)
+    return wilf_equiv231
+
+def wilf_equivs321(classes,meshpd):
+    wilf_equiv321 = set()
+    for classn, thisclass in enumerate(classes):
+        currset = (frozenset(map(lambda x: meshpd[x.reverse().complement().inverse()], thisclass)) |
+                    frozenset(map(lambda x: meshpd[x],thisclass)) |
+                    frozenset(map(lambda x: meshpd[x.reverse().complement()], thisclass)) |
+                    frozenset(map(lambda x: meshpd[x.inverse()], thisclass)))
+        if len(currset) > 1:
+            wilf_equiv321.add(currset)
+    return wilf_equiv321
+
+def find_containing_set(setset, val):
+    iset =  [aset for aset in setset if val in aset]
+    if len(iset) == 1:
+        return iset[0]
+    else:
+        return set([val])
+
+def resolve_prewilf_class(classnum, coincssets, wilfsets):
+    to_resolve = set([classnum])
+    fully_resolved = set()
+    thisset = set()
+    while len(to_resolve) > 0:
+        currnum = to_resolve.pop()
+        fully_resolved.add(currnum)
+        currcoincs = find_containing_set(coincssets, currnum)
+        currwilfs = find_containing_set(wilfsets,currnum)
+        thisset = thisset | currcoincs | currwilfs
+        to_resolve = thisset - fully_resolved
+    return frozenset(thisset)
+
+def resolve_all_prewilf_classes(coincsdict, wilfsets):
+    coincssets = set(map(frozenset, coincsdict.values()))
+    s = set()
+    for classnum in range(220):
+        s.add(resolve_prewilf_class(classnum, coincssets, wilfsets))
+    return s
