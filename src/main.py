@@ -69,12 +69,31 @@ pre_test_wilf321_21 = resolve_all_prewilf_classes(coincsdict321_21, wilf_equivs3
 
 wreprs231_12 = [sorted(classes[sorted(list(x))[0]])[0] for x in pre_test_wilf231_12]
 wreprs321_12 = [sorted(classes[sorted(list(x))[0]])[0] for x in pre_test_wilf321_12]
-wreprs231_21 = [sorted(classes[sorted(list(x))[0]])[0] for x in pre_test_wilf231_21]
-wreprs321_21 = [sorted(classes[sorted(list(x))[0]])[0] for x in pre_test_wilf321_21]
+wreprs231_21 = [sorted(classes2[sorted(list(x))[0]])[0] for x in pre_test_wilf231_21]
+wreprs321_21 = [sorted(classes2[sorted(list(x))[0]])[0] for x in pre_test_wilf321_21]
 
-wreprs231 = wreprs231_12 + wreprs231_21
-wreprs321 = wreprs321_12 + wreprs231_21
+wreprs231 = set(wreprs231_12 + wreprs231_21)
+wreprs321 = set(wreprs321_12 + wreprs321_21)
 
-wilfcounters231 = [WilfCounter(Permutation(2,3,1), mperm) for mperm in wreprs231]
-wilfcounters321 = [WilfCounter(Permutation(3,2,1), mperm) for mperm in wreprs321]
+wilfcounters231 = [WilfCounter(Permutation([2,3,1]), mperm) for mperm in wreprs231]
+wilfcounters321 = [WilfCounter(Permutation([3,2,1]), mperm) for mperm in wreprs321]
 
+for permlen in range(11):
+    for perm in PermutationsAvoiding231(permlen):
+        for counter in wilfcounters231:
+            counter.modify(perm)
+    for perm in PermutationsAvoiding321(permlen):
+        for counter in wilfcounters321:
+            counter.modify(perm)
+    stderrwrite("Length %d complete" % permlen)
+
+wilfcounts231 = list(set([tuple(counter.record.values()) for counter in wilfcounters231]))
+wilfcounts321 = list(set([tuple(counter.record.values()) for counter in wilfcounters321]))
+
+
+wilf_equivs231 = get_wilf_sets(wilfcounts231, wilfcounters231,
+                               pre_test_wilf231_12, pre_test_wilf231_21,
+                               meshpd_12, meshpd_21)
+wilf_equivs321 = get_wilf_sets(wilfcounts321, wilfcounters321,
+                               pre_test_wilf321_12, pre_test_wilf321_21,
+                               meshpd_12, meshpd_21)

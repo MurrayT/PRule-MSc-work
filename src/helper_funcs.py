@@ -1,6 +1,7 @@
 import json
 from permuta import *
 import itertools
+from math import factorial
 
 def load_set(filename):
     patts = []
@@ -98,3 +99,20 @@ def mpdict(classes):
 
 def countclasses(coincidict):
     return 220 - sum(map(len,coincidict.values())) + len(coincidict)
+
+def catalan(n):
+    return factorial(2*n)/(factorial(n+1)*factorial(n))
+
+def partition(perm):
+    last = 0
+    currblock = -1
+    partition = []
+    for value in perm:
+        if value > last:
+            partition.append([])
+            currblock += 1
+        partition[currblock].append(value)
+        last = value
+    return partition
+
+

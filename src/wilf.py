@@ -50,7 +50,7 @@ def find_containing_set(setset, val):
     if len(iset) == 1:
         return iset[0]
     else:
-        return set([val])
+        return frozenset([val])
 
 def resolve_prewilf_class(classnum, coincssets, wilfsets):
     to_resolve = set([classnum])
@@ -71,3 +71,16 @@ def resolve_all_prewilf_classes(coincsdict, wilfsets):
     for classnum in range(220):
         s.add(resolve_prewilf_class(classnum, coincssets, wilfsets))
     return s
+
+def get_wilf_sets(wilfcounts, wilfcounters, preequiv_12, preequiv_21, mp12, mp21):
+    superset = set()
+    for wilfseq in wilfcounts:
+        thisset = frozenset()
+        equivreprs = [x.mperm for x in wilfcounters if x.record == dict(enumerate(wilfseq))]
+        ureprs = [x for x in equivreprs if x.perm.perm == [1,2]]
+        dreprs = [x for x in equivreprs if x.perm.perm == [2,1]]
+        ureprclasses = [(find_containing_set(preequiv_12, mp12[x]), '12') for x in ureprs]
+        dreprclasses = [(find_containing_set(preequiv_21, mp21[x]), '21') for x in dreprs]
+        thisset = thisset | frozenset(ureprclasses) | frozenset(dreprclasses)
+        superset.add(thisset)
+    return superset
