@@ -106,9 +106,11 @@ shading in \(p_1\). The lower right region however can create occurrences
 of \(p_1\) and therefore must also avoid \(p_1\) as well as \(\perm{2,3,1}\).
 This gives the generating function of avoiders to be the function \(F(x)\)
 satisfying.
-\begin{equation*}
-    F(x) = 1 + xF(x)(C(x)-1)
-\end{equation*}
+\begin{align*}
+    F(x) &= 1 + xF(x)(C(x)-1) \\
+    \shortintertext{Solving for \(F\) gives}
+    F(x) &= \frac{1}{1+x-xC(x)}
+\end{align*}
 
 It can be shown by use of \PropositionRef{prop:dom2} that the patterns
 \textpattern{}{1}{0/0,1/1} and \(p_2 = \textpattern{}{1}{0/0,0/1,1/1}\) are
@@ -476,18 +478,17 @@ This gives us two generating functions satisfying the following pair of equation
     \text{ and }L_2(x) &= 1 + x(C(x)-1)^2 + xL_2(x) \label{eqn:genL2}
 \end{align}
 In order for these two functions to give the same value it is necessary to show that
-\eqref{eqn:genL1} and \eqref{eqn:genL2} are equal, this occurs if and only if
+\eqref{eqn:genL1} and \eqref{eqn:genL2} are equal, this occurs if
 \(C(x)(G(x)-1) = (C(x)-1)^2\).
 \begin{align*}
-        (C(x)-1)^2 &= C(x)(G(x)-1)\\
-        \shortintertext{Using the definition of \(G\) and \(C\)}
-        x^2C^4(x) &=  (1+xC(x))(xC^2(x)-xC(x))\\
-        xC^3(x)&=C(x)-1+xC^3(x)-xC^2(x)\\
-        0 &= C(x) - 1 -xC^2(x)\\
-        C(x) &= 1 +xC^2(x)
+    &&(C(x)-1)^2 &= C(x)(G(x)-1)\\
+        &\Leftrightarrow& x^2C^4(x) &=  xC(x)(C(x)-1)C(x) &&\text{By definition of \(G\) and \(C\)}\\
+        &\Leftrightarrow& x^2C^4(x)&=xC^3(x)-xC^2(x)\\
+        &\Leftrightarrow& xC^2(x) &= C(x) -1 &&\text{Divide by \(xC^2(x)\)}\\
+        &\Leftrightarrow& C(x) &= 1 +xC^2(x)
 \end{align*}
-The final line is always satisfied, and therefore the two generating functions
-are equal.
+The final line is always satisfied since it is the form of \(C(x)\), and
+therefore the two generating functions are equal.
 
 Now we look at the other patterns. In particular note that any container of these
 patterns can contain the pattern precisely once, \(m_2\) specifies the
@@ -520,7 +521,7 @@ free boxes in the top row, and the mixing happens in the same manner
 as in a container of \(m_3\).
 We now have that \(m_2,m_3\) and \(m_4\) have the same number of containers
 so are Wilf-equivalent, and that \(m_1\) and \(m_2\) have the same generating
-function. So all four classes are Wilf-equivalent.
+function so all four classes are Wilf-equivalent.
 \subsection{}
 The classes containing the following patterns are Wilf-equivalent
 \begin{equation*}
@@ -552,12 +553,21 @@ decomposition around the maximum we have
 This is because \(\mathcal{M}_1\) is the set of permutations
 who have their minimum occur after their maximum.
 
-The second pattern occurs if the last element is higher than
-the penultimate element. This can only occur if the last element is
-in a single block in the set partition context, In order to construct
-a avoider of length \(n\) we can take any avoider \(\perm{2,3,1}\)
-of length \(n-1\) and insert the new maximum into the last block.
-This ensures that the last block is never a singleton. This means
+% If \(\mathcal{M}_2\) is the set of avoiders of
+% \textpattern{}{1,2}{1/1,2/1,1/0,1/2,2/0,2/2}, then by structural
+% decomposition around the maximum we have
+% \begin{equation*}
+%     \mathcal{M}_2 = \varepsilon \sqcup
+%     \decompmax{0/1,1/0}{\mathcal{C}}{}{}{\scriptstyle\mathcal{M}_1\setminus\varepsilon}
+%     \sqcup \tikz{\filldraw (0,0) circle (3pt);}
+% \end{equation*}
+% Alternatively,
+The pattern \textpattern{}{1,2}{1/1,2/1,1/0,1/2,2/0,2/2} occurs if
+the last element is higher than the penultimate element. This can only occur
+if the last element is in a single block in the set partition context, In order
+to construct a avoider of length \(n\) we can take any avoider of
+\(\perm{2,3,1}\) of length \(n-1\) and insert the new maximum into the last
+block.  This ensures that the last block is never a singleton. This means
 that these permutations are also counted by \(M(x) = 1+xC(x)\).
 
 The avoiders of the third pattern can be decomposed by the maximum
@@ -566,7 +576,7 @@ to give
     \mathcal{M}_3 = \varepsilon \sqcup
     \decompmax{0/1,1/0}{\mathcal{F}}{}{}{\mathcal{M}_3}
 \end{equation*}
-The generating function derived satisfies \(M_3(X) = 1 + xF(x)M_3(x)\).
+The generating function derived satisfies \(M_3(x) = 1 + xF(x)M_3(x)\).
 The fourth pattern can be decomposed around the maximum in a similar
 manner.
 \begin{equation*}
@@ -579,49 +589,267 @@ avoider is to take any \(\perm{2,3,1}\) avoider and add a new minimum
 at the start of the permutation. Adding a new leftmost point in any other
 position would either create an occurrence of \(\perm{2,3,1}\) or the pattern.
 Therefore this is also counted by \(M(x) = 1+xC(x)\).
+
+We need to show that the generating function \(M_3(x)\) is the same as \(M(x)\)
+\begin{equation*}
+    \begin{aligned}
+        M_3(x) &= 1 + xF(x)M_3(x) \\
+        &= \frac{1}{1-xF(x)} && \text{Solving for \(M_3(x)\)}\\
+        &= \frac{1}{1 - \frac{x}{1+x-xC(x)}} &&\text{Substituting for \(F(x)\)}\\
+        &= \frac{1-xC(x) +x}{1-xC(x)}\\
+        &= 1+xC(x)
+    \end{aligned}
+\end{equation*}
+We have that \(M_3(x) = 1+xC(x)= M(x) \) so all four patterns are Wilf-equivalent.
+
 \subsection{}
+The patterns
 \begin{equation*}
-    p_1 = \pattern{}{1,2}{1/0,1/1,1/2,2/0,2/1} \text{ and }
-    p_2 = \pattern{}{2,1}{0/1,1/0,1/1,1/2,2/1}
+    \begin{aligned}
+        m_1 = \pattern{}{1,2}{0/0,0/1,1/0,1/2,2/1} \text{ and }
+        m_2 = \pattern{}{2,1}{0/0,0/1,0/2,1/1,1/2,2/0}\\
+        \text{ and }
+        m_3 = \pattern{}{1,2}{0/1,0/2,1/0,1/2,2/0,2/2} \text{ and }
+        m_4 = \pattern{}{2,1}{1/0,1/1,2/1,2/2}\\
+    \end{aligned}
 \end{equation*}
-Let \(\mathcal{N}_1\) be the set of avoiders of \(p_1\), by structural decomposition
-around the leftmost point we have
+Can be shown to be Wilf-equivalent. First we consider a container of \(m_2\) in \(\av{\perm{2,3,1}}\)
 \begin{equation*}
-    \mathcal{N}_1 = \varepsilon \sqcup
-    \decompleft{0/1,1/0}{\mathcal{N}_1}{}{}{\mathcal{N}^\prime_1}
+    \raisebox{0.6ex}{
+    \begin{tikzpicture}[scale=1, baseline=(current bounding box.center)]
+        \fill[pattern=north east lines, pattern color=black!75] (2.5, 1) rectangle +(0.5,1);
+        \fill[pattern=north east lines, pattern color=black!75] (2.0, 2) rectangle +(0.5,1);
+        \draw (2.5,1) -- (2.5,3);
+        \draw (1.5,0.5) node {\(b_1\)};
+        \draw (2.25,1.5) node {\(\scriptstyle b_2\)};
+        \draw (2.75,2.5) node {\(\scriptstyle b_3\)};
+        \modpattern[2]{}{2,1}{0/0,0/1,0/2,1/1,1/2,2/0}
+    \end{tikzpicture}
+    }
 \end{equation*}
-Where \(\mathcal{N}^\prime_1\) is a permutation avoiding \(\perm{2,3,1}, m_1\)
-and \(\textpattern{}{1}{0/0,0/1,1/1}\)
-Now consider the decomposition of a permutation in \(\mathcal{N}^\prime_1\) it can
-once again be decomposed around the leftmost point
+We can choose the lowest occurrence of \(m_2\) without loss of generality.
+The region corresponding to \(b_1\) must avoid the pattern \(\textpattern{}{1}{0/1,1/0}\)
+as well as \(\perm{2,1,3}\). The regions corresponding to \(b_2\) and \(b_3\) must
+now contain avoiders of \(\perm{2,3,1}\), these regions cannot mix in order to avoid
+\(\perm{2,3,1}\). Since we already have an occurrence of
+\(m_2\) we do not need to care about creating more occurrences so there are no
+other conditions on these boxes.
+
+Now looking at a container of \(m_3\) in \(\av{\perm{2,3,1}}\)
 \begin{equation*}
-    \mathcal{N}^\prime_1 = \varepsilon \sqcup
-    \decompleft{0/1,1/0}{\scriptstyle \mathcal{N}_1\setminus\varepsilon}{}{}{\mathcal{N}^\prime_1}
+    \raisebox{0.6ex}{
+    \begin{tikzpicture}[scale=1, baseline=(current bounding box.center)]
+        \fill[pattern=north east lines, pattern color=black!75] (1, 1.5) rectangle +(1,0.5);
+        \fill[pattern=north east lines, pattern color=black!75] (2, 1) rectangle +(1,0.5);
+        \draw (1,1.5) -- (3,1.5);
+        \draw (0.5,0.5) node {\(b_1\)};
+        \draw (1.5,1.25) node {\(\scriptstyle b_2\)};
+        \draw (2.5,1.75) node {\(\scriptstyle b_3\)};
+        \modpattern[2]{}{1,2}{0/1,0/2,1/0,1/2,2/0,2/2}
+    \end{tikzpicture}
+    }
 \end{equation*}
-This is a complete decomposition of avoiders of \(p_1\). Now we
-look at an avoider of \(p_2\), this time decomposition is around the maximum
+We consider the leftmost occurrence of \(m_3\), the region corresponding
+to \(b_1\) must avoid the pattern \(\textpattern{}{1}{0/1,1/0}\) as well as
+\(\perm{2,3,1}\) once more. The regions corresponding to \(b_2\) and \(b_3\)
+must avoid \(\perm{2,3,1}\) and as in a container of \(m_2\) these regions cannot
+mix, as doing so would lead to an occurrence of \(\perm{2,3,1}\).
+Therefore both of these sets of containers are enumerated in the same way.
+
+Now we find a structural decomposition for an avoider of \(m_2\).
+Decomposing around the maximum we see the set of avoiders of \(m_2\)
+have the form
 \begin{equation*}
     \mathcal{N}_2 = \varepsilon \sqcup
-    \decompleft{0/1,1/0}{\mathcal{N}_2}{}{}{\mathcal{N}^\prime_2}
+    \decompmax{0/1,1/0}{\scriptstyle\mathcal{N}_2\setminus\varepsilon}{}{}{\mathcal{C}}
+    \sqcup
+    \decompmax{0/0,0/1,1/0}{}{}{}{\mathcal{F}}
 \end{equation*}
-
-Again we use the same method of decomposition of a permutation in \(\mathcal{N}^\prime_2\)
+We can decompose an avoider of \(m_1\) in \(\av{\perm{2,3,1}}\) around the leftmost point
+in a similar manner
 \begin{equation*}
-    \mathcal{N}^\prime_2 = \varepsilon \sqcup
-    \decompleft{0/1,1/0}{\scriptstyle \mathcal{N}_2\setminus\varepsilon}{}{}{\mathcal{N}^\prime_2}
+    \mathcal{N}_1 = \varepsilon \sqcup
+    \decompleft{0/1,1/0}{\scriptstyle\mathcal{N}_1\setminus\varepsilon}{}{}{\mathcal{C}}
+    \sqcup
+    \decompleft{0/0,0/1,1/0}{}{}{}{\mathcal{F}}
 \end{equation*}
-
-This gives us a generating function \(N(x)\) satisfying
-\begin{align}
-    N(x) &= 1 + xN(x)N^\prime(x) \label{eqn:Ngen}\\
-    N(x) &= 1 + x(N(x)-1)N^\prime(x)\label{eqn:NprimeGen}
-\end{align}
-
-Solving \EquationRef{eqn:NprimeGen} for \(N^\prime(x)\) and substituting into
-\EquationRef{eqn:Ngen} gives us the fact that a the generating function for
-\(N(x)\) satisfies
+These two decompositions tell us that these two patterns are Wilf-equivalent
+and have generating function
 \begin{equation}
-    N(x) = xN^2(x) - x(N(x) - 1) + 1
+    N_1 = 1 + x(N_1(x)-1)C(x) +xF(x)
+    \label{eqn:ngen}
+\end{equation}
+Now consider an avoider of \(m_4\) decomposed around the maximum
+\begin{equation*}
+    \mathcal{N}_4 = \varepsilon \sqcup
+    \decompmax{0/1,1/0}{\mathcal{C}}{}{}{\mathcal{O}}
+\end{equation*}
+Where \(\mathcal{O}\) is the permutations avoiding \(\perm{2,3,1},m_4\) and
+\(p = \textpattern{}{1}{0/0,0/1,1/1}\) since if the subsequence in this box
+were to start with the maximum then this point and the maximum would create
+an occurrence of \(m_4\).
+Now consider decomposition of a permutation in \(\mathcal{O}\) around its
+leftmost point.
+\begin{equation*}
+    \mathcal{O} = \varepsilon \sqcup
+    \decompleft{0/1,1/0}{\mathcal{C}}{}{}{\scriptstyle\mathcal{N}_4\setminus\varepsilon}
+\end{equation*}
+This gives us the generating function
+\begin{equation*}
+    O(x) = 1 + xC(x)(N_4(x)-1)
+\end{equation*}
+Now we can construct the following for \(N_4\)
+\begin{equation}
+    N_4(x) = 1 +xC(x)(xC(x)(N_4(x)-1)+1)
+    \label{eqn:ngen2}
 \end{equation}
 
+All that remains to show Wilf-equivalence is to show that \EquationRef{eqn:ngen} and
+\EquationRef{eqn:ngen2} are the same generating function.
+First solve \EquationRef{eqn:ngen2} for \(N_4(x)\)
+\begin{equation}
+    \begin{aligned}
+        N_4(x) &= 1+xC(x)(xC(x)(N_4(x)-1)+1)\\
+        &= 1 + x^2C^2(x)N_4(x) -x^2C^2(x) +xC(x)\\
+        &= 1 + \frac{xC(x)}{1 - x^2C^2(x)}\\
+        &= 1 + \frac{xC(x)}{(1-xC(x))(1+xC(x))} && \text{Difference of squares}\\
+        N_4(x)&= 1 + \frac{xC^2(x)}{1+xC(x)} && C(x) = \frac{1}{1-xC(x)}
+    \end{aligned}
+\end{equation}
 
+Now we solve \EquationRef{eqn:ngen} for \(N_1(x)\)
+\begin{equation}
+    \begin{aligned}
+        N_1(x)&= 1+x(N_1(x)-1)C(x)+xF(x)\\
+        &= 1+xN_1(x)C(x)-xC(x)+\frac{x}{1+x-xC(x)} &&\text{Substitution of \(F(x)\)}\\
+        N_1(x)(1-xC(x))&= \frac{x^2C^2(x) - (x^2+2x)C(x) + 2x+1}{1+x-xC(x)}\\
+        N_1(x) &= \frac{x^2C^2(x) - (x^2+2x)C(x) + x+1+x}{x^2C^2(x) - (x^2+2x)C(x) +x+1}\\
+        &= 1 +\frac{x}{x^2C^2(x) - (x^2+2x)C(x) +x+1}\\
+        &= 1 + \frac{x}{1-x^2C(x)-xC(x)} && xC^2(x) = C(x)-1\\
+        &= 1 + \frac{xC^2(x)}{C^2(x) - xC^3(x)(x+1)}\\
+        &= 1 + \frac{xC^2(x)}{C(x) - xC^2(x) + xC(x)} && xC^2(x) = C(x)-1\\
+        N_1(x)&= 1 + \frac{xC^2(x)}{1+xC(x)} && C(x) = 1+xC^2(x)\\
+    \end{aligned}
+\end{equation}
+We have shown that \(N_1\) and \(N_4\) are indeed the same generating function,
+and we have that the classes containing these four patterns are Wilf-equivalent.
+
+\subsection{}
+\begin{equation*}
+    m_1 = \pattern{}{1,2}{1/0,1/1,1/2,2/0,2/1} \text{ and }
+    m_2 = \pattern{}{2,1}{0/1,1/0,1/1,1/2,2/1}
+\end{equation*}
+Let \(\mathcal{P}_1\) be the set of avoiders of \(m_1\), by structural decomposition
+around the leftmost point we have
+\begin{equation*}
+    \mathcal{P}_1 = \varepsilon \sqcup
+    \decompleft{0/1,1/0}{\mathcal{P}_1}{}{}{\mathcal{P}^\prime_1}
+\end{equation*}
+Where \(\mathcal{P}^\prime_1\) is a permutation avoiding \(\perm{2,3,1}, m_1\)
+and \(\textpattern{}{1}{0/0,0/1,1/1}\)
+Now consider the decomposition of a permutation in \(\mathcal{P}^\prime_1\) it can
+once again be decomposed around the leftmost point
+\begin{equation*}
+    \mathcal{P}^\prime_1 = \varepsilon \sqcup
+    \decompleft{0/1,1/0}{\scriptstyle \mathcal{P}_1\setminus\varepsilon}{}{}{\mathcal{P}^\prime_1}
+\end{equation*}
+This is a complete decomposition of avoiders of \(m_1\). Pow we
+look at an avoider of \(m_2\), this time decomposition is around the maximum
+\begin{equation*}
+    \mathcal{P}_2 = \varepsilon \sqcup
+    \decompleft{0/1,1/0}{\mathcal{P}_2}{}{}{\mathcal{P}^\prime_2}
+\end{equation*}
+
+Again we use the same method of decomposition of a permutation in \(\mathcal{P}^\prime_2\)
+\begin{equation*}
+    \mathcal{P}^\prime_2 = \varepsilon \sqcup
+    \decompleft{0/1,1/0}{\scriptstyle \mathcal{P}_2\setminus\varepsilon}{}{}{\mathcal{P}^\prime_2}
+\end{equation*}
+
+This gives us a generating function \(P(x)\) satisfying
+\begin{align}
+    P(x) &= 1 + xP(x)P^\prime(x) \label{eqn:Pgen}\\
+    P(x) &= 1 + x(P(x)-1)P^\prime(x)\label{eqn:PprimeGen}
+\end{align}
+
+Solving \EquationRef{eqn:PprimeGen} for \(P^\prime(x)\) and substituting into
+\EquationRef{eqn:Pgen} gives us the fact that a the generating function for
+\(P(x)\) satisfies
+\begin{equation}
+    P(x) = xP^2(x) - x(P(x) - 1) + 1
+\end{equation}
+
+\subsection{}
+\begin{gather*}
+        \pattern{}{2,1}{0/0,0/1,0/2,1/0,1/1,1/2,2/2},
+        \pattern{}{1,2}{0/1,0/2,1/0,1/1,1/2,2/0,2/2},
+        \pattern{}{2,1}{0/0,0/1,0/2,1/0,1/1,1/2,2/1},
+        \pattern{}{2,1}{0/0,0/1,0/2,1/1,1/2,2/0,2/1},
+        \pattern{}{2,1}{0/0,0/1,0/2,1/0,1/1,1/2,2/0},\\
+        \pattern{}{1,2}{0/0,0/1,0/2,1/2,2/0,2/1,2/2},
+        \pattern{}{1,2}{0/0,0/1,0/2,1/1,1/2,2/0,2/2},
+        \pattern{}{1,2}{0/0,0/1,1/0,1/1,1/2,2/0,2/1},
+        \pattern{}{1,2}{0/0,0/1,1/0,1/1,1/2,2/0,2/1}
+\end{gather*}
+
+In order to gain enumeration, consider decomposition of avoiders
+of \(\textpattern{}{2,1}{0/0,0/1,0/2,1/0,1/1,1/2,2/2}\) around
+the maximum.
+\begin{equation*}
+    \mathcal{Q}_1 = \varepsilon \sqcup
+    \tikz{\filldraw (0,0) circle (3pt);}
+    \sqcup
+    \decompmax{0/1,1/0}{\mathcal{C\setminus\varepsilon}}{}{}{\mathcal{C}}
+\end{equation*}
+
+This gives us the following generating function
+\begin{equation}
+    Q(x) = 1 + x + xC(x)(C(x)-1) \label{eq:qgen}
+\end{equation}
+
+Now we consider decomposition of an avoider
+\textpattern{}{1,2}{0/1,0/2,1/0,1/1,1/2,2/0,2/2} around the maximum,
+this avoider must fit into the following form
+\begin{equation*}
+    \mathcal{Q}_2 = \varepsilon \sqcup
+    \decompmax{0/1,1/0}{\mathcal{G}_2}{}{}{\mathcal{C}}
+\end{equation*}
+This gives us the generating function
+\begin{equation*}
+    \begin{aligned}
+        Q_2(x) &= 1+xC(x)G(x)\\
+        &= 1+xC(x)(1+xC(x)(C(x)-1))\\
+        &= 1 +xC(x)(C(x)-xC(x)) && C(x) = 1+xC^2(x)\\
+        &= 1 +x + xC^2(x) - xC(x) \\
+        &= 1 +x + xC(x)(C(x)-1)
+    \end{aligned}
+\end{equation*}
+Therefore this generating function is the same as \EquationRef{eq:qgen}.
+We can decompose
+\textpattern{}{2,1}{0/0,0/1,0/2,1/0,1/1,1/2,2/1},
+\textpattern{}{2,1}{0/0,0/1,0/2,1/1,1/2,2/0,2/1},
+\textpattern{}{2,1}{0/0,0/1,0/2,1/0,1/1,1/2,2/0},
+\textpattern{}{1,2}{0/0,0/1,0/2,1/2,2/0,2/1,2/2},
+and \textpattern{}{1,2}{0/0,0/1,0/2,1/1,1/2,2/0,2/2} around the leftmost point
+into an avoider of one of the patterns with generating function \(G(x)\) and
+an avoider of \(\perm{2,3,1}\).
+
+Now decompose an avoider of \textpattern{}{1,2}{0/0,0/1,1/0,1/1,1/2,2/0,2/1}
+around the leftmost point.
+\begin{equation*}
+    \mathcal{Q}_3 = \varepsilon \sqcup
+    \decompleft{0/1,1/0}{\scriptstyle \mathcal{Q}\setminus\varepsilon}{}{}{\mathcal{C}}
+    \sqcup \decompleft{0/0,0/1,1/0}{}{}{}{\mathcal{G}_3}
+\end{equation*}
+This gives generating function \(Q_3(x)\) satisfying
+\begin{equation*}
+    \begin{aligned}
+        Q(x) &= 1 +xC(x)(P(x)-1) + xG(x)\\
+        &= C(x) - xC^2(x) + xC(x) +x^2C^3(x) - x^2C^2 && \text{Solving for \(Q(x)\)}\\
+        &= 1 + xC(x) +x^2C^3(x)-xC^2(x) && C = 1+xC^2(x)\\
+        &= 1 + x + x^2C^3(x) && xC^2(x) = C(x)-1\\
+        &= 1 + x + xC(x)(C(x)-1)
+    \end{aligned}
+\end{equation*}
+This is equivalent to \EquationRef{eq:qgen}, and therefore
+the classes containing all of these patterns are Wilf-equivalent.

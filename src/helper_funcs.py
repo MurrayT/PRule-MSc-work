@@ -2,6 +2,7 @@ import json
 from permuta import *
 import itertools
 from math import factorial
+import functools
 
 def load_set(filename):
     patts = []
@@ -115,4 +116,16 @@ def partition(perm):
         last = value
     return partition
 
+def meshpatt_to_tex(mp):
+    cj = ",".join
+    stm = functools.partial(map,str)
+    pstr = cj(stm(mp.perm))
+    mstr = cj("/".join(stm(pair)) for pair in mp.mesh)
+    outstr = "\\textpattern{{}}{{{}}}{{{}}}".format(pstr, mstr)
+    return outstr
 
+def pad_sequence(length, seq):
+    seql = list(seq)
+    while len(seql) < length:
+        seql.append(0)
+    return tuple(seql)

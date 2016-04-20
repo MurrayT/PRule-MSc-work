@@ -78,7 +78,7 @@ wreprs321 = set(wreprs321_12 + wreprs321_21)
 wilfcounters231 = [WilfCounter(Permutation([2,3,1]), mperm) for mperm in wreprs231]
 wilfcounters321 = [WilfCounter(Permutation([3,2,1]), mperm) for mperm in wreprs321]
 
-for permlen in range(10):
+for permlen in range(11):
     for perm in PermutationsAvoiding231(permlen):
         for counter in wilfcounters231:
             counter.modify(perm)
