@@ -1,6 +1,6 @@
 \chapter{Introduction\label{cha:introduction}}
 \section{What is a Permutation?}
-In \emph{The Art of Computer Programming} Donald Knuth defines
+In \emph{The Art of Computer Programming}\cite[p.~45]{Knuth:1997:ACP:260999} Donald Knuth defines
 A \emph{permutation of \(n\) objects} is an arrangement of \(n\) distinct
 objects in a row. When considering permutations we can consider them as
 occuring on the set \(\nrange{n} = \setrange{1}{n}\), therefore a permutation
@@ -30,6 +30,8 @@ denote the index in the permutation, and the \(y\)-axis denotes the values of
 \begin{equation*}
     \pattern{}{2,3,1}{}
 \end{equation*}
+It is convenient to call the elements of the permutation \emph{points} when
+referring to these figures.
 
 The class of all permutations of length \(n\) is \(\mathfrak{S}_n\) and
 the class has size \(n!\). The class of all permutations is
@@ -37,7 +39,8 @@ the class has size \(n!\). The class of all permutations is
 
 \section{Classical Permutation Patterns}
 Classical Permutation Patterns began to be studied as a result of Knuth's
-statements about stack-sorting in [The Art of Computer Programming].
+statements about stack-sorting in \emph{The Art of Computer Programming}
+\cite[p.~243, Ex.~5,6]{Knuth:1997:ACP:260999}.
 
 \begin{definition}{Order isomorphism.}
     Two sequences \(\range{\alpha_1,\alpha_2}{\alpha_n}\) and
@@ -66,7 +69,7 @@ We denote the set of permutations of length \(n\) avoiding a pattern \(\sigma\)
 as \(\Av_n(\sigma)\) and \(\av{\sigma} = \bigcup_{i=0}^{\infty}\Av_i(\sigma)\).
 
 \section{Mesh Patterns}
-Mesh Patterns were introduced by Brändén and Claesson to capture explicit expansions
+Mesh Patterns were introduced by Brändén and Claesson\cite{journals/combinatorics/BrandenC11} to capture explicit expansions
 for certain permutation statistics. They are a natural extension of Classical
 permutation patterns. A \emph{mesh-pattern} is a pair
 \begin{equation*}

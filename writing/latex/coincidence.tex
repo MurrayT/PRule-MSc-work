@@ -59,7 +59,9 @@ and \(\perm{1,2}\in\av{\mperm{2,1}{R}}\) for all mesh-sets \(R\). So
 R,S\in [0,2]\times [0,2]\), and hence the sets are disjoint.
 
 We know that there are a total of \(512\) mesh-sets for each underlying classical
-pattern. By use of the shading lemma, simultaneous shading lemma, and
+pattern. By use of the previous results of the Shading
+Lemma\cite[Lemma~3.11]{DBLP:journals/combinatorics/HilmarssonJSVU15},
+Simultaneous Shading Lemma\cite[Lemma~7.6]{DBLP:journals/corr/ClaessonTU14}, and
 one special case, we can reduce the number of equivalence classes to \(220\).
 
 \section{Equivalence classes of Av(\{321, (21, \textit{R})\}).}
@@ -297,7 +299,8 @@ of mesh patterns in cases where there is a dominating classical pattern.
      \node [black,below] at (2,0) {$a$};
 
 \end{tikzpicture}
-    \caption{An illustration of how lines and points move by this proposition.}
+    \caption{If the conditions of \PropositionRef{prop:dom2} are satisfied the box
+    \((a-1,b)\) can be shaded.}
 \end{figure}
 
 This proposition essentially states that we slide all of the points in the box we desire
@@ -375,6 +378,9 @@ rule:
     of \(m_2\).  Thus \(\av{\{\pi,m_2\}} \subseteq \av{\{\pi,m_1\}}\) and the
     two patterns are coincident.
 \end{proof}
+
+By application of this rule we can reduce the number of classes in
+\(\av{\{\perm{2,3,1},(\perm{1,2}, R)\}}\) to \(56\).
 
 \section{Equivalence classes of Av(\{321, (12, \textit{R})\}).}
 When considering equivalences of mesh patterns with underlying classical
