@@ -91,33 +91,37 @@ permutation must contain an occurrence of all of these patterns.
 The pattern \(\textpattern{}{1}{0/0,1/0,0/1,1/1}\) is in its own
 Wilf-class since the only permutation containing this pattern is
 the permutation \(\perm{1}\). The avoiders of this pattern therefore
-have generating function \(E(x) = C(x)-x\).
+have generating function \(\var(x) = C(x)-x\).\nextvar
 
 The avoiders of the pattern \(p_1 = \textpattern{}{1}{0/1,1/0}\) can be
 decomposed around the maximum element in order to give the following
 structural decomposition.
 \begin{equation*}
-    \mathcal{F} = \varepsilon \sqcup \decompmax{0/1,1/0}{\mathcal{F}}{}{}{\mathcal{C}\setminus\varepsilon}
+    \mathcal{\var} = \varepsilon \sqcup \decompmax{0/1,1/0}{\mathcal{\var}}{}{}{\mathcal{C}\setminus\varepsilon}
 \end{equation*}
 Since if the upper right section was empty the maximum would create an
 occurrence of the pattern, however no points in this section can create
 an occurrence since the maximum lies in a region corresponding to the
 shading in \(p_1\). The lower right region however can create occurrences
 of \(p_1\) and therefore must also avoid \(p_1\) as well as \(\perm{2,3,1}\).
-This gives the generating function of avoiders to be the function \(F(x)\)
+This gives the generating function of avoiders to be the function \(\var(x)\)
 satisfying.
 \begin{align*}
-    F(x) &= 1 + xF(x)(C(x)-1) \\
-    \shortintertext{Solving for \(F\) gives}
-    F(x) &= \frac{1}{1+x-xC(x)}
+    \var(x) &= 1 + x\var(x)(C(x)-1) \\
+    \shortintertext{Solving for \(\var\) gives}
+    \var(x) &= \frac{1}{1+x-xC(x)}
 \end{align*}
+
+Evauluation of this generating function gives the Fine numbers
+(\href{https://oeis.org/A000957}{OEIS: A000957}). This pattern is one of the
+quadrant marked mesh patterns studied by Remmel, Kitaev and TiefenbruckZ\cite{2012arXiv1201.6243K}.
 
 It can be shown by use of \PropositionRef{prop:dom2} that the patterns
 \textpattern{}{1}{0/0,1/1} and \(p_2 = \textpattern{}{1}{0/0,0/1,1/1}\) are
-set-equivalent. Consider the decomposition of an avoider of \(p_2\) in
-\(\av{\perm{2,3,1}}\) around the maximum
+coincident. Consider the decomposition of an avoider of \(p_2\) in
+\(\av{\perm{2,3,1}}\) around the maximum\nextvar[\varullr]
 \begin{equation*}
-    \mathcal{G}_1 =\varepsilon \sqcup \decompmax{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}
+    \mathcal{\var}_1 =\varepsilon \sqcup \decompmax{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}
 \end{equation*}
 This can be explained succinctly by the fact that a permutation containing
 \(p_2\) starts with it's maximum, by not allowing the left part of the
@@ -127,18 +131,18 @@ Consider \(p_3 = \textpattern{}{1}{0/1,1/0,1/1}\), avoiding this pattern
 means that a permutation does not end with it's maximum. We can perform a similar
 decomposition as before to get
 \begin{equation*}
-    \mathcal{G}_2 =\varepsilon \sqcup \decompmax{0/1,1/0}{\mathcal{C}}{}{}{\mathcal{C}\setminus\varepsilon}
+    \mathcal{\var}_2 =\varepsilon \sqcup \decompmax{0/1,1/0}{\mathcal{C}}{}{}{\mathcal{C}\setminus\varepsilon}
 \end{equation*}
 
 Now consider \(p_4 = \textpattern{}{1}{0/0,0/1,1/0}\), the avoiders of this
 pattern are permutations that do not start with their minimum. In this case we
 perform the decomposition around the leftmost element
 \begin{equation*}
-    \mathcal{G}_3 =\varepsilon \sqcup \decompleft{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}
+    \mathcal{\var}_3 =\varepsilon \sqcup \decompleft{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}
 \end{equation*}
 All of these classes have the same generating function namely
 \begin{equation*}
-    G(x) = 1 + xC(x)(C(x)-1)
+    \var(x) = 1 + xC(x)(C(x)-1)
 \end{equation*}
 
 There is one pattern of length \(1\) still to consider. The pattern
@@ -197,7 +201,7 @@ permutations correspond to set-partitions.
 \end{example}
 
 We are looking at permutations in \(\av{\perm{2,3,1}}\), all of these permutations
-also avoid the vincular pattern in \NoteRef{not:setequiv}.
+also avoid the mesh pattern in \NoteRef{not:setequiv}.
 
 \subsection{}
 The set/symmetry classes containing the following patterns are

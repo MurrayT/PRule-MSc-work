@@ -362,6 +362,17 @@
 % When indexing, this sequence is very common for acronyms
 \newcommand{\indexacro}[2]{\index{#2|see{#1}}\index{#1}}
 
+%Auto incrementing variable letters
+\newcounter{VarNumber}
+\setcounter{VarNumber}{69}
+\chardef\lastvar=68
+\chardef\var=\value{VarNumber}
+\newcommand{\nextvar}[1][\lastvar]{%
+\stepcounter{VarNumber}
+\chardef#1=\var
+\chardef\lastvar=\var
+\chardef\var=\value{VarNumber}
+}
 %new column for tabularx
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 %%% Local Variables:

@@ -296,7 +296,7 @@
 %%   around 250 words or so.  Refer to your degree's instructions.
 %% Note: Icelandic quotation marks cannot be typeset using "` and "'.  You should use \enquote{}
 %%   this is probably due to interactions with the MultiLingual macros.
-\newML{AbstractText}{\lipsum[1]}
+\newML{AbstractText}{\input{abstracteng}}
 % ipsum generaes text text
 {\lipsum[1]} % Icelandic abstract goes here
 \setAbstract{\MLAbstractText}
@@ -477,6 +477,7 @@ So long, and thanks for all the fish.
 \input{introduction}%%RUM: Introduction
 \input{coincidence}
 \input{wilf}
+\input{confut}
 
 %\input{methods}%%RUM: "Methods"
 %%\part{The Second Part}
@@ -491,9 +492,9 @@ So long, and thanks for all the fish.
 %% If appendices are needed, uncomment the following line
 %% and include the appendices in separate files
 \appendix{}%%RUM: "Appendicies (as appropriate)
-\input{classes}
-\input{domrulesax}
-\input{sequences}
+%\input{classes}
+%\input{domrulesax}
+%\input{sequences}
 % \input{code} % as an example, perhaps some of your code
 
 %\backmatter{} % Sections after this don't get numbers
