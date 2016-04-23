@@ -1,4 +1,4 @@
-\chapter{Coincidences amongst families of mesh patterns and classical patterns}\label{chap:coincs}
+\chapter[Coincidence Classification]{Coincidences amongst families of mesh patterns and classical patterns}\label{chap:coincs}
 One interesting question to ask about permutation patterns considers when a
 pattern may be avoided by, or contained in, arbitrary permutations. Two
 patterns \(\pi\) and \(\sigma\) are said to be \emph{coincident} if the set
@@ -63,6 +63,35 @@ pattern. By use of the previous results of the Shading
 Lemma\cite[Lemma~3.11]{DBLP:journals/combinatorics/HilmarssonJSVU15},
 Simultaneous Shading Lemma\cite[Lemma~7.6]{DBLP:journals/corr/ClaessonTU14}, and
 one special case, we can reduce the number of equivalence classes to \(220\).
+
+By discussion of a number of rules we will show that the number of coincidence
+classes follows the values shown in  \TableRef{tab:domclasses}.
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabularx}{\textwidth}{c|Y|Y|Y|Y|}
+\cline{2-5}
+& \multicolumn{4}{|c|}{Dominating Pattern}\\
+\cline{2-5}
+& \multicolumn{2}{|c|}{\(\perm{2,3,1}\)}&\multicolumn{2}{|c|}{\(\perm{3,2,1}\)}\\
+\cline{2-5}
+& \(\perm{1,2}\)&\(\perm{2,1}\)&\(\perm{1,2}\)&\(\perm{2,1}\)\\
+\hline
+\multicolumn{1}{|r|}{No Dominating rule}&\(220\)&\(220\)&\(220\)&\(220\)\\
+\hline
+\multicolumn{1}{|r|}{First Dominating rule}&\(85\)&\(43\)&\(220\)&\(29\)\\
+\hline
+\multicolumn{1}{|r|}{Second Dominating rule}&\(59\)&\(39\)&\(220\)&\(29\)\\
+\hline
+\multicolumn{1}{|r|}{Third Dominating rule}&\(56\)&\(39\)&\(220\)&\(29\)\\
+\hline
+\multicolumn{1}{|r|}{Experimental class size}&\(56\)&\(39\)&\(213\)&\(29\)\\
+\hline
+\end{tabularx}
+\end{center}
+    \caption{Class number reduction by application of Dominating Rules}
+    \label{tab:domclasses}
+\end{table}
 
 \section{Equivalence classes of Av(\{321, (21, \textit{R})\}).}
 Through experimentation we discover that there are a total of 29 equivalence

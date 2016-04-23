@@ -68,8 +68,14 @@ are highlighted.
 We denote the set of permutations of length \(n\) avoiding a pattern \(\sigma\)
 as \(\Av_n(\sigma)\) and \(\av{\sigma} = \bigcup_{i=0}^{\infty}\Av_i(\sigma)\).
 
+Knuth's statements were exercises in showing that the permutations avoiding the
+pattern \(\perm{2,3,1}\) completely categorise permutations that are sortable to
+the identity permutation using only a single stack, and that permutations avoiding the
+pattern \(\perm{3,2,1}\) completely categorise permutations that are sortable to
+the identity permutation using only a single queue with bypass.
+
 \section{Mesh Patterns}
-Mesh Patterns were introduced by Brändén and Claesson\cite{journals/combinatorics/BrandenC11} to capture explicit expansions
+Mesh Patterns were introduced by \textcite{journals/combinatorics/BrandenC11} to capture explicit expansions
 for certain permutation statistics. They are a natural extension of Classical
 permutation patterns. A \emph{mesh-pattern} is a pair
 \begin{equation*}
@@ -135,6 +141,28 @@ classical patterns.
     set \(R\) is empty. The classical pattern \(\pi\) can be represented
     by a mesh pattern as \((\pi,\emptyset)\).
 \end{note}
+
+In the past people have studied different classes
+of permutations that can be described by mesh patterns. \textcite{babstein2000}
+considered \emph{vincular} patterns (also known as \emph{generalised} or \emph{dashed} patterns),
+those where two adjacent entries in the pattern must be adjacent in the permutation,
+\ie entire columns are shaded in the mesh.
+\textcite{MR2652101} look at classes of pattern where both columns and rows
+can be shaded, these are called \emph{bivincular} patterns.
+\emph{Bruhat-restricted} patterns were studied by \textcite{MR2264071} in order
+to establish necessary conditions for a Schubert variety to be Gorenstein.
+Mesh patterns also encompass a subset of \emph{barred} patterns introduced by
+\textcite{MR2716312}.
+
+Avoiding pairs of patterns of the same length with certain properties has
+also been studied in the past, \textcite{MR2178749} considered avoiding a
+pair of vincular patterns of length 3. \textcite{2015arXiv151203226B} study avoiding
+a vincular and a covincular pattern simultaneously in order to achieve some
+interesting counting results. However, very little work has been done on avoiding
+a mesh pattern and a classical pattern simultaneously, in this work we aim to
+establish some ground in this field by computing coincidences and Wilf-classes
+and calculating some of the enumerations of avoiders of a mesh pattern of length
+2 and a classical pattern of length 3.
 
 %%% Local Variables:
 %%% mode: latex

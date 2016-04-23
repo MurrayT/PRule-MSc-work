@@ -18,6 +18,8 @@ sorted(map(list,sorted(map(reversed, (pad_sequence(9,x) for x in  wilfcounts231)
 
 write_to_clipboard(("\n".join((("{:5d},"*9).format(*reversed(seq)))[:-1] for seq in sorted(map(list,sorted(map(reversed, (pad_sequence(9,x) for x in  wilfcounts231))))))))
 
+write_to_clipboard(("\\\n".join((("{:5d},"*11 + " \&\t\& {classize}").format(*x[0],classize=x[1])) for x in f )))
+
 def number_of_patts(seq, wilfcounters, mpdu, mpdd,  setup, setdown, uclasses, dclasses):
     wilfreps = [f.mperm for f in filter(lambda x: x.record == dict(enumerate(a)), wilfcounters)]
     uperms = filter(lambda x: x.perm == Permutation([1,2]), wilfreps)
@@ -34,4 +36,11 @@ def number_of_patts(seq, wilfcounters, mpdu, mpdd,  setup, setdown, uclasses, dc
     else:dsum = 0
     return usum + dsum
 
-number_of_patts(a, wilfcounters231, meshpd_12, meshpd_21, pre_test_wilf231_12, pre_test_wilf231_21, classes, classes2)
+import subprocess
+
+def write_to_clipboard(output):
+    process = subprocess.Popen(
+        'pbcopy', env={'LANG': 'en_US.UTF-8'}, stdin=subprocess.PIPE)
+    process.communicate(output.encode('utf-8'))
+
+number_of_patts(a, wilfcounters321, meshpd_12, meshpd_21, pre_test_wilf321_12, pre_test_wilf321_21, classes, classes2)
