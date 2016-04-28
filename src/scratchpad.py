@@ -44,3 +44,17 @@ def write_to_clipboard(output):
     process.communicate(output.encode('utf-8'))
 
 number_of_patts(a, wilfcounters321, meshpd_12, meshpd_21, pre_test_wilf321_12, pre_test_wilf321_21, classes, classes2)
+
+def patts_with_sequence(seq, wilfcounters, mpdu, mpdd,  setup, setdown, uclasses, dclasses):
+    wilfreps = [f.mperm for f in filter(lambda x: x.record == dict(enumerate(a)), wilfcounters)]
+    uperms = filter(lambda x: x.perm == Permutation([1,2]), wilfreps)
+    dperms = filter(lambda x: x.perm == Permutation([2,1]), wilfreps)
+    ucl = [mpdu[x] for x in uperms]
+    dcl = [mpdd[x] for x in dperms]
+    if len(ucl) >0:
+        ucls = frozenset.union(*(find_containing_set(setup, num) for num in ucl))
+    else:ucls=frozenset()
+    if len(dcl) > 0:
+        dcls = frozenset.union(*(find_containing_set(setdown, num) for num in dcl))
+    else:dcls=frozenset()
+    return [list(ucls),list(dcls)]
