@@ -24,9 +24,9 @@ There are 6 permutations on \(\nrange{3}\).
 \end{example}
 
 We can display a permutation on a \emph{figure} in order to give a graphical
-representation of the permutation. In such a figure we let the \(x\)-axis
-denote the index in the permutation, and the \(y\)-axis denotes the values of
-\(\pi(x)\). The figure of the permutation \(\pi = \perm{2,3,1}\) is shown below
+representation of the permutation. In such a figure we plot the points
+\((i,\pi(i))\) in a Cartesian coordinate system. The figure of the permutation
+\(\pi = \perm{2,3,1}\) is shown below
 \begin{equation*}
     \pattern{}{2,3,1}{}
 \end{equation*}
@@ -43,22 +43,22 @@ statements about stack-sorting in \emph{The Art of Computer Programming}
 \cite[p.~243, Ex.~5,6]{Knuth:1997:ACP:260999}.
 
 \begin{definition}{Order isomorphism.}
-    Two sequences \(\range{\alpha_1,\alpha_2}{\alpha_n}\) and
-    \(\range{\beta_1,\beta_2}{\beta_n}\) are said to be \emph{order isomorphic}
-    if they share the same relative order,i.e.,\(\alpha_r<\alpha_s\) if and
+    Two substrings \(\alpha_1\alpha_2\dotsm\alpha_n\) and
+    \(\beta_1\beta_2\dotsm\beta_n\) are said to be \emph{order isomorphic}
+    if they share the same relative order, \ie, \(\alpha_r<\alpha_s\) if and
     only if \(\beta_r<\beta_s\).
 \end{definition}
 
-A permutation \(\pi\) us said to \emph{contain} the permutation \(\sigma\) of
+A permutation \(\pi\) is said to \emph{contain} the permutation \(\sigma\) of
 length \(k\) as a pattern (denoted \(\sigma \preceq \pi\)) if there is some
-an increasing subsequence \(\range{i_1,i_2}{i_n}\) such that the sequence
-\(\range{\pi(i_1),\pi(i_2)}{\pi(i_k)}\) is order isomorphic to
-\(\range{\sigma(1),\sigma(2)}{\sigma(k)}\). If \(\pi\) does not contain
+subsequence \(i_1i_2\dotsm{}i_n\) such that the sequence
+\(\pi(i_1)\pi(i_2)\dotsm\pi(i_k)\) is order isomorphic to
+\(\sigma(1)\sigma(2)\dotsm\sigma(k)\). If \(\pi\) does not contain
 \(\sigma\), we say that \(\pi\) \emph{avoids} \(\sigma\).
 
 For example the permutation \(\pi = \perm{2,4,1,5,3}\) contains the pattern
-\(\sigma = \perm{2,3,1}\), since the second, fourth and fifth entries
-(\(4,5,\) and \(3\)) share the same relative order as the entries of \(\sigma\).
+\(\sigma = \perm{2,3,1}\), since the second, fourth and fifth elements
+(\(453\)) are order isomorphic to \(\perm{231}\).
 This can be seen graphically below, the points order isomorphic to \(\sigma\)
 are highlighted.
 \begin{equation*}
@@ -82,11 +82,10 @@ permutation patterns. A \emph{mesh-pattern} is a pair
     p = (\tau,R)\text{ with } \tau \in \mathfrak{S}_k \text{ and } R \subseteq
     [0,k]\times [0,k].
 \end{equation*}
-By this definition the empty permutation \(\varepsilon\) as a mesh pattern consisting solely of the
-box \((0,0)\).
 
+The set \(R\) is called the \emph{mesh-set} of the mesh pattern \(p\).
 The figure for a mesh pattern looks similar to that for a classical pattern with the
-addition that we shade the unit square with bottom corner \((i,j)\) for each \((i,j) \in R\):
+addition that we shade the unit square with bottom left corner \((i,j)\) for each \((i,j) \in R\):
 \begin{equation*}
     \pattern{}{ 2, 1, 3 }{ 0/1, 0/2, 1/0, 1/1, 2/1, 2/2 }
 \end{equation*}
@@ -95,7 +94,7 @@ We define containment, and avoidance, of the pattern \(p\) in the permutation
 \(\pi\) on mesh patterns analogously to classical containment, and avoidance,
 of \(\tau\) in \(\pi\) with the additional restrictions on the relative
 position of the occurence of \(\tau\) in \(\pi\). These restrictions say that
-the shaded regions of the figure above contain no points from \(\pi\).
+no elements of \(\pi\) are allowed in the shaded regions of the figure.
 
 \begin{example}
     The pattern \(p=\mperm{2,1,3}{\{(0,1),(0,2),(1,0),(1,1),(2,1),(2,2)\}}=
@@ -135,24 +134,25 @@ the shaded regions of the figure above contain no points from \(\pi\).
 We denote the avoidance sets for mesh patterns in the same way as for
 classical patterns.
 
+Given a mesh pattern \(p=(\sigma,R)\) we say that \(\sigma\) is the \emph{underlying
+classical pattern} of \(p\).
 \begin{note}
     \label{not:classmesh}
-    Classical patterns are just a subclass of mesh patterns where the mesh
-    set \(R\) is empty. The classical pattern \(\pi\) can be represented
-    by a mesh pattern as \((\pi,\emptyset)\).
+    Classical patterns are a subclass of mesh patterns the classical pattern \(\pi\)
+    can be represented by a mesh pattern as \((\pi,\emptyset)\).
 \end{note}
 
 In the past people have studied different classes
 of permutations that can be described by mesh patterns. \textcite{babstein2000}
 considered \emph{vincular} patterns (also known as \emph{generalised} or \emph{dashed} patterns),
 those where two adjacent entries in the pattern must be adjacent in the permutation,
-\ie entire columns are shaded in the mesh.
+\ie \(R\) is a union of vertical strips.
 \textcite{MR2652101} look at classes of pattern where both columns and rows
 can be shaded, these are called \emph{bivincular} patterns.
 \emph{Bruhat-restricted} patterns were studied by \textcite{MR2264071} in order
 to establish necessary conditions for a Schubert variety to be Gorenstein.
 Mesh patterns also encompass a subset of \emph{barred} patterns introduced by
-\textcite{MR2716312}.
+\textcite{MR2716312}, those with only one barred letter.
 
 Avoiding pairs of patterns of the same length with certain properties has
 also been studied in the past, \textcite{MR2178749} considered avoiding a
