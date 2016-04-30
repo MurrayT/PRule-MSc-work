@@ -3,20 +3,20 @@ One interesting question to ask about permutation patterns considers when a
 pattern may be avoided by, or contained in, arbitrary permutations. Two
 patterns \(\pi\) and \(\sigma\) are said to be \emph{coincident} if the set
 of permutations that avoid \(\pi\) is the same as the set of permutations that
-avoid \(\sigma\) \ie \(\av{\pi} = \av{\sigma}\). This extends to sets of patterns as well as single patterns.
+avoid \(\sigma\), \ie \(\av{\pi} = \av{\sigma}\). This extends to sets of patterns as well as single patterns.
 
-We consider the avoidance sets, \(\av{p,q}\) where \(p\) is a classical pattern
+We consider the avoidance sets, \(\av{\{\pi,q\}}\) where \(\pi\) is a classical pattern
 of length \(3\) and \(q\) is a mesh pattern of length \(2\) in order to
 establish some rules about when these two sets give the same avoidance set.
-We fix \(p\) in order to define the equivalences and say that \(p\) is the
+We fix \(\pi\) in order to define the  coincidence and say that \(\pi\) is the
 \emph{dominating pattern}.
 
 We first define some operations on mesh patterns.
 \begin{definition}
 Given a mesh pattern \(p\), let \(\addp[D]{p}{(a,b)}\) be the operation that returns
-a mesh pattern equivalent to placing a point in the center of box \((a,b)\), where \((a,b)\) is not the
-mesh set of \(p\) in
-the figure of \(p\), with shading defined by \(D\subseteq\{N,E,S,W\}\).
+a mesh pattern equivalent to placing a point in the center of box \((a,b)\),
+where \((a,b)\) is not in the mesh set of \(p\) , with shading defined by
+\(D\subseteq\{N,E,S,W\}\).
 The set \(D\) defines the shading by indicating that the boxes in the cardinal
 directions in \(D\) next to the point are shaded in the resulting pattern.
 \end{definition}
@@ -28,13 +28,14 @@ Since there is no ambiguity we let \(\addpe[D]\) be equivalent to \(\addp[D]{\va
      \addpe[\{N\}] = \textpattern{}{1}{0/1,1/1} &\qquad\addpe[\{E\}] =\textpattern{}{1}{1/1,1/0} \qquad \\
      \addpe[\{S\}] = \textpattern{}{1}{0/0,1/0} &\qquad\addpe[\{W\}] =\textpattern{}{1}{0/0,0/1} \qquad
 \end{align*}
-    A more complex example for \texttt{add\_point}
+    A more complex example for \texttt{add\_point} could be
 \begin{equation*}
 \addp[\{N,E\}]{\pattern{}{2,1,3}{0/3}}{(2,3)} = \pattern{}{2,1,4,3}{0/3,0/4,2/4,3/4,3/3}
 \end{equation*}
 \end{example}
+\begin{definition}
 Formally, given a mesh pattern \(p = (\pi,R)\) \(\addp[D]{p}{(a,b)}\) gives a mesh
-pattern \(p^\prime = (\pi^\prime,R^\prime)\) defined by
+pattern \(p^\prime = (\pi^\prime,R^\prime)\) with length \(\setsize{\pi}+1\) defined by
 \begin{equation*}
     \pi^\prime(i) = \begin{cases}
     \pi(i) & \text{if } i\neq a+1 \text{ and } \pi(i)<b\\
@@ -44,9 +45,9 @@ pattern \(p^\prime = (\pi^\prime,R^\prime)\) defined by
 \end{equation*}
 and
 \begin{equation*}
-        R^\prime = \bigcup_{(i,j)\in R}r((i,j))
+        R^\prime = \bigcup_{(i,j)\in R}r((i,j)),
 \end{equation*}
-Where \(r((i,j))\) is defined by
+where \(r((i,j))\) is defined by
 \begin{equation*}
     r((i,j)) =
     \begin{cases}
@@ -72,10 +73,11 @@ slightly
     \end{aligned}
 \end{equation*}
 And we add the union of the sets in \(D\) into the mesh set \(R^\prime\).
+\end{definition}
 
 \begin{definition}
     Given a pattern \(p\), define \(\addd{p}{(a,b)}\), and \\ \(\addi{p}{(a,b)}\),
-    as the operations that return a mesh pattern equivalent to placing an
+    as the operations that return a mesh pattern equivalent to placing a
     decrease, or increase, in the center of box \((a,b)\), where \((a,b)\) is not
     in the mesh set of \(p\), in \(p\).
 \end{definition}
@@ -87,7 +89,7 @@ And we add the union of the sets in \(D\) into the mesh set \(R^\prime\).
     \end{align*}
 \end{example}
 We can define these formally as with \(\addp[D]{p}{(a,b)}\). Considering
-only adding the ascent, adding a descent is very similar
+only adding the ascent, as adding a descent is very similar
 \begin{equation*}
     \addi{p}{(a,b)} = (\pi^\prime, R^\prime)
 \end{equation*}
@@ -95,14 +97,14 @@ only adding the ascent, adding a descent is very similar
     \pi^\prime(i) = \begin{cases}
     \pi(i) & \text{if } i\neq a+1,a+2 \text{ and } \pi(i)<b\\
     \pi(i)+2 & \text{if } i\neq a+1,a+2 \text{ and } \pi(i)>b\\
-    b+1, b+2 & \text{if } i = a+1, a+2
+    b+j, b+j & \text{if } i = a+j, j\in\{1,2\}
 \end{cases}
 \end{equation*}
 and
 \begin{equation*}
-        R^\prime = \bigcup_{(i,j)\in R}r((i,j)) \cup 
+        R^\prime = \bigcup_{(i,j)\in R}r((i,j)) \cup \text{crap to deal with strong ascent},
 \end{equation*}
-Where \(r((i,j))\) is defined by
+where \(r((i,j))\) is defined by
 \begin{equation*}
     r((i,j)) =
     \begin{cases}
@@ -120,7 +122,7 @@ Where \(r((i,j))\) is defined by
 We now attempt to fully classify coincidences in families characterised by avoidance
 of a classical pattern of length \(3\) and a mesh pattern of length \(2\).
 
-It can be easily seen that in order to classify set equivalences one need only
+It can be easily seen that in order to classify coincidences one need only
 consider coincidences within the family of mesh patterns with the same underlying
 classical pattern, this is due to the fact that \(\perm{2,1}\in\av{\mperm{1,2}{R}}\)
 and \(\perm{1,2}\in\av{\mperm{2,1}{R}}\) for all mesh-sets \(R\).
@@ -136,7 +138,7 @@ The authors use the Simultaneous Shading Lemma, a closure result and one worked 
 
 By discussion of a number of rules we will show that the number of coincidence
 classes follows the values shown in  \TableRef{tab:domclasses}. The experimental
-data is calculated on permutations up to length 11.
+data in the last row of the table is calculated on permutations up to length 11.
 
 \begin{table}[htb]
 \begin{center}
@@ -160,13 +162,14 @@ data is calculated on permutations up to length 11.
 \hline
 \end{tabularx}
 \end{center}
-    \caption{Class number reduction by application of Dominating Rules}
+    \caption{Coincidence class number reduction by application of Dominating Rules}
     \label{tab:domclasses}
 \end{table}
 
 \section{Coincidence classes of Av(\{321, (21, \textit{R})\}).}
-Through experimentation we discover that there are at most 29 coincidence
-classes of mesh patterns with underlying classical pattern \(\perm{2,1}\).
+Through experimentation, up to permutations of length 11, we discover that there
+are at most 29 coincidence classes of mesh patterns with underlying classical
+pattern \(\perm{2,1}\).
 
 \begin{proposition}[First Dominating Pattern Rule]
     \label{prop:dom1}
@@ -205,7 +208,7 @@ In order to prove this proposition we must first make the following note.
 \begin{proof}[Proof of \PropositionRef{prop:dom1}]
     We need to prove that \(\av{\{\pi,m_1\}} = \av{\{\pi,m_2\}}\).
 
-    Assume without meaningful loss of generality that \(R_2 = R_1 \cup \{(a,b)\}\).
+    \noindent Assume without meaningful loss of generality that \(R_2 = R_1 \cup \{(a,b)\}\).
     % Consider a permutation \(\omega\) that contains an occurrence of \(m_2\)
     % by \NoteRef{not:downcmesh} any of these occurrences is also an occurence
     % of \(m_1\). This proves that every occurence of \(m_2\) is also an
@@ -214,7 +217,7 @@ In order to prove this proposition we must first make the following note.
     \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\)
 
     Now we consider a permutation \(\omega^\prime\in \av{\pi}\),
-    suppose we have an occurrence of \(m_1\). Consider placing a point in the
+    containing an occurrence of \(m_1\). Consider placing a point in the
     region corresponding to the box \((a,b)\), regardless of where in this
     region we place the point by condition~\ref{prop:dom1:cont} of the
     Proposition we create an occurrence of \(\pi\), therefore there can be no
@@ -228,24 +231,22 @@ In order to prove this proposition we must first make the following note.
 \end{proof}
 
 All coincidence classes of \(\av{\{\perm{3,2,1}, \mperm{2,1}{R}\}}\) can be
-explained by repeated application of \PropositionRef{prop:dom1}.
+explained by application of \PropositionRef{prop:dom1}. % repeated?
 
-This rule is understood very easily by seeing it in graphical form. In the
+This rule can be understood very in graphical form. In the
 pattern in \FigureRef{fig:rule1} we can gain shading in three boxes since if
-there is a point in any of these boxes we would gain an occurrence of the
+there is a point in any of these boxes we would get an occurrence of the
 dominating pattern \(\perm{3,2,1}\).
 
 \begin{figure}[htb]
     \begin{center}
     \begin{tikzpicture}[scale=\picscale]
-        \modpattern{}{2,1}{}
+        \modpattern{}{2,1}{1/0,1/1,1/2,2/2}
     \end{tikzpicture}
         \raisebox{2ex}{\(\mapsto\)}
     \begin{tikzpicture}[scale=\picscale]
-        \filldraw (0.5,2.5) circle (3pt);
-        \filldraw (1.5,1.5) circle (3pt);
         \filldraw (2.5,0.5) circle (3pt);
-        \modpattern{}{2,1}{0/2,1/1,2/0}
+        \modpattern{}{2,1}{1/0,1/1,1/2,2/2,2/0}
     \end{tikzpicture}
 
         \caption{Visual depiction of first dominating pattern rule.}
@@ -253,20 +254,25 @@ dominating pattern \(\perm{3,2,1}\).
     \end{center}
 \end{figure}
 
+Note that there are two natural extensions of this rule. We can replace \(\pi\)
+with a set of classical patterns, or we can consider \(\pi\) to be a mesh pattern.
+
 \section{Equivalence classes of Av(\{231, (21, \textit{R})\}).}
-By application of \PropositionRef{prop:dom1} we obtain \(43\) equivalence
-classes. Experimentation shows that there are in fact \(39\) equivalence
+By application of \PropositionRef{prop:dom1} we obtain \(43\) coincidence
+classes. Experimentation shows that there are in fact at most \(39\) coincidence
 classes, for example the following two patterns are coincident in
 \(\av{\perm{2,3,1}}\) but this is not explained by \PropositionRef{prop:dom1}.
 \begin{equation*}
     m_1 = \pattern{}{2,1}{0/0,0/2,1/0,2/1} \text{ and } m_2 = \pattern{}{2,1}{0/0,0/2,1/0,1/1,2/1}
 \end{equation*}
 
-Consider an occurrence of \(m_1\) in a permutation in \(\av{\perm{2,3,1}}\), then if the region corresponding
+Consider an occurrence of \(m_1\) in a permutation in \(\av{\perm{2,3,1}}\), consisting
+of elements \(x\) and \(y\). If the region corresponding
 to the box \((1,1)\) is empty we have an occurrence of \(m_2\). Otherwise, if there is any
 increase in this box then we would have an occurrence of \(\perm{2,3,1}\),
 however, since we are in \(\av{\perm{2,3,1}}\) this is not possible. This box
-must therefore contain a decreasing subsequence. This gives rise to the following lemma:
+must therefore contain a (non-empty) decreasing subsequence.
+ This gives rise to the following lemma:
 
 \begin{lemma}
     \label{lem:incdec}
@@ -287,13 +293,11 @@ Going back to our example mesh patterns
         \filldraw (1.33,1.66) circle (3pt);
     \end{tikzpicture}
 \end{equation*}
-We know that the region corresponding to the box \((1,1)\) contains a decreasing subsequence. The top point
-of this decreasing subsequence can be chosen to act as the second point in the mesh pattern,
-and therefore there are no points between the first point and the new second point.
-Hence, we can shade this box as it is guaranteed to be empty. This shows that our
-two example patterns are coincident.
+We know that the region corresponding to the box \((1,1)\) contains a decreasing subsequence.
+If we let \(z\) be the topmost point in this decereasing subsequence, then \(xz\)
+is an occurrence of \(m_2\). This shows that our two example patterns are coincident.
 
-This result generalises into the following rule for categorising equivalences
+This result generalises into the following rule for categorising coincidences
 of mesh patterns in cases where there is a dominating classical pattern.
 
 \begin{proposition}[Second Dominating Pattern Rule]
@@ -330,20 +334,20 @@ of mesh patterns in cases where there is a dominating classical pattern.
 \begin{proof}
     We need to prove that \(\av{\{\pi,m_1\}} = \av{\{\pi,m_2\}}\).
 
-    Assume without meaningful loss of generality that \(R_2 = R_1 \cup \{(a,b)\}\).
+    \noindent Assume without meaningful loss of generality that \(R_2 = R_1 \cup \{(a,b)\}\).
 
-    Consider a permutation \(\omega\) that contains an occurrence of \(m_2\)
-    by \NoteRef{not:downcmesh} any of these occurrences is also an occurence
+    Consider a permutation \(\omega\) that contains an occurrence of \(m_2\).
+    By \NoteRef{not:downcmesh} any of these occurrences is also an occurence
     of \(m_1\). This proves that every occurence of \(m_2\) is also an
     occurence of \(m_1\) and therefore \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\).
 
     We will consider taking the first branch of every choice.
-    Now consider a permutation in \(\omega^\prime \in \av{\pi}\). Suppose
-    \(\omega^\prime\) contains \(m_1\) consider the region corresponding to
+    Now consider a permutation \(\omega^\prime \in \av{\pi}\). Suppose
+    \(\omega^\prime\) contains \(m_1\) and consider the region corresponding to
     \((a,b)\) in \(R_1\).
 
-    If the region is empty, then we can freely shade the corresponding
-    box \((a,b)\) in \(m_1\) and hence have an occurence of \(m_2\).
+    If the region is empty, the occurrence of \(m_1\) is trivially an occurence
+    of \(m_2\).
 
     Now consider if the region is non-empty, by \LemmaRef{lem:incdec} and
     condition~\ref{prop:dom2:condc} of the proposition this region must contain
@@ -358,7 +362,6 @@ of mesh patterns in cases where there is a dominating classical pattern.
     so \(\av{\{\pi,m_2\}} \subseteq \av{\{\pi,m_1\}}\).
 
     Similar arguments satisfy the remainder of the branches.
-
 \end{proof}
 \begin{figure}[ht]
 \centering
@@ -409,10 +412,10 @@ point in the mesh pattern.
 
 By taking the First Dominating Pattern Rule and the Second Dominating Pattern
 Rule together coincidences of classes of the form \(\av{\{\perm{2,3,1},\mperm{2,1}{R}\}}\)
-are fully explained, obtaining 39 equivalence classes of mesh patterns.
+are fully explained, obtaining 39 coincidence classes of mesh patterns.
 
 \section{Equivalence classes of Av(\{231, (12, \textit{R})\}).}
-When considering the equivalence classes of \(\av{\perm{2,3,1},\mperm{1,2}{R}}\)
+When considering the coincidence classes of \(\av{\perm{2,3,1},\mperm{1,2}{R}}\)
 we first apply the two Dominating Pattern rules previously established.
 Starting from \(220\) classes, application of the first Dominating Pattern rule
 gives \(85\) classes. Following this with the second Dominating Pattern rule
@@ -435,11 +438,11 @@ region.
 % happen if we were to choose a point in the box \((1,0)\) that we would like to shade.
 % In order to get a chance of getting the shading we want consider choosing the
 % rightmost point in the box.
-This gives us the following mesh pattern.
+This gives us an occurrence of the following mesh pattern.
 \begin{equation*}
     \pattern{}{2,1,3}{0/3,2/0,2/1,3/0,3/1,3/2}
 \end{equation*}
-By application of the \PropositionRef{prop:dom1} we then achieve the following
+By application of \PropositionRef{prop:dom1} we then achieve the following
 mesh pattern
 \begin{equation*}
     \pattern{2,3}{2,1,3}{0/3,1/3,2/0,2/1,3/0,3/1,3/2}
@@ -456,6 +459,7 @@ rule:
     \begin{enumerate}
         \item \(R_1 \triangle R_2 = \{(a,b)\}\)
         \item\label{prop:dom3:condocc} \(\addp[D]{\mperm{\sigma}{R_1}}{(a,b)}\)
+            where \(D\in\{N,E,S,W\}\)
             is coincident with a mesh pattern containing an occurrence of
             \(\mperm{\sigma}{R_2}\).
     \end{enumerate}
@@ -463,10 +467,10 @@ rule:
 \begin{proof}
     We need to prove that \(\av{\{\pi,m_1\}} = \av{\{\pi,m_2\}}\).
 
-    Assume without meaningful loss of generality that \(R_2 = R_1 \cup \{(a,b)\}\).
+    \noindent Assume without meaningful loss of generality that \(R_2 = R_1 \cup \{(a,b)\}\).
 
-    Consider a permutation \(\omega\) that contains an occurrence of \(m_2\)
-    by \NoteRef{not:downcmesh} any of these occurrences is also an occurence
+    Consider a permutation \(\omega\) that contains an occurrence of \(m_2\).
+    By \NoteRef{not:downcmesh} any of these occurrences is also an occurence
     of \(m_1\). This proves that every occurence of \(m_2\) is also an
     occurence of \(m_1\) and therefore \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\).
 
@@ -476,8 +480,8 @@ rule:
     then by condition~\ref{prop:dom3:condocc}  of the proposition there exists
     a direction such that there exists an occurrence of a mesh pattern of
     length one longer than \(m_1\) in this position. This mesh pattern is
-    coincident with another mesh pattern. This mesh pattern contains an
-    occurrence of \(m_2\) so every occurrence of \(m_1\) is also an occurrence
+    coincident with another mesh pattern that contains an
+    occurrence of \(m_2\). Hence, every occurrence of \(m_1\) leads to an occurrence
     of \(m_2\).  Thus \(\av{\{\pi,m_2\}} \subseteq \av{\{\pi,m_1\}}\) and the
     two patterns are coincident.
 \end{proof}
@@ -486,12 +490,13 @@ By application of this rule we can reduce the number of classes in
 \(\av{\{\perm{2,3,1},(\perm{1,2}, R)\}}\) to \(56\).
 
 \section{Equivalence classes of Av(\{321, (12, \textit{R})\}).}
-When considering equivalences of mesh patterns with underlying classical
+When considering coincidences of mesh patterns with underlying classical
 pattern \(\perm{1,2}\) in \(\av{\perm{3,2,1}}\) application of the previously
 established rules give no coincidences. Through experimentation we discover
-that there are \(7\) equivalence classes which can be explained through the
+that there are \(7\) non-trivial coincidence classes (all others are singletons)
+which can be explained through the
 use of two different lines of reasoning. Since the number of coincidences is
-so small we will reason for these equivalences without attempting to generalise
+so small we will reason for these coincidences without attempting to generalise
 into concrete rules.
 
 Intuitively it is easy to see why our previous rules have no
@@ -508,10 +513,11 @@ are equivalent in \(\av{\perm{3,2,1}}\). (There are 3 symmetries of these
 patterns that are also equivalent to each other by the same reasoning.)
 
 Consider the region corresponding to the box \((0,1)\) in any occurrence of \(m_1\),
-in a permutation by \LemmaRef{lem:incdec} it must contain an increasing subsequence.
+in a permutation. By \LemmaRef{lem:incdec} it must contain an increasing subsequence.
+If the region is empty then we have an occurrence of \(m_2\).
 If there is only one point in the region we can choose this to replace the \(1\) in
 the mesh pattern to get the required shading. If there is more than one point then
-choosing the two leftmost points give us the following mesh pattern.
+choosing the two leftmost points gives us the following mesh pattern.
 \begin{equation*}
     \pattern{3,4}{2,3,1,4}{0/0, 0/1, 0/2, 0/3, 0/4,
                             1/0, 1/1, 1/2, 1/3, 1/4,
@@ -521,7 +527,7 @@ choosing the two leftmost points give us the following mesh pattern.
 \end{equation*}
 Where the two highlighted points are the original two points.
 Now if we take the other two points as the points in our
-mesh permutation then we get an occurrence of the pattern
+mesh pattern then we get an occurrence of the pattern
 we originally desired, and hence the two patterns are coincident.
 
 The other reasoning applies to the patterns
@@ -531,23 +537,24 @@ The other reasoning applies to the patterns
 which are coincident by experimentation.
 
 In order to prove this coincidence we will proceed by mathematical
-induction on the number of points in the middle box we call this number \(n\).
+induction on the number of points in region corresponding to the middle box.
+We call this number \(n\).
 \begin{description}
-    \item [Base Case \((n=0)\):] The base case hold since we can freely shade the
+    \item [Base Case \((n=0)\):] The base case holds since we can freely shade the
         box if it contains no points.
-    \item [Inductive Hypothesis \((n=k)\):] Suppose that the we can find an occurrence
+    \item [Inductive Hypothesis \((n=k)\):] Suppose that we can find an occurrence
         of the second pattern if we have an occurrence of the first with \(k\) points
         in the middle box.
     \item [Inductive Step \((n=k+1)\)] Suppose that we have \((k+1)\) points in
-        the middle box. Choose the bottom most point in the middle box, this gives a
-        mesh pattern equivalent to
+        the middle box. Choose the bottom most point in the middle box, this gives the
+        mesh pattern
      \begin{equation*}
         \begin{tikzpicture}[scale=0.5]
             \modpattern[5]{}{1,2,3}{0/1,0/2,0/3,1/1,2/1,3/0,3/1,3/2}
             \draw (2.5,0.5) node {\(X\)};
         \end{tikzpicture}
     \end{equation*}
-        Now we need to consider the box labelled \(X\) if this box is empty then
+        Now we need to consider the box labelled \(X\). If this box is empty then
         we have an occurrence of \(m_2\) and are done. If this box contains
         any points then we gain some extra shading on the mesh pattern
         due to the dominating pattern
@@ -561,9 +568,9 @@ induction on the number of points in the middle box we call this number \(n\).
         points in the middle box, and thus by the Inductive Hypothesis we
         are done.
 \end{description}
-By induction we have that every occurrence of \(m_1\) is an occurrence of \(m_2\)
+By induction we have that every occurrence of \(m_1\) leads to an occurrence of \(m_2\)
 and by \NoteRef{not:downcmesh} every occurrence of \(m_2\) is an occurrence of
 \(m_1\) so the two patterns are coincident.
 This argument applies to another two pairs of classes. Therefore in
-total in \(\av{\perm{3,2,1}, \mperm{1,2}{R}}\) there are \(213\) equivalence
+total in \(\av{\perm{3,2,1}, \mperm{1,2}{R}}\) there are \(213\) coincidence
 classes.

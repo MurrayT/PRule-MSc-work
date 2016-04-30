@@ -1,23 +1,23 @@
 \chapter{Introduction\label{cha:introduction}}
 \section{What is a Permutation?}
-In \emph{The Art of Computer Programming}\cite[p.~45]{Knuth:1997:ACP:260999} Donald Knuth defines
-A \emph{permutation of \(n\) objects} is an arrangement of \(n\) distinct
-objects in a row. When considering permutations we can consider them as
+In \emph{The Art of Computer Programming} \cite[p.~45]{Knuth:1997:ACP:260999} Knuth states,
+\enquote{A \emph{permutation of \(n\) objects} is an arrangement of \(n\) distinct
+objects in a row}. When considering permutations we can consider them as
 occuring on the set \(\nrange{n} = \setrange{1}{n}\), therefore a permutation
-is a \emph{bijection} \(\pi:\nrange{n} \mapsto \nrange{n}\). We can write a
-permutation \(\pi\) in two line notation
+is a \emph{bijection} \(\pi:\nrange{n} \mapsto \nrange{n}\). A
+permutation \(\pi\) can be written in two-line notation
 \begin{equation*}
 \pi = \twoline{1,2,\dotso,n}{\pi(1),\pi(2),\dotso,\pi(n)}
 \end{equation*}
 However, the most frequent notation used in computer science is
 \emph{one-line notation}, in this form we drop the top line of the two line
-notation so are left with the following.
+notation and are left with the following.
 \begin{equation*}
 \pi = \perm{\pi(1),\pi(2),\dotso,\pi(n)}
 \end{equation*}
 
 \begin{example}
-There are 6 permutations on \(\nrange{3}\).
+The 6 permutations on \(\nrange{3}\), in one-line notation, are
 \begin{equation*}
 \perm{1,2,3},\perm{1,3,2},\perm{2,1,3},\perm{2,3,1}, \perm{3,1,2}, \perm{3,2,1}
 \end{equation*}
@@ -33,16 +33,19 @@ representation of the permutation. In such a figure we plot the points
 It is convenient to call the elements of the permutation \emph{points} when
 referring to these figures.
 
-The class of all permutations of length \(n\) is \(\mathfrak{S}_n\) and
-the class has size \(n!\). The class of all permutations is
-\(\mathfrak{S}=\bigcup_{i=0}^{\infty}\mathfrak{S}_i\).
+The set of all permutations of length \(n\) is \(\mathfrak{S}_n\) and
+has size \(n!\). The set of all permutations is
+\(\mathfrak{S}=\bigcup_{i=0}^{\infty}\mathfrak{S}_i\). Note that \(\mathfrak{S}_0\)
+has exactly one element, the empty permutation \(\varepsilon\). As a function
+this is equivalent to the unique bijection \(\emptyset \mapsto \emptyset\), and
+it's one-line representation is the empty string.
 
 \section{Classical Permutation Patterns}
-Classical Permutation Patterns began to be studied as a result of Knuth's
+Classical permutation patterns began to be studied as a result of Knuth's
 statements about stack-sorting in \emph{The Art of Computer Programming}
 \cite[p.~243, Ex.~5,6]{Knuth:1997:ACP:260999}.
 
-\begin{definition}{Order isomorphism.}
+\begin{definition}{(Order isomorphism.)}
     Two substrings \(\alpha_1\alpha_2\dotsm\alpha_n\) and
     \(\beta_1\beta_2\dotsm\beta_n\) are said to be \emph{order isomorphic}
     if they share the same relative order, \ie, \(\alpha_r<\alpha_s\) if and
@@ -50,8 +53,8 @@ statements about stack-sorting in \emph{The Art of Computer Programming}
 \end{definition}
 
 A permutation \(\pi\) is said to \emph{contain} the permutation \(\sigma\) of
-length \(k\) as a pattern (denoted \(\sigma \preceq \pi\)) if there is some
-subsequence \(i_1i_2\dotsm{}i_n\) such that the sequence
+length \(k\) as a \emph{pattern} (denoted \(\sigma \preceq \pi\)) if there is some
+subsequence \(i_1i_2\dotsm{}i_k\) such that the sequence
 \(\pi(i_1)\pi(i_2)\dotsm\pi(i_k)\) is order isomorphic to
 \(\sigma(1)\sigma(2)\dotsm\sigma(k)\). If \(\pi\) does not contain
 \(\sigma\), we say that \(\pi\) \emph{avoids} \(\sigma\).
@@ -59,7 +62,7 @@ subsequence \(i_1i_2\dotsm{}i_n\) such that the sequence
 For example the permutation \(\pi = \perm{2,4,1,5,3}\) contains the pattern
 \(\sigma = \perm{2,3,1}\), since the second, fourth and fifth elements
 (\(453\)) are order isomorphic to \(\perm{231}\).
-This can be seen graphically below, the points order isomorphic to \(\sigma\)
+This can be seen graphically below, the subsequence order isomorphic to \(\sigma\)
 are highlighted.
 \begin{equation*}
     \pattern{2,4,5}{2,4,1,5,3}{}
@@ -69,22 +72,22 @@ We denote the set of permutations of length \(n\) avoiding a pattern \(\sigma\)
 as \(\Av_n(\sigma)\) and \(\av{\sigma} = \bigcup_{i=0}^{\infty}\Av_i(\sigma)\).
 
 Knuth's statements were exercises in showing that the permutations avoiding the
-pattern \(\perm{2,3,1}\) completely categorise permutations that are sortable to
-the identity permutation using only a single stack, and that permutations avoiding the
-pattern \(\perm{3,2,1}\) completely categorise permutations that are sortable to
-the identity permutation using only a single queue with bypass.
+pattern \(\perm{2,3,1}\) are precisely the permutations that are sortable to
+the identity permutation using a single stack, and that permutations avoiding the
+pattern \(\perm{3,2,1}\) are precisely the permutations that are sortable to
+the identity permutation using a single queue with bypass.
 
 \section{Mesh Patterns}
-Mesh Patterns were introduced by \textcite{journals/combinatorics/BrandenC11} to capture explicit expansions
-for certain permutation statistics. They are a natural extension of Classical
-permutation patterns. A \emph{mesh-pattern} is a pair
+Mesh patterns were introduced by \textcite{journals/combinatorics/BrandenC11} to
+capture explicit expansions for certain permutation statistics. They are a
+natural extension of classical permutation patterns. A \emph{mesh pattern} is a pair
 \begin{equation*}
     p = (\tau,R)\text{ with } \tau \in \mathfrak{S}_k \text{ and } R \subseteq
     [0,k]\times [0,k].
 \end{equation*}
 
-The set \(R\) is called the \emph{mesh-set} of the mesh pattern \(p\).
-The figure for a mesh pattern looks similar to that for a classical pattern with the
+The set \(R\) is called the \emph{mesh set} of the mesh pattern \(p\).
+The figure for a mesh pattern looks similar to that of a classical pattern with the
 addition that we shade the unit square with bottom left corner \((i,j)\) for each \((i,j) \in R\):
 \begin{equation*}
     \pattern{}{ 2, 1, 3 }{ 0/1, 0/2, 1/0, 1/1, 2/1, 2/2 }
@@ -94,52 +97,55 @@ We define containment, and avoidance, of the pattern \(p\) in the permutation
 \(\pi\) on mesh patterns analogously to classical containment, and avoidance,
 of \(\tau\) in \(\pi\) with the additional restrictions on the relative
 position of the occurence of \(\tau\) in \(\pi\). These restrictions say that
-no elements of \(\pi\) are allowed in the shaded regions of the figure.
+no elements of \(\pi\) are allowed in the regions of the figure corresponding
+to shaded boxes in the mesh (see \cite[2]{journals/combinatorics/BrandenC11}
+for the precise definition).
 
 \begin{example}
     The pattern \(p=\mperm{2,1,3}{\{(0,1),(0,2),(1,0),(1,1),(2,1),(2,2)\}}=
     \textpattern{}{ 2, 1, 3 }{ 0/1, 0/2, 1/0, 1/1, 2/1, 2/2 }\) is contained in
     \(\pi = \perm{3,4,2,1,5}\) but is not contained in \(\sigma = \perm{4,2,3,1,5}\).
 \end{example}
-\begin{proof}
-    Let us consider the figure for the permutation \(\pi\) we only need to find one occurence.
-    \begin{equation*}
-        \pattern{1,3,5}{3,4,2,1,5}{0/2,0/3,0/4,
-                                   1/0,1/1,1/2,
-                                   2/0,2/1,2/2,
-                                   3/2,3/3,3/4,
-                                   4/2,4/3,4/4}
-    \end{equation*}
-    We have found an occurence of the pattern \(p\) in \(\pi\) and therefore
-    \(\pi\) contains \(p\).
 
-    Now we consider the figure for the permutation \(\sigma\). This permutation
-    avoids \(p\) since for every occurence of the classical pattern \(\perm{2,1,3}\)
-    there is at least one point in one of the shaded boxes. Consider the subsequence
-    \(315\) in \(\sigma\), this is an occurence of \(\perm{2,1,3}\) but not the mesh
-    pattern since the points with values \(4\) and \(2\) are in the shaded areas.
-    This is shown in the figure below.
+Let us consider the figure for the permutation \(\pi\). The subsequence \(325\) is
+an occurrence of \(213\) in the classical sense and the remaining points of \(\pi\)
+are not contained in the regions corresponding to the shaded boxes in \(p\).
+\begin{equation*}
+    \pattern{1,3,5}{3,4,2,1,5}{0/2,0/3,0/4,
+                               1/0,1/1,1/2,
+                               2/0,2/1,2/2,
+                               3/2,3/3,3/4,
+                               4/2,4/3,4/4}
+\end{equation*}
+The subsequence \(325\) is therefore an occurence of the pattern \(p\) in \(\pi\) and
+\(\pi\) contains \(p\).
 
-    \begin{equation*}
-        \pattern{3,4,5}{4,2,3,1,5}{0/1,0/2,0/3,0/4,
-                                   1/1,1/2,1/3,1/4,
-                                   2/1,2/2,2/3,2/4,
-                                   3/0,3/1,3/2,
-                                   4/1,4/2,4/3,4/4}
-    \end{equation*}
-    This is true for all occurences of \(\perm{2,1,3}\) in \(\sigma\) and
-    therefore \(\sigma\) avoids \(p\).
-\end{proof}
+Now we consider the figure for the permutation \(\sigma\). This permutation
+avoids \(p\) since for every occurence of the classical pattern \(\perm{2,1,3}\)
+there is at least one point in one of the shaded boxes. For example, consider the
+subsequence\(315\) in \(\sigma\), this is an occurence of \(\perm{2,1,3}\) but
+not the mesh pattern since the points with values \(4\) and \(2\) are in the
+regions corresponding to the boxes \((0,1)\) and \((0,2)\), which are shaded in
+\(p\). This is shown in the figure below.
+
+\begin{equation*}
+    \pattern{3,4,5}{4,2,3,1,5}{0/1,0/2,0/3,0/4,
+                               1/1,1/2,1/3,1/4,
+                               2/1,2/2,2/3,2/4,
+                               3/0,3/1,3/2,
+                               4/1,4/2,4/3,4/4}
+\end{equation*}
+This is true for all occurences of \(\perm{2,1,3}\) in \(\sigma\) and
+therefore \(\sigma\) avoids \(p\).
 
 We denote the avoidance sets for mesh patterns in the same way as for
-classical patterns.
-
-Given a mesh pattern \(p=(\sigma,R)\) we say that \(\sigma\) is the \emph{underlying
+classical patterns. Given a mesh pattern \(p=(\sigma,R)\) we say that \(\sigma\) is the \emph{underlying
 classical pattern} of \(p\).
 \begin{note}
     \label{not:classmesh}
-    Classical patterns are a subclass of mesh patterns the classical pattern \(\pi\)
-    can be represented by a mesh pattern as \((\pi,\emptyset)\).
+    Classical patterns can be thought of as a subset of mesh patterns: the
+    classical pattern \(\pi\) can be represented by a mesh pattern as
+    \((\pi,\emptyset)\).
 \end{note}
 
 In the past people have studied different classes
@@ -159,7 +165,7 @@ also been studied in the past, \textcite{MR2178749} considered avoiding a
 pair of vincular patterns of length 3. \textcite{2015arXiv151203226B} study avoiding
 a vincular and a covincular pattern simultaneously in order to achieve some
 interesting counting results. However, very little work has been done on avoiding
-a mesh pattern and a classical pattern simultaneously, in this work we aim to
+a mesh pattern and a classical pattern simultaneously. In this work we aim to
 establish some ground in this field by computing coincidences and Wilf-classes
 and calculating some of the enumerations of avoiders of a mesh pattern of length
 2 and a classical pattern of length 3.

@@ -76,34 +76,36 @@
 
 \RequirePackage{examplep} % another verbatim environment
 
-\finalifforcegraphics{listings}
-\RequirePackage{listings} % force final or included files are skipped, invisibly!
-% This allows you to include code easily
-% \begin{lstlisting}[language=bash]
-%  $ wget http://blah
-% \end{lstlisting}
-% or for simpler snippets
-%  \lstinline^cp -rp foo bar^
-%  You can replace ^ with any character not in your code
-\lstdefinestyle{default}{
-  %basicstyle=\footnotesize\ttfamily,%
-  numbers=left,%
-  numberstyle=\tiny,%
-  numberfirstline=true,%
-  stepnumber=2,%
-  numbersep=5pt,%
-  columns=fullflexible,%
-  tabsize=4,%
-  frame=lines,%
-  breaklines=true,% break long lines
-  prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookleftarrow}}, % red arrow
-  postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow}}, % red arrow
-  % from http://tex.stackexchange.com/questions/116534/lstlisting-line-wrapping
-}
-\lstset{%
-  language=,%default similar to verbatim
-  style=default,
-}
+% \finalifforcegraphics{listings}
+% \RequirePackage{listings} % force final or included files are skipped, invisibly!
+% % This allows you to include code easily
+% % \begin{lstlisting}[language=bash]
+% %  $ wget http://blah
+% % \end{lstlisting}
+% % or for simpler snippets
+% %  \lstinline^cp -rp foo bar^
+% %  You can replace ^ with any character not in your code
+% \lstdefinestyle{default}{
+%   %basicstyle=\footnotesize\ttfamily,%
+%   numbers=left,%
+%   numberstyle=\tiny,%
+%   numberfirstline=true,%
+%   stepnumber=2,%
+%   numbersep=5pt,%
+%   columns=fullflexible,%
+%   tabsize=4,%
+%   frame=lines,%
+%   breaklines=true,% break long lines
+%   prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookleftarrow}}, % red arrow
+%   postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow}}, % red arrow
+%   % from http://tex.stackexchange.com/questions/116534/lstlisting-line-wrapping
+% }
+% \lstset{%
+%   language=,%default similar to verbatim
+%   style=default,
+% }
+% \finalifforcegraphics{minted}
+\RequirePackage{minted}
 
 \RequirePackage{dashrule}
 %% Allows us to make rules that are not just solid lines
@@ -158,6 +160,9 @@
 
 \usepackage{mathtools}
 
+\usepackage{xpatch}
+\xpatchbibmacro{textcite}{\addspace}{\addnbspace}{}{}
+
 %% END OF PERSONAL PACKAGES
 
 \PassOptionsToPackage{warn}{textcomp}%
@@ -186,39 +191,39 @@
 
 %% Code listings and file paths
 % Here are listings macros I use a lot
-\newcommand{\shcmd}{\lstinline}
-% for file paths use \path from the url package
-% \path{\\AFS\.rnd.ru.is\course\T-411-MECH}
-
-%% The pre-defined languages we want to use.
-\lstloadlanguages{Java, XML}
-
-%% We can also define a new language (so we can change some formatting)
-%% Be careful you do not make a recursive style nor language!!
-%% You can just use the XML language, or in this case create a "dialect"
-\lstdefinelanguage[android]{XML}%
-{  %
-  sensitive=false,% case-insensitive
-  classoffset=0,  % first class
-  morekeywords={manifest},
-  classoffset=1,  % second class
-  morekeywords={uses, sdk, application, activity},
-  keywordstyle=\color{blue}, % set a color
-  classoffset=0, % reset back to 0
-}
-
-%% We use listing styles to adjust the appearance
-%% Be careful you do not make a recursive style nor language!!
-%% This makes use of the listing package to show program output
-\lstdefinestyle{progoutput}{
-  language=sh,
-  frame=single,
-  breaklines=true,
-  prebreak=\textbackslash,
-  captionpos=b,
-  basicstyle=\small\ttfamily,
-  showstringspaces=false
-}
+% \newcommand{\shcmd}{\lstinline}
+% % for file paths use \path from the url package
+% % \path{\\AFS\.rnd.ru.is\course\T-411-MECH}
+%
+% %% The pre-defined languages we want to use.
+% \lstloadlanguages{Java, XML, Python}
+%
+% %% We can also define a new language (so we can change some formatting)
+% %% Be careful you do not make a recursive style nor language!!
+% %% You can just use the XML language, or in this case create a "dialect"
+% \lstdefinelanguage[android]{XML}%
+% {  %
+%   sensitive=false,% case-insensitive
+%   classoffset=0,  % first class
+%   morekeywords={manifest},
+%   classoffset=1,  % second class
+%   morekeywords={uses, sdk, application, activity},
+%   keywordstyle=\color{blue}, % set a color
+%   classoffset=0, % reset back to 0
+% }
+%
+% %% We use listing styles to adjust the appearance
+% %% Be careful you do not make a recursive style nor language!!
+% %% This makes use of the listing package to show program output
+% \lstdefinestyle{progoutput}{
+%   language=sh,
+%   frame=single,
+%   breaklines=true,
+%   prebreak=\textbackslash,
+%   captionpos=b,
+%   basicstyle=\small\ttfamily,
+%   showstringspaces=false
+% }
 
 % English/latin contractions (need italics )
 \newcommand{\etal}{\textit{et al.}\xspace}

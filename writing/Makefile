@@ -1,4 +1,4 @@
 .PHONY: tex
 
 tex:
-	$(MAKE) -C tex
+	$(MAKE) -C latex

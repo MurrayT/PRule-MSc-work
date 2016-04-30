@@ -188,13 +188,14 @@
 %% of latex errors as it may not deal well with math, international letters,
 %% and other latex constructs
 %% Warning: capitalization does not always work anyway
-\newML{Title}{Working Title}{Titll verkefnis}
-\newML{TITLE}{WORKING TITLE}{TITLL VERKEFNIS}
+\newML{Title}{Equivalence classes of mesh patterns with a dominating pattern}{Jafngildisflokkar möskvamynstra með ríkjandi mynstri}
+\newML{TITLE}{EQUIVALENCE CLASSES OF MESH PATTERNS WITH A DOMINATING PATTERN}{JAFNGILDISFLOKKAR MÖSKVAMYNSTRA MEÐ RÍKJANDI MYNSTRI}
+% YFIRGNÆFANDI
 %% If you have the title in just one language, put it into \setTitle{} directly e.g.
 %%  \setTitle{Working Title}
 %%
-% \setTitle{\MLTitle}
-\setTitle{Equivalence Classes of Mesh Patterns with a Dominating Pattern}
+\setTitle{\MLTitle}
+% \setTitle{Equivalence Classes of Mesh Patterns with a Dominating Pattern}
 %% If you need to adjust the main title later, you can use
 %% \setMainTitle{}
 %% ***** Special Titles ******
@@ -388,10 +389,7 @@
 \enableindents{}% turn on/off paragraph indents
 % RUM: "Acknowledgements (optional)"
 \coverchapter{Acknowledgements}
-\begin{quotation}
-So long, and thanks for all the fish.
-\end{quotation}\sourceatright{Douglas Adams\cite{adams84fish}}
-\vspace{\baselineskip}
+\input{acknowledgements}
 
 \draftnote{Acknowledgements are optional; comment this chapter out if they are absent
   Note that it is important to acknowledge any funding that helped in the work}
@@ -496,6 +494,7 @@ So long, and thanks for all the fish.
 \input{classes}
 \input{domrulesax}
 \input{sequences}
+\input{code}
 % \input{code} % as an example, perhaps some of your code
 
 %\backmatter{} % Sections after this don't get numbers

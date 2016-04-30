@@ -36,7 +36,7 @@ TEXINPUTS:=".:./sty//:"
 
 # Programs  -- put absolute paths here if you must
 LATEX:=TEXINPUTS=${TEXINPUTS}; export TEXINPUTS; latex
-PDFLATEX:=TEXINPUTS=${TEXINPUTS}; export TEXINPUTS; pdflatex
+PDFLATEX:=TEXINPUTS=${TEXINPUTS}; export TEXINPUTS; pdflatex -shell-escape
 BIBPROG:=biber  # can also be bibtex or bibtex8
 
 # ATTENTION!
