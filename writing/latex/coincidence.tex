@@ -11,30 +11,10 @@ establish some rules about when these two sets give the same avoidance set.
 We fix \(\pi\) in order to define the  coincidence and say that \(\pi\) is the
 \emph{dominating pattern}.
 
-We first define some operations on mesh patterns.
+It is useful to be able to modify a mesh pattern by adding points to an
+already existing mesh pattern. First adding a single point into a pattern.
 \begin{definition}
-Given a mesh pattern \(p\), let \(\addp[D]{p}{(a,b)}\) be the operation that returns
-a mesh pattern equivalent to placing a point in the center of box \((a,b)\),
-where \((a,b)\) is not in the mesh set of \(p\) , with shading defined by
-\(D\subseteq\{N,E,S,W\}\).
-The set \(D\) defines the shading by indicating that the boxes in the cardinal
-directions in \(D\) next to the point are shaded in the resulting pattern.
-\end{definition}
-Since there is no ambiguity we let \(\addpe[D]\) be equivalent to \(\addp[D]{\varepsilon}{(0,0)}\).
-
-\begin{example}
-    The result of adding a single point to the empty permutation for each cardinal direction.
- \begin{align*}
-     \addpe[\{N\}] = \textpattern{}{1}{0/1,1/1} &\qquad\addpe[\{E\}] =\textpattern{}{1}{1/1,1/0} \qquad \\
-     \addpe[\{S\}] = \textpattern{}{1}{0/0,1/0} &\qquad\addpe[\{W\}] =\textpattern{}{1}{0/0,0/1} \qquad
-\end{align*}
-    A more complex example for \texttt{add\_point} could be
-\begin{equation*}
-\addp[\{N,E\}]{\pattern{}{2,1,3}{0/3}}{(2,3)} = \pattern{}{2,1,4,3}{0/3,0/4,2/4,3/4,3/3}
-\end{equation*}
-\end{example}
-\begin{definition}
-Formally, given a mesh pattern \(p = (\pi,R)\) \(\addp[D]{p}{(a,b)}\) gives a mesh
+Given a mesh pattern \(p = (\pi,R)\) \(\addp[D]{p}{(a,b)}\) gives a mesh
 pattern \(p^\prime = (\pi^\prime,R^\prime)\) with length \(\setsize{\pi}+1\) defined by
 \begin{equation*}
     \pi^\prime(i) = \begin{cases}
@@ -75,24 +55,33 @@ slightly
 And we add the union of the sets in \(D\) into the mesh set \(R^\prime\).
 \end{definition}
 
-\begin{definition}
-    Given a pattern \(p\), define \(\addd{p}{(a,b)}\), and \\ \(\addi{p}{(a,b)}\),
-    as the operations that return a mesh pattern equivalent to placing a
-    decrease, or increase, in the center of box \((a,b)\), where \((a,b)\) is not
-    in the mesh set of \(p\), in \(p\).
-\end{definition}
+Given a mesh pattern \(p\), \(\addp[D]{p}{(a,b)}\) is the operation that returns
+a mesh pattern equivalent to placing a point in the center of box \((a,b)\),
+where \((a,b)\) is not in the mesh set of \(p\) , with shading defined by
+\(D\subseteq\{N,E,S,W\}\).
+The set \(D\) defines the shading by indicating that the boxes in the cardinal
+directions in \(D\) next to the point are shaded in the resulting pattern.
+Since there is no ambiguity we let \(\addpe[D]\) be equivalent to \(\addp[D]{\varepsilon}{(0,0)}\).
 
 \begin{example}
-    \begin{align*}
-        \addie = \pattern{}{1,2}{0/1,1/0,1/1,1/2,2/1}\\
-        \addde = \pattern{}{2,1}{0/1,1/0,1/1,1/2,2/1}
-    \end{align*}
-\end{example}
-We can define these formally as with \(\addp[D]{p}{(a,b)}\). Considering
-only adding the ascent, as adding a descent is very similar
+    The result of adding a single point to the empty permutation for each cardinal direction.
+ \begin{align*}
+     \addpe[\{N\}] = \textpattern{}{1}{0/1,1/1} &\qquad\addpe[\{E\}] =\textpattern{}{1}{1/1,1/0} \qquad \\
+     \addpe[\{S\}] = \textpattern{}{1}{0/0,1/0} &\qquad\addpe[\{W\}] =\textpattern{}{1}{0/0,0/1} \qquad
+\end{align*}
+    A more complex example for \texttt{add\_point} could be
 \begin{equation*}
-    \addi{p}{(a,b)} = (\pi^\prime, R^\prime)
+\addp[\{N,E\}]{\pattern{}{2,1,3}{0/3}}{(2,3)} = \pattern{}{2,1,4,3}{0/3,0/4,2/4,3/4,3/3}
 \end{equation*}
+\end{example}
+
+It is also useful to think about adding an ascent, or descent, into a pattern
+
+\begin{definition}
+Considering
+only adding the ascent, as adding a descent is very similar.
+Given a mesh pattern \(p = (\pi, R)\) \(\adda[D]{p}{(a,b)}\) gives a mesh
+pattern \(p^\prime = (\pi^\prime,R^\prime)\) with length \(\setsize{\pi}+2\) defined by
 \begin{equation*}
     \pi^\prime(i) = \begin{cases}
     \pi(i) & \text{if } i\neq a+1,a+2 \text{ and } \pi(i)<b\\
@@ -102,7 +91,7 @@ only adding the ascent, as adding a descent is very similar
 \end{equation*}
 and
 \begin{equation*}
-        R^\prime = \bigcup_{(i,j)\in R}r((i,j)) \cup \text{crap to deal with strong ascent},
+        R^\prime = \{(a+1,b),(a,b),(a+1,b),(a+2,b),(a+1,b+2)\} \cup \bigcup_{(i,j)\in R}r((i,j)),
 \end{equation*}
 where \(r((i,j))\) is defined by
 \begin{equation*}
@@ -118,9 +107,34 @@ where \(r((i,j))\) is defined by
         \{(i+2,j+2)\} &\text{if } i>a, j>b\\
     \end{cases}
 \end{equation*}
+\end{definition}
+
+Given a pattern \(p\), \(\addd{p}{(a,b)}\), and \\ \(\adda{p}{(a,b)}\),
+are the operations that return a mesh pattern equivalent to placing a
+decrease, or increase, in the center of box \((a,b)\), where \((a,b)\) is not
+in the mesh set of \(p\), in \(p\).
+
+\begin{example}
+    \begin{align*}
+        \addae = \pattern{}{1,2}{0/1,1/0,1/1,1/2,2/1}\\
+        \addde = \pattern{}{2,1}{0/1,1/0,1/1,1/2,2/1}
+    \end{align*}
+
+    \noindent A more complex example is
+\begin{equation*}
+\adda{\pattern{}{2,3,1}{0/0,1/0,1/3,
+                        3/0,3/1,3/3}}{(1,1)}
+= \pattern{}{4,2,3,5,1}{0/0,
+                        1/0,1/2,1/5,
+                        2/0,2/1,2/2,2/3,2/5,
+                        3/0,3/2,3/5,
+                        5/0,5/1,5/2,5/3,5/5}
+\end{equation*}
+\end{example}
 
 We now attempt to fully classify coincidences in families characterised by avoidance
-of a classical pattern of length \(3\) and a mesh pattern of length \(2\).
+of a classical pattern of length \(3\) and a mesh pattern of length \(2\), that is
+finding and explaining all coincidences where \(\av{\{p,m\}} = \av{\{p,m^\prime\}}\).
 
 It can be easily seen that in order to classify coincidences one need only
 consider coincidences within the family of mesh patterns with the same underlying
@@ -166,6 +180,11 @@ data in the last row of the table is calculated on permutations up to length 11.
     \label{tab:domclasses}
 \end{table}
 
+From the table it can be seen that the rules established capture almost all
+coincidences. However, there are still some coincidences that are not able to
+be explained by the rules. This shows that complete coincidence classification
+of mesh patterns is a very difficult task, even when we have additional tools
+available.
 \section{Coincidence classes of Av(\{321, (21, \textit{R})\}).}
 Through experimentation, up to permutations of length 11, we discover that there
 are at most 29 coincidence classes of mesh patterns with underlying classical
@@ -278,7 +297,7 @@ must therefore contain a (non-empty) decreasing subsequence.
     \label{lem:incdec}
     Given a mesh pattern \(m =(\sigma, R)\), where the box \((a,b)\) is not
     in \(R\), and a dominating classical pattern \(\pi = (\pi,\emptyset)\) if
-    \(\pi \preceq \addi{\sigma}{(a,b)}\)\\(\(\pi \preceq \addd{\sigma}{(a,b)}\))
+    \(\pi \preceq \adda{\sigma}{(a,b)}\)\\(\(\pi \preceq \addd{\sigma}{(a,b)}\))
     then in any occurrence of \(m\) in a permutation \(\varrho\) the region
     corresponding to the box \((a,b)\) can only contain an increasing
     (decreasing) subsequence of \(\varrho\).
@@ -310,7 +329,7 @@ of mesh patterns in cases where there is a dominating classical pattern.
     \begin{enumerate}
         \item \(R_1 \triangle R_2 = \{(a,b)\}\)
         \item   \begin{enumerate}
-                \item\label{prop:dom2:condc} \(\pi \preceq \addi{\sigma}{(a,b)}\) and
+                \item\label{prop:dom2:condc} \(\pi \preceq \adda{\sigma}{(a,b)}\) and
                         \begin{enumerate}
                             \item \((a+1,b) \in \sigma\) and \((a+1,b-1)\notin R\) and \\
                                 \((x,b-1)\in R \implies (x,b) \in R \) (where \(x\neq a,a+1\)) and\\
