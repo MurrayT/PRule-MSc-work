@@ -94,7 +94,7 @@ the permutation \(\perm{1}\). The avoiders of this pattern therefore
 have generating function \(\var(x) = C(x)-x\).
 
 \nextvar
-The pattern \(p_1 = \textpattern{}{1}{0/1,1/0}\) is one of the
+The pattern \(p = \textpattern{}{1}{0/1,1/0}\) is one of the
 quadrant marked mesh patterns studied by Remmel,
 Kitaev and Tiefenbruck\cite{2012arXiv1201.6243K}. Alternatively we can enumerate
 avoiders by decomposing a typical avoider of \(p_1\) around the maximum element
@@ -105,8 +105,8 @@ in order to give the following structural decomposition.
 Since if the upper right section was empty the maximum would create an
 occurrence of the pattern, however no points in this section can create
 an occurrence since the maximum lies in a region corresponding to the
-shading in \(p_1\). The lower left region however can create occurrences
-of \(p_1\) and therefore must also avoid \(p_1\) as well as \(\perm{2,3,1}\).
+shading in \(p\). The lower left region however can create occurrences
+of \(p\) and therefore must also avoid \(p\) as well as \(\perm{2,3,1}\).
 This gives the generating function of avoiders to be the function \(\var(x)\)
 satisfying.
 \begin{align*}
@@ -124,24 +124,24 @@ Evauluation of this generating function gives the Fine numbers
 
 \nextvar[\varfine]
 It can be shown by use of \PropositionRef{prop:dom2} that the patterns
-\textpattern{}{1}{0/0,1/1} and \(p_2 = \textpattern{}{1}{0/0,0/1,1/1}\) are
-coincident. Consider the decomposition of an avoider of \(p_2\) in
+\textpattern{}{1}{0/0,1/1} and \(q_1 = \textpattern{}{1}{0/0,0/1,1/1}\) are
+coincident. Consider the decomposition of an avoider of \(q_1\) in
 \(\av{\perm{2,3,1}}\) around the maximum
 \begin{equation*}
     \scriptvar_1 =\varepsilon \sqcup \decompmax{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}
 \end{equation*}
 This can be explained succinctly by the fact that a permutation containing
-\(p_2\) starts with it's maximum, by not allowing the left part of the
+\(q_1\) starts with it's maximum, by not allowing the left part of the
 \(\perm{2,3,1}\) avoider to be empty we prevent an occurrence from ever happening.
 
-Consider \(p_3 = \textpattern{}{1}{0/1,1/0,1/1}\), avoiding this pattern
+Consider \(q_2 = \textpattern{}{1}{0/1,1/0,1/1}\), avoiding this pattern
 means that a permutation does not end with it's maximum. We can perform a similar
 decomposition as before to get
 \begin{equation*}
     \mathcal{\var}_2 =\varepsilon \sqcup \decompmax{0/1,1/0}{\mathcal{C}}{}{}{\mathcal{C}\setminus\varepsilon}
 \end{equation*}
 
-Now consider \(p_4 = \textpattern{}{1}{0/0,0/1,1/0}\), the avoiders of this
+Now consider \(q_3 = \textpattern{}{1}{0/0,0/1,1/0}\), the avoiders of this
 pattern are permutations that do not start with their minimum. In this case we
 perform the decomposition around the leftmost element
 \begin{equation*}
@@ -158,10 +158,10 @@ Enumeration of this generating function gives
 
 \nextvar[\varmaxl]
 There is one pattern of length \(1\) still to consider. The pattern
-\(p_5 = \textpattern{}{1}{0/0,1/0,1/1}\) is avoided by all permutations
+\(r = \textpattern{}{1}{0/0,1/0,1/1}\) is avoided by all permutations
 that do not end in their minimum. Considering the standard decomposition
 of a \(\perm{2,3,1}\) avoider around the maximum we can see that an avoider
-of \(p_5\) must fit into the following form precisely once.
+of \(r\) must fit into the following form precisely once.
 \begin{equation*}
     \scriptvar = \varepsilon \sqcup
     \underbrace{\decompmax{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}}_\text{

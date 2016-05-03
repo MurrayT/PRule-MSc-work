@@ -23,15 +23,15 @@ The 6 permutations on \(\nrange{3}\), in one-line notation, are
 \end{equation*}
 \end{example}
 
-We can display a permutation on a \emph{figure} in order to give a graphical
-representation of the permutation. In such a figure we plot the points
-\((i,\pi(i))\) in a Cartesian coordinate system. The figure of the permutation
+We can display a permutation in a \emph{plot} in order to give a graphical
+representation of the permutation. In such a plot we display the points
+\((i,\pi(i))\) in a Cartesian coordinate system. The plot of the permutation
 \(\pi = \perm{2,3,1}\) is shown below
 \begin{equation*}
     \pattern{}{2,3,1}{}
 \end{equation*}
 It is convenient to call the elements of the permutation \emph{points} when
-referring to these figures.
+referring to these plots.
 
 The set of all permutations of length \(n\) is \(\mathfrak{S}_n\) and
 has size \(n!\). The set of all permutations is
@@ -80,26 +80,45 @@ the identity permutation using a single queue with bypass.
 \section{Mesh Patterns}
 Mesh patterns were introduced by \textcite{journals/combinatorics/BrandenC11} to
 capture explicit expansions for certain permutation statistics. They are a
-natural extension of classical permutation patterns. A \emph{mesh pattern} is a pair
+natural extension of classical permutation patterns.
+A \emph{mesh pattern} is a pair
 \begin{equation*}
-    p = (\tau,R)\text{ with } \tau \in \mathfrak{S}_k \text{ and } R \subseteq
+    p = (\pi,R)\text{ with } \tau \in \mathfrak{S}_k \text{ and } R \subseteq
     [0,k]\times [0,k].
 \end{equation*}
 
 The set \(R\) is called the \emph{mesh set} of the mesh pattern \(p\).
-The figure for a mesh pattern looks similar to that of a classical pattern with the
+The plot for a mesh pattern looks similar to that of a classical pattern with the
 addition that we shade the unit square with bottom left corner \((i,j)\) for each \((i,j) \in R\):
 \begin{equation*}
     \pattern{}{ 2, 1, 3 }{ 0/1, 0/2, 1/0, 1/1, 2/1, 2/2 }
 \end{equation*}
 
 We define containment, and avoidance, of the pattern \(p\) in the permutation
-\(\pi\) on mesh patterns analogously to classical containment, and avoidance,
-of \(\tau\) in \(\pi\) with the additional restrictions on the relative
-position of the occurence of \(\tau\) in \(\pi\). These restrictions say that
-no elements of \(\pi\) are allowed in the regions of the figure corresponding
-to shaded boxes in the mesh (see \cite[2]{journals/combinatorics/BrandenC11}
-for the precise definition).
+\(\tau\) on mesh patterns analogously to classical containment, and avoidance,
+of \(\pi\) in \(\tau\) with the additional restrictions on the relative
+position of the occurence of \(\pi\) in \(\tau\). These restrictions say that
+no elements of \(\tau\) are allowed in the regions of the plot corresponding
+to shaded boxes in the mesh. Formally defined by \textcite{journals/combinatorics/BrandenC11},
+an \emph{occurrence} of \(p\) in \(\tau\) is a subset \(\omega\) of the plot of
+\(\tau, G(\tau) = \{(i,\tau(i)\mid i\in[1,n]\}\) such that there are order-preserving
+injections \(\alpha,\beta:[1,k]\mapsto[1,n]\) satisfying the following two conditions.
+
+\noindent Firstly, \(\omega\) is an occurrence of \(\pi\) in the classical sense
+  \begin{enumerate}[i.]
+    \item \(\omega = \{(\alpha(i),\beta(j)):(i,j)\in G(\pi)\}\)
+  \end{enumerate}\saveenum
+  Define \(R_{ij} = [\alpha(i)+1,\alpha(i+1)-1]\times[\beta(j)+1,\beta(j+1)-1]\)
+   for \(i,j\in[0,k]\) where \(\alpha(0)=\beta(0)=0\) and \(\alpha(k+1)=\beta(k+1)=n+1\). Then
+   the second condition is
+  \begin{enumerate}[i.]\resetenum
+  \item if \((i,j) \in R \text{ then } R_{ij} \cap G(\tau) = \emptyset\)
+\end{enumerate}
+We call \(R_{ij}\) the region corresponding to \((i,j)\).
+We define containment of a mesh pattern \(p\) in another mesh \(\kappa\) as above,
+with the additional condition that if \((i,j)\in R\text{ then } R_{ij}\) is
+contained in the mesh set of \(\kappa\), in this case we call \(p\) a \emph{subpattern}
+of \(\kappa\).
 
 \begin{example}
     The pattern \(p=\mperm{2,1,3}{\{(0,1),(0,2),(1,0),(1,1),(2,1),(2,2)\}}=
@@ -107,7 +126,7 @@ for the precise definition).
     \(\pi = \perm{3,4,2,1,5}\) but is not contained in \(\sigma = \perm{4,2,3,1,5}\).
 \end{example}
 
-Let us consider the figure for the permutation \(\pi\). The subsequence \(325\) is
+Let us consider the plot for the permutation \(\pi\). The subsequence \(325\) is
 an occurrence of \(213\) in the classical sense and the remaining points of \(\pi\)
 are not contained in the regions corresponding to the shaded boxes in \(p\).
 \begin{equation*}
@@ -120,7 +139,7 @@ are not contained in the regions corresponding to the shaded boxes in \(p\).
 The subsequence \(325\) is therefore an occurence of the pattern \(p\) in \(\pi\) and
 \(\pi\) contains \(p\).
 
-Now we consider the figure for the permutation \(\sigma\). This permutation
+Now we consider the plot for the permutation \(\sigma\). This permutation
 avoids \(p\) since for every occurence of the classical pattern \(\perm{2,1,3}\)
 there is at least one point in one of the shaded boxes. For example, consider the
 subsequence\(315\) in \(\sigma\), this is an occurence of \(\perm{2,1,3}\) but

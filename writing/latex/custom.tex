@@ -380,6 +380,12 @@
 }
 %new column for tabularx
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
+%saveable enumerate
+\makeatletter
+\def\saveenum{\xdef\@savedenum{\the\c@enumi\relax}}
+\def\resetenum{\global\c@enumi\@savedenum}
+\makeatother
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "msc-tannock-2016"
