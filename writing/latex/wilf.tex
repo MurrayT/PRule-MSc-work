@@ -3,18 +3,17 @@
 Another question often asked in the field of permutation patterns is that
 of Wilf-equivalence. Two patterns \(\pi\) and \(\sigma\) are said to be
 Wilf-equivalent if their avoidance sets have the same size at each
-length. More formally
+length. More formally:
 
 \begin{definition}[Wilf-equivalence]
     Two patterns \(\pi\) and \(\sigma\) are said to be \emph{Wilf-equivalent}
     if for all \(k_{} \ge 0\), \(\size{\av[k]{\pi}} = \size{\av[k]{\sigma}}\).
-
     Two sets of permutation patterns \(R\) and \(S\) are are
     \emph{Wilf-equivalent} if for all \(k_{} \ge 0\),
     \(\size{\av[k]{R}} = \size{\av[k]{S}}\).
 \end{definition}
 
-Wilf-equivalence is of interest as if two permutation classes are enumerated
+Wilf-equivalence is of interest since if two permutation classes are enumerated
 in the same way then there should exist a bijection between them, and therefore
 any other combinatorial object that they represent.
 
@@ -24,33 +23,38 @@ Coincidence is therefore a stronger equivalence condition than Wilf-equivalence.
 
 There are a number of symmetries we can use when examining Wilf-equivalences
 to reduce the amount of work, it can be easily seen that the reverse, complement
-and inverse operations preserve enumeration, and therefore these classes are trivially
+and inverse operations (see \FigureRef{fig:symm}) preserve enumeration, and therefore these classes are trivially
 Wilf-equivalent.
-
+\begin{figure}[!htb]
 \begin{align*}
     \rev{\textpattern{}{2,3,1}{}} &= \textpattern{}{1,3,2}{}\\
     \com{\textpattern{}{2,3,1}{}} &= \textpattern{}{2,1,3}{}\\
     \inv{\textpattern{}{2,3,1}{}} &= \textpattern{}{3,1,2}{}
 \end{align*}
+\caption{The operations reverse, complement and inverse for the pattern 231}
+\label{fig:symm}
+\end{figure}
 
 The group of symmetries on permutations is isomorphic to the dihedral group
 of order \(8\), the group of symmetries of a square. \emph{Reverse-inverse} and
-\emph{reverse} correspond tothe generators of the dihedral group.
+\emph{reverse} correspond can be taken as generators of the dihedral group.
 
 Since we are always considering Wilf-equivalences in the set \(\av{S}\) we
-must only use these symmetries when they preserve the dominating pattern.
+must only use these symmetries when they preserve the dominating pattern, if we
+were to allow other symmetries, then the equivalences calculated in the previous
+section do not necessarily hold.
 
 Throughout this section we will consider Wilf-equivalences of patterns
-whilst avoiding the \emph{Dominating Pattern} \(\perm{2,3,1}\). We will
+whilst avoiding the \emph{dominating pattern} \(\perm{2,3,1}\). We will
 use \(\mathcal{C}\) to denote \(\av{\perm{2,3,1}}\) and \(C(x)\) will
 be the usual Catalan generating function satisfying \(C(x) = 1 + C(x)^2\).
 This is easy to see by structural decomposition around the maximum, as
-shown in \FigureRef{fig:decompmax}
+shown in \FigureRef{fig:decompmax}.
 
 \begin{figure}[!ht]
     \centering
     \decompmax{0/1,1/0}{A}{}{}{B}
-    \caption{Structural decomposition of a typical avoider of 231}
+    \caption{Structural decomposition of a non-empty avoider of 231}
     \label{fig:decompmax}
 \end{figure}
 
@@ -58,7 +62,7 @@ The elements to the left of the maximum, \(A\), have the structure of a \(231\)
 avoiding permutation, and the elements to the right of the maximum, \(B\), have the
 structure of a \(\perm{2,3,1}\) avoiding permutation. Furthermore, all the
 elements in \(A\) lie below all of the elements in \(B\). We call \(A\) the
-\emph{lower-left region} and \(B\) the \emph{upper-right region}.
+\emph{lower-left section} and \(B\) the \emph{upper-right section}.
 
 We can also decompose a permutation avoiding \(\perm{2,3,1}\) around the leftmost
 point, giving a similar figure.
@@ -66,10 +70,10 @@ point, giving a similar figure.
 \section{Wilf-classes with patterns of length 1.}
 When considering the mesh patterns of length \(2\) it will be useful to know
 the Wilf-equivalence classes of the mesh patterns of length \(1\) inside
-\(\av{\perm{2,3,1}}\), this means that we are sonsdering the set \(\av{\{231,p\}}\)
-where \(p\) is a mesh-pattern.
+\(\av{\perm{2,3,1}}\), this means that we are consdering the set \(\av{\{231,p\}}\)
+where \(p\) is a mesh-pattern of length 1.
 
-It can be seen that the patterns in the following set are set equivalent.
+The patterns in the following set are set equivalent,
 \begin{equation*}
     \left\{
         \begin{array}{c}
@@ -85,7 +89,7 @@ It can be seen that the patterns in the following set are set equivalent.
     \end{array}
     \right\}
 \end{equation*}
-This is due to the fact that every permutation except the empty
+due to the fact that every permutation, except the empty
 permutation must contain an occurrence of all of these patterns.
 
 The pattern \(\textpattern{}{1}{0/0,1/0,0/1,1/1}\) is in its own
@@ -97,16 +101,16 @@ have generating function \(\var(x) = C(x)-x\).
 The pattern \(p = \textpattern{}{1}{0/1,1/0}\) is one of the
 quadrant marked mesh patterns studied by Remmel,
 Kitaev and Tiefenbruck\cite{2012arXiv1201.6243K}. Alternatively we can enumerate
-avoiders by decomposing a typical avoider of \(p_1\) around the maximum element
+avoiders by decomposing a non-empty avoider of \(p_1\) around the maximum element
 in order to give the following structural decomposition.
 \begin{equation*}
     \scriptvar = \varepsilon \sqcup \decompmax{0/1,1/0}{\scriptvar}{}{}{\mathcal{C}\setminus\varepsilon}
 \end{equation*}
-Since if the upper right section was empty the maximum would create an
+Since if the upper-right section was empty the maximum would create an
 occurrence of the pattern, however no points in this section can create
 an occurrence since the maximum lies in a region corresponding to the
-shading in \(p\). The lower left region however can create occurrences
-of \(p\) and therefore must also avoid \(p\) as well as \(\perm{2,3,1}\).
+shading in \(p\). The lower-left section however can create occurrences
+of \(p\) and therefore must also avoid \(p\), as well as \(\perm{2,3,1}\).
 This gives the generating function of avoiders to be the function \(\var(x)\)
 satisfying.
 \begin{align*}
@@ -125,13 +129,13 @@ Evauluation of this generating function gives the Fine numbers
 \nextvar[\varfine]
 It can be shown by use of \PropositionRef{prop:dom2} that the patterns
 \textpattern{}{1}{0/0,1/1} and \(q_1 = \textpattern{}{1}{0/0,0/1,1/1}\) are
-coincident. Consider the decomposition of an avoider of \(q_1\) in
-\(\av{\perm{2,3,1}}\) around the maximum
+coincident. Consider the decomposition of a non-empty avoider of \(q_1\) in
+\(\av{\perm{2,3,1}}\) around the maximum:
 \begin{equation*}
     \scriptvar_1 =\varepsilon \sqcup \decompmax{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}
 \end{equation*}
 This can be explained succinctly by the fact that a permutation containing
-\(q_1\) starts with it's maximum, by not allowing the left part of the
+\(q_1\) starts with it's maximum, by not allowing the lower-left section of the
 \(\perm{2,3,1}\) avoider to be empty we prevent an occurrence from ever happening.
 
 Consider \(q_2 = \textpattern{}{1}{0/1,1/0,1/1}\), avoiding this pattern
@@ -147,13 +151,13 @@ perform the decomposition around the leftmost element
 \begin{equation*}
     \mathcal{\var}_3 =\varepsilon \sqcup \decompleft{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}
 \end{equation*}
-All of these classes have the same generating function namely
+All of these classes have the same generating function, namely
 \begin{equation*}
-    \var(x) = 1 + xC(x)(C(x)-1)
+    \var(x) = 1 + xC(x)(C(x)-1).
 \end{equation*}
 Enumeration of this generating function gives
 \begin{equation*}
-    1, 0, 1, 3, 9, 28, 90, 297, 1001, 3432, 11934,\dotsc
+    1, 0, 1, 3, 9, 28, 90, 297, 1001, 3432, 11934,\dotsc \tag{\href{https://oeis.org/A000245}{OEIS: A000245} with offset}
 \end{equation*}
 
 \nextvar[\varmaxl]
@@ -161,23 +165,23 @@ There is one pattern of length \(1\) still to consider. The pattern
 \(r = \textpattern{}{1}{0/0,1/0,1/1}\) is avoided by all permutations
 that do not end in their minimum. Considering the standard decomposition
 of a \(\perm{2,3,1}\) avoider around the maximum we can see that an avoider
-of \(r\) must fit into the following form precisely once.
+of \(r\) must fit into precisely on of the following twp forms.
 \begin{equation*}
     \scriptvar = \varepsilon \sqcup
     \underbrace{\decompmax{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}}_\text{
         Minimum comes before the maximum.
     } \sqcup
     \underbrace{\decompmax{0/0,0/1,1/0}{}{}{}{\scriptstyle{\scriptvar\setminus\varepsilon}}}_\text{
-        Minimum is after the maximum, cannot be last.
+        Minimum is after the maximum, minimum cannot be last.
     }
 \end{equation*}
 Therefore this particular class has generating function \(\var(x)\) satisfying
 \begin{equation*}
     \var(x) = 1 + xC(x)(C(x)-1) + x(\var(x)-1)
 \end{equation*}
-This generating function can be enumerated to give
+This generating function is enumerated to give
 \begin{equation*}
-    	1, 0, 1, 4, 13, 41, 131, 428, 1429, 4861, 16795,\dotsc
+    	1, 0, 1, 4, 13, 41, 131, 428, 1429, 4861, 16795,\dotsc \tag{\href{https://oeis.org/A141364}{OEIS: A141364} }
 \end{equation*}
 
 \section{Wilf-classes with patterns of length 2}
@@ -185,26 +189,27 @@ By use of the set equivalences from \ChapterRef{chap:coincs} we know there are
 at most \(95\) Wilf-equivalence classes.
 
 In order to consider symmetries we must only take the symmetries that preserve
-the pattern \(\perm{2,3,1}\). If we take any of the symmetries alone the
-permutation is different. The only symmetry that preserves the pattern
-\(\perm{2,3,1}\) is that of \emph{reverse-complement-inverse}. Using this
+the pattern \(\perm{2,3,1}\). The only symmetry that preserves the pattern
+\(\perm{2,3,1}\) is \emph{reverse-complement-inverse}. Using this
 symmetry to merge classes gives us \(61\) classes of trivial
-Wilf-equivalences.
+Wilf-equivalences, these Wilf-equivalences are explained by patterns being either
+coincident, or being the reverse-complement-inverse of a pattern.
 
-Computing avoiders up to length \(10\) gives us \(23\) Wilf-classes,
-of which \(13\) are non-trivial.
+Computing avoiders up to length \(10\) suggest that there are at least \(23\)
+Wilf-classes, of which \(13\) are non-trivial.
 
 When considering explanations of Wilf-equivalences we consider how the
 permutations correspond to set-partitions.
 
 \begin{note}
     \label{not:setequiv}
-    The avoiders of the pattern \(q = \mperm{2,3,1}{\{(1,0),(1,1),(1,2),(1,3)\}}\)
+    The avoiders of the pattern \(q = \mperm{2,3,1}{\{(1,0),(1,1),(1,2),(1,3)\}}\),
+    \textpattern{}{2,3,1}{1/0,1/1,1/2,1/3},
     in \(\mathfrak{S}_n\) are in one-to-one correspondence with partitions of
-    \(\nrange{n}\). \cite{DBLP:journals/ejc/Claesson01}
+    \(\nrange{n}\). (\textcite[Prop.~2]{DBLP:journals/ejc/Claesson01})
 \end{note}
 \begin{proof}
-    Let \(\pi\) be a permutation in \(\av[n]{q}\) take the permutation
+    Let \(\pi\) be a permutation in \(\av[n]{q}\)
     in one-line notation and insert a dash between each ascent in \(\pi\). This
     corresponds to set partitions where the blocks are the elements between the
     dashes, the blocks are listed in increasing order of their least element,
@@ -213,11 +218,14 @@ permutations correspond to set-partitions.
 
 \begin{example}
     Given the permutation \(\pi = \perm{5,4,2,1,3,9,6,8,7}\) this corresponds to the
-    partition \(\{\{1,2,4,5\},\{3\},\{6,9\},\{8,7\}\}\).
+    partition \(\{\{5,4,2,1\},\{3\},\{9,6\},\{7,8\}\}\).
 \end{example}
 
+We call the least element in each block the \emph{block bottom}
+
 We are looking at permutations in \(\av{\perm{2,3,1}}\), all of these permutations
-also avoid the mesh pattern in \NoteRef{not:setequiv}.
+also avoid the mesh pattern in \NoteRef{not:setequiv}, \ie
+\(\av{\perm{2,3,1}} \subset \av{q}\).
 
 The classes containing the following patterns are Wilf-equivalent
 \begin{equation*}
@@ -317,7 +325,8 @@ any avoider of \(\perm{2,3,1}\) and the other must contain a
 decreasing sequence by \LemmaRef{lem:incdec}.
 Let us consider the first pattern separately. In order to
 avoid \(\perm{2,3,1}\) across the regions corresponding to the unshaded boxes
-we can add some additional restrictions
+we can add some additional restrictions, \ie all elements in the top region must
+be to the right of all elements in the bottom region.
 \begin{equation}
     \raisebox{0.6ex}{
     \begin{tikzpicture}[scale=1, baseline=(current bounding box.center)]
@@ -342,8 +351,9 @@ therefore gives us
 \end{equation*}
 
 \subsection{}
-The set/symmetry classes containing the following patterns are
-Wilf-equivalent in \(\av{\perm{2,3,1}}\) but are not set equivalent or
+\nextvar
+The trivial Wilf-classes containing the following patterns are
+Wilf-equivalent in \(\av{\perm{2,3,1}}\) but are not coincident or
 symmetries of each other
 \begin{equation*}
     m_1 = \pattern{}{1,2}{0/0,0/2,
@@ -359,7 +369,7 @@ instead of the avoiders due to the amount of shadings in the mesh.
 
 We look at the containers of the pattern \(m_1\), there can only ever
 be one occurrence of this pattern in a permutation corresponding to
-the last point in the permutation and the minimum.Consider an occurrence of \(m_1\),
+the last point in the permutation and the minimum. Consider an occurrence of \(m_1\),
 the points in the two regions corresponding to the the two boxes must form decreasing
 subsequences.
 For a permutation of length \(k\) if we fix the number of points in
@@ -378,7 +388,11 @@ points and therefore there are \(k-1\) containers of length \(k\).
 
 Therefore these two patterns have been shown to have the same number of
 avoiders of length \(k\) for all \(k\) and are Wilf-equivalent.
-The avoiders have enumeration
+The avoiders have general form
+\begin{equation*}
+  \var_k = C_k - (k-1), \var_0 = 1
+\end{equation*}
+and have enumeration
 \begin{equation*}
     1, 1, 1, 3, 11, 38, 127, 423, 1423, 4854, 16787,\dotsc
 \end{equation*}
@@ -395,17 +409,15 @@ when avoiders are considered in \(\av{\perm{2,3,1}}\)
     m_4 = \pattern{}{2,1}{0/1,0/2,1/0,1/1,1/2,2/0} \label{eq:other}
 \end{align}
 
-First we consider the coincidence in two parts then consolidate these parts.
-Consider the coincidence shown in \eqref{eq:singleud}. The easiest way to
-show that these are equinumerous is to consider the containers in the realm
-of set partitions.
+First we prove the Wilf-equivalence between \(m_1\) and \(m_2\) shown in
+\eqref{eq:singleud}. The easiest way to
+show that these are equinumerous is to consider the containers as set partitions.
 
-Considering an occurrence of either of these patterns in a permutation by
-the mesh sets we know the following about the points corresponding
-to the points in the patterns.
+Considering an occurrence of either of these patterns in a permutation  we know
+the following about the points corresponding to the points in the patterns.
 \begin{itemize}
     \item The point corresponding to the first point in both patterns
-        must lie in the first block of our set partition (there are
+        must lie in the first block of the set partition (there are
         no points southwest from it in the permutation).
     \item The point corresponding to the second point in both patterns
         is a block bottom (there are no points southeast of it in
@@ -422,12 +434,14 @@ to the points in the patterns.
 This tells us that an occurence of the patterns must happen when there
 is a singleton block occurring after the first block. The difference
 between the patterns is in the underlying classical pattern. This
-means that permtuations containing \(m_1\) correspond to set partitions
+means that permutations containing \(m_1\) correspond to set partitions
 with a singleton block with value one higher than some element in the
 block containing \(1\). The permutations containing \(m_2\) correspond
 to the set partitions containing a block with block bottom having value
 one lower than some element in the block containing \(1\) and if this
-block is not the block containing \(1\) then it is a singleton block.
+block is not the block containing \(1\) then it is a singleton block. This
+proves that the containers of both of these patterns in \(\av{231}\) are
+equinumerous, and therefore so are their avoiders.
 
 Consider an avoider of \(\perm{2,3,1}\) and \(m_3\). We can perform
 the decomposition around the maximum
@@ -467,10 +481,8 @@ in \(\av{\perm{2,3,1}}\) with generating function satisfying
 \end{equation*}
 This can be enumerated to give the sequence
 \begin{equation*}
-    1, 1, 1, 2, 6, 19, 61, 200, 670, 2286, 7918,\dotsc
+    1, 1, 1, 2, 6, 19, 61, 200, 670, 2286, 7918,\dotsc \tag{\href{https://oeis.org/A035929}{OEIS: A035929} offset 1}
 \end{equation*}
-This corresponds to OEIS sequence number \href{https://oeis.org/A035929}{A035929}
-with offset 1.
 
 \subsection{}
 \nextvar
@@ -486,12 +498,12 @@ in \(\av{\perm{2,3,1}}\)
                     2/0,2/1,2/2}
 \end{equation*}
 
-First consider the structure of an avoider of \(m_1\) and \(\perm{2,3,1}\)
-we can perform the usual structural decomposition of an avoider
+First consider the structure of an avoider of \(m_1\) and \(\perm{2,3,1}\).
+We can perform the usual structural decomposition of an avoider
 of \(\perm{2,3,1}\) where we consider decomposition around the maximum.
 % Any permutation in \(\av{\perm{2,3,1},m_1}\) is in the following set
 % precisely once.
-If \(\scriptvar_1\) set \(\av{\perm{2,3,1},m_1}\) then any permutation in
+If \(\scriptvar_1\) is the set \(\av{\perm{2,3,1},m_1}\) then any permutation in
 \(\scriptvar_1\) either starts with a maximum or does not, giving us the
 decomposition
 \begin{equation*}
@@ -533,7 +545,7 @@ The classes containing the following patterns are Wilf-equivalent
 \end{equation*}
 
 First consider the decomposition of avoiders of \(m_1\) in \(\av{\perm{2,3,1}}\)
-around the maximum, we have different conditions if we start with the maximum or not.
+around the maximum. We have different conditions if we start with the maximum or not.
 \begin{equation*}
     \scriptvar_1 =
     \varepsilon \sqcup
@@ -543,7 +555,7 @@ around the maximum, we have different conditions if we start with the maximum or
 \end{equation*}
 
 Now we decompose the avoiders of \(m_2\) around the leftmost point, we have similar
-conditions for starting withthe maximum
+conditions for starting with the maximum
 \begin{equation*}
     \scriptvar_2 =
     \varepsilon \sqcup
@@ -592,7 +604,7 @@ interaction with any points in box \(b_2\). If there is a point
 in \(b_2\) then any points in \(b_1\) to the left of this point must
 be lower than any points to the right of this point. By extension,
 if \(b_2\) contains a decreasing sequence with \(k\) points, there
-are \(k+1\) non-interacting avoiders of \(\perm{2,3,1}\) in \(b_3\).
+are \(k+1\) non-interacting avoiders of \(\perm{2,3,1}\) in \(b_1\).
 
 Now in \(m_2\) and \(m_4\) containers we can use the same method as in
 \eqref{eqn:splitboxes} to separate the two decreasing sequences in the
@@ -683,7 +695,7 @@ We have that \(\var_3(x) = 1+xC(x)= \var(x) \) so all four patterns are Wilf-equ
  This is an offset of the Catalan numbers.
 
 \subsection{}
-\nextvar\nextvar
+\nextvar
 The patterns
 \begin{equation*}
     \begin{aligned}
