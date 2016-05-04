@@ -70,7 +70,7 @@ point, giving a similar figure.
 \section{Wilf-classes with patterns of length 1.}
 When considering the mesh patterns of length \(2\) it will be useful to know
 the Wilf-equivalence classes of the mesh patterns of length \(1\) inside
-\(\av{\perm{2,3,1}}\), this means that we are consdering the set \(\av{\{231,p\}}\)
+\(\av{\perm{2,3,1}}\), this means that we are considering the set \(\av{\{231,p\}}\)
 where \(p\) is a mesh-pattern of length 1.
 
 The patterns in the following set are set equivalent,
@@ -99,8 +99,8 @@ have generating function \(\var(x) = C(x)-x\).
 
 \nextvar
 The pattern \(p = \textpattern{}{1}{0/1,1/0}\) is one of the
-quadrant marked mesh patterns studied by Remmel,
-Kitaev and Tiefenbruck\cite{2012arXiv1201.6243K}. Alternatively we can enumerate
+quadrant marked mesh patterns studied by \textcite{2012arXiv1201.6243K}.
+Alternatively we can enumerate
 avoiders by decomposing a non-empty avoider of \(p_1\) around the maximum element
 in order to give the following structural decomposition.
 \begin{equation*}
@@ -119,7 +119,7 @@ satisfying.
     \var(x) &= \frac{1}{1+x-xC(x)}
 \end{align*}
 
-Evauluation of this generating function gives the Fine numbers
+Evaluation of this generating function gives the Fine numbers
 (\href{https://oeis.org/A000957}{OEIS: A000957}).
 \begin{equation*}
     1, 0, 1, 2, 6, 18, 57, 186, 622, 2120, 7338,\dotsc
@@ -165,7 +165,7 @@ There is one pattern of length \(1\) still to consider. The pattern
 \(r = \textpattern{}{1}{0/0,1/0,1/1}\) is avoided by all permutations
 that do not end in their minimum. Considering the standard decomposition
 of a \(\perm{2,3,1}\) avoider around the maximum we can see that an avoider
-of \(r\) must fit into precisely on of the following twp forms.
+of \(r\) must fit into precisely on of the following two forms.
 \begin{equation*}
     \scriptvar = \varepsilon \sqcup
     \underbrace{\decompmax{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}}_\text{
@@ -181,7 +181,7 @@ Therefore this particular class has generating function \(\var(x)\) satisfying
 \end{equation*}
 This generating function is enumerated to give
 \begin{equation*}
-    	1, 0, 1, 4, 13, 41, 131, 428, 1429, 4861, 16795,\dotsc \tag{\href{https://oeis.org/A141364}{OEIS: A141364} }
+    	1, 0, 1, 4, 13, 41, 131, 428, 1429, 4861, 16795,\dotsc \tag{\href{https://oeis.org/A141364}{OEIS: A141364}}
 \end{equation*}
 
 \section{Wilf-classes with patterns of length 2}
@@ -191,7 +191,7 @@ at most \(95\) Wilf-equivalence classes.
 In order to consider symmetries we must only take the symmetries that preserve
 the pattern \(\perm{2,3,1}\). The only symmetry that preserves the pattern
 \(\perm{2,3,1}\) is \emph{reverse-complement-inverse}. Using this
-symmetry to merge classes gives us \(61\) classes of trivial
+symmetry to reduces the number of Wilf-classes gives us \(61\) classes of trivial
 Wilf-equivalences, these Wilf-equivalences are explained by patterns being either
 coincident, or being the reverse-complement-inverse of a pattern.
 
@@ -283,7 +283,7 @@ and the number of length \(n\) avoiders is
 for \(n \ge 2\) where \(C_n\) is the \(n\)th Catalan number, the number of
 \(\perm{2,3,1}\) avoiders of length \(n\). This gives the sequence
 \begin{equation*}
-    1, 1, 1, 4, 12, 37, 118, 387, 1298, 4433, 15366,\dotsc
+    1, 1, 1, 4, 12, 37, 118, 387, 1298, 4433, 15366,\dotsc \tag{\(C_n\) - \href{https://oeis.org/A001453}{A001453} offset 2}
 \end{equation*}
 
 \subsection{}
@@ -347,7 +347,7 @@ The containers
 have generating function \(\frac{x^2C(x)}{(1-x)}\). Enumerating avoiders
 therefore gives us
 \begin{equation*}
-    1, 1, 1, 3, 10, 33, 109, 364, 1233, 4236, 14740,\dotsc
+    1, 1, 1, 3, 10, 33, 109, 364, 1233, 4236, 14740,\dotsc \tag{\(C_n -\) \href{https://oeis.org/A014137}{A014137} offset 2}
 \end{equation*}
 
 \subsection{}
@@ -394,7 +394,7 @@ The avoiders have general form
 \end{equation*}
 and have enumeration
 \begin{equation*}
-    1, 1, 1, 3, 11, 38, 127, 423, 1423, 4854, 16787,\dotsc
+    1, 1, 1, 3, 11, 38, 127, 423, 1423, 4854, 16787,\dotsc \tag{\(C_n -\) \href{https://oeis.org/A000027}{A000027} offset 2}
 \end{equation*}
 
 \subsection{}
@@ -431,7 +431,7 @@ the following about the points corresponding to the points in the patterns.
     corresponding to the second point in both patterns contains only the point
     (it is a singleton block).
 \end{itemize}
-This tells us that an occurence of the patterns must happen when there
+This tells us that an occurrence of the patterns must happen when there
 is a singleton block occurring after the first block. The difference
 between the patterns is in the underlying classical pattern. This
 means that permutations containing \(m_1\) correspond to set partitions
@@ -498,7 +498,7 @@ in \(\av{\perm{2,3,1}}\)
                     2/0,2/1,2/2}
 \end{equation*}
 
-First consider the structure of an avoider of \(m_1\) and \(\perm{2,3,1}\).
+First consider the structure of an avoider of \(m_1\) in \(\av{\perm{2,3,1}}\).
 We can perform the usual structural decomposition of an avoider
 of \(\perm{2,3,1}\) where we consider decomposition around the maximum.
 % Any permutation in \(\av{\perm{2,3,1},m_1}\) is in the following set
@@ -511,7 +511,7 @@ decomposition
     \decompmax{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}} \sqcup
     \decompmax{0/1,1/0,0/0}{}{}{}{\mathcal{\varfine}}
 \end{equation*}
-
+Where \(\mathcal{\varfine} = \av{(231,\textpattern{}{1}{0/1,1/0})}\).
 Now consider the decomposition around the maximum of a permutation in
 \(\scriptvar_2 = \av{\perm{2,3,1},m_2}\), the permutation either ends with
 the maximum, or it does not, so we get
@@ -527,7 +527,7 @@ having generating function satisfying
 \end{equation*}
 This generating function gives
 \begin{equation*}
-    1, 1, 1, 4, 11, 34, 108, 354, 1187, 4054, 14054,\dotsc
+    1, 1, 1, 4, 11, 34, 108, 354, 1187, 4054, 14054,\dotsc \tag{\(C_n - \)\href{https://oeis.org/A000958}{A000958} offset 2}
 \end{equation*}
 
 
@@ -553,7 +553,7 @@ around the maximum. We have different conditions if we start with the maximum or
     \sqcup
     \decompmax{0/0,0/1,1/0}{}{}{}{\scriptvar_1}
 \end{equation*}
-
+Where \(\mathcal{\varmaxl}_1 = \av{(231,\textpattern{}{1}{0/0,0/1,1/1})}\).
 Now we decompose the avoiders of \(m_2\) around the leftmost point, we have similar
 conditions for starting with the maximum
 \begin{equation*}
@@ -616,7 +616,7 @@ function so all four classes are Wilf-equivalent.
 
 Evaluating the generating function \(\var(x)\) gives us the enumeration
 \begin{equation*}
-    1, 1, 1, 2, 6, 20, 68, 233, 805, 2807, 9879,\dotsc
+    1, 1, 1, 2, 6, 20, 68, 233, 805, 2807, 9879,\dotsc\tag{\(C_n - \) \href{https://oeis.org/A014138}{A014138} offset 1}
 \end{equation*}
 
 \subsection{}
@@ -669,6 +669,7 @@ to give
     \scriptvar_3 = \varepsilon \sqcup
     \decompmax{0/1,1/0}{\mathcal{\varfine}}{}{}{\scriptvar_3}
 \end{equation*}
+Where \(\mathcal{\varfine} = \av{(231,\textpattern{}{1}{0/1,1/0})}\).
 The generating function derived satisfies \(\var_3(x) = 1 + x\varfine(x)\var_3(x)\).
 The fourth pattern can be decomposed around the maximum in a similar
 manner.
@@ -690,7 +691,7 @@ We need to show that the generating function \(\var_3(x)\) is the same as \(\var
 We have that \(\var_3(x) = 1+xC(x)= \var(x) \) so all four patterns are Wilf-equivalent
  and have enumeration sequence
  \begin{equation*}
-     1, 1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862,\dotsc
+     1, 1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862,\dotsc \tag{\href{https://oeis.org/A000108}{OEIS: A000108} offset 1}
  \end{equation*}
  This is an offset of the Catalan numbers.
 
@@ -915,13 +916,14 @@ This gives us the following generating function
     \var(x) = 1 + x + xC(x)(C(x)-1) \label{eq:qgen}
 \end{equation}
 
-Now we consider decomposition of an avoider
+Now we consider decomposition of an avoider of
 \textpattern{}{1,2}{0/1,0/2,1/0,1/1,1/2,2/0,2/2}  in \(\av{231}\) around the maximum,
 this avoider has form
 \begin{equation*}
     \scriptvar_2 = \varepsilon \sqcup
     \decompmax{0/1,1/0}{\mathcal{\varmaxl}_2}{}{}{\mathcal{C}}
 \end{equation*}
+Where \(\mathcal{\varmaxl}_2 = \av{(231,\textpattern{}{1}{0/1,1/0,1/1})}\).
 This gives us the generating function
 \begin{equation*}
     \begin{aligned}
@@ -949,6 +951,7 @@ around the leftmost point.
     \decompleft{0/1,1/0}{\scriptstyle \scriptvar_3\setminus\varepsilon}{}{}{\mathcal{C}}
     \sqcup \decompleft{0/0,0/1,1/0}{}{}{}{\varmaxl_3}
 \end{equation*}
+Where \(\mathcal{\varmaxl}_3 = \av{(231,\textpattern{}{1}{0/0,0/1,1/0})}\).
 This gives generating function \(\var_3(x)\) satisfying
 \begin{equation*}
     \begin{aligned}
@@ -963,6 +966,5 @@ This is equivalent to \EquationRef{eq:qgen}, and therefore
 the classes containing all of these patterns are Wilf-equivalent.
 The classes have enumeration
 \begin{equation*}
-    1, 1, 1, 3, 9, 28, 90, 297, 1001, 3432, 11934,\dotsc
+    1, 1, 1, 3, 9, 28, 90, 297, 1001, 3432, 11934,\dotsc \tag{\href{https://oeis.org/A071724}{OEIS: A071724 with offset}}
 \end{equation*}
-This is an offset of OEIS Sequence number \href{http://oeis.org/A071724}{A071724}.
