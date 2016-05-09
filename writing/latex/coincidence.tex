@@ -42,7 +42,7 @@ where \(r((i,j))\) is defined by
     \end{cases}
 \end{equation*}
 
-If the shading set \(D\) is non-empty we can modify definition of the directions
+If the shading set \(D\) is non-empty we can modify the definition of the directions
 slightly
 \begin{equation*}
     \begin{aligned}
@@ -80,7 +80,7 @@ It is also useful to think about adding an ascent, or descent, into a pattern
 \begin{definition}
 Considering
 only adding the ascent, as adding a descent is very similar.
-Given a mesh pattern \(p = (\pi, R)\) \(\adda[D]{p}{(a,b)}\) gives a mesh
+Given a mesh pattern \(p = (\pi, R)\), \(\adda{p}{(a,b)}\) gives a mesh
 pattern \(p^\prime = (\pi^\prime,R^\prime)\) with length \(\setsize{\pi}+2\) defined by
 \begin{equation*}
     \pi^\prime(i) = \begin{cases}
@@ -250,7 +250,9 @@ In order to prove this proposition we must first make the following note.
 \end{proof}
 
 All coincidence classes of \(\av{\{\perm{3,2,1}, \mperm{2,1}{R}\}}\) can be
-explained by application of \PropositionRef{prop:dom1}. % repeated?
+explained by application of \PropositionRef{prop:dom1}. By experimentation
+we see that there are at least \(29\) coincidence classes, and all of these
+coincidences are explained by this Proposition.
 
 This rule can be understood very in graphical form. In the
 pattern in \FigureRef{fig:rule1} we can gain shading in three boxes since if
@@ -489,9 +491,11 @@ rule:
     \noindent Assume without meaningful loss of generality that \(R_2 = R_1 \cup \{(a,b)\}\).
 
     Consider a permutation \(\omega\) that contains an occurrence of \(m_2\).
-    By \NoteRef{not:downcmesh} any of these occurrences is also an occurrence
-    of \(m_1\). This proves that every occurrence of \(m_2\) is also an
-    occurrence of \(m_1\) and therefore \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\).
+    By \NoteRef{not:downcmesh},
+    %  any of these occurrences is also an occurrence
+    % of \(m_1\). This proves that every occurrence of \(m_2\) is also an
+    % occurrence of \(m_1\) and therefore
+     \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\) as before.
 
     Now consider a permutation \(\varrho\) in \(\av{\pi}\) that contains an
     occurrence of \(m_1\). If the region corresponding to the box \((a,b)\)

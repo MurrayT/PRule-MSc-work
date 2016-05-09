@@ -2,16 +2,24 @@
 \section{What is a Permutation?}
 In \emph{The Art of Computer Programming} \cite[p.~45]{Knuth:1997:ACP:260999} Knuth states,
 \enquote{A \emph{permutation of \(n\) objects} is an arrangement of \(n\) distinct
-objects in a row}. When considering permutations we can consider them as
+objects in a row}.
+When considering permutations we can consider them as
 occurring on the set \(\nrange{n} = \setrange{1}{n}\), therefore a permutation
 is a \emph{bijection} \(\pi:\nrange{n} \mapsto \nrange{n}\). A
 permutation \(\pi\) can be written in two-line notation
 \begin{equation*}
 \pi = \twoline{1,2,\dotso,n}{\pi(1),\pi(2),\dotso,\pi(n)}
 \end{equation*}
-However, the most frequent notation used in computer science is
-\emph{one-line notation}, in this form we drop the top line of the two line
-notation and are left with the following.
+However,
+This
+% most frequent
+notation
+% used in computer science
+is called
+\emph{one-line notation}.
+% in this form we drop the top line of the two line
+% notation and are left with the following.
+In this form we write the entries of the permutation in order, and get
 \begin{equation*}
 \pi = \perm{\pi(1),\pi(2),\dotso,\pi(n)}
 \end{equation*}
@@ -63,7 +71,7 @@ For example the permutation \(\pi = \perm{2,4,1,5,3}\) contains the pattern
 \(\sigma = \perm{2,3,1}\), since the second, fourth and fifth elements
 (\(453\)) are order isomorphic to \(\perm{231}\).
 This can be seen graphically below, the subsequence order isomorphic to \(\sigma\)
-are highlighted.
+is highlighted.
 \begin{equation*}
     \pattern{2,4,5}{2,4,1,5,3}{}
 \end{equation*}
@@ -94,7 +102,7 @@ addition that we shade the unit square with bottom left corner \((i,j)\) for eac
     \pattern{}{ 2, 1, 3 }{ 0/1, 0/2, 1/0, 1/1, 2/1, 2/2 }
 \end{equation*}
 
-We define containment, and avoidance, of the pattern \(p\) in the permutation
+We define containment (denoted \(p\preceq \pi\)), and avoidance, of the pattern \(p\) in the permutation
 \(\tau\) on mesh patterns analogously to classical containment, and avoidance,
 of \(\pi\) in \(\tau\) with the additional restrictions on the relative
 position of the occurrence of \(\pi\) in \(\tau\). These restrictions say that
@@ -142,7 +150,7 @@ The subsequence \(325\) is therefore an occurrence of the pattern \(p\) in \(\pi
 Now we consider the plot for the permutation \(\sigma\). This permutation
 avoids \(p\) since for every occurrence of the classical pattern \(\perm{2,1,3}\)
 there is at least one point in one of the shaded boxes. For example, consider the
-subsequence\(315\) in \(\sigma\), this is an occurrence of \(\perm{2,1,3}\) but
+subsequence \(315\) in \(\sigma\), this is an occurrence of \(\perm{2,1,3}\) but
 not the mesh pattern since the points with values \(4\) and \(2\) are in the
 regions corresponding to the boxes \((0,1)\) and \((0,2)\), which are shaded in
 \(p\). This is shown in the figure below.
