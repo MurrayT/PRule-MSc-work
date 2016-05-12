@@ -8,6 +8,8 @@
 *.log
 *.lot
 *.lox
+*.nav
+*.snm
 *.out
 *.run.xml
 *.toc

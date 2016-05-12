@@ -1,0 +1,52 @@
+\documentclass[11pt]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{CambridgeUS}
+  % \useinnertheme{default}
+  \setbeamertemplate{itemize items}[default]
+  \setbeamertemplate{enumerate items}[default]
+  \setbeamertemplate{section in toc}{%
+    {\usebeamercolor[fg]{structure}\inserttocsectionnumber.}~\inserttocsection \par}
+  \setbeamertemplate{subsection in toc}{%
+      {\scriptsize{\usebeamercolor[fg]{structure}\quad\hbox{$\blacktriangleright$}}}~\inserttocsubsection \par}
+}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% \usepackage{fontspec}
+% \setmainfont{CMU Serif}
+\usepackage{permpatts}
+\usepackage{csquotes}
+
+\title[Dominating Patterns]{Equivalence classes of mesh patterns with a Dominating Pattern}
+
+\author[M.~Tannock]{Murray Tannock (\href{mailto:murray14@ru.is}{\texttt{murray14@ru.is}})}
+
+\institute[Reykjavik University]
+{
+\includegraphics[height=2cm]{rulogo}
+}
+\date{\today}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+  \begin{frame}
+    \titlepage
+  \end{frame}
+
+\input{introduction}
+
+% \begin{thebibliography}{10}
+%   \bibitem{Knut h}[Goldbach, 1742]
+%     Christian Goldbach.
+%     \newblock A problem we should try to solve before the ISPN ’43 deadline,
+%     \newblock \emph{Letter to Leonhard Euler}, 1742.
+%   \end{thebibliography}
+\end{document}
