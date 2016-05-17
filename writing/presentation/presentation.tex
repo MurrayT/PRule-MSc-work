@@ -18,6 +18,23 @@
 % \setmainfont{CMU Serif}
 \usepackage{permpatts}
 \usepackage{csquotes}
+\usepackage{tabu}
+\usepackage{tabularx}
+
+\usetikzlibrary{decorations.markings}
+
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+
+
+%new column for tabularx
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+%saveable enumerate
+\makeatletter
+\def\saveenum{\xdef\@savedenum{\the\c@enumi\relax}}
+\def\resetenum{\global\c@enumi\@savedenum}
+\makeatother
 
 \title[Dominating Patterns]{Equivalence classes of mesh patterns with a Dominating Pattern}
 
@@ -43,6 +60,7 @@
 
 \input{introduction}
 
+\input{coincidences}
 % \begin{thebibliography}{10}
 %   \bibitem{Knut h}[Goldbach, 1742]
 %     Christian Goldbach.
