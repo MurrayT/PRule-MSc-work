@@ -1,6 +1,6 @@
 \chapter[Wilf-Classification]{Wilf-equivalences under dominating  patterns}
 
-Another question often asked in the field of permutation patterns is that
+One question often asked in the field of permutation patterns is that
 of Wilf-equivalence. Two patterns \(\pi\) and \(\sigma\) are said to be
 Wilf-equivalent if their avoidance sets have the same size at each
 length. More formally:
@@ -22,7 +22,7 @@ if \(\av[k]{S} = \av[k]{R}\) then obviously \(\size{\av[k]{R}} = \size{\av[k]{S}
 Coincidence is therefore a stronger equivalence condition than Wilf-equivalence.
 
 There are a number of symmetries we can use when examining Wilf-equivalences
-to reduce the amount of work, it can be easily seen that the reverse, complement
+to reduce the amount of work. It can be easily seen that the reverse, complement
 and inverse operations (see \FigureRef{fig:symm}) preserve enumeration, and therefore these classes are trivially
 Wilf-equivalent.
 \begin{figure}[!htb]
@@ -37,7 +37,7 @@ Wilf-equivalent.
 
 The group of symmetries on permutations is isomorphic to the dihedral group
 of order \(8\), the group of symmetries of a square. \emph{Reverse-inverse} and
-\emph{reverse} correspond can be taken as generators of the dihedral group.
+\emph{reverse} correspond to generators of the dihedral group.
 
 Since we are always considering Wilf-equivalences in the set \(\av{S}\) we
 must only use these symmetries when they preserve the dominating pattern, if we
@@ -70,10 +70,10 @@ point, giving a similar figure.
 \section{Wilf-classes with patterns of length 1.}
 When considering the mesh patterns of length \(2\) it will be useful to know
 the Wilf-equivalence classes of the mesh patterns of length \(1\) inside
-\(\av{\perm{2,3,1}}\), this means that we are considering the set \(\av{\{231,p\}}\)
+\(\av{\perm{2,3,1}}\), this means that we are considering the set \(\av{231,p}\)
 where \(p\) is a mesh-pattern of length 1.
 
-The patterns in the following set are set equivalent,
+The patterns in the following set are coincident,
 \begin{equation*}
     \left\{
         \begin{array}{c}
@@ -101,28 +101,28 @@ have generating function \(\var(x) = C(x)-x\).
 The pattern \(p = \textpattern{}{1}{0/1,1/0}\) is one of the
 quadrant marked mesh patterns studied by \textcite{2012arXiv1201.6243K}.
 Alternatively we can enumerate
-avoiders by decomposing a non-empty avoider of \(p_1\) around the maximum element
+avoiders of \(p\) by decomposing a non-empty avoider of \(p\) around the maximum element
 in order to give the following structural decomposition.
 \begin{equation*}
     \scriptvar = \varepsilon \sqcup \decompmax{0/1,1/0}{\scriptvar}{}{}{\mathcal{C}\setminus\varepsilon}
 \end{equation*}
-Since if the upper-right section was empty the maximum would create an
+If the upper-right section was empty the maximum would create an
 occurrence of the pattern, however no points in this section can create
 an occurrence since the maximum lies in a region corresponding to the
-shading in \(p\). The lower-left section however can create occurrences
+shading in \(p\), so we can use any avoider of \(\perm{2,3,1}\). The lower-left section however can create occurrences
 of \(p\) and therefore must also avoid \(p\), as well as \(\perm{2,3,1}\).
 This gives the generating function of avoiders to be the function \(\var(x)\)
 satisfying.
 \begin{align*}
     \var(x) &= 1 + x\var(x)(C(x)-1) \\
     \shortintertext{Solving for \(\var\) gives}
-    \var(x) &= \frac{1}{1+x-xC(x)}
+    \var(x) &= \frac{1}{1+x-xC(x)}\\
+    \var(x) &= \frac{C(x)}{1+xC(x)}
 \end{align*}
 
-Evaluation of this generating function gives the Fine numbers
-(\href{https://oeis.org/A000957}{OEIS: A000957}).
+Calculating coefficients given by this generating function gives the Fine numbers.
 \begin{equation*}
-    1, 0, 1, 2, 6, 18, 57, 186, 622, 2120, 7338,\dotsc
+    1, 0, 1, 2, 6, 18, 57, 186, 622, 2120, 7338,\dotsc \tag{\href{https://oeis.org/A000957}{OEIS: A000957}}
 \end{equation*}
 
 
@@ -152,12 +152,12 @@ perform the decomposition around the leftmost element
     \mathcal{\var}_3 =\varepsilon \sqcup \decompleft{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}
 \end{equation*}
 All of these classes have the same generating function, namely
+\begin{equation}
+    \var(x) = 1 + xC(x)(C(x)-1). \label{eqn:maxlgen}
+\end{equation}
+The coefficients of this generating function are
 \begin{equation*}
-    \var(x) = 1 + xC(x)(C(x)-1).
-\end{equation*}
-Enumeration of this generating function gives
-\begin{equation*}
-    1, 0, 1, 3, 9, 28, 90, 297, 1001, 3432, 11934,\dotsc \tag{\href{https://oeis.org/A000245}{OEIS: A000245} with offset}
+    1, 0, 1, 3, 9, 28, 90, 297, 1001, 3432, 11934,\dotsc \tag{\href{https://oeis.org/A000245}{OEIS: A000245} with offset \(1\)}
 \end{equation*}
 
 \nextvar[\varmaxl]
@@ -165,7 +165,7 @@ There is one pattern of length \(1\) still to consider. The pattern
 \(r = \textpattern{}{1}{0/0,1/0,1/1}\) is avoided by all permutations
 that do not end in their minimum. Considering the standard decomposition
 of a \(\perm{2,3,1}\) avoider around the maximum we can see that an avoider
-of \(r\) must fit into precisely on of the following two forms.
+of \(r\) must fit into precisely one of the following two forms.
 \begin{equation*}
     \scriptvar = \varepsilon \sqcup
     \underbrace{\decompmax{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}}_\text{
@@ -179,7 +179,7 @@ Therefore this particular class has generating function \(\var(x)\) satisfying
 \begin{equation*}
     \var(x) = 1 + xC(x)(C(x)-1) + x(\var(x)-1)
 \end{equation*}
-This generating function is enumerated to give
+Computing coefficients of this generating function gives
 \begin{equation*}
     	1, 0, 1, 4, 13, 41, 131, 428, 1429, 4861, 16795,\dotsc \tag{\href{https://oeis.org/A141364}{OEIS: A141364}}
 \end{equation*}
@@ -227,7 +227,7 @@ We are looking at permutations in \(\av{\perm{2,3,1}}\), all of these permutatio
 also avoid the mesh pattern in \NoteRef{not:setequiv}, \ie
 \(\av{\perm{2,3,1}} \subset \av{q}\).
 
-The classes containing following patterns are experimentally Wilf-equivalent up to length 10 in
+The classes containing the following patterns are experimentally Wilf-equivalent up to length 10 in
 \(\av{\perm{2,3,1}}\)
 \begin{equation*}
     \pattern{}{1,2}{} \text{ and }
@@ -285,7 +285,7 @@ and the number of length \(n\) avoiders is
 for \(n \ge 2\) where \(C_n\) is the \(n\)th Catalan number, the number of
 \(\perm{2,3,1}\) avoiders of length \(n\). This gives the sequence
 \begin{equation*}
-    1, 1, 1, 4, 12, 37, 118, 387, 1298, 4433, 15366,\dotsc \tag{\(C_n\) - \href{https://oeis.org/A001453}{A001453} offset 2}
+    1, 1, 1, 4, 12, 37, 118, 387, 1298, 4433, 15366,\dotsc \tag{\(C_n - \)\href{https://oeis.org/A001453}{A001453} offset 2}
 \end{equation*}
 
 \subsection{}
@@ -325,8 +325,8 @@ The following patterns are experimentally Wilf-equivalent up to length 10 in
 The containers of the patterns
 have exactly one occurrence.
 Once again we consider the regions corresponding to the unshaded regions, For each
-pattern
-except the first the two regions are independent, and one contains
+pattern,
+except the first the two, these regions are independent, and one contains
 any avoider of \(\perm{2,3,1}\) and the other must contain a
 decreasing sequence by \LemmaRef{lem:incdec}.
 Let us consider the first pattern separately. In order to
@@ -350,7 +350,7 @@ and the bottom must contain an avoider of \(\perm{2,3,1}\) and these
 two do not interact in any manner. The containers of this pattern are counted
 the same as the other patterns, and due to this they are Wilf-equivalent in \(\av{231}\).
 The containers
-have generating function \(\frac{x^2C(x)}{(1-x)}\). Enumerating avoiders
+have generating function \(x^2C(x)/(1-x)\). Enumerating avoiders
 therefore gives us
 \begin{equation*}
     1, 1, 1, 3, 10, 33, 109, 364, 1233, 4236, 14740,\dotsc \tag{\(C_n -\) \href{https://oeis.org/A014137}{A014137} offset 2}
@@ -380,20 +380,23 @@ subsequences.
 For a permutation of length \(k\) if we fix the number of points in
 one of the boxes the number of points in the other box is determined.
 Therefore we can have any number of points from \(\setrange{0}{k-2}\)
-points in the bottom box. Therefore there are \(k-1\) containers of
+in the bottom box. Therefore there are \(k-1\) containers of
 length \(k\). These permutations correspond to set partitions of \(k\)
-points into exactly two non-overlapping parts partitioned by the first
-element and the minimum.
+points into exactly two non-overlapping parts, such that the first part
+is the decreasing sequence from the first element to the minumum, and
+the second part is the elements in the sequence from the maximum to the last
+element.
+%partitioned by the first element and the minimum.
 
-Now consider the containers of \(m_2\), we know that the unshaded region
+Now consider the containers of \(m_2\). We know that the unshaded region
 must contain a decreasing subsequence, with the point corresponding to
 the \(1\) in the mesh pattern. This decreasing subsequence has \(k-1\)
-points, we can put the point corresponding to the \(2\) above any of these
+points. We can put the point corresponding to the \(2\) above any of these
 points and therefore there are \(k-1\) containers of length \(k\).
 
 Therefore these two patterns have been shown to have the same number of
 avoiders of length \(k\) for all \(k\) and are Wilf-equivalent.
-The avoiders have general form
+The number of avoiders of length \(k\) is given by
 \begin{equation*}
   \var_k = C_k - (k-1), \var_0 = 1
 \end{equation*}
@@ -406,13 +409,12 @@ and have enumeration
 \nextvar
 The following patterns are experimentally Wilf-equivalent up to length 10 in
 \(\av{\perm{2,3,1}}\)
-\begin{align}
-    m_1 = \pattern{}{1,2}{0/0,0/1,1/1,1/2,2/0,2/1} &\text{ and }
-    m_2 = \pattern{}{2,1}{0/0,0/1,1/1,1/2,2/0,2/1} \label{eq:singleud}\\
-    \text{ and }
-    m_3 = \pattern{}{2,1}{0/1,0/2,1/0,1/1,1/2,2/1} &\text{ and }
+\begin{gather}
+    m_1 = \pattern{}{1,2}{0/0,0/1,1/1,1/2,2/0,2/1},
+    m_2 = \pattern{}{2,1}{0/0,0/1,1/1,1/2,2/0,2/1}, \label{eq:singleud}\\
+    m_3 = \pattern{}{2,1}{0/1,0/2,1/0,1/1,1/2,2/1}, \text{ and }
     m_4 = \pattern{}{2,1}{0/1,0/2,1/0,1/1,1/2,2/0} \label{eq:other}
-\end{align}
+\end{gather}
 
 First we prove the Wilf-equivalence between \(m_1\) and \(m_2\) shown in
 \eqref{eq:singleud}. The easiest way to
@@ -454,9 +456,10 @@ the decomposition around the maximum
     \scriptvar_1 = \varepsilon \sqcup
     \decompmax{1/0,0/1}{\scriptvar_1}{}{}{\mathcal{\varmaxl}_1}
 \end{equation*}
-Since only the first point in the top right region can
+Only the first point in the top right region can
 create an occurrence of \(m_3\) if and only if it is the
-maximum in this region we must avoid starting with the maximum.
+element with largest value in this region, therefore the partial permutation
+in this region must avoid starting with the maximum.
 
 Looking at avoiders of \(\perm{2,3,1}\) and \(m_4\) we
 can perform a similar decomposition around the maximum to get
@@ -464,16 +467,17 @@ can perform a similar decomposition around the maximum to get
     \scriptvar_2 = \varepsilon \sqcup
     \decompmax{1/0,0/1}{\scriptvar_2}{}{}{\mathcal{\varmaxl}_3}
 \end{equation*}
-Since an occurrence of \(m_4\) can never occur in the
-top right region, and could only occur between the first point
-in the region and the maximum, if and only if this first point is the minimum.
+Any occurrence of \(m_4\) can never occur in the
+top right region. It could only occur between the maximum and the first point
+in the region, if and only if this first point is the lowest valued element in
+this region.
 Since both \(\mathcal{\varmaxl}_1\) and \(\mathcal{\varmaxl}_3\) have the same
 enumeration, \(\scriptvar_1\) and \(\scriptvar_2\) must also have
 the same enumeration and are therefore Wilf-equivalent.
 
 Now we must consolidate these two subclasses. In order to do this we must
 consider the decomposition around the leftmost point of a permutation in
-\(\av{\perm{2,3,1},m_1}\) we gain the following.
+\(\av{\perm{2,3,1},m_1}\). We have the following
 \begin{equation*}
     \scriptvar_3 = \varepsilon \sqcup
     \decompleft{1/0,0/1}{\scriptvar_3}{}{}{\mathcal{\varmaxl}_3}
@@ -484,6 +488,7 @@ in \(\av{\perm{2,3,1}}\) with generating function satisfying
 \begin{equation*}
     \var(x) = 1 + x\var(x)\varmaxl(x)
 \end{equation*}
+Where \(\varmaxl(x)\) is the generating function given in \EquationRef{eqn:maxlgen}.
 This can be enumerated to give the sequence
 \begin{equation*}
     1, 1, 1, 2, 6, 19, 61, 200, 670, 2286, 7918,\dotsc \tag{\href{https://oeis.org/A035929}{OEIS: A035929} offset 1}
@@ -516,7 +521,7 @@ decomposition
     \decompmax{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}} \sqcup
     \decompmax{0/1,1/0,0/0}{}{}{}{\mathcal{\varfine}}
 \end{equation*}
-Where \(\mathcal{\varfine} = \av{(231,\textpattern{}{1}{0/1,1/0})}\).
+Where \(\mathcal{\varfine} = \av{231,\textpattern{}{1}{0/1,1/0}}\).
 Now consider the decomposition around the maximum of a permutation in
 \(\scriptvar_2 = \av{\perm{2,3,1},m_2}\), the permutation either ends with
 the maximum, or it does not, so we get
@@ -540,15 +545,12 @@ This generating function gives
 \nextvar
 The following patterns are experimentally Wilf-equivalent up to length 10 in
 \(\av{\perm{2,3,1}}\)
-\begin{equation*}
-    \begin{aligned}
-        m_1 = \pattern{}{1,2}{0/0,0/1,1/1,1/2,2/0,2/2} &\text{ and }
-        m_2 = \pattern{}{1,2}{0/0,0/1,1/0,2/0,2/1,2/2} \\
-        \text{ and }
-        m_3 = \pattern{}{1,2}{0/2,1/0,1/1,2/0,2/1,2/2} &\text{ and }
+    \begin{gather*}
+        m_1 = \pattern{}{1,2}{0/0,0/1,1/1,1/2,2/0,2/2},
+        m_2 = \pattern{}{1,2}{0/0,0/1,1/0,2/0,2/1,2/2}, \\
+        m_3 = \pattern{}{1,2}{0/2,1/0,1/1,2/0,2/1,2/2}, \text{ and }
         m_4 = \pattern{}{1,2}{0/1,1/0,1/1,2/0,2/1,2/2}
-    \end{aligned}
-\end{equation*}
+    \end{gather*}
 
 First consider the decomposition of avoiders of \(m_1\) in \(\av{\perm{2,3,1}}\)
 around the maximum. We have different conditions if we start with the maximum or not.
@@ -559,7 +561,7 @@ around the maximum. We have different conditions if we start with the maximum or
     \sqcup
     \decompmax{0/0,0/1,1/0}{}{}{}{\scriptvar_1}
 \end{equation*}
-Where \(\mathcal{\varmaxl}_1 = \av{(231,\textpattern{}{1}{0/0,0/1,1/1})}\).
+Where \(\mathcal{\varmaxl}_1 = \av{231,\textpattern{}{1}{0/0,0/1,1/1}}\).
 Now we decompose the avoiders of \(m_2\) around the leftmost point, we have similar
 conditions for starting with the maximum
 \begin{equation*}
@@ -592,7 +594,7 @@ patterns can contain the pattern precisely once, \(m_2\) specifies the
 minimum and last point, \(m_3\) and \(m_4\) both use the last point and the
 previous block bottom (in the set partition context).
 
-Consider an occurrence of of \(m_3\) in \(\av{\perm{2,3,1}}\)
+Consider an occurrence of \(m_3\) in \(\av{\perm{2,3,1}}\)
 \begin{equation*}
     \raisebox{0.6ex}{
         \begin{tikzpicture}[scale=1, baseline=(current bounding box.center)]
@@ -660,7 +662,7 @@ These are counted by \(\var(x) = 1+xC(x)\)
 % Alternatively,
 The pattern \textpattern{}{1,2}{1/1,2/1,1/0,1/2,2/0,2/2} occurs if
 the last element is higher than the penultimate element. This can only occur
-if the last element is in a single block in the set partition context, In order
+if the last element is in a single block in the set partition context. In order
 to construct an avoider of length \(n\) we can take any avoider of
 \(\perm{2,3,1}\) of length \(n-1\) and insert the new maximum into the last
 block.  This ensures that the last block is never a singleton. This means
@@ -693,8 +695,8 @@ We need to show that the generating function \(\var_3(x)\) is the same as \(\var
     \begin{aligned}
         \var_3(x) &= 1 + x\varfine(x)\var_3(x) \\
         &= \frac{1}{1-x\varfine(x)} && \text{Solving for \(\var_3(x)\)}\\
-        &= \frac{1}{1 - \frac{x}{1+x-xC(x)}} &&\text{Substituting for \(\varfine(x)\)}\\
-        &= \frac{1-xC(x) +x}{1-xC(x)}\\
+        &= \frac{1}{1 - \frac{xC}{1+xC(x)}} &&\text{Substituting for \(\varfine(x)\)}\\
+        &= \frac{1+xC(x)}{1+xC(x)-xC(x)}\\
         &= 1+xC(x)
     \end{aligned}
 \end{equation*}
@@ -709,15 +711,12 @@ We have that \(\var_3(x) = 1+xC(x)= \var(x) \) so all four patterns are Wilf-equ
 \nextvar
 The following patterns are experimentally Wilf-equivalent up to length 10 in
 \(\av{\perm{2,3,1}}\)
-\begin{equation*}
-    \begin{aligned}
-        m_1 = \pattern{}{1,2}{0/0,0/1,1/0,1/2,2/1} \text{ and }
-        m_2 = \pattern{}{2,1}{0/0,0/1,0/2,1/1,1/2,2/0}\\
-        \text{ and }
-        m_3 = \pattern{}{1,2}{0/1,0/2,1/0,1/2,2/0,2/2} \text{ and }
+\begin{gather*}
+        m_1 = \pattern{}{1,2}{0/0,0/1,1/0,1/2,2/1},
+        m_2 = \pattern{}{2,1}{0/0,0/1,0/2,1/1,1/2,2/0},\\
+        m_3 = \pattern{}{1,2}{0/1,0/2,1/0,1/2,2/0,2/2}, \text{ and }
         m_4 = \pattern{}{2,1}{1/0,1/1,2/1,2/2}\\
-    \end{aligned}
-\end{equation*}
+\end{gather*}
  First we consider an occurrence of \(m_2\) in a
 permutation in \(\av{\perm{2,3,1}}\)
 \begin{equation*}
@@ -737,8 +736,9 @@ We can choose the lowest occurrence of \(m_2\) in the sense that the region
 corresponding to \(b_1\) must avoid the pattern \(\textpattern{}{1}{0/1,1/0}\)
 as well as \(\perm{2,3,1}\). The regions corresponding to \(b_2\) and \(b_3\) must
 now contain avoiders of \(\perm{2,3,1}\), all points in the region corresponding
-to \(b_2\) must be to the right of those in the region corresponding to \(b_3\)
-\(\perm{2,3,1}\). Since we already have an occurrence of
+to \(b_2\) must be to the left of those in the region corresponding to \(b_3\) since
+we are in
+\(\av{\perm{2,3,1}}\). Since we already have an occurrence of
 \(m_2\) we do not need to care about creating more occurrences so there are no
 other conditions on these boxes.
 
@@ -831,14 +831,14 @@ Now we solve \EquationRef{eqn:ngen} for \(\lastvar_1(x)\)
 \begin{equation}
     \begin{aligned}
         \lastvar_1(x)&= 1+x(\lastvar_1(x)-1)C(x)+x\varfine(x)\\
-        &= 1+x\lastvar_1(x)C(x)-xC(x)+\frac{x}{1+x-xC(x)} &&\text{Substitution of \(\varfine(x)\)}\\
-        \lastvar_1(x)(1-xC(x))&= \frac{x^2C^2(x) - (x^2+2x)C(x) + 2x+1}{1+x-xC(x)}\\
-        \lastvar_1(x) &= \frac{x^2C^2(x) - (x^2+2x)C(x) + x+1+x}{x^2C^2(x) - (x^2+2x)C(x) +x+1}\\
-        &= 1 +\frac{x}{x^2C^2(x) - (x^2+2x)C(x) +x+1}\\
-        &= 1 + \frac{x}{1-x^2C(x)-xC(x)} && xC^2(x) = C(x)-1\\
-        &= 1 + \frac{xC^2(x)}{C^2(x) - xC^3(x)(x+1)}\\
-        &= 1 + \frac{xC^2(x)}{C(x) - xC^2(x) + xC(x)} && xC^2(x) = C(x)-1\\
-        \lastvar_1(x)&= 1 + \frac{xC^2(x)}{1+xC(x)} && C(x) = 1+xC^2(x)\\
+        &= 1+x\lastvar_1(x)C(x)-xC(x)+x\varfine(x)\\
+        \lastvar_1(x)&= 1+xC(x)\varfine(x)\\
+        \lastvar_1(x) &= 1 + \frac{xC^2(x)}{1+xC(x)} &&\text{Substitution of \(\varfine(x)\)}
+        % &= 1 +\frac{x}{x^2C^2(x) - (x^2+2x)C(x) +x+1}\\
+        % &= 1 + \frac{x}{1-x^2C(x)-xC(x)} && xC^2(x) = C(x)-1\\
+        % &= 1 + \frac{xC^2(x)}{C^2(x) - xC^3(x)(x+1)}\\
+        % &= 1 + \frac{xC^2(x)}{C(x) - xC^2(x) + xC(x)} && xC^2(x) = C(x)-1\\
+        % \lastvar_1(x)&= 1 + \frac{xC^2(x)}{1+xC(x)} && C(x) = 1+xC^2(x)\\
     \end{aligned}
 \end{equation}
 We have shown that \(\lastvar_1\) and \(\lastvar_4\) are indeed the same generating function,
@@ -871,7 +871,7 @@ once again be decomposed around the leftmost point
     \decompleft{0/1,1/0}{\scriptstyle \scriptvar_1\setminus\varepsilon}{}{}{\scriptvar^\prime_1}
 \end{equation*}
 This is a complete decomposition of avoiders of \(m_1\). Now we
-look at an avoider of \(m_2\), this time decomposition is around the maximum
+look at an avoider of \(m_2\), this time decomposition is around the leftmost point
 \begin{equation*}
     \scriptvar_2 = \varepsilon \sqcup
     \decompleft{0/1,1/0}{\scriptvar^\prime_2}{}{}{\scriptvar_2}
@@ -897,9 +897,9 @@ Solving \EquationRef{eqn:PprimeGen} for \(\var^\prime(x)\) and substituting into
 \end{equation}
 Evaluating \(\var(x)\) gives us the sequence
 \begin{equation*}
-    1, 1, 1, 2, 4, 9, 21, 51, 127, 323, 835,\dotsc
+    1, 1, 1, 2, 4, 9, 21, 51, 127, 323, 835,\dotsc \tag{\href{https://oeis.org/A001006}{OEIS: A001006 with offset 1}}
 \end{equation*}
-This is an offset of the Motzkin numbers \href{https://oeis.org/A001006}{(OEIS: A001006)}.
+This is an offset of the Motzkin numbers.
 
 \subsection{}
 \nextvar
@@ -939,7 +939,7 @@ This avoider has form
     \scriptvar_2 = \varepsilon \sqcup
     \decompmax{0/1,1/0}{\mathcal{\varmaxl}_2}{}{}{\mathcal{C}}
 \end{equation*}
-Where \(\mathcal{\varmaxl}_2 = \av{(231,\textpattern{}{1}{0/1,1/0,1/1})}\).
+Where \(\mathcal{\varmaxl}_2 = \av{231,\textpattern{}{1}{0/1,1/0,1/1}}\).
 This gives us the generating function
 \begin{equation*}
     \begin{aligned}
@@ -967,7 +967,7 @@ around the leftmost point.
     \decompleft{0/1,1/0}{\scriptstyle \scriptvar_3\setminus\varepsilon}{}{}{\mathcal{C}}
     \sqcup \decompleft{0/0,0/1,1/0}{}{}{}{\varmaxl_3}
 \end{equation*}
-Where \(\mathcal{\varmaxl}_3 = \av{(231,\textpattern{}{1}{0/0,0/1,1/0})}\).
+Where \(\mathcal{\varmaxl}_3 = \av{231,\textpattern{}{1}{0/0,0/1,1/0}}\).
 This gives generating function \(\var_3(x)\) satisfying
 \begin{equation*}
     \begin{aligned}
