@@ -3,6 +3,27 @@
 programming language. The code can be obtained from \url{https://github.com/MurrayT/PRule-MSc-work/tree/master/src}
 and is split into the following files.
 
+\subsubsection*{\texttt{classes.py}}
+Contains the 220 equivalence classes of mesh patterns of length 2 shown in
+% \ChapterRef{cha:equivs}.
+\subsubsection*{\texttt{helper\_funcs.py}}
+Contains functions to convert between different classes used in experimentation
+as well as a class that functions as an accumulator.
+\subsubsection*{\texttt{p\_rule.py}}
+Contains functions that compute equivalences by the first and second dominating
+rules, and functions that return coincidences not explained by the rules.
+\subsubsection*{\texttt{wilf.py}}
+Contains a class that functions as a counter for Wilf-equivalences based on
+a dictionary, functions to calculate trivial Wilf classes and functions that
+calculate Wilf-equivalences experimentally
+\subsubsection*{\texttt{main.py}}
+The main file to import that automatically runs all of the experimental setup
+and calculations for coincidences and Wilf-equivalences.
+\subsubsection*{\texttt{scratchpad.py}}
+A collection of anonymous functions and utilities that do not fit into other
+files.
+
+
 The code relies on the the permuta python package available at \url{https://github.com/PermutaTriangle/Permuta}
 % \begin{minted}[linenos, breaklines]{python}
 % def boring(args=None):
