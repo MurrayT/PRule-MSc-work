@@ -1,0 +1,58 @@
+\section{Conclusions and Future Work}
+\label{sec:Conclusions and Future Work}
+\subsection{Conclusions}
+\label{sub:Conclusions}
+\begin{frame}{Conclusions}
+  \begin{itemize}
+  \item Automatic coincidence classification is difficult.
+  \begin{itemize}
+    \item Completely classified for length 2 mesh patterns and length 3 classical patterns.
+    \item Gets harder with larger dominating patterns.
+  \end{itemize}
+  \item There are a number of Wilf-classes that give interesting
+  enumerations.
+  \begin{itemize}
+    \item Would be interesting to try and connect these sets to different objects.
+  \end{itemize}
+  \end{itemize}
+\end{frame}
+\subsection{Future Work}
+\label{sub:Future Work}
+\subsubsection{Extensions of rules}
+\label{subs:Extensions of rules}
+\begin{frame}{Future Work: Extensions of rules}
+    One can consider application of the Third Dominating rule, as well as a
+    simple extension, without any dominating pattern. This can capture the special
+    case described by Claesson, Tenner, and Ulfarsson in \cite{ABH}
+    \begin{equation*}
+     m_1 = \pattern{}{1,2}{0/1,0/2,1/1,1/2,2/0}, \text{ and } m_2 = \pattern{}{1,2}{0/2,1/0,1/1,2/0,2/1}
+   \end{equation*}
+
+   We cannot apply the first, or second, rule without a dominating pattern.
+
+   We can also consider taking sets of mesh patterns, or sets of dominating patterns.
+\end{frame}
+
+\subsubsection{Equivalences with different dominating patterns}
+\label{subs:Equivalences with different dominating patterns}
+\begin{frame}{Future Work: Equivalences with different dominating patterns}
+  It would be interesting to consider Wilf-equivalences
+amongst classes where \(\perm{3,2,1}\) is the dominating pattern.
+
+It is also interesting to consider Wilf-equivalence when we have different dominating
+patterns
+We can show that the sets \(\mathcal{T} = \av{\textpattern{}{1,2}{1/2,2/0,0/0,1/0,1/1,2/1},\perm{2,3,1}}\) and
+\(\mathcal{U} = \av{\textpattern{}{1,2}{1/2,2/0,0/0,1/0,1/1,2/1},\perm{3,2,1}}\)
+are Wilf-equivalent.
+\pause
+\begin{equation*}
+    \raisebox{0.6ex}{
+    \begin{tikzpicture}[scale=1, baseline=(current bounding box.center)]
+        \draw (0.5,1.5) node {\(b_1\)};
+        \draw (0.5,2.5) node {\( b_2\)};
+        \draw (2.5,2.5) node {\( b_3\)};
+        \modpattern[2]{2}{1,2}{0/0,1/0,1/1,1/2,2/0,2/1}
+    \end{tikzpicture}
+    }
+\end{equation*}
+\end{frame}
