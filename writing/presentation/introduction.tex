@@ -10,7 +10,7 @@
   More intuitively \textquote[Knuth~\cite{Knuth}]{A \emph{permutation of \(n\) objects} is
   an arrangement of \(n\) distinct objects in a row}.
 
-  We write permutations in \emph{one-line notation}, writing the entries of
+  We write permutations in \emph{one-line notation}, writing
   the entries of the permutation in order
   \begin{equation*}
     \pi = \perm{\pi(1),\pi(2),\dotso,\pi(n)}
@@ -64,9 +64,11 @@
   If \(\pi\) does not contain \(\sigma\) we say that \(\pi\) \emph{avoids}
   \(\sigma\).
 
-  We the set of permutations of length \(n\) avoiding a pattern \(\sigma\) is
+  The set of permutations of length \(n\) avoiding a pattern \(\sigma\) is
   denoted as \(\Av_n(\sigma)\) and
-  \(\av{\sigma} = \bigcup_{i=0}^{\infty}\Av_i(\sigma)\).
+  \begin{equation*}
+    \av{\sigma} = \bigcup_{i=0}^{\infty}\Av_i(\sigma)
+  \end{equation*}
 \end{frame}
 
 \begin{frame}

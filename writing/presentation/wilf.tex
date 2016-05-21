@@ -4,8 +4,8 @@
 \label{sub:Wilf-equivalence}
 \begin{frame}{Wilf-equivalence}
   \begin{definition}
-  Two patterns are said to be \emph{Wilf-equivalent} if they avoid (or contain)
-  the same number of patterns at every length.
+  Two patterns are said to be \emph{Wilf-equivalent} if the set of avoiders
+  of the patterns is the same size at every length.
 \end{definition}
  All coincident pattern classes are Wilf-equivalent.
 
@@ -26,7 +26,7 @@
     The avoiders of the pattern \(q = \mperm{2,3,1}{\{(1,0),(1,1),(1,2),(1,3)\}}\),
     \textpattern{}{2,3,1}{1/0,1/1,1/2,1/3},
     in \(\mathfrak{S}_n\) are in one-to-one correspondence with partitions of
-    \(\nrange{n}\). (Claesson)
+    \(\nrange{n}\). (Claesson \cite{A})
 \end{block}
 \begin{example}
     Given the permutation \(\pi = \perm{5,4,2,1,3,9,6,8,7}\) this corresponds to the
@@ -154,8 +154,8 @@ and \(\textpattern{}{1}{0/0,0/1,1/1}\).\pause Now considering a permutation in \
     M(x) &= 1 + xM(x)M^\prime(x) \label{eqn:Pgen}\\
     M^\prime(x) &= 1 + x(M(x)-1)M^\prime(x)\label{eqn:PprimeGen}
  \end{align}\pause
- Solving Equation~\ref{eqn:PprimeGen} for \(M^\prime(x)\) and substituting into
-Equation~\ref{eqn:Pgen} gives us that the generating function for
+ Solving \ref{eqn:PprimeGen} for \(M^\prime(x)\) and substituting into
+\ref{eqn:Pgen} gives us that the generating function for
 \(M(x)\) satisfies
 \begin{equation}
     M(x) = xM^2(x) - x(M(x) - 1) + 1
