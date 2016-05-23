@@ -4,14 +4,18 @@
 \label{sub:Coincidence}
 \begin{frame}{Coincidence}
   \begin{definition}
-    Two mesh patterns are said to be \emph{coincident} if they avoid the
+    Two mesh patterns are said to be \emph{coincident} if they are avoided by the
     same set of permutations at every length.
   \end{definition}
   \begin{block}{}
     Distinct classical patterns can never be coincident.
 
+    Coincidences of mesh patterns of length \(2\) are classified.
+
     Aim to establish rules that classify coincidences when we
     have one mesh pattern and one classical pattern.
+
+    We call the classical pattern a \emph{dominating pattern}.
   \end{block}
 \end{frame}
 
@@ -144,10 +148,12 @@ subsequence of \(\varrho\).
   Considering \(m_1\) again
   \begin{equation*}
     \begin{tikzpicture}[scale=\picscale]
-        {\only<3-> \fill[pattern=north east lines, pattern color=black!75] (1,1) rectangle +(1,1);}
+        {\only<3-4> \fill[pattern=north east lines, pattern color=black!75] (1,1) rectangle +(1,1);}
         \modpattern{}{2,1}{0/0,0/2,1/0,2/1}
         {\only<2> \filldraw (1.66,1.33) circle (3pt);}
         {\only<2> \filldraw (1.33,1.66) circle (3pt);}
+        {\only<3> \filldraw (2.66,0.33) circle (3pt);}
+        {\only<3> \filldraw (2.33,0.66) circle (3pt);}
     \end{tikzpicture}
   \end{equation*}
   {\only<1-3> \vphantom{This is \(m_2\).}}
