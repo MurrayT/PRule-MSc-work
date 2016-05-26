@@ -47,7 +47,7 @@ section do not necessarily hold.
 Throughout this section we will consider Wilf-equivalences of patterns
 whilst avoiding the \emph{dominating pattern} \(\perm{2,3,1}\). We will
 use \(\mathcal{C}\) to denote \(\av{\perm{2,3,1}}\) and \(C(x)\) will
-be the usual Catalan generating function satisfying \(C(x) = 1 + C(x)^2\).
+be the usual Catalan generating function satisfying \(C(x) = 1 + xC(x)^2\).
 This is easy to see by structural decomposition around the maximum, as
 shown in \FigureRef{fig:decompmax}.
 
@@ -209,13 +209,13 @@ permutations correspond to set-partitions.
     in \(\mathfrak{S}_n\) are in one-to-one correspondence with partitions of
     \(\nrange{n}\). (\textcite[Prop.~2]{DBLP:journals/ejc/Claesson01})
 \end{note}
-\begin{proof}
+
+The idea of the bijection is as follows.
     Let \(\pi\) be a permutation in \(\av[n]{q}\)
     in one-line notation and insert a dash between each ascent in \(\pi\). This
     corresponds to set partitions where the blocks are the elements between the
     dashes, the blocks are listed in increasing order of their least element,
     with the elements written in each block in descending order.
-\end{proof}
 
 \begin{example}
     Given the permutation \(\pi = \perm{5,4,2,1,3,9,6,8,7}\) this corresponds to the
