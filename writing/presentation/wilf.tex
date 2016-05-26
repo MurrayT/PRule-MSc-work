@@ -71,7 +71,7 @@ All permutations in \(\av{\perm{2,3,1}}\) are also in \(\av{q}\).
 \label{sub:Generating Functions}
 \begin{frame}{Generating {\huge FUN}ctions}
   \begin{block}{}
-    \blockquote[Herbert Wilf, \emph{generatingfunctionology}~\cite{Wilf}]{
+    \blockquote[Herbert Wilf, \emph{generatingfunctionology}~\cite{Wilf}]{%
     A generating function is a clothesline on which we hang up a sequence of numbers for display.}
     % \flushright -Herbert Wilf, \emph{generatingfunctionology}
   \end{block}
@@ -122,13 +122,13 @@ Solving for \(C(x)\) and taking the Taylor expansion at \(0\) gives
 \end{frame}
 
 \begin{frame}
-  First we consider the avoiders \(\mathcal{M}_1\) of \(m_1\) in \(\av{\perm{2,3,1}}\).
+  First we consider the avoiders \(\mathcal{M}_1\) of \(m_1 = \pattern{}{1,2}{1/0,1/1,1/2,2/0,2/1} \) in \(\av{\perm{2,3,1}}\).
   \begin{equation*}
     \mathcal{M}_1 = \varepsilon \sqcup
     \decompleft{0/1,1/0}{\mathcal{M}_1}{}{}{\mathcal{M}^\prime_1}
 \end{equation*}
 Where \(\mathcal{M}^\prime_1\) is a permutation avoiding \(\perm{2,3,1}, m_1\)
-and \(\textpattern{}{1}{0/0,0/1,1/0}\).\pause Now considering a permutation in \(\mathcal{M}^\prime_1\)
+and \(\textpattern{}{1}{0/0,0/1,1/0}\). \pause Now considering a permutation in \(\mathcal{M}^\prime_1\)
 \begin{equation*}
     \mathcal{M}^\prime_1 = \varepsilon \sqcup
     \decompleft{0/1,1/0}{\scriptstyle \mathcal{M}_1\setminus\varepsilon}{}{}{\mathcal{M}^\prime_1}
@@ -136,13 +136,13 @@ and \(\textpattern{}{1}{0/0,0/1,1/0}\).\pause Now considering a permutation in \
 \end{frame}
 
 \begin{frame}
-  Next we consider the avoiders \(\mathcal{M}_2\) of \(m_2\) in \(\av{\perm{2,3,1}}\).
+  Next we consider the avoiders \(\mathcal{M}_2\) of \(m_2 = \pattern{}{2,1}{0/1,1/0,1/1,1/2,2/1}\) in \(\av{\perm{2,3,1}}\).
   \begin{equation*}
     \mathcal{M}_2 = \varepsilon \sqcup
     \decompleft{0/1,1/0}{\mathcal{M}^\prime_2}{}{}{\mathcal{M}_2}
 \end{equation*}
 Where \(\mathcal{M}^\prime_2\) is a permutation avoiding \(\perm{2,3,1}, m_2\)
-and \(\textpattern{}{1}{0/0,0/1,1/1}\).\pause Now considering a permutation in \(\mathcal{M}^\prime_2\)
+and \(\textpattern{}{1}{0/0,0/1,1/1}\). \pause Now considering a permutation in \(\mathcal{M}^\prime_2\)
 \begin{equation*}
     \mathcal{M}^\prime_2 = \varepsilon \sqcup
     \decompleft{0/1,1/0}{\mathcal{M}^\prime_2}{}{}{\scriptstyle \mathcal{M}_2\setminus\varepsilon}
