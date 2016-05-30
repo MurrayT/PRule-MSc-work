@@ -1,0 +1,441 @@
+% ------------------------------------------------------
+% Abstract for talk at Permutation Patterns 2016, Washington D.C. (Based on 2015
+% abstract template)
+% ------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+
+% 'European' formatting
+\frenchspacing \setlength{\parskip}{9pt plus 3pt minus 1pt}
+\setlength{\parindent}{0pt}
+
+\setlength{\textwidth}{6.27in}
+\setlength{\textheight}{9.69in}
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+
+% ------- extra packages
+\usepackage{xinttools}
+\usepackage{tabularx}
+\usepackage{hyperref}
+% -------
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\talkTitle}[1]{\hrule\section*{\textsf{\textmd{\LARGE #1}}}}
+\newcommand{\talkPresenter}[1]{\textbf{\large #1}}
+\newcommand{\talkAffiliation}[1]{(#1)}
+\newcommand{\talkJointWork}[1]{This talk is based on joint work with #1.}
+
+\renewcommand{\refname}{\normalsize References}
+\newenvironment{talkBibliog}{\begin{thebibliography}{9}\small}{\end{thebibliography}}
+
+% ----------------PERSONAL PREAMBLE---------------------
+\DeclareMathOperator{\Av}{Av}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+% ------------------------------------------------------
+\begin{document}
+\begingroup
+% ------------------------------------------------------
+% Please do not modify above this line.
+% Personal macros can be placed here.
+% -----------------------------------------------------------------------------
+\newcommand{\ie}{\textit{i.e.}}
+
+\newcommand{\av}[2][]{\Av_{#1}\!\left(#2\right)}
+\newcommand{\setsize}[1]{%
+    \left|#1\right|}
+
+\newcommand{\addp}[3][\emptyset]{\mathtt{add\_point}\left(#2, #3, #1\right)}
+\newcommand{\addpe}[1][\emptyset]{\mathtt{add\_point}\left(\varepsilon, #1\right)}
+
+\newcommand{\adda}[2]{\mathtt{add\_ascent}\left(#1, #2\right)}
+\newcommand{\addae}[0]{\mathtt{add\_ascent}\left(\varepsilon\right)}
+\newcommand{\addd}[2]{\mathtt{add\_descent}\left(#1, #2\right)}
+\newcommand{\addde}[0]{\mathtt{add\_descent}\left(\varepsilon\right)}
+
+
+\newcommand{\perm}[1]{%
+    \xintFor ##1 in {#1}\do {##1}
+}
+\newcommand{\mperm}[2]{%
+\left(
+\perm{#1},#2\right)
+}
+
+
+% --------------TIKZ MACROS---------------------------
+% For shading boxes
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.markings}
+
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+
+\providecommand{\picscale}{0.35}
+\providecommand{\textscale}{0.175}
+
+\newcommand{\drawthegrid}[1]{%
+\draw (0.01,0.01) grid (#1+0.99,#1+0.99);
+}
+
+\newcommand{\drawthepoints}[2]{%
+\foreach[count=\x] \y in {#1}
+\filldraw (\x,\y) circle (#2 pt);
+}
+
+\newcommand{\shadeboxes}[1]{
+    \foreach \x/\y in {#1}
+    \fill[pattern=north east lines, pattern color=black!75] (\x,\y) rectangle +(1,1);
+
+}
+
+\newcommand{\clpattern}[3][5]{%
+    \pgfmathsetmacro\circlesize{#1+4}
+    \drawthegrid{\xintNthElt{0}{\xintCSVtoList {#3}}}
+    \drawthepoints{#3}{#1}
+    \foreach \x in {#2}
+    \draw (\x,\xintNthElt{\x}{\xintCSVtoList {#3}}) circle (\circlesize pt);
+}
+
+\newcommand{\pattern}[4][]{%
+    \raisebox{0.6ex}{
+    \begin{tikzpicture}[scale=\picscale, baseline=(current bounding box.center), #1]
+        \shadeboxes{#4}
+        \clpattern[5]{#2}{#3}
+    \end{tikzpicture}}\;
+}
+
+\newcommand{\textpattern}[4][]{%
+    \raisebox{0.6ex}{
+    \begin{tikzpicture}[scale=\textscale, baseline=(current bounding box.center), #1]
+        \shadeboxes{#4}
+        \clpattern[8]{#2}{#3}
+    \end{tikzpicture}}\;
+}
+
+\newcommand{\modpattern}[4][5]{%
+    \shadeboxes{#4}
+    \clpattern[#1]{#2}{#3}}
+
+    \newcommand{\decompleft}[5]{%
+        \begin{tikzpicture}[scale=1.0, baseline=(current bounding box.center)]
+            \fill[pattern=north east lines, pattern color=black!75] (0,-1) rectangle +(-0.5,2);
+            \foreach \x/\y in {#1}
+                \fill[pattern=north east lines, pattern color=black!75] (\x,\y-1) rectangle +(1,1);
+            \draw (0,1) -- (0,-1)
+                  (-0.5,0) -- (2,0)
+                  (1,1) -- (1,-1);
+            \filldraw (0,0) circle (3pt);
+            \draw (1.5, 0.5) node {\(#5\)};
+            \draw (1.5, -0.5) node {\(#3\)};
+            \draw (0.5, 0.5) node {\(#4\)};
+            \draw (0.5, -0.5) node {\(#2\)};
+        \end{tikzpicture}
+    }
+
+
+% ------------------------------------------------------
+% Talk title and presenter info goes here.
+
+\talkTitle{Equivalence classes of mesh patterns with a dominating pattern}
+\talkPresenter{Murray Tannock}
+\talkAffiliation{Reykjavik University}
+
+% ------------------------------------------------------
+% The abstract goes here; please restrict to no more than 2 pages.
+% Graphics can be included using TikZ (only).
+
+We establish sufficient conditions for coincidence between mesh patterns when
+considered inside a set of avoiders of a classical permutation pattern, and
+establish general rules that can be used to construct such coincidences. These
+rules along with two special cases allow us to completely classify coincidence
+between all sets of avoiders of a mesh pattern of length \(2\) and a classical
+pattern of length \(3\). We then go on to consider Wilf-equivalence amongst
+mesh patterns of length \(1\) and \(2\) whilst also avoiding the classical pattern
+\(231\).
+
+When we consider avoidance of a pattern, \(p\), inside a permutation class we gain
+additional restrictions on the occurrences of \(p\).
+We will restrict the set of permutations that form the basis
+for our permutation class to a single classical pattern, \(\pi\), which we shall
+refer to as the \emph{dominating pattern}. In particular, we consider the case
+where \(p\) is mesh pattern of length \(2\) and \(\pi\) is either of the classical
+permutation patterns \(231\) or \(321\).
+
+By use of previous results of Claesson, Tenner and Ulfarsson\cite{ABH}
+we can begin to reduce the number of potential coincidences by only looking for
+coincidences between patterns that are not coincident outwith the setting of
+having a dominating pattern. This gives us an initial upper bound of \(220\)
+coincidence classes in each of the four cases we consider.
+
+By examining experimental coincidences of non-classical permutation classes,
+considered up to length \(11\) we can find rules that allow us to establish
+coincidences, and thus establish the number of coincidence classes as follows.
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabularx}{\textwidth}{c|Y|Y|Y|Y|}
+\cline{2-5}
+& \multicolumn{4}{|c|}{Dominating Pattern}\\
+\cline{2-5}
+& \multicolumn{2}{|c|}{\(\av{\perm{2,3,1}}\)}&\multicolumn{2}{|c|}{\(\av{\perm{3,2,1}}\)}\\
+\hline
+\multicolumn{1}{|r|}{\emph{Underlying Classical pattern}}& \(\perm{1,2}\)&\(\perm{2,1}\)&\(\perm{1,2}\)&\(\perm{2,1}\)\\
+\hline
+\hline
+\multicolumn{1}{|r|}{No Dominating rule}&\(220\)&\(220\)&\(220\)&\(220\)\\
+\hline
+\multicolumn{1}{|r|}{First Dominating rule}&\(85\)&\(43\)&\(220\)&\(29\)\\
+\hline
+\multicolumn{1}{|r|}{Second Dominating rule}&\(59\)&\(39\)&\(220\)&\(29\)\\
+\hline
+\multicolumn{1}{|r|}{Third Dominating rule}&\(56\)&\(39\)&\(220\)&\(29\)\\
+\hline
+\multicolumn{1}{|r|}{Experimental class size}&\(56\)&\(39\)&\(213\)&\(29\)\\
+\hline
+\end{tabularx}
+\end{center}
+    \caption{Coincidence class number reduction by application of Dominating Rules}
+    \label{tab:domclasses}
+\end{table}
+
+By considering the classical permutation classes \(\av{231}\) and \(\av{321}\)
+along with a mesh pattern with underlying classical pattern \(21\), we gain the
+following two rules that completely classify the coincidence in theses cases.
+
+\begin{proposition}[First Dominating Pattern Rule]
+    \label{prop:dom1}
+    Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
+    and a dominating classical pattern \(\pi = (\pi,\emptyset)\) such that
+    \(\setsize{\pi} \le \setsize{\sigma} + 1\), the sets \(\av{\{\pi,m_1\}}\) and
+    \(\av{\{\pi,m_2\}}\) are coincident if
+
+    \begin{enumerate}
+        \item \(R_1 \triangle R_2 = \{(a,b)\}\)
+        \item \(\pi \) is contained in \( \addp{\sigma}{(a,b)}\)\label{prop:dom1:cont}
+    \end{enumerate}
+\end{proposition}
+
+\begin{figure}[hbt]
+    \begin{center}
+    \begin{tikzpicture}[scale=\picscale]
+        \modpattern{}{2,1}{1/0,1/1,1/2,2/2}
+    \end{tikzpicture}
+        \raisebox{2ex}{\(\mapsto\)}
+    \begin{tikzpicture}[scale=\picscale]
+        \filldraw (2.5,0.5) circle (3pt);
+        \modpattern{}{2,1}{1/0,1/1,1/2,2/2,2/0}
+    \end{tikzpicture}
+
+        \caption{Visual depiction of first dominating pattern rule.}
+        \label{fig:rule1}
+    \end{center}
+\end{figure}
+
+\begin{proposition}[Second Dominating Pattern Rule]
+    \label{prop:dom2}
+    Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
+    and a dominating classical pattern \(\pi = (\pi,\emptyset)\) such that
+    \(\setsize{\pi} \le \setsize{\sigma} + 2\), the sets \(\av{\{\pi,m_1\}}\) and
+    \(\av{\{\pi,m_2\}}\) are coincident if
+
+    \begin{enumerate}
+        \item \(R_1 \triangle R_2 = \{(a,b)\}\)
+        \item   \begin{enumerate}
+                \item\label{prop:dom2:condc} \(\pi \) is contained in
+                \( \adda{\sigma}{(a,b)}\) and some additional conditions on the
+                mesh are satisfied that allow selection of different points in
+                the occurrence
+                \item \(\pi \) is contained in \( \addd{\sigma}{(a,b)}\) and
+                some additional conditions on the
+                mesh are satisfied that allow selection of different points in
+                the occurrence
+                        % \begin{enumerate}
+                        %     \item \((a+1,b) \in \sigma\) and \((a+1,b-1)\notin R\) and \\
+                        %         \((x,b-1)\in R \implies (x,b) \in R \) (where \(x\neq a,a+1\)) and\\
+                        %           \((a+1,y)\in R \implies (a,y) \in R\) (where \(y\neq b-1,b\)).
+                        %     \item \((a,b+1) \in \sigma\) and \((a-1,b+1)\notin R\) and \\
+                        %           \((x,b+1)\in R \implies (x,b) \in R\) (where \(x\neq a-1,a\)) and\\
+                        %           \((a-1,y)\in R \implies (a,y) \in R\) (where \(y\neq b,b+1\)).
+                        % \end{enumerate}
+                    % \item \(\pi \) is contained in \( \addd{\sigma}{(a,b)}\) and
+                    %     \begin{enumerate}
+                    %         \item \((a+1,b+1) \in \sigma\) and \((a+1,b+1)\notin R\) and \\
+                    %               \((x,b+1)\in R \implies (x,b) \in R\) (where \(x\neq a,a+1\)) and\\
+                    %               \((a+1,y)\in R \implies (a,y) \in R\) (where \(y\neq b,b+1\)).
+                    %         \item \((a,b) \in \sigma\) and \((a-1,b-1)\notin R\) and \\
+                    %               \((x,b+1)\in R \implies (x,b) \in R\) (where \(x\neq a-1,a\)) and\\
+                    %               \((a-1,y)\in R \implies (a,y) \in R\)  (where \(y\neq b-1,b\)).
+                    %     \end{enumerate}
+                \end{enumerate}
+    \end{enumerate}
+\end{proposition}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale = 0.75]
+
+     % Make the grid
+     \draw[step=1cm,gray!50] (2/3,2/3) grid (5+1/3,5+1/3);
+
+     % Make black cross in the middle
+     \draw[-,very thick] (3,2/3) -- (3,5+1/3);
+     \draw[-,very thick] (2/3,3) -- (5+1/3,3);
+     \draw[-,very thick,gray] (4,2) -- (2,2) -- (2,4) -- (4,4) -- (4,2);
+
+     \fill[black] (3,3) circle (0.1);
+     \fill[red] (2,3) circle (0.1);
+
+     % Draw the dots on the side
+     \foreach \x in {1,2,4,5}{
+         \draw[dotted, gray!50] (\x, 0) -- (\x, 2/3);
+         \draw[dotted, gray!50] (\x, 5+1/3) -- (\x, 6);
+         \draw[dotted, gray!50] (0,\x) -- (2/3,\x);
+         \draw[dotted, gray!50] (5+1/3,\x) -- (6,\x);
+        }
+     % Draw black dots next to the cross
+     \draw[dotted, black, very thick] (3, 0) -- (3, 2/3);
+     \draw[dotted, black, very thick] (3, 5+1/3) -- (3, 6);
+     \draw[dotted, black, very thick] (0, 3) -- (2/3, 3);
+     \draw[dotted, black, very thick] (5+1/3, 3) -- (6, 3);
+
+     \draw[->-=.5,thick] (3,3) to[bend right=15](2,4);
+
+     \draw[->, thick] (5,3) -- (5,4);
+     \draw[->, thick] (1,3) -- (1,4);
+     \draw[->, thick] (3,5) -- (2,5);
+     \draw[->, thick] (3,1) -- (2,1);
+
+     \node [black,right] at (6,3) {$b$};
+     \node [black,below] at (2,0) {$a$};
+
+\end{tikzpicture}
+    \caption{If the conditions of Proposition~\ref{prop:dom2} are satisfied the box
+    \((a,b)\) can be shaded.}
+\end{figure}
+
+We then define the notion of containment of a mesh pattern, \(p\), within
+another mesh pattern, \(q\), we call this notion \emph{subpattern} containment.
+This is defined as an extension of regular mesh pattern containment, with the
+additional condition that if \((i,j)\in R\text{ then } R_{ij}\) is contained in
+the mesh set of \(q\). This notion is then used to establish the following rule
+that fully classifies the coincidences between non-classical permutation classes
+where we avoid the classical pattern \(\perm{2,3,1}\) and a mesh pattern with
+underlying classical pattern \(\perm{1,2}\).
+\begin{proposition}[Third Dominating Pattern Rule]
+    \label{prop:dom3}
+    Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
+    and a dominating classical pattern \(\pi = (\pi,\emptyset)\), the sets
+    \(\av{\{\pi,m_1\}}\) and \(\av{\{\pi,m_2\}}\) are coincident if
+    \begin{enumerate}
+        \item \(R_1 \triangle R_2 = \{(a,b)\}\)
+        \item\label{prop:dom3:condocc} \(\addp[D]{\mperm{\sigma}{R_1}}{(a,b)}\)
+            where \(D\in\{N,E,S,W\}\)
+            is coincident with a mesh pattern containing an occurrence of
+            \(\mperm{\sigma}{R_2}\) as a subpattern.
+    \end{enumerate}
+\end{proposition}
+
+These three rules, along with two special cases, give a complete coincidence
+classification of the non-classical permutation classes \(\av{\pi,p}\) where
+\(\pi\) is a fixed classical permutation pattern of length \(3\) and \(p\) is a
+mesh pattern of length \(2\).
+
+We then go on to consider Wilf-equivalences between non-classical permutation
+classes where we avoid the classical permutation pattern \(\perm{2,3,1}\) and
+a mesh pattern of length \(2\). I order to establish these Wilf-equivalences
+we use the results of the prior section as well as some observations about
+symmetries in order to reduce the initial upper bound on Wilf-equivalence classes.
+Using the bijection between avoiders of the vincular pattern
+\textpattern{}{2,3,1}{1/0,1/1,1/2,1/3} and set partitions presented by
+Claesson\cite{A}, and structural decomposition of avoiders to obtain generating
+functions we fully classify the Wilf-equivalences. This results in \(13\)
+non-trivial (\ie{} not containing only a single coincidence class) Wilf-equivalence
+classes. When using generating function methods we also provide enumeration of
+the non-classical permutation class.
+
+\begin{example}
+  The following patterns are experimentally Wilf-equivalent up to length 10 in
+\(\av{\perm{2,3,1}}\)
+\begin{equation*}
+    m_1 = \pattern{}{1,2}{1/0,1/1,1/2,2/0,2/1} \text{ and }
+    m_2 = \pattern{}{2,1}{0/1,1/0,1/1,1/2,2/1}
+\end{equation*}
+Considering structural decomposition of an avoider of \(m_1\) in \(\av{2,3,1}\)
+around the leftmost point, we find that the set of avoiders has form
+\begin{equation*}
+    \mathcal{M}_1 = \varepsilon \sqcup
+    \decompleft{0/1,1/0}{\mathcal{M}_1}{}{}{\mathcal{M}^\prime_1}
+\end{equation*}
+Where \(\mathcal{M}^\prime_1\) is a permutation avoiding \(\perm{2,3,1}, m_1\)
+and \(\textpattern{}{1}{0/0,0/1,1/0}\), these permutations have form
+\(\mathcal{M}^\prime_1\)
+\begin{equation*}
+    \mathcal{M}^\prime_1 = \varepsilon \sqcup
+    \decompleft{0/1,1/0}{\scriptstyle \mathcal{M}_1\setminus\varepsilon}{}{}{\mathcal{M}^\prime_1}
+\end{equation*}
+The avoiders of \(m_2\) in \(\av{2,3,1}\) can be split in a similar manner
+around the leftmost point. This gives us that both of these sets have generating
+function \(M(x)\) satisfying
+\begin{align}
+    M(x) &= 1 + xM(x)M^\prime(x) \label{eqn:Pgen}\\
+    M^\prime(x) &= 1 + x(M(x)-1)M^\prime(x)\label{eqn:PprimeGen}
+ \end{align}
+
+ Solving \ref{eqn:PprimeGen} for \(M^\prime(x)\) and substituting into
+ \ref{eqn:Pgen} gives us that the generating function for
+ \(M(x)\) satisfies
+ \begin{equation}
+     M(x) = xM^2(x) - x(M(x) - 1) + 1
+ \end{equation}
+ Solving \(M(x)\) and evaluating the coefficients gives the sequence
+ \begin{equation*}
+    1, 1, 1, 2, 4, 9, 21, 51, 127, 323, 835,\dotsc \tag{\href{https://oeis.org/A001006}{OEIS: A001006 with offset 1}}
+\end{equation*}
+This is an offset of the Motzkin numbers.
+\end{example}
+
+
+% ------------------------------------------------------
+% Please comment out if not joint work.
+
+% \talkJointWork{Christian Bean and Henning Ulfarsson}
+
+% ------------------------------------------------------
+% Please comment out if no references.
+
+\begin{talkBibliog}
+ % \bibitem{comtet} L.~Comtet, Advanced combinatorics, D. Reidel Publishing Co., Dordrecht (1974).
+ \bibitem{ABH}
+  A.~Claesson, B.~E.~Tenner, and H.~Ulfarsson,
+  Coincidence among families of mesh patterns,
+  \emph{CoRR}, 2014.
+  \url{http://arxiv.org/abs/1412.0703}
+ \bibitem{A}
+ A.~Claesson
+ \newblock Generalized pattern avoidance
+ \emph{Eur. J. Comb}, 2001.
+ \url{http://dx.doi. org/10.1006/eujc.2001.0515}
+ % \bibitem{flanoy} P.~Flajolet and M.~Noy, Analytic combinatorics of non-crossing configurations, Discrete Math., 204 (1999), 203--229
+\end{talkBibliog}
+
+% ------------------------------------------------------
+\endgroup
+\end{document}
+% ------------------------------------------------------
