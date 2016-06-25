@@ -1,0 +1,171 @@
+\section{Wilf-equivalences}
+\label{sec:Wilf-equivalences}
+\subsection{Wilf-equivalence}
+\label{sub:Wilf-equivalence}
+\begin{frame}{Wilf-equivalence}
+%   \begin{definition}
+%   Two patterns are said to be \emph{Wilf-equivalent} if the set of avoiders
+%   of the patterns is the same size at every length.
+% \end{definition}
+ All coincident pattern classes are Wilf-equivalent.
+
+ We Wilf-classify classes of the form \(\av{231,m}\) where \(m\)
+ is a mesh pattern.
+
+ % The permutations in \(\av{\perm{2,3,1}}\) of length \(n\) are counted by the
+ % Catalan numbers.
+ % \begin{equation}
+ %   C_0 = 1, \text{ and } C_{n+1} =\sum_{i=0}^{n}C_iC_{n-i}
+ % \end{equation}
+ % This gives the sequence
+ % \begin{equation*}
+ %   1,1,2,5,14,42,132,1430,4862,\dotsc
+ % \end{equation*}
+\end{frame}
+\subsection{Set Partitions}
+\label{sub:Set Partitions}
+\begin{frame}{Set Partitions}
+  \begin{block}{Note}
+    The avoiders of the pattern \(q = \mperm{2,3,1}{\{(1,0),(1,1),(1,2),(1,3)\}}\),
+    \textpattern{}{2,3,1}{1/0,1/1,1/2,1/3},
+    in \(\mathfrak{S}_n\) are in one-to-one correspondence with partitions of
+    \(\nrange{n}\). (Claesson \cite{A})
+\end{block}
+\begin{example}
+    Given the permutation \(\pi = \perm{5,4,2,1,3,9,6,8,7}\) this corresponds to the
+    partition \(\{\{5,4,2,1\},\{3\},\{9,6\},\{8,7\}\}\).
+\end{example}
+All permutations in \(\av{\perm{2,3,1}}\) are also in \(\av{q}\).
+\end{frame}
+\begin{frame}
+  Set Partitions can be used to explain certain Wilf-equivalences.
+  \begin{example}
+    The following patterns are experimentally Wilf-equivalent up to length 10 in
+\(\av{\perm{2,3,1}}\)
+  \begin{equation*}
+      m_1 = \pattern{}{1,2}{0/0,0/2,
+                      1/0,1/1,
+                      2/0,2/1,2/2}
+      \text{ and }
+      m_2 = \pattern{}{1,2}{0/0,
+                      1/0,1/1,1/2,
+                      2/0,2/1,2/2}
+  \end{equation*}
+  Consider containers of the patterns in \(\av{\perm{2,3,1}}\).
+
+  \only<2>{There can only ever be a single occurrence of \(m_1\). The shading
+  shows us that this is a partition of \(k\) elements into two non-overlapping
+  parts by the first element and the last element.}
+  \only<3>{There can only ever be a single occurrence of \(m_2\). The shading
+  shows us that this is a partition of \(k\) elements into two non-overlapping
+  parts, where the split in parts is determined by the value of the last element
+  in the permutation.}
+  \only<4->{Therefore for each of these patterns a container of length \(k\)
+  consists of a decreasing sequence of length \(k-2\) split into two parts.
+  There are \(k-1\) ways to perform such a split. So the number of avoiders of
+  length \(k\) is
+  \begin{equation*}
+    K_k = C_k - (k-1), K_0 = 1
+  \end{equation*}}
+  \end{example}
+
+\end{frame}
+\subsection{Generating Functions}
+\label{sub:Generating Functions}
+% \begin{frame}{Generating {\huge FUN}ctions}
+%   \begin{block}{}
+%     \blockquote[Herbert Wilf, \emph{generatingfunctionology}~\cite{Wilf}]{%
+%     A generating function is a clothesline on which we hang up a sequence of numbers for display.}
+%     % \flushright -Herbert Wilf, \emph{generatingfunctionology}
+%   \end{block}
+%   \begin{definition}
+%     The \emph{ordinary generating function (OGF)} of a sequence \((A_n)\) is the
+%     formal power series
+%     \begin{equation}
+%       A(x) = \sum_{n=0}^{\infty} A_nx^n
+%     \end{equation}
+%     The right hand side is the Taylor expansion of the left hand side at \(0\).
+%   \end{definition}
+% \end{frame}
+% \begin{frame}
+%   \begin{example}
+%     The generating function for the constant sequence \(\{1,1,1,1,\dotsc\}\) is
+%     \begin{equation*}
+%       f(x) = \frac{1}{1-x}
+%     \end{equation*}
+%   \end{example}
+% \end{frame}
+\begin{frame}{Generating Functions by Structure}
+  \begin{example}
+  The generating function for the avoiders of the permutation \(\perm{2,3,1}\)
+  satisfies
+  \begin{equation}
+    C(x) = 1 +xC^2(x)
+  \end{equation}
+  This can be seen structurally (\(\mathcal{C}\) is the set of \(\perm{2,3,1}\) avoiders)
+  \begin{figure}[!ht]
+    \centering
+    \(\mathcal{C} = \varepsilon \mathrel{\sqcup}\) \decompleft{0/1,1/0}{{\mathcal{C}}}{}{}{{\mathcal{C}}}
+\end{figure}
+% \only<2->{
+% Solving for \(C(x)\) and taking the Taylor expansion at \(0\) gives
+% \begin{equation*}
+%   1+x+2x^2+5x^3+14x^4+42x^5+132x^6+1430x^7+4862x^8+\dotsb
+% \end{equation*}
+% }
+%
+\end{example}
+\end{frame}
+\begin{frame}
+  Now we consider one of the Wilf-equivalences between mesh patterns in \(\av{\perm{2,3,1}}\).
+  \begin{equation*}
+    m_1 = \pattern{}{1,2}{1/0,1/1,1/2,2/0,2/1} \text{ and }
+    m_2 = \pattern{}{2,1}{0/1,1/0,1/1,1/2,2/1}
+  \end{equation*}
+\end{frame}
+
+\begin{frame}
+  First we consider the avoiders \(\mathcal{M}_1\) of \(m_1 = \pattern{}{1,2}{1/0,1/1,1/2,2/0,2/1} \) in \(\av{\perm{2,3,1}}\).
+  \begin{equation*}
+    \mathcal{M}_1 = \varepsilon \sqcup
+    \decompleft{0/1,1/0}{\mathcal{M}_1}{}{}{\mathcal{M}^\prime_1}
+\end{equation*}
+Where \(\mathcal{M}^\prime_1\) is a permutation avoiding \(\perm{2,3,1}, m_1\)
+and \(\textpattern{}{1}{0/0,0/1,1/0}\). \pause Now considering a permutation in \(\mathcal{M}^\prime_1\)
+\begin{equation*}
+    \mathcal{M}^\prime_1 = \varepsilon \sqcup
+    \decompleft{0/1,1/0}{\scriptstyle \mathcal{M}_1\setminus\varepsilon}{}{}{\mathcal{M}^\prime_1}
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+  Next we consider the avoiders \(\mathcal{M}_2\) of \(m_2 = \pattern{}{2,1}{0/1,1/0,1/1,1/2,2/1}\) in \(\av{\perm{2,3,1}}\).
+  \begin{equation*}
+    \mathcal{M}_2 = \varepsilon \sqcup
+    \decompleft{0/1,1/0}{\mathcal{M}^\prime_2}{}{}{\mathcal{M}_2}
+\end{equation*}
+Where \(\mathcal{M}^\prime_2\) is a permutation avoiding \(\perm{2,3,1}, m_2\)
+and \(\textpattern{}{1}{0/0,0/1,1/1}\). \pause Now considering a permutation in \(\mathcal{M}^\prime_2\)
+\begin{equation*}
+    \mathcal{M}^\prime_2 = \varepsilon \sqcup
+    \decompleft{0/1,1/0}{\mathcal{M}^\prime_2}{}{}{\scriptstyle \mathcal{M}_2\setminus\varepsilon}
+\end{equation*}
+\end{frame}
+\begin{frame}
+  Both of these sets therefore have generating function \(M(x)\) satisfying
+  \begin{align}
+    M(x) &= 1 + xM(x)M^\prime(x) \label{eqn:Pgen}\\
+    M^\prime(x) &= 1 + x(M(x)-1)M^\prime(x)\label{eqn:PprimeGen}
+ \end{align}\pause
+ Solving \ref{eqn:PprimeGen} for \(M^\prime(x)\) and substituting into
+\ref{eqn:Pgen} gives us that the generating function for
+\(M(x)\) satisfies
+\begin{equation}
+    M(x) = xM^2(x) - x(M(x) - 1) + 1
+\end{equation}\pause
+Evaluating coefficients of \(M(x)\) then gives the sequence
+\begin{equation*}
+    1, 1, 1, 2, 4, 9, 21, 51, 127, 323, 835,\dotsc
+\end{equation*}
+This is an offset of the Motzkin numbers.
+\end{frame}

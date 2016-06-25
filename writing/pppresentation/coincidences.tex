@@ -1,0 +1,412 @@
+\section{Coincidence Classes}
+\label{sec:Coincidence Classes}
+\subsection{Coincidence}
+\label{sub:Coincidence}
+\begin{frame}{Coincidence}
+  % \begin{definition}
+  %   Two mesh patterns are said to be \emph{coincident} if they are avoided by the
+  %   same set of permutations at every length.
+  % \end{definition}
+  \begin{block}{}
+    % Distinct classical patterns can never be coincident.
+    %
+    Coincidences of mesh patterns of length \(2\) are classified.
+
+    Aim to establish rules that classify coincidences when we
+    have one mesh pattern and one classical pattern.
+
+    We call the classical pattern a \emph{dominating pattern}.
+  \end{block}
+\end{frame}
+
+\subsection{Summary of Experimental Results}
+\label{sub:Summary of Experimental Results}
+\begin{frame}{Experimental Results}
+  \begin{block}{}
+  \begin{table}[htb]
+\begin{center}
+\begin{tabularx}{\textwidth}{c|Y|Y|Y|Y|}
+\cline{2-5}
+& \multicolumn{4}{|c|}{Dominating Pattern}\\
+\cline{2-5}
+    & \multicolumn{2}{|c|}{\(\av{\perm{2,3,1}}\)}&\multicolumn{2}{|c|}{\(\av{\perm{3,2,1}}\)}\\
+\cline{2-5}
+& \(\perm{1,2}\)&\(\perm{2,1}\)&\(\perm{1,2}\)&\(\perm{2,1}\)\\
+\hline
+\multicolumn{1}{|r|}{No Dominating rule}&\(220\)&\(220\)&\(220\)&\(220\)\\
+\hline
+\multicolumn{1}{|r|}{\hspace{0pt}\invisible<2->{First Dominating rule}}&\hspace{0pt}\invisible<2->{\(85\)}&\hspace{0pt}\invisible<2->{\(43\)}&\hspace{0pt}\invisible<2->{\(220\)}&\hspace{0pt}\invisible<2->{\(29\)}\\
+\hline
+\multicolumn{1}{|r|}{\hspace{0pt}\invisible<2->{Second Dominating rule}}&\hspace{0pt}\invisible<2->{\(59\)}&\hspace{0pt}\invisible<2->{\(39\)}&\hspace{0pt}\invisible<2->{\(220\)}&\hspace{0pt}\invisible<2->{\(29\)}\\
+\hline
+\multicolumn{1}{|r|}{\hspace{0pt}\invisible<2->{Third Dominating rule}}&\hspace{0pt}\invisible<2->{\(56\)}&\hspace{0pt}\hspace{0pt}\invisible<2->{\(39\)}&\hspace{0pt}\invisible<2->{\(220\)}&\hspace{0pt}\hspace{0pt}\invisible<2->{\(29\)}\\
+\hline
+\multicolumn{1}{|r|}{Experimental class size}&\(56\)&\(39\)&\(213\)&\(29\)\\
+\hline
+\end{tabularx}
+\end{center}
+    \caption{Coincidence class number reduction by application of Dominating rules}
+    \label{tab:domclasses}
+\end{table}
+\end{block}
+\end{frame}
+
+\subsection{Dominating Pattern Rules}
+\label{sub:Dominating pattern Rules}
+
+\begin{frame}{First Dominating rule}
+  \begin{block}{Proposition: First Dominating rule}
+      \label{prop:dom1}
+      \emph{
+      Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
+      and a dominating classical pattern \(\pi = (\pi,\emptyset)\) such that
+      \(\setsize{\pi} \le \setsize{\sigma} + 1\), the sets \(\av{\{\pi,m_1\}}\) and
+      \(\av{\{\pi,m_2\}}\) are coincident if
+
+      \begin{enumerate}
+          \item \(R_1 \triangle R_2 = \{(a,b)\}\)
+          \item \(\pi \preceq \addp{\sigma}{(a,b)}\)\label{prop:dom1:cont}
+      \end{enumerate}}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{example}
+    The following two patterns are coincident in \(\av{\perm{3,2,1}}\)
+    \begin{equation*}
+      \begin{tikzpicture}[scale=\picscale]
+        \modpattern{}{2,1}{1/0,1/1,1/2,2/2}
+    \end{tikzpicture}
+        \raisebox{2ex}{\qquad}
+    \begin{tikzpicture}[scale=\picscale]
+        % \filldraw (2.5,0.5) circle (3pt);
+        \modpattern{}{2,1}{1/0,1/1,1/2,2/2,2/0}
+    \end{tikzpicture}
+    \end{equation*}
+  \end{example}
+  \begin{corollary}
+    All coincidences of classes the form \(\av{\{\perm{3,2,1},\mperm{2,1}{R}}\}\)
+    are fully explained by the First Dominating rule.
+  \end{corollary}
+  \begin{block}{}
+    There are \(29\) coincidences of mesh patterns of the form \(\av{\{\perm{3,2,1},\mperm{2,1}{R}}\}\)
+  \end{block}
+\end{frame}
+
+\begin{frame}{Experimental Results}
+  \begin{block}{}
+  \begin{table}[htb]
+\begin{center}
+\begin{tabularx}{\textwidth}{c|Y|Y|Y|Y|}
+\cline{2-5}
+& \multicolumn{4}{|c|}{Dominating Pattern}\\
+\cline{2-5}
+    & \multicolumn{2}{|c|}{\(\av{\perm{2,3,1}}\)}&\multicolumn{2}{|c|}{\(\av{\perm{3,2,1}}\)}\\
+\cline{2-5}
+& \(\perm{1,2}\)&\(\perm{2,1}\)&\(\perm{1,2}\)&\(\perm{2,1}\)\\
+\hline
+\multicolumn{1}{|r|}{No Dominating rule}&\(220\)&\(220\)&\(220\)&\(220\)\\
+\hline
+\multicolumn{1}{|r|}{First Dominating rule}&\(85\)&\(43\)&\(220\)&\(29\)\\
+\hline
+\multicolumn{1}{|r|}{\hspace{0pt}\invisible{Second Dominating rule}}&\hspace{0pt}\invisible{\(59\)}&\hspace{0pt}\invisible{\(39\)}&\hspace{0pt}\invisible{\(220\)}&\hspace{0pt}\invisible{\(29\)}\\
+\hline
+\multicolumn{1}{|r|}{\hspace{0pt}\invisible{Third Dominating rule}}&\hspace{0pt}\invisible{\(56\)}&\hspace{0pt}\hspace{0pt}\invisible{\(39\)}&\hspace{0pt}\invisible{\(220\)}&\hspace{0pt}\hspace{0pt}\invisible{\(29\)}\\
+\hline
+\multicolumn{1}{|r|}{Experimental class size}&\(56\)&\(39\)&\(213\)&\(29\)\\
+\hline
+\end{tabularx}
+\end{center}
+    \caption{Coincidence class number reduction by application of Dominating rules}
+\end{table}
+\end{block}
+\end{frame}
+
+\begin{frame}{Second Dominating rule}
+  \begin{block}{}
+    The patterns
+    \begin{equation*}
+    m_1 = \pattern{}{2,1}{0/0,0/1,0/2,1/0,2/1} \text{ and } m_2 = \pattern{}{2,1}{0/0,0/1,0/2,1/0,1/1,2/1}
+    \end{equation*}
+    are coincident in \(\av{\perm{2,3,1}}\).
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{lemma}
+    Given a mesh pattern \(m =(\sigma, R)\), where the box \((a,b)\) is not
+in \(R\), and a dominating classical pattern \(\pi = (\pi,\emptyset)\) if
+\(\pi \preceq \adda{\sigma}{(a,b)}\),
+then in any occurrence of \(m\) in a permutation \(\varrho\), the region
+corresponding to the box \((a,b)\) can only contain an decreasing
+subsequence of \(\varrho\).
+  \end{lemma}
+\end{frame}
+
+\begin{frame}
+  \begin{example}
+  Considering \(m_1\) again
+  \begin{equation*}
+    \begin{tikzpicture}[scale=\picscale]
+        {\only<3-4> \fill[pattern=north east lines, pattern color=black!75] (1,1) rectangle +(1,1);}
+        \modpattern{}{2,1}{0/0,0/1,0/2,1/0,2/1}
+        {\only<2> \filldraw (1.66,1.33) circle (3pt);}
+        {\only<2> \filldraw (1.33,1.66) circle (3pt);}
+        {\only<3> \filldraw (2.66,0.33) circle (3pt);}
+        {\only<3> \filldraw (2.33,0.66) circle (3pt);}
+    \end{tikzpicture}
+  \end{equation*}
+  {\only<1-3> \vphantom{This is \(m_2\).}}
+  {\only<4-> {}}
+  \end{example}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Proposition: Second Dominating rule}
+    \label{prop:dom2}
+    \emph{
+    Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
+    and a dominating classical pattern \(\pi = (\pi,\emptyset)\) such that
+    \(\setsize{\pi} \le \setsize{\sigma} + 2\), the sets \(\av{\{\pi,m_1\}}\) and
+    \(\av{\{\pi,m_2\}}\) are coincident if
+
+    \begin{enumerate}
+        \item \(R_1 \triangle R_2 = \{(a,b)\}\)
+        \item   \begin{enumerate}
+                \item\label{prop:dom2:condc} \(\pi \preceq \adda{\sigma}{(a,b)}\) and
+                        \begin{enumerate}
+                            \item \((a+1,b) \in \sigma\) and \((a+1,b-1)\notin R\) and \\
+                                \((x,b-1)\in R \implies (x,b) \in R \) (where \(x\neq a,a+1\)) and\\
+                                  \((a+1,y)\in R \implies (a,y) \in R\) (where \(y\neq b-1,b\)).
+                            \item \(\dots\)
+                        \end{enumerate}
+                    \item \(\dots\)\begin{enumerate}
+                            \item \(\dots\)
+                            \item \(\dots\)
+                          \end{enumerate}
+                \end{enumerate}
+    \end{enumerate}
+    }
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{example}
+    \begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale = 0.75]
+
+     % Make the grid
+     \draw[step=1cm,gray!50] (2/3,2/3) grid (5+1/3,5+1/3);
+
+     % Make black cross in the middle
+     \draw[-,very thick] (3,2/3) -- (3,5+1/3);
+     \draw[-,very thick] (2/3,3) -- (5+1/3,3);
+     \draw[-,very thick,gray] (4,2) -- (2,2) -- (2,4) -- (4,4) -- (4,2);
+
+     \fill[black] (3,3) circle (0.1);
+     \fill[red] (2,3) circle (0.1);
+
+     % Draw the dots on the side
+     \foreach \x in {1,2,4,5}{
+         \draw[dotted, gray!50] (\x, 0) -- (\x, 2/3);
+         \draw[dotted, gray!50] (\x, 5+1/3) -- (\x, 6);
+         \draw[dotted, gray!50] (0,\x) -- (2/3,\x);
+         \draw[dotted, gray!50] (5+1/3,\x) -- (6,\x);
+        }
+     % Draw black dots next to the cross
+     \draw[dotted, black, very thick] (3, 0) -- (3, 2/3);
+     \draw[dotted, black, very thick] (3, 5+1/3) -- (3, 6);
+     \draw[dotted, black, very thick] (0, 3) -- (2/3, 3);
+     \draw[dotted, black, very thick] (5+1/3, 3) -- (6, 3);
+
+     \draw[->-=.5,thick] (3,3) to[bend right=15](2,4);
+
+     \draw[->, thick] (5,3) -- (5,4);
+     \draw[->, thick] (1,3) -- (1,4);
+     \draw[->, thick] (3,5) -- (2,5);
+     \draw[->, thick] (3,1) -- (2,1);
+
+     \node [black,right] at (6,3) {$b$};
+     \node [black,below] at (2,0) {$a$};
+
+\end{tikzpicture}
+    \caption{If the conditions of The Second Dominating rule are satisfied the box
+    \((a,b)\) can be shaded.}
+\end{figure}
+  \end{example}
+\end{frame}
+
+\begin{frame}
+  \begin{corollary}
+    All coincidences of classes the form \(\av{\{\perm{2,3,1},\mperm{2,1}{R}}\}\)
+    are fully explained by applying the First Dominating rule, then applying the
+    Second Dominating rule.
+  \end{corollary}
+  \begin{block}{}
+    There are \(39\) coincidences of mesh patterns of the form
+    \(\av{\{\perm{2,3,1},\mperm{2,1}{R}}\}\)
+  \end{block}
+\end{frame}
+
+\begin{frame}{Experimental Results}
+  \begin{block}{}
+  \begin{table}[htb]
+\begin{center}
+\begin{tabularx}{\textwidth}{c|Y|Y|Y|Y|}
+\cline{2-5}
+& \multicolumn{4}{|c|}{Dominating Pattern}\\
+\cline{2-5}
+    & \multicolumn{2}{|c|}{\(\av{\perm{2,3,1}}\)}&\multicolumn{2}{|c|}{\(\av{\perm{3,2,1}}\)}\\
+\cline{2-5}
+& \(\perm{1,2}\)&\(\perm{2,1}\)&\(\perm{1,2}\)&\(\perm{2,1}\)\\
+\hline
+\multicolumn{1}{|r|}{No Dominating rule}&\(220\)&\(220\)&\(220\)&\(220\)\\
+\hline
+\multicolumn{1}{|r|}{First Dominating rule}&\(85\)&\(43\)&\(220\)&\(29\)\\
+\hline
+\multicolumn{1}{|r|}{Second Dominating rule}&\(59\)&\(39\)&\(220\)&\(29\)\\
+\hline
+\multicolumn{1}{|r|}{\hspace{0pt}\invisible{Third Dominating rule}}&\hspace{0pt}\invisible{\(56\)}&\hspace{0pt}\invisible{\(39\)}&\hspace{0pt}\invisible{\(220\)}&\hspace{0pt}\invisible{\(29\)}\\
+\hline
+\multicolumn{1}{|r|}{Experimental class size}&\(56\)&\(39\)&\(213\)&\(29\)\\
+\hline
+\end{tabularx}
+\end{center}
+    \caption{Coincidence class number reduction by application of Dominating rules}
+\end{table}
+\end{block}
+\end{frame}
+
+\begin{frame}{Third Dominating rule}
+  \begin{block}{}
+    The patterns
+    \begin{equation*}
+    m_1 = \pattern{}{1,2}{0/2,2/0,2/1} \text{ and } m_2 = \pattern{}{1,2}{0/2,1/0,2/0,2/1}
+    \end{equation*}
+    are coincident in \(\av{\perm{2,3,1}}\).
+    Neither of the previous two rules explain this.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{example}
+    \begin{equation*}
+    \only<1>{\vphantom{\pattern{2,3}{2,1,3}{0/3,1/3,2/0,2/1,3/0,3/1,3/2}}\pattern{}{1,2}{0/2,2/0,2/1}}
+    \only<2>{\pattern{}{2,1,3}{0/3,2/0,2/1,3/0,3/1,3/2}}
+    \only<3>{\pattern{}{2,1,3}{0/3,1/3,2/0,2/1,3/0,3/1,3/2}}
+    \only<4>{\pattern{2,3}{2,1,3}{0/3,1/3,2/0,2/1,3/0,3/1,3/2}}
+    \only<5->{\vphantom{\pattern{2,3}{2,1,3}{0/3,1/3,2/0,2/1,3/0,3/1,3/2}}\pattern{}{1,2}{0/2,1/0,2/0,2/1}}
+  \end{equation*}
+  \end{example}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{Proposition: Third Dominating rule}
+      \emph{
+      Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
+      and a dominating classical pattern \(\pi = (\pi,\emptyset)\), the sets
+      \(\av{\{\pi,m_1\}}\) and \(\av{\{\pi,m_2\}}\) are coincident if
+      \begin{enumerate}
+          \item \(R_1 \triangle R_2 = \{(a,b)\}\)
+          \item\label{prop:dom3:condocc} \(\addp[D]{\mperm{\sigma}{R_1}}{(a,b)}\)
+              where \(D\in\{N,E,S,W\}\)
+              is coincident with a mesh pattern containing an occurrence of
+              \(\mperm{\sigma}{R_2}\) as a subpattern.
+      \end{enumerate}
+      }
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{corollary}
+    All coincidences of classes the form \(\av{\{\perm{2,3,1},\mperm{1,2}{R}}\}\)
+    are fully explained by applying the First Dominating rule, the
+    Second Dominating rule, and then the Third Dominating rule.
+  \end{corollary}
+  \begin{block}{}
+    There are \(56\) coincidences of mesh patterns of the form
+    \(\av{\{\perm{2,3,1},\mperm{2,1}{R}}\}\)
+  \end{block}
+\end{frame}
+
+\begin{frame}{Experimental Results}
+  \begin{block}{}
+  \begin{table}[htb]
+\begin{center}
+\begin{tabularx}{\textwidth}{c|Y|Y|Y|Y|}
+\cline{2-5}
+& \multicolumn{4}{|c|}{Dominating Pattern}\\
+\cline{2-5}
+    & \multicolumn{2}{|c|}{\(\av{\perm{2,3,1}}\)}&\multicolumn{2}{|c|}{\(\av{\perm{3,2,1}}\)}\\
+\cline{2-5}
+& \(\perm{1,2}\)&\(\perm{2,1}\)&\(\perm{1,2}\)&\(\perm{2,1}\)\\
+\hline
+\multicolumn{1}{|r|}{No Dominating rule}&\(220\)&\(220\)&\(220\)&\(220\)\\
+\hline
+\multicolumn{1}{|r|}{First Dominating rule}&\(85\)&\(43\)&\(220\)&\(29\)\\
+\hline
+\multicolumn{1}{|r|}{Second Dominating rule}&\(59\)&\(39\)&\(220\)&\(29\)\\
+\hline
+\multicolumn{1}{|r|}{Third Dominating rule}&\(56\)&\(39\)&\(220\)&\(29\)\\
+\hline
+\multicolumn{1}{|r|}{Experimental class size}&\(56\)&\(39\)&\(213\)&\(29\)\\
+\hline
+\end{tabularx}
+\end{center}
+    \caption{Coincidence class number reduction by application of Dominating rules}
+\end{table}
+\end{block}
+\end{frame}
+
+\subsection{Special Cases}
+\label{sub:Special Cases}
+\begin{frame}{Special Cases}
+  There are \(7\) coincidences of the form \(\av{\perm{3,2,1},m}\) that are not
+  explained by the rules.
+  \begin{example}
+    \begin{equation*}
+      m_1 = \pattern{}{1,2}{0/1,0/2,2/0,2/1} \text{ and } m_2 = \pattern{}{1,2}{0/1,0/2,1/1,2/0,2/1}
+    \end{equation*}
+    This coincidence is explained by mathematical induction on the number of
+    points in the region corresponding to the middle box.
+  We call this number \(n\).
+  \end{example}
+\end{frame}
+\begin{frame}
+  \begin{example}
+    \begin{equation*}
+      m_1 = \pattern{}{1,2}{0/1,0/2,2/0,2/1}
+    \end{equation*}
+    \begin{description}
+    \only<1-2>{\item [Base Case \((n=0)\):] The base case holds since we can freely shade the
+        box if it contains no points.}
+    \only<2>{\item [Inductive Hypothesis \((n=k)\):] Suppose that we can find an occurrence
+        of the second pattern if we have an occurrence of the first with \(k\) points
+        in the middle box.}
+    \only<3>{\item [Inductive Step \((n=k+1)\)] Suppose that we have \((k+1)\) points in
+        the middle box. Choose the bottom most point in the middle box, this gives the
+        mesh pattern
+     \begin{equation*}
+        \begin{tikzpicture}[scale=0.5]
+            \modpattern[5]{}{1,2,3}{0/1,0/2,0/3,1/1,2/1,3/0,3/1,3/2}
+            \draw (2.5,0.5) node {\(X\)};
+        \end{tikzpicture}
+    \end{equation*}
+        Now we need to consider the box labelled \(X\). If this box is empty then
+        we have an occurrence of \(m_2\) and are done.}
+        \only<4>{\item [Inductive Step \((n=k+1)\) (cont.)] If this box contains
+        any points then we gain some extra shading on the mesh pattern
+        due to the dominating pattern
+     \begin{equation*}
+        \begin{tikzpicture}[scale=0.5]
+            \modpattern[5]{2,3}{1,2,3}{0/1,0/2,0/3,1/1,1/2,1/3,2/1,3/0,3/1,3/2}
+            \filldraw (2.5,0.5) circle (4 pt);
+        \end{tikzpicture}
+    \end{equation*}
+        The two highlighted points form an occurrence of \(m_1\) with \(k\)
+        points in the middle box, and thus by the Inductive Hypothesis we
+        are done.}
+\end{description}
+  \end{example}
+\end{frame}
