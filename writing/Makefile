@@ -1,7 +1,7 @@
-.PHONY: tex pres
+.PHONY: thesis pres
 
-tex:
-	$(MAKE) -C latex
+thesis:
+	$(MAKE) -C thesis
 
 pres:
 	$(MAKE) -C presentation
