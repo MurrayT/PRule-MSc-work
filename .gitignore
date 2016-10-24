@@ -13,6 +13,10 @@
 *.out
 *.run.xml
 *.toc
+*.dvi
+*.fls
+*.ps
+*.fdb_latexmk
 _*
 _*/
 src/mscwork/
