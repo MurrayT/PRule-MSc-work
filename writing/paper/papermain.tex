@@ -1,7 +1,21 @@
 \documentclass[11pt, a4paper]{amsart}
 \usepackage{amsaddr}
-\begin{document}
+\usepackage[backend=biber,bibencoding=utf8,style=ieee, sorting=nty]{biblatex}
+\addbibresource{references.bib}
+\usepackage{fontspec}
+\usepackage[hidelinks]{hyperref}
+
+
+
 \title{Equivalence classes of mesh patterns with a dominating pattern}
 \input{authorblock}
+
+\begin{document}
+\input{abstract}
 \maketitle
+\thispagestyle{empty}
+\section{Introduction}
+\input{introduction}
+
+\printbibliography
 \end{document}
