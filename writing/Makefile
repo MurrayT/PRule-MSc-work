@@ -7,4 +7,4 @@ pres:
 	$(MAKE) -C presentation
 
 paper:
-	latexmk -cd -xelatex  paper/papermain.tex
+	latexmk -cd -lualatex  paper/papermain.tex
