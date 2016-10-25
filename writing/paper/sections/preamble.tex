@@ -1,0 +1,50 @@
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{note}[theorem]{Note}
+
+\newcommand{\ie}{\textit{i.e.}\xspace}
+\newcommand{\eg}{\textit{e.g.}\xspace}
+
+%% In-document references
+\DeclareRobustCommand{\Chapter}{Chapter\xspace}
+\DeclareRobustCommand{\Section}{Section\xspace}
+\DeclareRobustCommand{\Appendix}{Appendix\xspace}
+\DeclareRobustCommand{\Figure}{Figure\xspace}
+\DeclareRobustCommand{\Table}{Table\xspace}
+\DeclareRobustCommand{\Equation}{equation\xspace}
+\DeclareRobustCommand{\Reference}{reference\xspace}
+\DeclareRobustCommand{\Lemma}{Lemma\xspace}
+\DeclareRobustCommand{\Theorem}{Theorem\xspace}
+\DeclareRobustCommand{\Proposition}{Proposition\xspace}
+\DeclareRobustCommand{\Note}{Note\xspace}
+\DeclareRobustCommand{\Example}{Example\xspace}
+%% Standard way to refer to a page number
+\DeclareRobustCommand{\Page}{page\xspace}
+
+%% Reference terms with built-in reference
+\DeclareRobustCommand{\ChapterRef}[1]{\Chapter~\ref{#1}}
+\DeclareRobustCommand{\SectionRef}[1]{\Section~\ref{#1}}
+\DeclareRobustCommand{\AppendixRef}[1]{\Appendix~\ref{#1}}
+\DeclareRobustCommand{\FigureRef}[1]{\Figure~\ref{#1}}
+\DeclareRobustCommand{\TableRef}[1]{\Table~\ref{#1}}
+\DeclareRobustCommand{\EquationRef}[1]{\Equation~\eqref{#1}}
+\DeclareRobustCommand{\ReferenceRef}[1]{\Reference~\cite{#1}}
+\DeclareRobustCommand{\PageRef}[1]{\Page~\pageref{#1}}
+\DeclareRobustCommand{\LemmaRef}[1]{\Lemma~\ref{#1}}
+\DeclareRobustCommand{\TheoremRef}[1]{\Theorem~\ref{#1}}
+\DeclareRobustCommand{\PropositionRef}[1]{\Proposition~\ref{#1}}
+\DeclareRobustCommand{\NoteRef}[1]{\Note~\ref{#1}}
+\DeclareRobustCommand{\ExampleRef}[1]{\Example~\ref{#1}}
+
+%saveable enumerate
+\makeatletter
+\def\saveenum{\xdef\@savedenum{\the\c@enumi\relax}}
+\def\resetenum{\global\c@enumi\@savedenum}
+\makeatother
