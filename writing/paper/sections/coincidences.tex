@@ -1,0 +1,39 @@
+Coincidences among small mesh patterns have previously been considered by 
+\textcite{DBLP:journals/corr/ClaessonTU14}, in which the authors use the Simultaneous Shading Lemma,
+a closure result and one worked out special case to fully classify coincidences among mesh patterns
+of length 2.
+
+Two patterns \(\lambda\) and \(\gamma\) are considered \emph{coincident} if the set of permutations
+that avoid \(\lambda\) is the same as the set of permutations that avoid \(\gamma\), \ie \(\av{\lambda} = \av{\gamma}\).
+Equivalently we can say that they have the same set of \emph{containers},\ie \(\cont{\lambda} = \cont{\gamma}\).
+
+We will consider the avoidance sets \(\av{\pi,p}\) where \(\pi\) is a classical pattern of length 3
+and \(p\) is a mesh pattern of length 2 in order to establish sufficient conditions for two such
+sets to be coincident. We will fix \(\pi\) in order to define these coincidences and say that \(\pi\)
+is the \emph{dominating pattern}.
+
+In order to describe the rules it is useful to have a notion for inserting points, ascents, and descents
+into a mesh pattern.
+\begin{definition}
+Let \(p=(\tau,R)\) be a mesh pattern of length \(n\) such that \(\boks{i,j}\notin R\). We define
+a mesh pattern \(p^\boks{i,j} = (\tau^\prime,R^\prime)\) of length \(n+1\) as the pattern where a 
+point is \emph{inserted} into the box \(\boks{i,j}\) in \(G(p)\). Formally the new underlying classical
+pattern is defined by 
+\begin{equation*}
+\tau^\prime(k) = \begin{cases}
+    j+1 & \text{if } k = i+1\\
+    \pi(k) & \text{if } \pi(k)\le j\\
+    \pi(k)+1 & \text{otherwise.}
+\end{cases} 
+\end{equation*}
+\end{definition}
+
+\(p^\boks{0,2},
+p^\boksright{0,2},
+p^\boksrightup{0,2},
+p^\boksrightdown{0,2},
+p^\boksleft{0,2},
+p^\boksleftup{0,2},
+p^\boksleftdown{0,2},
+p^\boksup{0,2},
+p^\boksdown{0,2}\) 

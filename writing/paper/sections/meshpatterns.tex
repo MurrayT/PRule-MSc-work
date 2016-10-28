@@ -68,32 +68,37 @@ A \emph{mesh pattern} is a pair
 \end{equation*}
 \end{definition}
 We define containment (denoted \(p\preceq \pi\)), and avoidance, of the pattern \(p\) in the permutation
-\(\tau\) on mesh patterns analogously to classical containment, and avoidance,
-of \(\pi\) in \(\tau\) with the additional restrictions on the relative
-position of the occurrence of \(\pi\) in \(\tau\). These restrictions say that
-no elements of \(\tau\) are allowed in the regions of the plot corresponding
-to shaded boxes in the mesh.
+\(\pi\) on mesh patterns analogously to classical containment, and avoidance,
+of \(\tau\) in \(\pi\) with the additional restrictions on the relative
+position of the occurrence of \(\tau\) in \(\pi\). These restrictions say that
+no elements of \(\pi\) are allowed in the regions of the plot corresponding
+to shaded boxes in the mesh. These boxes are denoted by \(\boks{i,j}\), where the point \((i,j)\) is
+the lower left corner of the box.
 
 Formally defined by \textcite{journals/combinatorics/BrandenC11},
-an \emph{occurrence} of \(p\) in \(\tau\) is a subset \(\omega\) of the plot of
-\(\tau, G(\tau) = \{(i,\tau(i)\mid i\in[1,n]\}\) such that there are order-preserving
+an \emph{occurrence} of \(p\) in \(\pi\) is a subset \(\omega\) of the plot of
+\(\pi, G(\pi) = \{(i,\pi(i)\mid i\in[1,n]\}\) such that there are order-preserving
 injections \(\alpha,\beta:[1,k]\mapsto[1,n]\) satisfying the following two conditions.
 
 \noindent Firstly, \(\omega\) is an occurrence of \(\pi\) in the classical sense
   \begin{enumerate}[i.]
-    \item \(\omega = \{(\alpha(i),\beta(j)):(i,j)\in G(\pi)\}\)
+    \item \(\omega = \{(\alpha(i),\beta(j)):(i,j)\in G(\tau)\}\)
   \end{enumerate}\saveenum
   Define \(R_{ij} = [\alpha(i)+1,\alpha(i+1)-1]\times[\beta(j)+1,\beta(j+1)-1]\)
    for \(i,j\in[0,k]\) where \(\alpha(0)=\beta(0)=0\) and \(\alpha(k+1)=\beta(k+1)=n+1\). Then
    the second condition is
   \begin{enumerate}[i.]\resetenum
-  \item if \((i,j) \in R \text{ then } R_{ij} \cap G(\tau) = \emptyset\)
+  \item if \(\boks{i,j} \in R \text{ then } R_{ij} \cap G(\pi) = \emptyset\)
 \end{enumerate}
-We call \(R_{ij}\) the region corresponding to \((i,j)\).
-We define containment of a mesh pattern \(p\) in another mesh \(\kappa\) as above,
-with the additional condition that if \((i,j)\in R\text{ then } R_{ij}\) is
-contained in the mesh set of \(\kappa\), in this case we call \(p\) a \emph{subpattern}
-of \(\kappa\).
+We call \(R_{ij}\) the region corresponding to \(\boks{i,j}\).
+We define containment of a mesh pattern \(p\) in another mesh pattern \(q\) as above,
+with the additional condition that if \(\boks{i,j}\in R\text{ then } R_{ij}\) is
+contained in the mesh set of \(q\), in this case we call \(p\) a \emph{subpattern}
+of \(q\).
+\begin{definition}
+A mesh pattern \(q=(\kappa,T)\) \emph{contains} a mesh pattern \(p=(\tau,R)\) as a \emph{subpattern}
+if \(\kappa\) contains \(\tau\) and \(\left(\bigcup_{\boks{i,j}\in R} R_{ij}\right)\subseteq T\).
+\end{definition}
 
 \begin{example}
     The pattern \(p=\mperm{2,1,3}{\{(0,1),(0,2),(1,0),(1,1),(2,1),(2,2)\}}=
@@ -119,7 +124,7 @@ avoids \(p\) since for every occurrence of the classical pattern \(\perm{2,1,3}\
 there is at least one point in one of the shaded boxes. For example, consider the
 subsequence \(315\) in \(\sigma\), this is an occurrence of \(\perm{2,1,3}\) but
 not the mesh pattern since the points with values \(4\) and \(2\) are in the
-regions corresponding to the boxes \((0,1)\) and \((0,2)\), which are shaded in
+regions corresponding to the boxes \(\boks{0,1}\) and \(\boks{0,2}\), which are shaded in
 \(p\). This is shown in the plot below.
 
 \begin{equation*}
