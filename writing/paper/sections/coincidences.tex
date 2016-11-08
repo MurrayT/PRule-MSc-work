@@ -120,4 +120,62 @@ p^{\boks{1,1}_a}= \pattern{}{4,2,3,5,1}{0/0,
 \label{fig:adda}
 \end{figure}
 
+We now attempt to fully classify coincidences in families characterised by avoidance
+of a classical pattern of length \(3\) and a mesh pattern of length \(2\), that is
+finding and explaining all coincidences where \(\av{\{p,m\}} = \av{\{p,m^\prime\}}\).
+
+It can be easily seen that in order to classify coincidences one need only
+consider coincidences within the family of mesh patterns with the same underlying
+classical pattern, this is due to the fact that \(\perm{2,1}\in\av{\mperm{1,2}{R}}\)
+and \(\perm{1,2}\in\av{\mperm{2,1}{R}}\) for all mesh-sets \(R\).
+
+We know that there are a total of \(512\) mesh-sets for each underlying classical
+pattern. By use of the previous results of \textcite{DBLP:journals/corr/ClaessonTU14}\footnote{
+The authors use the Simultaneous Shading Lemma, a closure result and one worked out special case.
+} the number of coincidence classes can be reduced to \(220\).
+
 \subsection{Coincidence classes of Av(\{321, (21, \textit{R})\})}
+Through experimentation, considering avoidance of permutations of up to length \(11\), we discover
+that there are at least \(29\) coincidence classes of mesh patterns with underlying classical
+pattern \(21\).
+
+\begin{proposition}[First Dominating Pattern Rule]
+    \label{prop:dom1}
+    Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
+    and a dominating classical pattern \(\pi = (\pi,\emptyset)\) such that
+    \(\setsize{\pi} \le \setsize{\sigma} + 1\), the sets \(\av{\{\pi,m_1\}}\) and
+    \(\av{\{\pi,m_2\}}\) are coincident if
+
+    \begin{enumerate}
+        \item \(R_1 \triangle R_2 = \{(a,b)\}\)
+        \item \(\pi \preceq \sigma^\boks{a,b}\)\label{prop:dom1:cont}
+    \end{enumerate}
+\end{proposition}
+In order to prove this proposition we must first make the following note.
+
+\begin{note}
+    \label{not:downcmesh}
+    Let \(R^\prime \subseteq R\). Then any occurrence of \((\tau, R)\) in a permutation
+    is an occurrence of \((\tau,R^\prime)\).
+\end{note}
+
+\begin{proof}[Proof of \PropositionRef{prop:dom1}]
+    We need to prove that \(\av{\{\pi,m_1\}} = \av{\{\pi,m_2\}}\).
+
+    \noindent Assume without meaningful loss of generality that \(R_2 = R_1 \cup \{(a,b)\}\).
+    Since \(R_1\) is a subset of \(R_2\), \NoteRef{not:downcmesh} states that
+    \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\)
+
+    Now we consider a permutation \(\omega^\prime\in \av{\pi}\),
+    containing an occurrence of \(m_1\). Consider placing a point in the
+    region corresponding to the box \((a,b)\), regardless of where in this
+    region we place the point by condition~\ref{prop:dom1:cont} of the
+    Proposition we create an occurrence of \(\pi\), therefore there can be no
+    points in this region, which could have been represented in the mesh set
+    \(R_1\) by adding the box \((a,b)\). Hence every occurrence of
+    \(m_1\) is in fact an occurrence of \(m_2\), and we have that
+    \(\av{\{\pi,m_2\}} \subseteq \av{\{\pi,m_1\}}\).
+
+    Taking both directions of the containment we can therefore draw the
+    conclusion that \(\av{\{\pi,m_1\}} = \av{\{\pi,m_2\}}\).
+\end{proof}
