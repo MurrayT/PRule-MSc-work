@@ -2,11 +2,17 @@
 \usepackage{amsaddr}
 \usepackage[backend=biber,bibencoding=utf8,style=ieee, sorting=nty]{biblatex}
 \addbibresource{references.bib}
-\usepackage{fontspec}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
 \usepackage{permpatts}
+\usetikzlibrary{decorations.markings}
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
 \usepackage{enumerate}
 \usepackage{xspace}
 \usepackage{xinttools}
+\usepackage{tabularx}
 \usepackage[hidelinks]{hyperref}
 
 \input{sections/preamble}
@@ -23,6 +29,12 @@
 \section{Mesh patterns}
 \input{sections/meshpatterns}
 \section{Coincidences between Mesh Patterns}
+\label{sec:coincs}
 \input{sections/coincidences}
+\section{Wilf Equivalences between equivalence classes}
+\input{sections/wilf}
+\section{Conclusions and Future Work}
+\input{sections/conclfut}
+
 \printbibliography
 \end{document}

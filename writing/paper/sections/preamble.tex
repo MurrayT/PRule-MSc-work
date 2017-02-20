@@ -5,7 +5,7 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{lemma}[theorem]{Lemma}
 \numberwithin{equation}{section}
-\numberwithin{figure}{section}
+%\numberwithin{figure}{section}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{note}[theorem]{Note}
 
@@ -49,3 +49,17 @@
 \def\saveenum{\xdef\@savedenum{\the\c@enumi\relax}}
 \def\resetenum{\global\c@enumi\@savedenum}
 \makeatother
+%new column for tabularx
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+%Auto incrementing variable letters
+\newcounter{VarNumber}
+\setcounter{VarNumber}{69}
+\chardef\lastvar=68
+\chardef\var=\value{VarNumber}
+\newcommand{\scriptvar}{\mathcal{\var}}
+\newcommand{\nextvar}[1][\lastvar]{%
+\stepcounter{VarNumber}
+\chardef#1=\var
+\chardef\lastvar=\var
+\chardef\var=\value{VarNumber}
+}

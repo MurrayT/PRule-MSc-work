@@ -1,25 +1,26 @@
-Coincidences among small mesh patterns have previously been considered by 
+Coincidences among small mesh patterns have been considered by
 \textcite{DBLP:journals/corr/ClaessonTU14}, in which the authors use the Simultaneous Shading Lemma,
 a closure result and one worked out special case to fully classify coincidences among mesh patterns
 of length 2.
 
 Two patterns \(\lambda\) and \(\gamma\) are considered \emph{coincident} if the set of permutations
-that avoid \(\lambda\) is the same as the set of permutations that avoid \(\gamma\), \ie \(\av{\lambda} = \av{\gamma}\).
-Equivalently we can say that they have the same set of \emph{containers},\ie \(\cont{\lambda} = \cont{\gamma}\).
+that avoid \(\lambda\) is the same as the set of permutations that avoid \(\gamma\),
+\ie \(\av{\lambda} = \av{\gamma}\). Equivalently we can say that they have the same set of
+\emph{containers},\ie \(\cont{\lambda} = \cont{\gamma}\).
 
 We will consider the avoidance sets \(\av{\pi,p}\) where \(\pi\) is a classical pattern of length 3
 and \(p\) is a mesh pattern of length 2 in order to establish sufficient conditions for two such
-sets to be coincident. We will fix \(\pi\) in order to define these coincidences and say that \(\pi\)
-is the \emph{dominating pattern}.
+sets to be coincident. We will fix \(\pi\) in order to define these coincidences and say that
+\(\pi\)is the \emph{dominating pattern}.
 
-In order to describe the rules it is useful to have a notion for inserting points, ascents, and descents
-into a mesh pattern.
+In order to describe the rules it is useful to have a notion for inserting points, ascents, and
+descents into a mesh pattern.
 \begin{definition}
 \label{def:ap}
 Let \(p=(\tau,R)\) be a mesh pattern of length \(n\) such that \(\boks{i,j}\notin R\). We define
-a mesh pattern \(p^\boks{i,j} = (\tau^\prime,R^\prime)\) of length \(n+1\) as the pattern where a 
-point is \emph{inserted} into the box \(\boks{i,j}\) in \(G(p)\). Formally the new underlying classical
-pattern is defined by 
+a mesh pattern \(p^\boks{i,j} = (\tau^\prime,R^\prime)\) of length \(n+1\) as the pattern where a
+point is \emph{inserted} into the box \(\boks{i,j}\) in \(G(p)\). Formally the new underlying
+classical pattern is defined by
 \begin{equation*}
 \tau^\prime(k) = \begin{cases}
     j+1 & \text{if } k = i+1\\
@@ -27,7 +28,7 @@ pattern is defined by
     \tau(k)+1 & \text{if } \tau(k)> j \text{ and }k\le i\\
     \tau(k-1) & \text{if } \tau(k)\le j \text{ and }k> i+1\\
     \tau(k-1)+1 & \text{if } \tau(k)> j \text{ and }k> i+1\\
-\end{cases} 
+\end{cases}
 \end{equation*}
 While the mesh becomes
 \begin{equation*}
@@ -41,9 +42,9 @@ R^\prime=&\{\boks{k,\ell}\mid k\le i, \ell\le j, \boks{k,\ell}\in R\} \cup\\
 \end{definition}
 In addition, we give the following definitions:
 \begin{definition}
-Let \(p=(\tau,R)\) be a mesh pattern of length \(n\) such that \(\boks{i,j}\notin R\) and 
+Let \(p=(\tau,R)\) be a mesh pattern of length \(n\) such that \(\boks{i,j}\notin R\) and
 \(p^\boks{i,j} = (\tau^\prime,R^\prime)\) to be as defined in \DefinitionRef{def:ap}. We define
-the following five modifications of the mesh patterns of the same length as \(p^\boks{i,j}\). 
+the following five modifications of the mesh patterns of the same length as \(p^\boks{i,j}\).
 \begin{align*}
 p^\boksup{i,j} &= (\tau^\prime, R^\prime \cup \{\boks{i,j+1},\boks{i+1,j+1}\})\\
 p^\boksright{i,j} &= (\tau^\prime, R^\prime \cup \{\boks{i+1,j},\boks{i+1,j+1}\})\\
@@ -51,17 +52,18 @@ p^\boksdown{i,j} &= (\tau^\prime, R^\prime \cup \{\boks{i,j},\boks{i+1,j}\})\\
 p^\boksleft{i,j} &= (\tau^\prime, R^\prime \cup \{\boks{i,j},\boks{i,j+1}\})\\
 \end{align*}
 \end{definition}
-Informally, these are considering the topmost, rightmost, leftmost, or bottommost point in \(\boks{i,j}\).
-We allow composition of these modifications, and collect the resulting mesh patterns in a set
+Informally, these are considering the topmost, rightmost, leftmost, or bottommost point in
+\(\boks{i,j}\). We allow composition of these modifications, and collect the resulting mesh patterns
+in a set
 \begin{equation*}
 p^\boksall{i,j}=\left\{
 p^\boks{i,j},
 p^\boksright{i,j},
-p^\boksrightup{i,j},
-p^\boksrightdown{i,j},
+% p^\boksrightup{i,j},
+% p^\boksrightdown{i,j},
 p^\boksleft{i,j},
-p^\boksleftup{i,j},
-p^\boksleftdown{i,j},
+% p^\boksleftup{i,j},
+% p^\boksleftdown{i,j},
 p^\boksup{i,j},
 p^\boksdown{i,j}\right\}
 \end{equation*}
@@ -82,8 +84,8 @@ p^\boksrightup{2,1}
 \begin{definition}
 Let \(p=(\tau,R)\) be a mesh pattern of length \(n\) such that \(\boks{i,j}\notin R\). We define
 a mesh pattern \(p^{\boks{i,j}_a} = (\tau^\prime,R^\prime)\) (\(p^{\boks{i,j}_d}\)) of length \(n+2\)
-as the pattern where an ascent (descent) is \emph{inserted} into the box \(\boks{i,j}\) in \(G(p)\). Formally the new underlying classical
-pattern is defined by
+as the pattern where an ascent (descent) is \emph{inserted} into the box \(\boks{i,j}\) in \(G(p)\).
+Formally the new underlying classical pattern is defined by
 \begin{equation*}
 \tau^\prime(k) = \begin{cases}
     j+t & \text{if } k = i+t,t\in\{1,2\}\\
@@ -91,7 +93,7 @@ pattern is defined by
     \tau(k)+2 & \text{if } \tau(k)> j \text{ and }k\le i\\
     \tau(k-2) & \text{if } \tau(k)\le j \text{ and }k> i+2\\
     \tau(k-2)+2 & \text{if } \tau(k)> j \text{ and }k> i+2\\
-\end{cases} 
+\end{cases}
 \end{equation*}
 The ordering of the top branch determines whether an ascent(or descent) is added.
 The mesh becomes
