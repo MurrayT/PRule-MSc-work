@@ -1,5 +1,5 @@
 Wilf-equivalence is an important aspect to study in the field of permutation
-patterns. If two patterns \(\pi\) and \(\sigma\) are said to be Wilf-equivalent
+patterns. Two patterns \(\pi\) and \(\sigma\) are said to be Wilf-equivalent
 if their avoidance sets have the same size at each length. More formally:
 
 \begin{definition}{(Wilf Equivalence.)}
@@ -9,10 +9,6 @@ if their avoidance sets have the same size at each length. More formally:
   \(k\ge0, \size{\av[k]{R}} = \size{\av[k]{S}}\).
 \end{definition}
 
-Wilf-equivalence is of interest due to the fact that if two permutation classes
-are enumerated in the same way then there should exist a bijection between
-them, and therefore any combinatorial object they represent.
-
 Coincident patterns are trivially Wilf-equivalent, if \(\av[k]{R} = \av[k]{S}\)
 then trivially \(\size{\av[k]{R}} = \size{\av[k]{S}}\). Coincidence is
 therefore a stronger equivalence condition than Wilf-equivalence.
@@ -20,7 +16,7 @@ therefore a stronger equivalence condition than Wilf-equivalence.
 When examining Wilf-equivalences we can use a number of symmetries to reduce
 the amount of work required. It can be seen that the reverse, complement
 and inverse operations (see \FigureRef{fig:symm}) preserve enumeration, and
-therefore these classes are trivially
+therefore classes related by these symmetries are trivially
 Wilf-equivalent.
 \begin{figure}[!htb]
 \begin{align*}
@@ -41,7 +37,8 @@ Throughout this section we will consider Wilf-equivalences of patterns
 whilst avoiding the \emph{dominating pattern} \(\perm{2,3,1}\). We will
 use \(\mathcal{C}\) to denote \(\av{\perm{2,3,1}}\) and \(C(x)\) will
 be the usual Catalan generating function satisfying \(C(x) = 1 + xC(x)^2\).
-This is easy to see by structural decomposition around the maximum, as
+The fact that \(C(x)\) is teh generating function for \(\mathcal{C}\)
+can be seen by structural decomposition around the maximum, as
 shown in \FigureRef{fig:decompmax}.
 
 \begin{figure}[!ht]
@@ -136,12 +133,12 @@ coincident. Consider the decomposition of a non-empty avoider of \(q_1\) in
 \decompmax{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}
 \end{equation*}
 This can be explained succinctly by the fact that a permutation containing
-\(q_1\) starts with it's maximum, by not allowing the lower-left section of the
+\(q_1\) starts with its maximum, by not allowing the lower-left section of the
 \(\perm{2,3,1}\) avoider to be empty we prevent an occurrence from ever
 happening.
 
 Consider \(q_2 = \textpattern{}{1}{0/1,1/0,1/1}\), avoiding this pattern
-means that a permutation does not end with it's maximum. We can perform a
+means that a permutation does not end with its maximum. We can perform a
 similar
 decomposition as before to get
 \begin{equation*}
@@ -169,21 +166,13 @@ The coefficients of this generating function are
 \nextvar[\varmaxl]
 There is one pattern of length \(1\) still to consider. The pattern
 \(r = \textpattern{}{1}{0/0,1/0,1/1}\) is avoided by all permutations
-that do not end in their minimum. Considering the standard decomposition
-of a \(\perm{2,3,1}\) avoider around the maximum we can see that an avoider
-of \(r\) must fit into precisely one of the following two forms.
+that do not end in their minimum. Any avoider of \(\perm{2,3,1}\) that
+ends in its minimum must be a decreasing sequence
+Therefore this particular class has equation
 \begin{equation*}
-    \scriptvar = \varepsilon \sqcup
-    \underbrace{\decompmax{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}}_\text{Minimum comes before the maximum.} \sqcup
-\underbrace{\decompmax{0/0,0/1,1/0}{}{}{}{\scriptstyle{\scriptvar\setminus\varepsilon}}}_\text{
-        Minimum is after the maximum, minimum cannot be last.
-    }
+    \var(0) = 1, \var(x) = C(x)-1
 \end{equation*}
-Therefore this particular class has generating function \(\var(x)\) satisfying
-\begin{equation*}
-    \var(x) = 1 + xC(x)(C(x)-1) + x(\var(x)-1)
-\end{equation*}
-Computing coefficients of this generating function gives
+Computing these values gives
 \begin{equation*}
     	1, 0, 1, 4, 13, 41, 131, 428, 1429, 4861, 16795,\dotsc
 \tag{\href{https://oeis.org/A141364}{OEIS: A141364}}
@@ -205,11 +194,20 @@ explained by coincidences or symmetry.
 When considering the Wilf-equivalences we consider how permutations correspond
 to set-partitions.
 
+\begin{definition} A \emph{Set Partition} of \(\nrange{n}\) is a set of non-empty subsets of \(\nrange{n}\)
+such that \(\nrange{n}\) is a \emph{disjoint} union of these subsets.
+\end{definition}
+
 \begin{note}
   The avoiders of the pattern \(q = \mperm{\perm{2,3,1}}{(1,0),(1,1),(1,2),(1,3)},
 \textpattern{}{2,3,1}{1/0,1/1,1/2,1/3}\) in \(\mathfrak{S}_n\) are in one-to-one correspondence with partitions
 of \(\nrange{n}\) (\textcite[Prop.~2]{DBLP:journals/ejc/Claesson01})
 \end{note}
+\begin{example}
+    The permutation \(\pi = \perm{5,4,2,1,3,9,6,8,7}\) corresponds to the
+    partition \(\{\{5,4,2,1\},\{3\},\{9,6\},\{8,7\}\}\).
+\end{example}
+
 We will call the least element in each block the \emph{block-bottom}, and note that all permutations
 in \(\av{\perm{2,3,1}}\) also avoid this mesh pattern.
 
@@ -365,4 +363,4 @@ This is an offset of the Motzkin numbers.
 
 In order to establish the remainder of the Wilf-equivalences of the form \(\av{231,p}\) where \(p\)
 is a mesh pattern we can use similar methods to allow us to consolidate experimental classes into
-actual classes.
+actual classes, these methods allow us to explain all 23 of the observed Wilf-classes seen in experimentation.

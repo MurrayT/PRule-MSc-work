@@ -74,8 +74,10 @@ See \FigureRef{fig:addp} for an example of adding a point into a mesh pattern.
 %\adda{\pattern{}{2,3,1}{0/0,1/0,1/3,
 %                        3/0,3/1,3/3}}{(1,1)}
 p = \pattern{}{1,2}{0/1,2/2} \quad
-p^\boksrightup{2,1}
-= \pattern{}{1,3,2}{0/1,0/2,2/2,2/3,3/1,3/2,3/3}
+p^\boks{2,1}= \pattern{}{1,3,2}{0/1,0/2,2/3,3/3}
+\quad
+p^\boksup{2,1}
+= \pattern{}{1,3,2}{0/1,0/2,2/2,2/3,3/2,3/3}
 \end{equation*}
 \caption{The result of inserting a point into \(p=(12,\{(0,1),(2,2)\})\)}
 \label{fig:addp}
@@ -103,7 +105,7 @@ R^\prime=&\{\boks{k,\ell}\mid k\le i, \ell\le j, \boks{k,\ell}\in R\} \cup\\
 &\{\boks{k,\ell}\mid k\le i, \ell > j, \boks{k,\ell-2}\in R\}\cup\\
 &\{\boks{k,\ell}\mid k > i, \ell \le j, \boks{k-2,\ell}\in R\}\cup\\
 &\{\boks{k,\ell}\mid k > i, \ell > j, \boks{k-2,\ell-2}\in R\}\cup\\
-&\{\boks{i,j+1},\boks{i+1,j},\boks{i+1,j+1},\boks{i+1,j+2},\boks{i+2,j+1}\}
+&\{\boks{i+1,j},\boks{i+1,j+1},\boks{i+1,j+2}\}
 \end{aligned}
 \end{equation*}
 \end{definition}
@@ -113,9 +115,9 @@ An example of adding an ascent to a mesh pattern can be seen in \FigureRef{fig:a
 p = \pattern{}{2,3,1}{0/0,1/0,1/3,
                       3/0,3/1,3/3} \quad
 p^{\boks{1,1}_a}= \pattern{}{4,2,3,5,1}{0/0,
-                        1/0,1/2,1/5,
+                        1/0,1/5,
                         2/0,2/1,2/2,2/3,2/5,
-                        3/0,3/2,3/5,
+                        3/0,3/5,
                         5/0,5/1,5/2,5/3,5/5}
 \end{equation*}
 \caption{The result of inserting an ascent into \(p=(231,\{(0,0),(1,0),(1,3),(3,0),(3,1),(3,3)\})\)}
@@ -183,9 +185,8 @@ In order to prove this proposition we must first make the following note.
 \end{proof}
 
 All coincidence classes of \(\av{\{\perm{3,2,1}, \mperm{2,1}{R}\}}\) can be
-explained by application of \PropositionRef{prop:dom1}. By experimentation
-we see that there are at least \(29\) coincidence classes, and all of these
-coincidences are explained by this Proposition.
+explained by application of \PropositionRef{prop:dom1}. Thus explaining the
+29 experimental coincidence classes opserved.
 
 This rule can be understood very in graphical form. In the
 pattern in \FigureRef{fig:rule1} we can gain shading in two boxes since if
@@ -211,7 +212,7 @@ dominating pattern \(\perm{3,2,1}\).
 \subsection{Equivalence classes of Av(\{231, (21, \textit{R})\}).}
 By application of \PropositionRef{prop:dom1} we obtain \(43\) coincidence
 classes. Experimentation shows that there are in fact at least \(39\) coincidence
-classes, for example the following two patterns are coincident in
+classes, for example the following two patterns seem to be coincident in
 \(\av{\perm{2,3,1}}\) but this is not explained by \PropositionRef{prop:dom1}.
 \begin{equation*}
     m_1 = \pattern{}{2,1}{0/0,0/1,0/2,1/0,2/1} \text{ and } m_2 = \pattern{}{2,1}{0/0,0/1,0/2,1/0,1/1,2/1}
@@ -300,8 +301,8 @@ of mesh patterns in cases where there is a dominating classical pattern.
     If the region is empty, the occurrence of \(m_1\) is trivially an occurrence
     of \(m_2\).
 
-    Now consider if the region is non-empty, by \LemmaRef{lem:incdec} and
-    condition~\ref{prop:dom2:condc} of the proposition this region must contain
+    If the region is non-empty, then by \LemmaRef{lem:incdec} and
+    condition~\ref{prop:dom2:condc} of the proposition it must contain
     a decreasing subsequence.
     We can choose the topmost point in the region to replace the corresponding
     point in the mesh pattern and the points from the subsequence are now in
@@ -312,7 +313,7 @@ of mesh patterns in cases where there is a dominating classical pattern.
     occurrence of \(m_1\) in \(\av{\pi}\) is in fact an occurrence of \(m_2\)
     so \(\av{\{\pi,m_2\}} \subseteq \av{\{\pi,m_1\}}\).
 
-    Similar arguments satisfy the remainder of the branches.
+    Similar arguments cover the remainder of the branches.
 \end{proof}
 
 This proposition essentially states that we slide all of the points in the box we desire
@@ -321,7 +322,8 @@ point in the mesh pattern.
 
 By taking the First Dominating Pattern Rule and the Second Dominating Pattern
 Rule together coincidences of classes of the form \(\av{\{\perm{2,3,1},\mperm{2,1}{R}\}}\)
-are fully explained, obtaining 39 coincidence classes of mesh patterns.
+are fully explained, obtaining 39 coincidence classes of mesh patterns, confirming experimental
+observations.
 
 \subsection{Equivalence classes of Av(\{231, (12, \textit{R})\}).}
 When considering the coincidence classes of \(\av{\perm{2,3,1},\mperm{1,2}{R}}\)
@@ -391,7 +393,8 @@ rule:
 \end{proof}
 
 By application of this rule we can reduce the number of classes in
-\(\av{\{\perm{2,3,1},(\perm{1,2}, R)\}}\) to \(56\).
+\(\av{\{\perm{2,3,1},(\perm{1,2}, R)\}}\) to \(56\), which coincides with the 
+56 classes observed through experimentation
 
 \subsection{Equivalence classes of Av(\{321, (12, \textit{R})\}).}
 When considering coincidences of mesh patterns with underlying classical
@@ -464,7 +467,7 @@ We call this number \(n\).
         Now we need to consider the box labelled \(X\). If this box is empty then
         we have an occurrence of \(m_2\) and are done. If this box contains
         any points then we gain some extra shading on the mesh pattern
-        due to the dominating pattern
+        as any points in these boxes would create an occurrence of the dominating pattern \(\perm{2,3,1}\)
      \begin{equation*}
         \begin{tikzpicture}[scale=0.5]
             \modpattern[5]{2,3}{1,2,3}{0/1,0/2,0/3,1/1,1/2,1/3,2/1,3/0,3/1,3/2}

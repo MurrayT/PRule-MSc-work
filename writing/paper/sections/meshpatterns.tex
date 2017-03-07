@@ -15,8 +15,8 @@ The definition of order isomorphism allows us to give the meaning of containment
 permutation patterns.
 \begin{definition}
     A permutation \(\pi\in\mathfrak{S}_n\) contains the pattern \(\sigma\in\mathfrak{S}_k\) (\mbox{denoted} 
-    \(\sigma \preceq \pi\)) if there is some subsequence of indices of \(\pi, i_1i_2\dotsm{}i_k\)
-    such that the sequence \(\pi(i_1)\pi(i_2)\dotsm\pi(i_k)\) is order isomorphic to
+    \(\sigma \preceq \pi\)) if there is some sequence\( i_1,i_2,\dotsm{},i_k\)
+    such that \(1\le i_1<i_2<\dotsm<i_k\le n\) and the sequence \(\pi(i_1)\pi(i_2)\dotsm\pi(i_k)\) is order isomorphic to
     \(\sigma(1)\sigma(2)\dotsm\sigma(k)\). If \(\pi\) does not contain \(\sigma\), we say that 
     \(\pi\) \emph{avoids} \(\sigma\).
 \end{definition}
@@ -24,7 +24,7 @@ permutation patterns.
 \label{ex:contexmpl}
 The permutation \(\pi = \perm{2,4,1,5,3}\) contains the pattern 
 \(\sigma = \perm{2,3,1}\), since the second, fourth and fifth elements (\(453\)) are order 
-isomorphic to \(\perm{231}\), it also contains the occurrence \(241\). The permutation 
+isomorphic to \(\perm{231}\), it also contains the occurrence \(241\) of the sam pattern. The permutation 
 \(\perm{2,4,1,5,3}\) avoids the pattern \(\perm{3,2,1}\).
 \end{example}
 
@@ -35,6 +35,9 @@ We can display a permutation graphically in a \emph{plot}, in such a plot we dis
 \(G(\pi) = \{(i,\pi(i))\mid i\in[1,n]\}\) in a Cartesian coordinate system. The plots of the permutations \(\pi = 
 \perm{2,4,1,5,3}\) and \(\sigma = \perm{2,3,1}\) can be seen in \FigureRef{fig:plots}.
 \FigureRef{fig:containment} shows the containment of \(\sigma\) in \(\pi\) as in \ExampleRef{ex:contexmpl}.
+
+The boxes in the plot of a permutation are denoted by \(\boks{i,j}\), where the point \((i,j)\) is
+the lower left corner of the box.
 
 \begin{figure}[htb]
     \begin{center}
@@ -67,20 +70,13 @@ A \emph{mesh pattern} is a pair
     p = (\tau,R)\text{ with } \tau \in \mathfrak{S}_k \text{ and } R \subseteq [0,k]\times [0,k].
 \end{equation*}
 \end{definition}
-We define containment (denoted \(p\preceq \pi\)), and avoidance, of the pattern \(p\) in the permutation
-\(\pi\) on mesh patterns analogously to classical containment, and avoidance,
-of \(\tau\) in \(\pi\) with the additional restrictions on the relative
-position of the occurrence of \(\tau\) in \(\pi\). These restrictions say that
-no elements of \(\pi\) are allowed in the regions of the plot corresponding
-to shaded boxes in the mesh. These boxes are denoted by \(\boks{i,j}\), where the point \((i,j)\) is
-the lower left corner of the box.
 
 Formally defined by \textcite{journals/combinatorics/BrandenC11},
 an \emph{occurrence} of \(p\) in \(\pi\) is a subset \(\omega\) of the plot of
 \(\pi, G(\pi) = \{(i,\pi(i)\mid i\in[1,n]\}\) such that there are order-preserving
 injections \(\alpha,\beta:[1,k]\mapsto[1,n]\) satisfying the following two conditions.
 
-\noindent Firstly, \(\omega\) is an occurrence of \(\pi\) in the classical sense
+\noindent Firstly, \(\omega\) is an occurrence of \(\tau\) in the classical sense
   \begin{enumerate}[i.]
     \item \(\omega = \{(\alpha(i),\beta(j)):(i,j)\in G(\tau)\}\)
   \end{enumerate}\saveenum
