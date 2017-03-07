@@ -11,7 +11,7 @@ that avoid \(\lambda\) is the same as the set of permutations that avoid \(\gamm
 We will consider the avoidance sets \(\av{\pi,p}\) where \(\pi\) is a classical pattern of length 3
 and \(p\) is a mesh pattern of length 2 in order to establish sufficient conditions for two such
 sets to be coincident. We will fix \(\pi\) in order to define these coincidences and say that
-\(\pi\)is the \emph{dominating pattern}.
+\(\pi\) is the \emph{dominating pattern}.
 
 In order to describe the rules it is useful to have a notion for inserting points, ascents, and
 descents into a mesh pattern.
@@ -364,8 +364,7 @@ rule:
     \(\av{\{\pi,m_1\}}\) and \(\av{\{\pi,m_2\}}\) are coincident if
     \begin{enumerate}
         \item \(R_1 \triangle R_2 = \{(a,b)\}\)
-        \item\label{prop:dom3:condocc} \(\addp[D]{\mperm{\sigma}{R_1}}{(a,b)}\)
-            where \(D\in\{N,E,S,W\}\)
+        \item\label{prop:dom3:condocc} One of \((\sigma,R_1)^\boksall{a,b}\)
             is coincident with a mesh pattern containing an occurrence of
             \(\mperm{\sigma}{R_2}\) as a subpattern.
     \end{enumerate}
@@ -435,7 +434,7 @@ Now if we take the other two points as the points in our
 mesh pattern then we get an occurrence of the pattern
 we originally desired, and hence the two patterns are coincident.
 It is also possible to calculate this coincidence by an extension of the Third
-Dominating rule, where we allow a sequence of \texttt{add\_point} operations, this
+Dominating rule, where we allow a sequence of point addition operations, this
 is discussed further in the future work section.
 
 The other reasoning applies to the patterns
