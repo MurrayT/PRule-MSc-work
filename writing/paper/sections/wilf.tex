@@ -1,6 +1,5 @@
 Wilf-equivalence is an important aspect to study in the field of permutation
-patterns. Two patterns \(\pi\) and \(\sigma\) are said to be Wilf-equivalent
-if their avoidance sets have the same size at each length. More formally:
+patterns.
 
 \begin{definition}{(Wilf Equivalence.)}
   Two patterns \(\pi\) and \(\sigma\) are said to be \emph{Wilf-equivalent}
@@ -9,7 +8,7 @@ if their avoidance sets have the same size at each length. More formally:
   \(k\ge0, \size{\av[k]{R}} = \size{\av[k]{S}}\).
 \end{definition}
 
-Coincident patterns are trivially Wilf-equivalent, if \(\av[k]{R} = \av[k]{S}\)
+Coincident patterns are trivially Wilf-equivalent: if \(\av[k]{R} = \av[k]{S}\)
 then trivially \(\size{\av[k]{R}} = \size{\av[k]{S}}\). Coincidence is
 therefore a stronger equivalence condition than Wilf-equivalence.
 
@@ -28,7 +27,7 @@ Wilf-equivalent.
 \label{fig:symm}
 \end{figure}
 
-Since we are always considering Wilf-equivalences in the set \(\av{S}\) we
+Since we are always considering Wilf-equivalences in a set \(\av{S}\) we
 must only use these symmetries when they preserve the dominating pattern, if we
 were to allow other symmetries, then the equivalences calculated in the
 previous section do not necessarily hold.
@@ -37,7 +36,7 @@ Throughout this section we will consider Wilf-equivalences of patterns
 whilst avoiding the \emph{dominating pattern} \(\perm{2,3,1}\). We will
 use \(\mathcal{C}\) to denote \(\av{\perm{2,3,1}}\) and \(C(x)\) will
 be the usual Catalan generating function satisfying \(C(x) = 1 + xC(x)^2\).
-The fact that \(C(x)\) is teh generating function for \(\mathcal{C}\)
+The fact that \(C(x)\) is the generating function for \(\mathcal{C}\)
 can be seen by structural decomposition around the maximum, as
 shown in \FigureRef{fig:decompmax}.
 
@@ -107,21 +106,21 @@ shading in \(p\), so we can use any avoider of \(\perm{2,3,1}\). The lower-left
 section however can create occurrences
 of \(p\) and therefore must also avoid \(p\), as well as \(\perm{2,3,1}\).
 This gives the generating function of avoiders to be the function \(\var(x)\)
-satisfying.
+satisfying
 \begin{align*}
     \var(x) &= 1 + x\var(x)(C(x)-1) \\
     \shortintertext{Solving for \(\var\) gives}
     \var(x) &= \frac{1}{1+x-xC(x)}\\
     \var(x) &= \frac{C(x)}{1+xC(x)}
-\end{align*}
+\end{align*} % TODO Do we need both representations?
 
+\noindent
 Calculating coefficients given by this generating function gives the Fine
 numbers.
 \begin{equation*}
     1, 0, 1, 2, 6, 18, 57, 186, 622, 2120, 7338,\dotsc
 \tag{\href{https://oeis.org/A000957}{OEIS: A000957}}
 \end{equation*}
-
 
 \nextvar[\varfine]
 It can be shown by use of \PropositionRef{prop:dom2} that the patterns
@@ -133,11 +132,11 @@ coincident. Consider the decomposition of a non-empty avoider of \(q_1\) in
 \decompmax{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}
 \end{equation*}
 This can be explained succinctly by the fact that a permutation containing
-\(q_1\) starts with its maximum, by not allowing the lower-left section of the
+\(q_1\) starts with its maximum, and by not allowing the lower-left section of the
 \(\perm{2,3,1}\) avoider to be empty we prevent an occurrence from ever
 happening.
 
-Consider \(q_2 = \textpattern{}{1}{0/1,1/0,1/1}\), avoiding this pattern
+Consider \(q_2 = \textpattern{}{1}{0/1,1/0,1/1}\). Avoiding this pattern
 means that a permutation does not end with its maximum. We can perform a
 similar
 decomposition as before to get
@@ -146,7 +145,8 @@ decomposition as before to get
 \decompmax{0/1,1/0}{\mathcal{C}}{}{}{\mathcal{C}\setminus\varepsilon}
 \end{equation*}
 
-Now consider \(q_3 = \textpattern{}{1}{0/0,0/1,1/0}\), the avoiders of this
+% TODO Isn't q_3 a symmetry of q_2? So we don't need to repeat the work
+Now consider \(q_3 = \textpattern{}{1}{0/0,0/1,1/0}\). The avoiders of this
 pattern are permutations that do not start with their minimum. In this case we
 perform the decomposition around the leftmost element
 \begin{equation*}
@@ -167,7 +167,7 @@ The coefficients of this generating function are
 There is one pattern of length \(1\) still to consider. The pattern
 \(r = \textpattern{}{1}{0/0,1/0,1/1}\) is avoided by all permutations
 that do not end in their minimum. Any avoider of \(\perm{2,3,1}\) that
-ends in its minimum must be a decreasing sequence
+ends in its minimum must be a decreasing sequence.
 Therefore this particular class has equation
 \begin{equation*}
     \var(0) = 1, \var(x) = C(x)-1
@@ -179,7 +179,7 @@ Computing these values gives
 \end{equation*}
 
 \section{Wilf-classes with patterns of length 2}
-By the use of set equivalences established in
+By the use of coincidence classes established in
 \SectionRef{sec:coincs} we know that there are at most 95 Wilf-equivalence classes.
 
 The only symmetry that we are able to consider is \emph{reverse-complement-inverse} as this is the only symmetry that preserves the
@@ -188,13 +188,13 @@ Wilf-equivalence, these equivalences being explained by either the patterns bein
 coincident in \(\av{\perm{2,3,1}}\), or by one pattern being the reverse-complement-inverse of some other pattern.
 
 Computing avoiders up to length 10 suggests that there are at least 23 Wilf-classes,
-of which 13 are non-trivial, therefore there are Wilf-equivalences that are not
+of which 13 are non-trivial. Therefore there are Wilf-equivalences that are not
 explained by coincidences or symmetry.
 
 When considering the Wilf-equivalences we consider how permutations correspond
 to set-partitions.
 
-\begin{definition} A \emph{Set Partition} of \(\nrange{n}\) is a set of non-empty subsets of \(\nrange{n}\)
+\begin{definition} A \emph{set partition} of \(\nrange{n}\) is a set of non-empty subsets of \(\nrange{n}\)
 such that \(\nrange{n}\) is a \emph{disjoint} union of these subsets.
 \end{definition}
 
@@ -209,7 +209,7 @@ of \(\nrange{n}\) (\textcite[Prop.~2]{DBLP:journals/ejc/Claesson01})
 \end{example}
 
 We will call the least element in each block the \emph{block-bottom}, and note that all permutations
-in \(\av{\perm{2,3,1}}\) also avoid this mesh pattern.
+in \(\av{\perm{2,3,1}}\) also avoid the mesh pattern \(q\).
 
 We will use two main methods of establishing Wilf-equivalence between mesh patterns of length \(2\)
 in \(\av{\perm{2,3,1}}\): the structural decomposition of avoiders, via generating functions; or the
@@ -229,8 +229,8 @@ The following patterns are experimentally Wilf-equivalent up to length 10 in
 \end{gather}
 
 First we prove the Wilf-equivalence between \(m_1\) and \(m_2\) shown in
-\eqref{eq:singleud}. The easiest way to
-show that these are equinumerous is to consider the containers as set partitions.
+\eqref{eq:singleud}, by considering the containers as set partitions consider
+the containers as set partitions.
 
 Considering an occurrence of either of these patterns in a permutation  we know
 the following about the points corresponding to the points in the patterns.
@@ -279,7 +279,7 @@ can perform a similar decomposition around the maximum to get
     \scriptvar_2 = \varepsilon \sqcup
     \decompmax{1/0,0/1}{\scriptvar_2}{}{}{\mathcal{\varmaxl}_3}
 \end{equation*}
-Any occurrence of \(m_4\) can never occur in the
+An occurrence of \(m_4\) can never occur in the
 top right region. It could only occur between the maximum and the first point
 in the region, if and only if this first point is the lowest valued element in
 this region.
@@ -300,7 +300,7 @@ in \(\av{\perm{2,3,1}}\) with generating function satisfying
 \begin{equation*}
     \var(x) = 1 + x\var(x)\varmaxl(x)
 \end{equation*}
-Where \(\varmaxl(x)\) is the generating function given in \EquationRef{eqn:maxlgen}.
+where \(\varmaxl(x)\) is the generating function given in \EquationRef{eqn:maxlgen}.
 This can be enumerated to give the sequence
 \begin{equation*}
     1, 1, 1, 2, 6, 19, 61, 200, 670, 2286, 7918,\dotsc \tag{\href{https://oeis.org/A035929}{OEIS: A035929} offset 1}
@@ -322,7 +322,9 @@ around the leftmost point we have
     \scriptvar_1 = \varepsilon \sqcup
     \decompleft{0/1,1/0}{\scriptvar_1}{}{}{\scriptvar^\prime_1}
 \end{equation*}
-Where \(\scriptvar^\prime_1\) is a permutation avoiding \(\perm{2,3,1}, m_1\)
+
+\noindent
+Here \(\scriptvar^\prime_1\) is a permutation avoiding \(\perm{2,3,1}, m_1\)
 and \(\textpattern{}{1}{0/0,0/1,1/0}\).
 Now consider the decomposition of a permutation in \(\scriptvar^\prime_1\). It can
 once again be decomposed around the leftmost point
@@ -359,7 +361,7 @@ Evaluating \(\var(x)\) gives us the sequence
 \begin{equation*}
     1, 1, 1, 2, 4, 9, 21, 51, 127, 323, 835,\dotsc \tag{\href{https://oeis.org/A001006}{OEIS: A001006 with offset 1}}
 \end{equation*}
-This is an offset of the Motzkin numbers.
+Which is an offset of the Motzkin numbers.
 
 In order to establish the remainder of the Wilf-equivalences of the form \(\av{231,p}\) where \(p\)
 is a mesh pattern we can use similar methods to allow us to consolidate experimental classes into
