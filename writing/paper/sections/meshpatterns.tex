@@ -1,11 +1,11 @@
 A \emph{permutation} is a bijection from the set \(\nrange{n} = \setrange{1}{n}\) to itself. The
-set of all such bijections on this set if denoted \(\mathfrak{S}_n\) and has size \(n!\). We can
+set of all such bijections is denoted \(\mathfrak{S}_n\) and has \(n!\) elements. We can
 denote an individual permutation \(\pi\in\mathfrak{S}_n\) in \emph{one-line notation} by writing the
 entries of the permutation in order, therefore \(\pi = \perm{\pi(1),\pi(2),\dotso,\pi(n)}\). The
-set \(\mathfrak{S}_n\) has exactly one element, the empty permutation \(\varepsilon\).
+set \(\mathfrak{S}_0\) has exactly one element, the empty permutation \(\varepsilon\).
 
 \begin{definition}{(Order isomorphism.)}
-    Two substrings \(\alpha_1\alpha_2\dotsm\alpha_n\) and
+    Two strings \(\alpha_1\alpha_2\dotsm\alpha_n\) and
     \(\beta_1\beta_2\dotsm\beta_n\) are said to be \emph{order isomorphic}
     if they share the same relative order, \ie, \(\alpha_r<\alpha_s\) if and
     only if \(\beta_r<\beta_s\).
@@ -14,25 +14,29 @@ set \(\mathfrak{S}_n\) has exactly one element, the empty permutation \(\varepsi
 The definition of order isomorphism allows us to give the meaning of containment for classical
 permutation patterns.
 \begin{definition}
-    A permutation \(\pi\in\mathfrak{S}_n\) contains the pattern \(\sigma\in\mathfrak{S}_k\) (\mbox{denoted} 
-    \(\sigma \preceq \pi\)) if there is some sequence\( i_1,i_2,\dotsm{},i_k\)
+    A permutation \(\pi\in\mathfrak{S}_n\) \emph{contains} the permutation \(\sigma\in\mathfrak{S}_k\) (\mbox{denoted}
+    \(\sigma \preceq \pi\)) if there is some sequence \( i_1,i_2,\dotsm{},i_k\)
     such that \(1\le i_1<i_2<\dotsm<i_k\le n\) and the sequence \(\pi(i_1)\pi(i_2)\dotsm\pi(i_k)\) is order isomorphic to
-    \(\sigma(1)\sigma(2)\dotsm\sigma(k)\). If \(\pi\) does not contain \(\sigma\), we say that 
-    \(\pi\) \emph{avoids} \(\sigma\).
+    \(\sigma(1)\sigma(2)\dotsm\sigma(k)\). If \(\pi\) does not contain \(\sigma\), we say that
+    \(\pi\) \emph{avoids} \(\sigma\). If this is the case the sequence
+    \(\pi(i_1)\pi(i_2)\dotsm\pi(i_k)\) is called an \emph{occurrence} of \(\sigma\)
+    in \(\pi\). In this context \(\sigma\) is called a (\emph{classical})
+    \emph{permutation pattern}.
 \end{definition}
+
 \begin{example}
 \label{ex:contexmpl}
-The permutation \(\pi = \perm{2,4,1,5,3}\) contains the pattern 
-\(\sigma = \perm{2,3,1}\), since the second, fourth and fifth elements (\(453\)) are order 
-isomorphic to \(\perm{231}\), it also contains the occurrence \(241\) of the sam pattern. The permutation 
+The permutation \(\pi = \perm{2,4,1,5,3}\) contains the pattern
+\(\sigma = \perm{2,3,1}\), since the second, fourth and fifth elements (\(453\)) are order
+isomorphic to \(\perm{231}\). The permutation also contains the occurrence \(241\) of the same pattern. The permutation
 \(\perm{2,4,1,5,3}\) avoids the pattern \(\perm{3,2,1}\).
 \end{example}
 
 We denote the set of permutations of length \(n\) avoiding a pattern \(\sigma\) as \(\Av_n(\sigma)\)
-and \(\av{\sigma}=\bigcup_{i=0}^{\infty}\Av_i(\sigma)\).
+and let \(\av{\sigma}=\bigcup_{i=0}^{\infty}\Av_i(\sigma)\).
 
-We can display a permutation graphically in a \emph{plot}, in such a plot we display the points
-\(G(\pi) = \{(i,\pi(i))\mid i\in[1,n]\}\) in a Cartesian coordinate system. The plots of the permutations \(\pi = 
+We can display a permutation graphically in a \emph{plot}, where we display the points
+\(G(\pi) = \{(i,\pi(i))\mid i \in \nrange{n} \}\) in a Cartesian coordinate system. The plots of the permutations \(\pi =
 \perm{2,4,1,5,3}\) and \(\sigma = \perm{2,3,1}\) can be seen in \FigureRef{fig:plots}.
 \FigureRef{fig:containment} shows the containment of \(\sigma\) in \(\pi\) as in \ExampleRef{ex:contexmpl}.
 
@@ -73,28 +77,20 @@ A \emph{mesh pattern} is a pair
 
 Formally defined by \textcite{journals/combinatorics/BrandenC11},
 an \emph{occurrence} of \(p\) in \(\pi\) is a subset \(\omega\) of the plot of
-\(\pi, G(\pi) = \{(i,\pi(i)\mid i\in[1,n]\}\) such that there are order-preserving
-injections \(\alpha,\beta:[1,k]\mapsto[1,n]\) satisfying the following two conditions.
+\(\pi, G(\pi) = \{(i,\pi(i)\mid i\in\nrange{n}\}\) such that there are order-preserving
+injections \(\alpha,\beta:\nrange{k}\mapsto\nrange{n}\) satisfying the following two conditions.
 
 \noindent Firstly, \(\omega\) is an occurrence of \(\tau\) in the classical sense
   \begin{enumerate}[i.]
-    \item \(\omega = \{(\alpha(i),\beta(j)):(i,j)\in G(\tau)\}\)
+    \item \(\omega = \{(\alpha(i),\beta(j)):(i,j)\in G(\tau)\}\).
   \end{enumerate}\saveenum
   Define \(R_{ij} = [\alpha(i)+1,\alpha(i+1)-1]\times[\beta(j)+1,\beta(j+1)-1]\)
    for \(i,j\in[0,k]\) where \(\alpha(0)=\beta(0)=0\) and \(\alpha(k+1)=\beta(k+1)=n+1\). Then
    the second condition is
   \begin{enumerate}[i.]\resetenum
-  \item if \(\boks{i,j} \in R \text{ then } R_{ij} \cap G(\pi) = \emptyset\)
+  \item if \(\boks{i,j} \in R \text{ then } R_{ij} \cap G(\pi) = \emptyset\).
 \end{enumerate}
-We call \(R_{ij}\) the region corresponding to \(\boks{i,j}\).
-We define containment of a mesh pattern \(p\) in another mesh pattern \(q\) as above,
-with the additional condition that if \(\boks{i,j}\in R\text{ then } R_{ij}\) is
-contained in the mesh set of \(q\), in this case we call \(p\) a \emph{subpattern}
-of \(q\).
-\begin{definition}
-A mesh pattern \(q=(\kappa,T)\) \emph{contains} a mesh pattern \(p=(\tau,R)\) as a \emph{subpattern}
-if \(\kappa\) contains \(\tau\) and \(\left(\bigcup_{\boks{i,j}\in R} R_{ij}\right)\subseteq T\).
-\end{definition}
+We call \(R_{ij}\) the \emph{region corresponding to} \(\boks{i,j}\).
 
 \begin{example}
     The pattern \(p=\mperm{2,1,3}{\{(0,1),(0,2),(1,0),(1,1),(2,1),(2,2)\}}=
@@ -112,8 +108,25 @@ are not contained in the regions corresponding to the shaded boxes in \(p\).
                                3/2,3/3,3/4,
                                4/2,4/3,4/4}
 \end{equation*}
-The subsequence \(325\) is therefore an occurrence of the pattern \(p\) in \(\pi\) and
-\(\pi\) contains \(p\).
+The subsequence \(325\) is therefore an occurrence of the pattern \(p\) in \(\pi\).
+
+We define containment of a mesh pattern \(p\) in another mesh pattern \(q\) as above,
+with the additional condition that if \(\boks{i,j}\in R\text{ then } R_{ij}\) is
+contained in the mesh set of \(q\).
+
+\begin{definition}
+A mesh pattern \(q=(\kappa,T)\) \emph{contains} a mesh pattern \(p=(\tau,R)\) as a \emph{subpattern}
+if \(\kappa\) contains \(p\) and \(\left(\bigcup_{\boks{i,j}\in R} R_{ij}\right)\subseteq T\).
+\end{definition}
+
+TODO: I changed a symbol in the above definition. See the comment.
+% if \(\kappa\) contains \(\tau\)
+% to
+% if \(\kappa\) contains \(p\)
+% that is what we want right?
+
+TODO: Change the following example to an example of a mesh pattern in a mesh
+pattern.
 
 Now we consider the plot for the permutation \(\sigma\). This permutation
 avoids \(p\) since for every occurrence of the classical pattern \(\perm{2,1,3}\)
