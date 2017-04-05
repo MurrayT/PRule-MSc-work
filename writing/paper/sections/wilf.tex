@@ -60,7 +60,7 @@ leftmostpoint, giving a similar figure.
 When considering the mesh patterns of length \(2\) it will be useful to know
 the Wilf-equivalence classes of the mesh patterns of length \(1\) inside
 \(\av{\perm{2,3,1}}\), this means that we are considering the set
-\(\av{231,p}\)
+\(\av{\{\perm{2,3,1},p}\}\)
 where \(p\) is a mesh-pattern of length 1.
 
 The patterns in the following set are coincident,
@@ -229,8 +229,7 @@ The following patterns are experimentally Wilf-equivalent up to length 10 in
 \end{gather}
 
 First we prove the Wilf-equivalence between \(m_1\) and \(m_2\) shown in
-\eqref{eq:singleud}, by considering the containers as set partitions consider
-the containers as set partitions.
+\eqref{eq:singleud}, by considering the containers as set partitions.
 
 Considering an occurrence of either of these patterns in a permutation  we know
 the following about the points corresponding to the points in the patterns.
@@ -289,7 +288,7 @@ the same enumeration and are therefore Wilf-equivalent.
 
 Now we must consolidate these two subclasses. In order to do this we must
 consider the decomposition around the leftmost point of a permutation in
-\(\av{\perm{2,3,1},m_1}\). We have the following
+\(\av{\{\perm{2,3,1},m_1\}}\). We have the following
 \begin{equation*}
     \scriptvar_3 = \varepsilon \sqcup
     \decompleft{1/0,0/1}{\scriptvar_3}{}{}{\mathcal{\varmaxl}_3}
@@ -363,6 +362,6 @@ Evaluating \(\var(x)\) gives us the sequence
 \end{equation*}
 Which is an offset of the Motzkin numbers.
 
-In order to establish the remainder of the Wilf-equivalences of the form \(\av{231,p}\) where \(p\)
+In order to establish the remainder of the Wilf-equivalences of the form \(\av{\{\perm{2,3,1},p\}}\) where \(p\)
 is a mesh pattern we can use similar methods to allow us to consolidate experimental classes into
 actual classes, these methods allow us to explain all 23 of the observed Wilf-classes seen in experimentation.
