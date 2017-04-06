@@ -95,7 +95,7 @@ We call \(R_{ij}\) the \emph{region corresponding to} \(\boks{i,j}\).
 \begin{example}
     The pattern \(p=\mperm{2,1,3}{\{(0,1),(0,2),(1,0),(1,1),(2,1),(2,2)\}}=
     \textpattern{}{ 2, 1, 3 }{ 0/1, 0/2, 1/0, 1/1, 2/1, 2/2 }\) is contained in
-    \(\pi = \perm{3,4,2,1,5}\) but is not contained in \(\sigma = \perm{4,2,3,1,5}\).
+    \(\pi = \perm{3,4,2,1,5}\).
 \end{example}
 
 Let us consider the plot for the permutation \(\pi\). The subsequence \(325\) is
@@ -119,26 +119,25 @@ A mesh pattern \(q=(\kappa,T)\) \emph{contains} a mesh pattern \(p=(\tau,R)\) as
 if \(\kappa\) contains \(p\) and \(\left(\bigcup_{\boks{i,j}\in R} R_{ij}\right)\subseteq T\).
 \end{definition}
 
-% TODO: Change the following example to an example of a mesh pattern in a mesh
-% pattern.
-
-Now we consider the plot for the permutation \(\sigma\). This permutation
-avoids \(p\) since for every occurrence of the classical pattern \(\perm{2,1,3}\)
-there is at least one point in one of the shaded boxes. For example, consider the
-subsequence \(315\) in \(\sigma\), this is an occurrence of \(\perm{2,1,3}\) but
-not the mesh pattern since the points with values \(4\) and \(2\) are in the
-regions corresponding to the boxes \(\boks{0,1}\) and \(\boks{0,2}\), which are shaded in
-\(p\). This is shown in the plot below.
-
-\begin{equation*}
-    \pattern{3,4,5}{4,2,3,1,5}{0/1,0/2,0/3,0/4,
-                               1/1,1/2,1/3,1/4,
+\begin{example}
+    The pattern \(p=\mperm{2,1,3}{\{(0,1),(0,2),(1,0),(2,2)\}}=
+    \textpattern{}{ 2, 1, 3 }{ 0/1, 0/2, 1/0, 2/2 }\) is contained in the pattern
+    \(r = \textpattern{}{4,2,3,1,5}{0/1,0/2,0/3,0/4,
+                               1/0,1/1,1/2,1/3,1/4,
                                2/1,2/2,2/3,2/4,
-                               3/0,3/1,3/2,
-                               4/1,4/2,4/3,4/4}
+                               3/2,3/4,
+                               4/2,4/3,4/4} \) as a subpattern.
+\end{example}
+
+The highlighted points form an occurrence of \(p\) in \(r\)
+\begin{equation*}
+    \pattern{1,2,5}{4,2,3,1,5}{0/1,0/2,0/3,0/4,
+                               1/0,1/1,1/2,1/3,1/4,
+                               2/1,2/2,2/3,2/4,
+                               3/2,3/4,
+                               4/2,4/3,4/4}
 \end{equation*}
-This is true for all occurrences of \(\perm{2,1,3}\) in \(\sigma\) and
-therefore \(\sigma\) avoids \(p\).
+The permutation \(\perm{4,2,3,1,5}\) also contains \(p\) in the usual sense.
 
 We denote the avoidance sets for mesh patterns in the same way as for
 classical patterns. Given a mesh pattern \(p=(\sigma,R)\) we say that \(\sigma\) is the \emph{underlying
