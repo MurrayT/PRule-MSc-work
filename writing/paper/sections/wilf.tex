@@ -144,15 +144,8 @@ decomposition as before to get
     \mathcal{\var}_2 =\varepsilon \sqcup
 \decompmax{0/1,1/0}{\mathcal{C}}{}{}{\mathcal{C}\setminus\varepsilon}
 \end{equation*}
-
-% TODO Isn't q_3 a symmetry of q_2? So we don't need to repeat the work
-Now consider \(q_3 = \textpattern{}{1}{0/0,0/1,1/0}\). The avoiders of this
-pattern are permutations that do not start with their minimum. In this case we
-perform the decomposition around the leftmost element
-\begin{equation*}
-    \mathcal{\var}_3 =\varepsilon \sqcup
-\decompleft{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}
-\end{equation*}
+The pattern \(q_3 = \textpattern{}{1}{0/0,0/1,1/0}\) is the reverse-complement-inverse
+of \(q_2\) and hence the avoiders of \(q_2\) and \(q_3\) are equinumerous.
 All of these classes have the same generating function, namely
 \begin{equation}
     \var(x) = 1 + xC(x)(C(x)-1). \label{eqn:maxlgen}
