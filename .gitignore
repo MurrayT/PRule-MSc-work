@@ -17,6 +17,7 @@
 *.fls
 *.ps
 *.fdb_latexmk
+*-blx.bib
 _*
 _*/
 src/mscwork/
