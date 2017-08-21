@@ -1,0 +1,97 @@
+\documentclass[11pt, aspectratio=169]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{CambridgeUS}
+  \usecolortheme{wolverine}
+  % \useinnertheme{default}
+  \setbeamertemplate{itemize items}[default]
+  \setbeamertemplate{enumerate items}[default]
+  \setbeamertemplate{section in toc}{%
+    {\usebeamercolor[fg]{structure}\inserttocsectionnumber.}~\inserttocsection \par}
+  \setbeamertemplate{subsection in toc}{%
+      {\scriptsize{\usebeamercolor[fg]{structure}\quad\hbox{$\blacktriangleright$}}}~\inserttocsubsection \par}
+      \setbeamertemplate{subsubsection in toc}{%
+          {\scriptsize{\usebeamercolor[fg]{structure}{\small\qquad\hbox{$\scriptstyle\blacktriangleright$}}}~\inserttocsubsubsection \par}}
+}
+
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% \usepackage{fontspec}
+% \setmainfont{CMU Serif}
+\usepackage{permpatts}
+\usepackage{csquotes}
+\usepackage{tabu}
+\usepackage{tabularx}
+\usepackage{lmodern}
+
+\usetikzlibrary{decorations.markings}
+
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+
+
+%new column for tabularx
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+%saveable enumerate
+\makeatletter
+\def\saveenum{\xdef\@savedenum{\the\c@enumi\relax}}
+\def\resetenum{\global\c@enumi\@savedenum}
+\makeatother
+
+\title[Dominating Patterns]{Equivalence classes of mesh patterns with a Dominating Pattern}
+
+\author[M.~Tannock]{Murray Tannock (\href{mailto:mtannock@cs.otago.ac.nz}{\texttt{mtannock@cs.otago.ac.nz}})}
+
+\institute[University of Otago]
+{
+\includegraphics[height=2cm]{ou-logo}
+}
+\date{\today}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>{Outline}
+	\hfill
+	\parbox[t]{.8\textwidth}{
+  \begin{minipage}[c][0.75\textheight]{\textwidth}
+  \tableofcontents[currentsection]
+  \end{minipage}
+}
+  \end{frame}
+}
+
+\begin{document}
+  \begin{frame}
+    \titlepage
+  \end{frame}
+
+\input{introduction}
+\input{coincidences}
+\addtocontents{toc}{\newpage}
+%\input{wilf}
+%\input{confut}
+\begin{thebibliography}{10}
+  \bibitem{Knuth}[1]
+    D.~Knuth,
+    \newblock
+    \newblock \emph{The Art of Computer Programming: Volume 1}, 1997.
+%  \bibitem{Wilf}[2]
+%    H.~Wilf,
+%    \newblock
+%    \newblock \emph{generatingfunctionology}, 1994.
+%    \url{https://www.math.upenn.edu/~wilf/gfology2.pdf}
+%  \bibitem{ABH}[3]
+%    A.~Claesson, B.~E.~Tenner, and H.~Ulfarsson
+%    \newblock Coincidence among families of mesh patterns
+%    \newblock \emph{CoRR}, 2014.
+%    \url{http://arxiv.org/abs/1412.0703}
+%  \bibitem{A}[4]
+%   A.~Claesson
+%   \newblock Generalized pattern avoidance
+%   \newblock \emph{Eur. J. Comb}, 2001
+%   \url{http://dx.doi. org/10.1006/eujc.2001.0515}
+%  \end{thebibliography}
+\end{document}

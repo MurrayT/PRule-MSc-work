@@ -1,0 +1,131 @@
+\section{Introduction}
+\label{sec:Introduction}
+\subsection{Permutations}
+\label{sub:Permutations}
+
+\begin{frame}{Permutations}
+  A \emph{permutation} is a \emph{bijection}, \(\pi\), from the set
+  \(\nrange{n} = \setrange{1}{n}\) to itself.
+
+  More intuitively \textquote[Knuth~\cite{Knuth}]{A \emph{permutation of \(n\) objects} is
+  an arrangement of \(n\) distinct objects in a row}.
+
+  We write permutations in \emph{one-line notation}, writing
+  the entries of the permutation in order
+  \begin{equation*}
+    \pi = \perm{\pi(1),\pi(2),\dotso,\pi(n)}
+  \end{equation*}
+  \begin{example} The \(6\) permutations on \(\nrange{3}\) are
+    \begin{equation*}
+      123, 132, 213, 231, 312, 321
+    \end{equation*}
+  \end{example}
+\end{frame}
+
+\begin{frame}
+  We can display a permutation in a \emph{plot} to give a graphical
+  represention. We plot the points \((i,\pi(i))\) in a Cartesian coordinate
+  system.
+  \begin{figure}[htb]
+    \centering
+    \pattern{}{2,3,1}{}
+    \caption{Plot of the permutation \(\perm{2,3,1}\)}
+  \end{figure}
+  In this setting we call the elements of the permutations \emph{points}.
+
+  The set of all permutations of length \(n\) is \(\mathfrak{S}_n\) and
+  has size \(n!\). The set of all permutations is
+  \(\mathfrak{S}=\bigcup_{i=0}^{\infty}\mathfrak{S}_i\).
+\end{frame}
+\subsection{Classical Permutation Patterns}
+\label{sub:Classical Permutation Patterns}
+
+\begin{frame}{Classical Permutation Patterns}
+  \emph{Classical permutation patterns} capture many interesting combinatorial
+  objects and properties.
+
+  \begin{definition}[Order Isomorphism]
+    Two substrings \(\alpha_1\alpha_2\dotsm\alpha_n\) and
+    \(\beta_1\beta_2\dotsm\beta_n\) are said to be \emph{order isomorphic}
+    if \(\alpha_r<\alpha_s\) if and only if \(\beta_r<\beta_s\).
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{definition}
+    A permutation \(\pi\) is said to \emph{contain} the \emph{classical
+    permutation pattern} \(\sigma\)
+    (denoted \(\sigma \preceq \pi\)) if there is some
+    subsequence \(i_1i_2\dotsm{}i_k\) such that the sequence
+    \(\pi(i_1)\pi(i_2)\dotsm\pi(i_k)\) is order isomorphic to
+    \(\sigma(1)\sigma(2)\dotsm\sigma(k)\).
+  \end{definition}
+
+  If \(\pi\) does not contain \(\sigma\) we say that \(\pi\) \emph{avoids}
+  \(\sigma\).
+
+  The set of permutations of length \(n\) avoiding a pattern \(\sigma\) is
+  denoted as \(\Av_n(\sigma)\) and
+  \begin{equation*}
+    \av{\sigma} = \bigcup_{i=0}^{\infty}\Av_i(\sigma)
+  \end{equation*}
+\end{frame}
+
+\begin{frame}
+  \begin{example}
+    The permutation \(\pi = \perm{2,4,1,5,3}\) contains the pattern
+    \(\sigma = \perm{2,3,1}\)
+    \begin{figure}[htb]
+      \centering
+      \pattern{2,4,5}{2,4,1,5,3}{}
+      \caption{Plot of the permutation \(\perm{2,4,1,5,3}\) with an occurrence
+      of \(\perm{2,3,1}\) indicated}
+    \end{figure}
+  \end{example}
+\end{frame}
+
+\subsection{Mesh Patterns}
+\label{sub:Mesh Patterns}
+\begin{frame}{Mesh Patterns}
+  \emph{Mesh patterns} are a natural extension of classical permutation patterns.
+  \begin{definition}
+    A \emph{mesh pattern} is a pair
+    \begin{equation*}
+      p = (\tau,R)\text{ with } \tau \in \mathfrak{S}_k \text{ and } R \subseteq
+      [0,k]\times [0,k].
+    \end{equation*}
+  \end{definition}
+  We say that \(\tau\) is the \emph{underlying classical pattern} of \(p\).
+\end{frame}
+
+\begin{frame}
+  \begin{example}
+      The pattern \(p=\mperm{2,1,3}{\{(0,1),(0,2),(0,3),(1,0),(1,1),(2,1),(2,2)\}}=
+      \textpattern{}{ 2, 1, 3 }{ 0/1, 0/2,0/3, 1/0, 1/1, 2/1, 2/2 }\) is contained in
+      \(\pi = \perm{3,4,2,1,5}\).
+      \begin{figure}[htb]
+        \centering
+      \pattern{1,3,5}{3,4,2,1,5}{0/2,0/3,0/4,0/5,
+                                 1/0,1/1,1/2,
+                                 2/0,2/1,2/2,
+                                 3/2,3/3,3/4,
+                                 4/2,4/3,4/4}
+      \caption{ An occurrence of \(p\) in \(\pi\) }
+      \end{figure}
+  \end{example}
+\end{frame}
+
+\begin{frame}
+  \begin{example}
+      The pattern \(q=\mperm{2,1}{\{(0,1),(0,2),(1,0),(1,1)\}}=
+      \textpattern{}{ 2, 1 }{ 0/1, 0/2, 1/0, 1/1}\) is contained in
+      \(p=\mperm{2,1,3}{\{(0,1),(0,2),(0,3),(1,0),(1,1),(2,1),(2,2)\}}=
+      \textpattern{}{ 2, 1, 3 }{ 0/1, 0/2,0/3, 1/0, 1/1, 2/1, 2/2 }\) as a
+      subpattern.
+      \begin{figure}[htb]
+        \centering
+      \pattern{1,2}{ 2, 1, 3 }{ 0/1, 0/2,0/3, 1/0, 1/1, 2/1, 2/2 }
+      \caption{ An occurrence of \(q\) in \(p\) }
+      \end{figure}
+  \end{example}
+\end{frame}
