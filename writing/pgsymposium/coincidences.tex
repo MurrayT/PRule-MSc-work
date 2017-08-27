@@ -33,7 +33,9 @@
 \cline{2-5}
 & \(\perm{1,2}\)&\(\perm{2,1}\)&\(\perm{1,2}\)&\(\perm{2,1}\)\\
 \hline
-\multicolumn{1}{|r|}{No Dominating rule}&\(220\)&\(220\)&\(220\)&\(220\)\\
+\multicolumn{1}{|r|}{Starting Size of Classes}&\(512\)&\(512\)&\(512\)&\(512\)\\
+\hline
+\multicolumn{1}{|r|}{Removing Symmetries}&\(220\)&\(220\)&\(220\)&\(220\)\\
 \hline
 \multicolumn{1}{|r|}{\hspace{0pt}\invisible<2->{First Dominating rule}}&\hspace{0pt}\invisible<2->{\(85\)}&\hspace{0pt}\invisible<2->{\(43\)}&\hspace{0pt}\invisible<2->{\(220\)}&\hspace{0pt}\invisible<2->{\(29\)}\\
 \hline
@@ -105,7 +107,9 @@
 \cline{2-5}
 & \(\perm{1,2}\)&\(\perm{2,1}\)&\(\perm{1,2}\)&\(\perm{2,1}\)\\
 \hline
-\multicolumn{1}{|r|}{No Dominating rule}&\(220\)&\(220\)&\(220\)&\(220\)\\
+\multicolumn{1}{|r|}{Starting Size of Classes}&\(512\)&\(512\)&\(512\)&\(512\)\\
+\hline
+\multicolumn{1}{|r|}{Removing Symmetries}&\(220\)&\(220\)&\(220\)&\(220\)\\
 \hline
 \multicolumn{1}{|r|}{First Dominating rule}&\(85\)&\(43\)&\(220\)&\(29\)\\
 \hline
@@ -144,7 +148,8 @@ subsequence of \(\varrho\).
 \end{frame}
 
 \begin{frame}
-  \begin{example}
+  \begin{example}[\(m_1 = \textpattern{}{2,1}{0/0,0/1,0/2,1/0,2/1} \text{ and } m_2 = \textpattern{}{2,1}{0/0,0/1,0/2,1/0,1/1,2/1}\)
+    are coincident in \(\av{\perm{2,3,1}}\).]
   Considering \(m_1\) again
   \begin{equation*}
     \begin{tikzpicture}[scale=\picscale]
@@ -161,37 +166,10 @@ subsequence of \(\varrho\).
   \end{example}
 \end{frame}
 
-\begin{frame}
-  \begin{block}{Proposition: Second Dominating rule}
-    \label{prop:dom2}
-    \emph{
-    Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
-    and a dominating classical pattern \(\pi = (\pi,\emptyset)\) such that
-    \(\setsize{\pi} \le \setsize{\sigma} + 2\), the sets \(\av{\{\pi,m_1\}}\) and
-    \(\av{\{\pi,m_2\}}\) are coincident if
 
-    \begin{enumerate}
-        \item \(R_1 \triangle R_2 = \{(a,b)\}\)
-        \item   \begin{enumerate}
-                \item\label{prop:dom2:condc} \(\pi \preceq \adda{\sigma}{(a,b)}\) and
-                        \begin{enumerate}
-                            \item \((a+1,b) \in \sigma\) and \((a+1,b-1)\notin R\) and \\
-                                \((x,b-1)\in R \implies (x,b) \in R \) (where \(x\neq a,a+1\)) and\\
-                                  \((a+1,y)\in R \implies (a,y) \in R\) (where \(y\neq b-1,b\)).
-                            \item \(\dots\)
-                        \end{enumerate}
-                    \item \(\dots\)\begin{enumerate}
-                            \item \(\dots\)
-                            \item \(\dots\)
-                          \end{enumerate}
-                \end{enumerate}
-    \end{enumerate}
-    }
-  \end{block}
-\end{frame}
 
 \begin{frame}
-  \begin{example}
+  \begin{example}[Graphical interpretation of one case of The Second Dominating rule]
     \begin{figure}[ht]
 \centering
 \begin{tikzpicture}[scale = 0.75]
@@ -206,6 +184,9 @@ subsequence of \(\varrho\).
 
      \fill[black] (3,3) circle (0.1);
      \fill[red] (2,3) circle (0.1);
+     \fill[black!25] (3.25,2.75) circle (0.05);
+     \fill[black!25] (3.5,2.5) circle (0.05);
+     \fill[black!25] (3.75,2.25) circle (0.05);
 
      % Draw the dots on the side
      \foreach \x in {1,2,4,5}{
@@ -261,7 +242,9 @@ subsequence of \(\varrho\).
 \cline{2-5}
 & \(\perm{1,2}\)&\(\perm{2,1}\)&\(\perm{1,2}\)&\(\perm{2,1}\)\\
 \hline
-\multicolumn{1}{|r|}{No Dominating rule}&\(220\)&\(220\)&\(220\)&\(220\)\\
+\multicolumn{1}{|r|}{Starting Size of Classes}&\(512\)&\(512\)&\(512\)&\(512\)\\
+\hline
+\multicolumn{1}{|r|}{Removing Symmetries}&\(220\)&\(220\)&\(220\)&\(220\)\\
 \hline
 \multicolumn{1}{|r|}{First Dominating rule}&\(85\)&\(43\)&\(220\)&\(29\)\\
 \hline
@@ -290,7 +273,8 @@ subsequence of \(\varrho\).
 \end{frame}
 
 \begin{frame}
-  \begin{example}
+  \begin{example}[\(m_1 = \textpattern{}{1,2}{0/2,2/0,2/1} \text{ and } m_2 = \textpattern{}{1,2}{0/2,1/0,2/0,2/1}\)
+    are coincident in \(\av{\perm{2,3,1}}\).]
     \begin{equation*}
     \only<1>{\vphantom{\pattern{2,3}{2,1,3}{0/3,1/3,2/0,2/1,3/0,3/1,3/2}}\pattern{}{1,2}{0/2,2/0,2/1}}
     \only<2>{\pattern{}{2,1,3}{0/3,2/0,2/1,3/0,3/1,3/2}}
@@ -342,7 +326,9 @@ subsequence of \(\varrho\).
 \cline{2-5}
 & \(\perm{1,2}\)&\(\perm{2,1}\)&\(\perm{1,2}\)&\(\perm{2,1}\)\\
 \hline
-\multicolumn{1}{|r|}{No Dominating rule}&\(220\)&\(220\)&\(220\)&\(220\)\\
+\multicolumn{1}{|r|}{Starting Size of Classes}&\(512\)&\(512\)&\(512\)&\(512\)\\
+\hline
+\multicolumn{1}{|r|}{Removing Symmetries}&\(220\)&\(220\)&\(220\)&\(220\)\\
 \hline
 \multicolumn{1}{|r|}{First Dominating rule}&\(85\)&\(43\)&\(220\)&\(29\)\\
 \hline
@@ -374,7 +360,7 @@ subsequence of \(\varrho\).
   \end{example}
 \end{frame}
 \begin{frame}
-  \begin{example}
+  \begin{example}[\(m_1 = \textpattern{}{1,2}{0/1,0/2,2/0,2/1} \text{ and } m_2 = \textpattern{}{1,2}{0/1,0/2,1/1,2/0,2/1}\) are coincident in \(\av{\perm{2,3,1}}\).]
     \begin{description}
     \only<1-2>{\item [Base Case \((n=0)\):] The base case holds since we can freely shade the
         box if it contains no points.}
