@@ -201,10 +201,10 @@ In order to prove the proposition we must first make the following note.
 \end{proof}
 
 All coincidence classes of \(\av{\{\perm{3,2,1}, \mperm{2,1}{R}\}}\) can be
-explained by application of \PropositionRef{prop:dom1}. Thus explaining the
-29 experimental coincidence classes opserved.
+explained by application of \PropositionRef{prop:dom1}, thus explaining the
+29 experimental coincidence classes observed.
 
-\subsection{Equivalence classes of Av(\{231, (21, \textit{R})\}).}
+\subsection{Coincidence classes of Av(\{231, (21, \textit{R})\}).}
 By application of \PropositionRef{prop:dom1} we obtain \(43\) coincidence
 classes. Experimentation shows that there are in fact at least \(39\) coincidence
 classes, for example the following two patterns seem to be coincident in
@@ -257,7 +257,7 @@ of mesh patterns in cases where there is a dominating classical pattern.
     \begin{enumerate}
         \item \(R_1 \triangle R_2 = \{(a,b)\}\)
         \item\label{prop:dom2:cond} Either one of the following hold \begin{enumerate}
-                \item\label{prop:dom2:condc} \(\pi \preceq p^{\boks{i,j}_a}\) and
+                \item\label{prop:dom2:condc} \(\pi \preceq p^{\boks{a,b}_a}\) and
                         \begin{enumerate}
                             \item \((a+1,b) \in \sigma\) and \((a+1,b-1)\notin R\) and \\
                                 \((x,b-1)\in R \implies (x,b) \in R \) (where \(x\neq a,a+1\)) and\\
@@ -266,13 +266,13 @@ of mesh patterns in cases where there is a dominating classical pattern.
                                   \((x,b+1)\in R \implies (x,b) \in R\) (where \(x\neq a-1,a\)) and\\
                                   \((a-1,y)\in R \implies (a,y) \in R\) (where \(y\neq b,b+1\)).
                         \end{enumerate}
-                    \item \(\pi \preceq p^{\boks{i,j}_d}\) and
+                    \item \(\pi \preceq p^{\boks{a,b}_d}\) and
                         \begin{enumerate}
                             \item \((a+1,b+1) \in \sigma\) and \((a+1,b+1)\notin R\) and \\
                                   \((x,b+1)\in R \implies (x,b) \in R\) (where \(x\neq a,a+1\)) and\\
                                   \((a+1,y)\in R \implies (a,y) \in R\) (where \(y\neq b,b+1\)).
                             \item \((a,b) \in \sigma\) and \((a-1,b-1)\notin R\) and \\
-                                  \((x,b+1)\in R \implies (x,b) \in R\) (where \(x\neq a-1,a\)) and\\
+                                  \((x,b-1)\in R \implies (x,b) \in R\) (where \(x\neq a-1,a\)) and\\
                                   \((a-1,y)\in R \implies (a,y) \in R\)  (where \(y\neq b-1,b\)).
                         \end{enumerate}
                 \end{enumerate}
@@ -311,7 +311,7 @@ Pattern Rule fully explain coincidences of classes of the form
 \(\av{\{\perm{2,3,1},\mperm{2,1}{R}\}}\), obtaining 39 coincidence classes of
 mesh patterns, confirming experimental observations.
 
-\subsection{Equivalence classes of Av(\{231, (12, \textit{R})\}).}
+\subsection{Coincidence classes of Av(\{231, (12, \textit{R})\}).}
 When considering the coincidence classes of \(\av{\{\perm{2,3,1},\mperm{1,2}{R}\}}\)
 we first apply the two Dominating Pattern rules previously established.
 Starting from \(220\) classes, application of the first Dominating Pattern rule
@@ -374,7 +374,7 @@ This rule reduces the number of classes in
 \(\av{\{\perm{2,3,1},(\perm{1,2}, R)\}}\) to \(56\), which coincides with the
 56 classes observed through experimentation.
 
-\subsection{Equivalence classes of Av(\{321, (12, \textit{R})\}).}
+\subsection{Coincidence classes of Av(\{321, (12, \textit{R})\}).}
 When considering coincidences of mesh patterns with underlying classical
 pattern \(\perm{1,2}\) in \(\av{\perm{3,2,1}}\) application of the previously
 established rules give no coincidences. Through experimentation we discover
@@ -444,7 +444,7 @@ We call this number \(n\).
         Now we need to consider the box labelled \(X\). If this box is empty then
         we have an occurrence of \(m_2\) and are done. If this box contains
         any points then we gain some extra shading on the mesh pattern
-        as any points in these boxes would create an occurrence of the dominating pattern \(\perm{2,3,1}\)
+        as any points in these boxes would create an occurrence of the dominating pattern \(\perm{3,2,1}\)
      \begin{equation*}
         \begin{tikzpicture}[scale=0.5]
             \modpattern[5]{2,3}{1,2,3}{0/1,0/2,0/3,1/1,1/2,1/3,2/1,3/0,3/1,3/2}
