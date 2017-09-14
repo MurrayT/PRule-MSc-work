@@ -194,6 +194,8 @@ such that \(\nrange{n}\) is a \emph{disjoint} union of these subsets.
   The avoiders of the mesh pattern \(q = %= \mperm{\perm{2,3,1}}{(1,0),(1,1),(1,2),(1,3)}
 \textpattern{}{2,3,1}{1/0,1/1,1/2,1/3}\) in \(\mathfrak{S}_n\) are in one-to-one correspondence with partitions
 of \(\nrange{n}\) (\textcite[Prop.~2]{DBLP:journals/ejc/Claesson01}).
+I order to form this correspondence we read the permutation from left to right starting a
+new block in the partition whenever we see an ascent.
 \end{note}
 \begin{example}
     The permutation \(\pi = \perm{5,4,2,1,3,9,6,8,7}\) corresponds to the
@@ -201,7 +203,8 @@ of \(\nrange{n}\) (\textcite[Prop.~2]{DBLP:journals/ejc/Claesson01}).
 \end{example}
 
 We will call the least element in each block the \emph{block-bottom}, and note that all permutations
-in \(\av{\perm{2,3,1}}\) also avoid the mesh pattern \(q\).
+in \(\av{\perm{2,3,1}}\) also avoid the mesh pattern \(q\), this classical pattern case
+corresponds precisely to the non-crossing partitions.
 
 We will use two main methods of establishing Wilf-equivalence between mesh patterns of length \(2\)
 in \(\av{\perm{2,3,1}}\): the structural decomposition of avoiders, via generating functions; or the
@@ -238,20 +241,22 @@ the following about the points corresponding to the points in the patterns.
     in an occurrence of \(m_2\) is empty, then the point corresponding to the
     second point is precisely the first block bottom.
     If these regions are non-empty then the block containing the point
-    corresponding to the second point in both patterns contains only the point
+    corresponding to the second point in both patterns contains only that point
     (it is a singleton block).
 \end{itemize}
-This tells us that an occurrence of the patterns must happen when there
-is a singleton block occurring after the first block. The difference
-between the patterns is in the underlying classical pattern. This
-means that permutations containing \(m_1\) correspond to set partitions
+
+This means that permutations containing \(m_1\) correspond to set partitions
 with a singleton block with value one higher than some element in the
 block containing \(1\). The permutations containing \(m_2\) correspond
 to the set partitions containing a block with block bottom having value
 one lower than some element in the block containing \(1\) and if this
-block is not the block containing \(1\) then it is a singleton block. This
-proves that the containers of both of these patterns in \(\av{231}\) are
-equinumerous, and therefore so are their avoiders.
+block is not the block containing \(1\) then it is a singleton block.
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+
+The classes defined by containment of \(m_1\) and \(m_2\) are
+equinumerous  and therefore so are their avoiders.
 
 Consider an avoider of \(\perm{2,3,1}\) and \(m_3\). We can perform
 the decomposition around the maximum
