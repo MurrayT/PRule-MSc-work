@@ -57,6 +57,7 @@ We can also decompose a permutation avoiding \(\perm{2,3,1}\) around the
 leftmostpoint, giving a similar figure.
 
 \subsection{Wilf-classes with mesh patterns of length 1.}
+\label{wilf1}
 When considering the mesh patterns of length \(2\) it will be useful to know
 the Wilf-equivalence classes of the mesh patterns of length \(1\) inside
 \(\av{\perm{2,3,1}}\), this means that we are considering the set
@@ -124,7 +125,7 @@ numbers.
 \nextvar[\varfine]
 It can be shown by use of \PropositionRef{prop:dom2} that the patterns
 \textpattern{}{1}{0/0,1/1} and \(q_1 = \textpattern{}{1}{0/0,0/1,1/1}\) are
-coincident. Consider the decomposition of a non-empty avoider of \(q_1\) in
+coincident inside \(\av{\perm{2,3,1}}\). Consider the decomposition of a non-empty avoider of \(q_1\) in
 \(\av{\perm{2,3,1}}\) around the maximum:
 \begin{equation*}
     \scriptvar_1 =\varepsilon \sqcup
@@ -144,7 +145,7 @@ decomposition as before to get
 \decompmax{0/1,1/0}{\mathcal{C}}{}{}{\mathcal{C}\setminus\varepsilon}
 \end{equation*}
 The pattern \(q_3 = \textpattern{}{1}{0/0,0/1,1/0}\) is the reverse-complement-inverse
-of \(q_2\) and hence the avoiders of \(q_2\) and \(q_3\) are equinumerous.
+of \(q_2\) and hence the avoiders of \(q_2\) and \(q_3\) (\(\scriptvar_2\) and \(\scriptvar_3\)) are equinumerous.
 All of these classes have the same generating function, namely
 \begin{equation}
     \var(x) = 1 + xC(x)(C(x)-1). \label{eqn:maxlgen}
@@ -237,7 +238,7 @@ the following about the points corresponding to the points in the patterns.
         the permutation).
     \item If the region corresponding to box \((2,2)\) in an occurrence of
     \(m_1\) is empty, then the point corresponding to the second point is
-    precisely the last block bottom. If the region corresponding to box \((0,1)\)
+    precisely the last block bottom. If the region corresponding to box \((1,0)\)
     in an occurrence of \(m_2\) is empty, then the point corresponding to the
     second point is precisely the first block bottom.
     If these regions are non-empty then the block containing the point
@@ -255,14 +256,13 @@ block is not the block containing \(1\) then it is a singleton block.
 %%%%%%%%%%
 %%%%%%%%%%
 
-The classes defined by containment of \(m_1\) and \(m_2\) are
-equinumerous  and therefore so are their avoiders.
+The classes defined by containment of \(m_1\) and \(m_2\) inside \(\av{\perm{2,3,1}}\)are
+equinumerous and therefore so are their avoiders.
 
-Consider an avoider of \(\perm{2,3,1}\) and \(m_3\). We can perform
-the decomposition around the maximum
+Consider the class, \(\scriptvar_3\), of permutations defined by avoiding \(\perm{2,3,1}\) and \(m_3\). We can decompose a member of this class around the maximum
 \begin{equation*}
-    \scriptvar_1 = \varepsilon \sqcup
-    \decompmax{1/0,0/1}{\scriptvar_1}{}{}{\mathcal{\varmaxl}_1}
+    \scriptvar_3 = \varepsilon \sqcup
+    \decompmax{1/0,0/1}{\scriptvar_3}{}{}{\mathcal{\varmaxl}_1}
 \end{equation*}
 Only the first point in the top right region can
 create an occurrence of \(m_3\) if and only if it is the
@@ -272,23 +272,25 @@ in this region must avoid starting with the maximum.
 Looking at avoiders of \(\perm{2,3,1}\) and \(m_4\) we
 can perform a similar decomposition around the maximum to get
 \begin{equation*}
-    \scriptvar_2 = \varepsilon \sqcup
-    \decompmax{1/0,0/1}{\scriptvar_2}{}{}{\mathcal{\varmaxl}_3}
+    \scriptvar_4 = \varepsilon \sqcup
+    \decompmax{1/0,0/1}{\scriptvar_4}{}{}{\mathcal{\varmaxl}_3}
 \end{equation*}
 An occurrence of \(m_4\) can never occur in the
 top right region. It could only occur between the maximum and the first point
 in the region, if and only if this first point is the lowest valued element in
-this region.
+this region, so this top right region must contain a sub-permutation that does not
+start with it's minimum, i.e., it is a member of \(\mathcal{\varmaxl}_3\) described
+in \SectionRef{wilf1}.
 Since both \(\mathcal{\varmaxl}_1\) and \(\mathcal{\varmaxl}_3\) have the same
-enumeration, \(\scriptvar_1\) and \(\scriptvar_2\) must also have
+enumeration, \(\scriptvar_3\) and \(\scriptvar_4\) must also have
 the same enumeration and are therefore Wilf-equivalent.
 
 Now we must consolidate these two subclasses. In order to do this we must
 consider the decomposition around the leftmost point of a permutation in
 \(\av{\{\perm{2,3,1},m_1\}}\). We have the following
 \begin{equation*}
-    \scriptvar_3 = \varepsilon \sqcup
-    \decompleft{1/0,0/1}{\scriptvar_3}{}{}{\mathcal{\varmaxl}_3}
+    \scriptvar_1 = \varepsilon \sqcup
+    \decompleft{1/0,0/1}{\scriptvar_1}{}{}{\mathcal{\varmaxl}_3}
 \end{equation*}
 It is therefore obvious that avoiders of \(m_1\) and avoiders of \(m_4\)
 have the same enumeration, and therefore all four patterns are Wilf-equivalent
@@ -301,8 +303,6 @@ This can be enumerated to give the sequence
 \begin{equation*}
     1, 1, 1, 2, 6, 19, 61, 200, 670, 2286, 7918,\dotsc \tag{\href{https://oeis.org/A035929}{OEIS: A035929} offset 1}
 \end{equation*}
-
-% This particular example is interesting as it shows that both methods can be used in tandem to establish a coincidence class.
 
 \subsection{}
 \nextvar

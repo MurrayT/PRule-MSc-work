@@ -145,7 +145,7 @@ pattern \(21\).
     \(\av{\{\pi,m_2\}}\) are coincident if
 
     \begin{enumerate}
-        \item The symmetric difference, \(R_1 \triangle R_2\), is \(\{(a,b)\}\)
+        \item The mesh set \(R_2 = R_1 \cup \{(a,b)\}\)
         \item \(\pi \preceq \sigma^\boks{a,b}\)\label{prop:dom1:cont}
     \end{enumerate}
 \end{proposition}
@@ -216,7 +216,7 @@ classes, for example the following two patterns seem to be coincident in
 Consider an occurrence of \(m_1\) in a permutation in \(\av{\perm{2,3,1}}\), consisting
 of elements \(x\) and \(y\). If the region corresponding
 to the box \((1,1)\) is empty we have an occurrence of \(m_2\). Otherwise, if there is any
-increase in this box then we would have an occurrence of \(\perm{2,3,1}\),
+ascent in this box then we would have an occurrence of \(\perm{2,3,1}\),
 however, since we are in \(\av{\perm{2,3,1}}\) this is not possible. This box
 must therefore contain a (non-empty) decreasing subsequence.
  This gives rise to the following lemma:
@@ -225,7 +225,7 @@ must therefore contain a (non-empty) decreasing subsequence.
     \label{lem:incdec}
     Let \(m =(\sigma, R)\) be a mesh pattern, where the box \((a,b)\) is not
     in \(R\), and \(\pi = (\pi,\emptyset)\) be a dominating classical pattern. If
-    \(\pi \preceq p^{\boks{i,j}_a}\)\\(\(\pi \preceq p^{\boks{i,j}_d}\)),
+    \(\pi \preceq m^{\boks{a,b}_a}\)\\(\(\pi \preceq m^{\boks{a,b}_d}\)),
     then in any occurrence of \(m\) in a permutation \(\varrho\), the region
     corresponding to the box \((a,b)\) can only contain an decreasing
     (increasing) subsequence of \(\varrho\).
@@ -255,31 +255,30 @@ of mesh patterns in cases where there is a dominating classical pattern.
     \(\av{\{\pi,m_2\}}\) are coincident if
 
     \begin{enumerate}
-        \item \(R_1 \triangle R_2 = \{(a,b)\}\)
-        \item\label{prop:dom2:cond} Either one of the following hold \begin{enumerate}
-                \item\label{prop:dom2:condc} \(\pi \preceq p^{\boks{a,b}_a}\) and
+        \item The mesh set \(R_2 = R_1 \cup \{(a,b)\}\)
+        \item\label{prop:dom2:cond} Any one of the following four conditions hold \begin{enumerate}
+                \item\label{prop:dom2:condc} \(\pi \preceq \sigma^{\boks{a,b}_a}\) and
                         \begin{enumerate}
-                            \item \((a+1,b) \in \sigma\) and \((a+1,b-1)\notin R\) and \\
-                                \((x,b-1)\in R \implies (x,b) \in R \) (where \(x\neq a,a+1\)) and\\
-                                  \((a+1,y)\in R \implies (a,y) \in R\) (where \(y\neq b-1,b\)).
-                            \item \((a,b+1) \in \sigma\) and \((a-1,b+1)\notin R\) and \\
-                                  \((x,b+1)\in R \implies (x,b) \in R\) (where \(x\neq a-1,a\)) and\\
-                                  \((a-1,y)\in R \implies (a,y) \in R\) (where \(y\neq b,b+1\)).
+                            \item \((a+1,b) \in \sigma\) and \((a+1,b-1)\notin R_1\) and \\
+                                \((x,b-1)\in R_1 \implies (x,b) \in R_1 \) (where \(x\neq a,a+1\)) and\\
+                                  \((a+1,y)\in R_1 \implies (a,y) \in R_1\) (where \(y\neq b-1,b\)).
+                            \item \((a,b+1) \in \sigma\) and \((a-1,b+1)\notin R_1\) and \\
+                                  \((x,b+1)\in R_1 \implies (x,b) \in R_1\) (where \(x\neq a-1,a\)) and\\
+                                  \((a-1,y)\in R_1 \implies (a,y) \in R_1\) (where \(y\neq b,b+1\)).
                         \end{enumerate}
-                    \item \(\pi \preceq p^{\boks{a,b}_d}\) and
+                    \item \(\pi \preceq \sigma^{\boks{a,b}_d}\) and
                         \begin{enumerate}
-                            \item \((a+1,b+1) \in \sigma\) and \((a+1,b+1)\notin R\) and \\
-                                  \((x,b+1)\in R \implies (x,b) \in R\) (where \(x\neq a,a+1\)) and\\
-                                  \((a+1,y)\in R \implies (a,y) \in R\) (where \(y\neq b,b+1\)).
-                            \item \((a,b) \in \sigma\) and \((a-1,b-1)\notin R\) and \\
-                                  \((x,b-1)\in R \implies (x,b) \in R\) (where \(x\neq a-1,a\)) and\\
-                                  \((a-1,y)\in R \implies (a,y) \in R\)  (where \(y\neq b-1,b\)).
+                            \item \((a+1,b+1) \in \sigma\) and \((a+1,b+1)\notin R_1\) and \\
+                                  \((x,b+1)\in R_1 \implies (x,b) \in R_1\) (where \(x\neq a,a+1\)) and\\
+                                  \((a+1,y)\in R_1 \implies (a,y) \in R_1\) (where \(y\neq b,b+1\)).
+                            \item \((a,b) \in \sigma\) and \((a-1,b-1)\notin R_1\) and \\
+                                  \((x,b-1)\in R_1 \implies (x,b) \in R_1\) (where \(x\neq a-1,a\)) and\\
+                                  \((a-1,y)\in R_1 \implies (a,y) \in R_1\)  (where \(y\neq b-1,b\)).
                         \end{enumerate}
                 \end{enumerate}
     \end{enumerate}
 \end{proposition}
 \begin{proof}
-    Assume without meaningful loss of generality that \(R_2 = R_1 \cup \{(a,b)\}\).
     By \NoteRef{not:downcmesh} we only need to show that an occurrence of \(m_1\)
     implies an occurrence of \(m_2\).
     We consider taking the first branch of every choice in condition~\eqref{prop:dom2:cond}.
@@ -287,13 +286,20 @@ of mesh patterns in cases where there is a dominating classical pattern.
     \(\omega\) contains \(m_1\) and consider the region corresponding to
     \((a,b)\) in \(R_1\). If the region is empty, the occurrence of \(m_1\) is trivially an occurrence
     of \(m_2\).
+    
     If the region is non-empty, then by \LemmaRef{lem:incdec} and
     condition~\eqref{prop:dom2:condc} of the proposition it must contain
     a decreasing subsequence.
     We can choose the topmost point in the region to replace the corresponding
     point in the mesh pattern and the points from the subsequence are now in
-    the box southeast of the point. The other conditions allow this to be done
-    without points being present in regions that were shaded. Hence there are no
+    the box southeast of the point. 
+    
+    The conditions on the mesh ensure that no elements of the permutation
+    that were inside a region corresponding to an unshaded box in the occurrence
+    of \(m_1\) would be in a region corresponding to a shaded box in an occurrence of
+    \(m_2\).
+    
+    Hence there are no
     points in the region corresponding to the box \((a,b)\) in the mesh
     pattern, and therefore we can shade this region. This implies that every
     occurrence of \(m_1\) in \(\av{\pi}\) is in fact an occurrence of \(m_2\)
@@ -349,7 +355,7 @@ rule:
     and a dominating classical pattern \(\pi = (\pi,\emptyset)\), the sets
     \(\av{\{\pi,m_1\}}\) and \(\av{\{\pi,m_2\}}\) are coincident if
     \begin{enumerate}
-        \item \(R_1 \triangle R_2 = \{(a,b)\}\)
+        \item The mesh set \(R_2 = R_1 \cup \{(a,b)\}\)
         \item\label{prop:dom3:condocc} One of the patterns in \((\sigma,R_1)^\boksall{a,b}\)
             is coincident with a mesh pattern containing an occurrence of
             \(\mperm{\sigma}{R_2}\) as a subpattern.
@@ -387,7 +393,7 @@ into concrete rules.
 Intuitively it is easy to see why our previous rules have no
 power here. It is impossible to add a single point to a mesh pattern \((12, R)\) and
 create an occurrence of \(\pi = \perm{3,2,1}\). It is also impossible to have
-a position where addition of an increase, or decrease, provides extra
+a position where addition of an ascent, or descent, provides extra
 shading power.
 
 The patterns
