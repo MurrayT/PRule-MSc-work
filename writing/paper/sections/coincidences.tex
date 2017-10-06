@@ -8,10 +8,12 @@ that avoid \(\lambda\) is the same as the set of permutations that avoid \(\gamm
 \ie, \(\av{\lambda} = \av{\gamma}\). Equivalently we can say that they have the same set of
 \emph{containers}, \ie, \(\cont{\lambda} = \cont{\gamma}\).
 
-We will consider the avoidance sets \(\av{\{\pi,p\}}\) where \(\pi\) is a classical pattern of length 3
+We will consider the avoidance sets \(\av{\pi,p}\) where \(\pi\) is a classical pattern of length 3
 and \(p\) is a mesh pattern of length 2 to establish sufficient conditions for two such
 sets to be coincident. The classical pattern \(\pi\) will be fixed and called
-the \emph{dominating pattern}.
+the \emph{dominating pattern}. Given such a dominating pattern \(\pi\) we will write \(q_1 \coinc{\pi} q_2\) if for the mesh patterns, \(q_1\) and \(q_2\),  the sets \(\av{p,q_1}\) and \(\av{p,q_2}\) are coincident.
+
+Our first step is to calculate whether \(\av{p,q_1}\) and \(\av{p,q_2}\) are equal up to permutations of length 11 computationally, if they are we write \(q_1 \coinc[comp]{\pi} q_2\). If \(q_1 \coinc{\pi} q_2\), it can be seen that \(q_1 \coinc[comp]{\pi} q_2\), and therefore the \(\coinc{\pi}\)-equivalence classes form partitions of the \(\coinc[comp]{\pi}\)-coincidence classes.
 
 In order to describe the rules it is useful to have a notion for inserting points, ascents, and
 descents into a mesh pattern.
@@ -120,7 +122,7 @@ p^{\boks{1,1}_a}= \pattern{}{4,2,3,5,1}{0/0,
 
 We now attempt to fully classify coincidences in families characterised by avoidance
 of a classical pattern of length \(3\) and a mesh pattern of length \(2\), that is
-finding and explaining all coincidences where \(\av{\{\pi,m\}} = \av{\{\pi,m^\prime\}}\),
+finding and explaining all coincidences between mesh patterns \(m\) and \(m^\prime\), \(m\coinc{\pi} m^\prime\),
 where \(\pi\) is a classical pattern of length \(3\).
 
 It can be easily seen that in order to classify coincidences one need only
@@ -134,8 +136,7 @@ the number of coincidence classes can be reduced to \(220\).
 
 \subsection{Coincidence classes of Av(\{321, (21, \textit{R})\})}
 Through experimentation, considering avoidance of permutations of up to length \(11\), we discover
-that there are at least \(29\) coincidence classes of mesh patterns with underlying classical
-pattern \(21\).
+that there are at least \(29\) \(\coinc[comp]{321}\)-coincidence classes where the underlying classical pattern of the mesh pattern is \(21\).
 
 \begin{proposition}[First Dominating Pattern Rule]
     \label{prop:dom1}

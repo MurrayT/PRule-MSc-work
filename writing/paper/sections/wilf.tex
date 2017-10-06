@@ -184,32 +184,9 @@ Computing avoiders up to length 10 suggests that there are at least 23 Wilf-clas
 of which 13 are non-trivial. Therefore there are Wilf-equivalences that are not
 explained by coincidences or symmetry.
 
-When considering the Wilf-equivalences we consider how permutations correspond
-to set-partitions.
-
-\begin{definition} A \emph{set partition} of \(\nrange{n}\) is a set of non-empty subsets of \(\nrange{n}\)
-such that \(\nrange{n}\) is a \emph{disjoint} union of these subsets.
-\end{definition}
-
-\begin{note}
-  The avoiders of the mesh pattern \(q = %= \mperm{\perm{2,3,1}}{(1,0),(1,1),(1,2),(1,3)}
-\textpattern{}{2,3,1}{1/0,1/1,1/2,1/3}\) in \(\mathfrak{S}_n\) are in one-to-one correspondence with partitions
-of \(\nrange{n}\) (\textcite[Prop.~2]{DBLP:journals/ejc/Claesson01}).
-I order to form this correspondence we read the permutation from left to right starting a
-new block in the partition whenever we see an ascent.
-\end{note}
-\begin{example}
-    The permutation \(\pi = \perm{5,4,2,1,3,9,6,8,7}\) corresponds to the
-    partition \(\{\{5,4,2,1\},\{3\},\{9,6\},\{8,7\}\}\).
-\end{example}
-
-We will call the least element in each block the \emph{block-bottom}, and note that all permutations
-in \(\av{\perm{2,3,1}}\) also avoid the mesh pattern \(q\), this classical pattern case
-corresponds precisely to the non-crossing partitions.
-
 We will use two main methods of establishing Wilf-equivalence between mesh patterns of length \(2\)
 in \(\av{\perm{2,3,1}}\): the structural decomposition of avoiders, via generating functions; or the
-structure of the set-partition induced by the pattern, looking at a particular occurrence of the
+structure of a general permutation containing the pattern, looking at a particular occurrence of the
 pattern in a permutation avoiding \(\perm{2,3,1}\). Sometimes it will be necessary to use both of
 these methods to consolidate a single Wilf-class.
 
@@ -225,38 +202,35 @@ The following patterns are experimentally Wilf-equivalent up to length 10 in
 \end{gather}
 
 First we prove the Wilf-equivalence between \(m_1\) and \(m_2\) shown in
-\eqref{eq:singleud}, by considering the containers as set partitions.
+\eqref{eq:singleud}, by considering the form of a general permutation containing
+either of the two patterns. First looking at a general occurrence of \(m_1\) in a permutation
+in \(\av{231}\)
+\begin{equation*}
+\begin{tikzpicture}[scale=1.0]
+\modpattern[4]{}{1,2}{0/0,0/1,1/1,1/2,2/0,2/1}
+\node at (0.5,2.5) {\Large \(A\)};
+\node at (2.5,2.5) {\Large \(B\)};
+\node at (1.5,0.5) {\Large \(C\)};
+\end{tikzpicture}	
+\end{equation*}
 
-Considering an occurrence of either of these patterns in a permutation  we know
-the following about the points corresponding to the points in the patterns.
-\begin{itemize}
-    \item The point corresponding to the first point in both patterns
-        must lie in the first block of the set partition (there are
-        no points southwest from it in the permutation).
-    \item The point corresponding to the second point in both patterns
-        is a block bottom (there are no points southeast of it in
-        the permutation).
-    \item If the region corresponding to box \((2,2)\) in an occurrence of
-    \(m_1\) is empty, then the point corresponding to the second point is
-    precisely the last block bottom. If the region corresponding to box \((1,0)\)
-    in an occurrence of \(m_2\) is empty, then the point corresponding to the
-    second point is precisely the first block bottom.
-    If these regions are non-empty then the block containing the point
-    corresponding to the second point in both patterns contains only that point
-    (it is a singleton block).
-\end{itemize}
+If there is an occurrence of \(m_1\) there must be a lowest occurrence of \(m_1\), \ie the occurrence has the lowest possible values for any occurrence. Now consider the top
+regions, labelled \(A \et B\), the subpermutation contained in these regions must avoid the permutation \(231\). Also, the subpermutation in the region \(A\) must be a decreasing subsequence, otherwise an occurrence of \(231\) will be created with either of the points in the occurrence. Now, consider the region labelled \(C\), since we specified that we were focused on the lowest possible occurrence of \(m_1\) this region cannot contain an occurrence of either \(m_1\) or \(231\). We now have a structural decomposition of a container of \(m_1\) inside \(\av{231}\).
 
-This means that permutations containing \(m_1\) correspond to set partitions
-with a singleton block with value one higher than some element in the
-block containing \(1\). The permutations containing \(m_2\) correspond
-to the set partitions containing a block with block bottom having value
-one lower than some element in the block containing \(1\) and if this
-block is not the block containing \(1\) then it is a singleton block.
-%%%%%%%%%%
-%%%%%%%%%%
-%%%%%%%%%%
+Now consider a general occurrence of \(m_2\) in a permutation
+in \(\av{231}\)
+\begin{equation*}
+\begin{tikzpicture}[scale=1.0]
+\modpattern[4]{}{2,1}{0/0,0/1,1/1,1/2,2/0,2/1}
+\node at (0.5,2.5) {\Large \(A^\prime\)};
+\node at (2.5,2.5) {\Large \(B^\prime\)};
+\node at (1.5,0.5) {\Large \(C^\prime\)};
+\end{tikzpicture}	
+\end{equation*}
 
-The classes defined by containment of \(m_1\) and \(m_2\) inside \(\av{\perm{2,3,1}}\)are
+Similarly to a container of \(m_1\) we will look at the lowest possible occurrence of \(m_2\), similar to before the regions \(A^\prime \et B^\prime\) together contain an avoider of \(231\) and \(A\) contains a decreasing subsequence. Since we are considering the lowest occurrence of \(m_2\) so the region \(C^\prime\) does not contain an occurrence of either \(m_2\) or \(231\).
+
+Since all the regions in both of these cases contain the same parts,  the classes defined by containment of \(m_1\) and \(m_2\) inside \(\av{\perm{2,3,1}}\) are
 equinumerous and therefore so are their avoiders.
 
 Consider the class, \(\scriptvar_3\), of permutations defined by avoiding \(\perm{2,3,1}\) and \(m_3\). We can decompose a member of this class around the maximum
