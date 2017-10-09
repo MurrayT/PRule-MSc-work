@@ -15,6 +15,10 @@ the \emph{dominating pattern}. Given such a dominating pattern \(\pi\) we will w
 
 Our first step is to calculate whether \(\av{p,q_1}\) and \(\av{p,q_2}\) are equal up to permutations of length 11 computationally, if they are we write \(q_1 \coinc[comp]{\pi} q_2\). If \(q_1 \coinc{\pi} q_2\), it can be seen that \(q_1 \coinc[comp]{\pi} q_2\), and therefore the \(\coinc{\pi}\)-equivalence classes form partitions of the \(\coinc[comp]{\pi}\)-coincidence classes.
 
+We then form three Propositions called ``Dominating Pattern Rules'', if the First Dominating
+Pattern Rule shows that \(q_1 \coinc{\pi} q_2\) then we write \(q_1 \coinc[(1)]{\pi} q_2\).
+If a combination of the First and Second Dominating Pattern Rules show that \(\av{p,q_1}= \av{p,q_2}\) then we write \(q_1 \coinc[(2)]{\pi} q_2\); similarly we write \(q_1 \coinc[(3)]{\pi} q_2\) if a combination of all three rules shows coincidences.
+
 In order to describe the rules it is useful to have a notion for inserting points, ascents, and
 descents into a mesh pattern.
 \begin{definition}
@@ -142,9 +146,8 @@ that there are at least \(29\) \(\coinc[comp]{321}\)-coincidence classes where t
     \label{prop:dom1}
     Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
     and a dominating classical pattern \(\pi = (\pi,\emptyset)\) such that
-    \(\setsize{\pi} \le \setsize{\sigma} + 1\), the sets \(\av{\{\pi,m_1\}}\) and
-    \(\av{\{\pi,m_2\}}\) are coincident if
-
+    \(\setsize{\pi} \le \setsize{\sigma} + 1\), then \(m_1 \coinc{\pi} m_2 \) 
+    as a consequence of the first dominating pattern rule if
     \begin{enumerate}
         \item The mesh set \(R_2 = R_1 \cup \{(a,b)\}\)
         \item \(\pi \preceq \sigma^\boks{a,b}\)\label{prop:dom1:cont}
@@ -181,7 +184,7 @@ In order to prove the proposition we must first make the following note.
 \end{note}
 
 \begin{proof}[Proof of \PropositionRef{prop:dom1}]
-    We need to prove that \(\av{\{\pi,m_1\}} = \av{\{\pi,m_2\}}\).
+    We need to prove that \(m_1 \coinc{\pi} m_2\).
 
     \noindent Assume without meaningful loss of generality that \(R_2 = R_1 \cup \{(a,b)\}\).
     Since \(R_1\) is a subset of \(R_2\), \NoteRef{not:downcmesh} states that
@@ -198,7 +201,7 @@ In order to prove the proposition we must first make the following note.
     \(\av{\{\pi,m_2\}} \subseteq \av{\{\pi,m_1\}}\).
 
     Taking both directions of the containment we can therefore draw the
-    conclusion that \(\av{\{\pi,m_1\}} = \av{\{\pi,m_2\}}\).
+    conclusion that \(m_1 \coinc{\pi} m_2\).
 \end{proof}
 
 All coincidence classes of \(\av{\{\perm{3,2,1}, \mperm{2,1}{R}\}}\) can be
@@ -206,9 +209,10 @@ explained by application of \PropositionRef{prop:dom1}, thus explaining the
 29 experimental coincidence classes observed.
 
 \subsection{Coincidence classes of Av(\{231, (21, \textit{R})\}).}
-By application of \PropositionRef{prop:dom1} we obtain \(43\) coincidence
-classes. Experimentation shows that there are in fact at least \(39\) coincidence
-classes, for example the following two patterns seem to be coincident in
+By application of \PropositionRef{prop:dom1} we obtain \(43\) \(\coinc[(1)]{231}\)-coincidence
+classes between mesh patterns with \(21\) as an underlying classical pattern.
+Experimentation shows that there are \(39 \coinc[comp]{231}\)-coincidence
+classes between mesh patterns with \(21\) as an underlying classical pattern, for example the following two patterns seem to be coincident in
 \(\av{\perm{2,3,1}}\) but this is not explained by \PropositionRef{prop:dom1}.
 \begin{equation*}
     m_1 = \pattern{}{2,1}{0/0,0/1,0/2,1/0,2/1} \text{ and } m_2 = \pattern{}{2,1}{0/0,0/1,0/2,1/0,1/1,2/1}
@@ -253,7 +257,7 @@ of mesh patterns in cases where there is a dominating classical pattern.
     Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
     and a dominating classical pattern \(\pi = (\pi,\emptyset)\) such that
     \(\setsize{\pi} \le \setsize{\sigma} + 2\), the sets \(\av{\{\pi,m_1\}}\) and
-    \(\av{\{\pi,m_2\}}\) are coincident if
+    \(\av{\{\pi,m_2\}}\) are coincident as a consequence of the Second Dominating Rule if
 
     \begin{enumerate}
         \item The mesh set \(R_2 = R_1 \cup \{(a,b)\}\)
@@ -311,7 +315,28 @@ of mesh patterns in cases where there is a dominating classical pattern.
 
 This proposition essentially states that we slide all of the points in the box we desire
 to shade diagonally, and chose the topmost/bottommost point to replace the original
-point in the mesh pattern.
+point in the mesh pattern. \FigureRef{fig:d2} show how the cases apply to a general container of \(m_1\) to transform it into a container of \(m_2\) , the circled points are the same points in the permutation.
+\begin{figure}
+\begin{tikzpicture}
+	\modpattern[3]{1,2}{2,1}{0/0,0/1,0/2,1/0,2/1}
+	\filldraw (1.33,1.66) circle (1.5pt);
+	\filldraw (1.66,1.33) circle (1.5pt);
+	\filldraw[pattern=crosshatch dots, pattern color=black!80] (2.1,0.9) rectangle (2.5,0.0);
+	\filldraw[pattern=crosshatch dots, pattern color=black!80] (2.5,3) rectangle (2.9 ,2.1);
+\end{tikzpicture}
+\raisebox{8ex}{\(\coinc{}\)}
+\begin{tikzpicture}
+	\modpattern[3]{1}{2,1}{0/0,0/1,0/2,1/0,1/1,2/1}
+	\filldraw (2.15,0.85) circle (1.5pt);
+	\filldraw (2.3,0.7) circle (1.5pt);
+	\draw (2.3,0.7) circle (3pt);
+	\filldraw[pattern=crosshatch dots, pattern color=black!80] (2.4,0.6) rectangle (2.65,0.0);
+	\filldraw[pattern=crosshatch dots, pattern color=black!80] (2.65,3) rectangle (2.9 ,2.1);
+\end{tikzpicture}
+\caption{A depiction of the second dominating pattern rule using our example patterns.}
+\label{fig:d2}
+\end{figure}
+
 
 Together the First Dominating Pattern Rule and the Second Dominating
 Pattern Rule fully explain coincidences of classes of the form
@@ -321,9 +346,9 @@ mesh patterns, confirming experimental observations.
 \subsection{Coincidence classes of Av(\{231, (12, \textit{R})\}).}
 When considering the coincidence classes of \(\av{\{\perm{2,3,1},\mperm{1,2}{R}\}}\)
 we first apply the two Dominating Pattern rules previously established.
-Starting from \(220\) classes, application of the first Dominating Pattern rule
-gives \(85\) classes. Following this with the second Dominating Pattern rule
-reduces the number of classes to \(59\). However we know that there are patterns
+Starting from \(220\) classes, we result in \(85 \coinc[(1)]{231}\)-coincidence classes 
+reducing to \(59 \coinc[(2)]{231}\)-coincidence classes, considering mesh patterns with
+\(12\) as the underlying classical patterns. However we know that there are patterns
 where the coincidences are not explained by the rules given above.
 
 For example the patterns
