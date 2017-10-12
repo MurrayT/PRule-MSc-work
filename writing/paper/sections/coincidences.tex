@@ -401,10 +401,9 @@ rule:
 \end{proposition}
 \begin{proof}
     \NoteRef{not:downcmesh} implies \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\) as before.
-    Now consider a permutation \(\omega\) in \(\av{\pi}\) that contains an
+    Now consider a permutation \(\omega \in \av{\pi}\) that contains an
     occurrence of \(m_1\). If the region corresponding to the box \(\boks{a,b}\)
     is empty then we have an occurrence of \(m_2\).
-
     By condition~\ref{prop:dom3:condocc} of the proposition there exists
     a pattern \(r\) in \(m_1^\boksall{a,b}\) such that \(m_2\) is a subpattern in some
     pattern \(r'\) coincident with \(r\). If the region is non-empty then there exists
@@ -414,21 +413,22 @@ rule:
     two patterns are coincident.
 \end{proof}
 
-This rule reduces the number of classes in
-\(\av{\{\perm{2,3,1},(\perm{1,2}, R)\}}\) to \(56\), which coincides with the
-56 classes observed through experimentation.
+After implementing the Third Dominating Pattern Rule we find that there are
+\(56\) \(\coinc[(3)]{231}\)-equivalence classes, of mesh patterns where the underlying
+classical pattern is \(12\). By \NoteRef{note:main} there are
+therefore exactly \(56\) \(\coinc{231}\)-equivalence classes, since we have
+observed \(56\) \(\coinc[comp]{231}\)-equivalence classes through experimentation.
 
 \subsection{Coincidence classes of Av(\{321, (12, \textit{R})\}).}
 When considering coincidences of mesh patterns with underlying classical
 pattern \(\perm{1,2}\) in \(\av{\perm{3,2,1}}\) application of the previously
-established rules give no coincidences. Through experimentation we discover
-that there are \(7\) non-trivial coincidence classes (all others are singletons)
-which can be explained through the
-use of two different lines of reasoning. Since the number of coincidences is
+established rules gives no coincidences. Through experimentation we discover
+that there are \(7\) \(\coinc[comp]{321}\)-equivalence classes are unexplained.
+Since the number of coincidences is
 so small we will reason for these coincidences without attempting to generalise
 into concrete rules.
 
-Intuitively it is easy to see why our previous rules have no
+Intuitively, it is easy to see why our previous rules have no
 power here. It is impossible to add a single point to a mesh pattern \((12, R)\) and
 create an occurrence of \(\pi = \perm{3,2,1}\). It is also impossible to have
 a position where addition of an ascent, or descent, provides extra
@@ -438,13 +438,13 @@ The patterns
 \begin{equation*}
     m_1 = \pattern{}{1,2}{0/0, 0/2, 1/1, 1/2, 2/1} \text { and } m_2 \pattern{}{1,2}{0/0, 0/1, 0/2, 1/1, 1/2, 2/1}
 \end{equation*}
-are coincident in \(\av{\perm{3,2,1}}\). (There are 3 symmetries of these
-patterns that are also coincident to each other by the same reasoning.)
+are \(\coinc[comp]{321}\)-equivalent. (There are 3 symmetries of these
+patterns that are also equivalent to each other by the same reasoning.)
 
-Consider the region corresponding to the box \((0,1)\) in any occurrence of \(m_1\),
+Consider the region corresponding to the box \(\boks{0,1}\) in any occurrence of \(m_1\)
 in a permutation. By \LemmaRef{lem:incdec} it must contain an increasing subsequence.
 If the region is empty then we have an occurrence of \(m_2\).
-If there is only one point in the region we can choose this to replace the \(1\) in
+If there is only one point in the region we can choose this point to replace the \(1\) in
 the mesh pattern to get the required shading. If there is more than one point then
 choosing the two leftmost points gives us the following mesh pattern.
 \begin{equation*}
@@ -454,21 +454,22 @@ choosing the two leftmost points gives us the following mesh pattern.
                             3/1, 3/2, 3/3, 3/4,
                             4/1, 4/2, 4/3}
 \end{equation*}
-Where the two highlighted points are the original two points.
+Here the two highlighted points are the original two points.
 The other two points are an occurrence of the pattern
-we originally desired, and hence the two patterns are coincident.
+we \(m_2\), and hence the two patterns are coincident.
 It is also possible to calculate this coincidence by an extension of the Third
 Dominating rule, where we allow a sequence of point addition operations, this
 is discussed further in the future work section.
+Because of symmetries we have dealt with \(4\) out of the \(7\) \(\coinc[comp]{321}\)-equivalence classes.
 
-The other reasoning applies to the patterns
+Now consider the patterns
 \begin{equation*}
     m_1 = \pattern{}{1,2}{0/1,0/2,2/0,2/1} \text{ and } m_2 = \pattern{}{1,2}{0/1,0/2,1/1,2/0,2/1}
 \end{equation*}
-which are coincident by experimentation.
+which are \(\coinc[comp]{321}\)-equivalent.
 
 In order to prove this coincidence we will proceed by mathematical
-induction on the number of points in region corresponding to the middle box.
+induction on the number of points in the region corresponding to the middle box.
 We call this number \(n\).
 \begin{description}
     \item [Base Case \((n=0)\)] The base case holds since we can freely shade the
@@ -488,7 +489,7 @@ We call this number \(n\).
         Now we need to consider the box labelled \(X\). If this box is empty then
         we have an occurrence of \(m_2\) and are done. If this box contains
         any points then we gain some extra shading on the mesh pattern
-        as any points in these boxes would create an occurrence of the dominating pattern \(\perm{3,2,1}\)
+        as any points in the boxes \(\boks{1,2}\) and \(\boks{1,3}\) would create an occurrence of the dominating pattern \(\perm{3,2,1}\)
      \begin{equation*}
         \begin{tikzpicture}[scale=0.5]
             \modpattern[5]{2,3}{1,2,3}{0/1,0/2,0/3,1/1,1/2,1/3,2/1,3/0,3/1,3/2}
@@ -503,5 +504,5 @@ By induction we have that every occurrence of \(m_1\) leads to an occurrence of 
 and by \NoteRef{not:downcmesh} every occurrence of \(m_2\) is an occurrence of
 \(m_1\) so the two patterns are coincident.
 This argument applies to another two pairs of classes. Therefore in
-total in \(\av{\{\perm{3,2,1}, \mperm{1,2}{R}\}}\) there are \(213\) coincidence
+total in \(\av{\{\perm{3,2,1}, \mperm{1,2}{R}\}}\) there are \(\coinc{321}\)-equivalence
 classes.

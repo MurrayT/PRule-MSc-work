@@ -28,7 +28,7 @@ Wilf-equivalent.
 \end{figure}
 
 Since we are always considering Wilf-equivalences in a set \(\av{S}\) we
-must only use symmetries that preserve the dominating pattern(s), if we
+must only use symmetries that preserve the dominating pattern(s) in \(S\), if we
 were to allow other symmetries, then the equivalences calculated in the
 previous section do not necessarily hold.
 
@@ -48,7 +48,7 @@ shown in \FigureRef{fig:decompmax}.
 \end{figure}
 
 The elements to the left of the maximum, \(A\), have the structure of a \(231\)
-avoiding permutation, and the elements to the right of the maximum, \(B\), have
+avoiding permutation, and the elements to the right of the maximum, \(B\), also have
 the structure of a \(\perm{2,3,1}\) avoiding permutation. Furthermore, all the
 elements in \(A\) lie below all of the elements in \(B\). We call \(A\) the
 \emph{lower-left section} and \(B\) the \emph{upper-right section}.
@@ -84,7 +84,7 @@ due to the fact that every permutation, except the empty
 permutation, must contain an occurrence of all of these patterns.
 
 The pattern \(\textpattern{}{1}{0/0,1/0,0/1,1/1}\) is in its own
-Wilf-class since the only permutation containing this pattern is
+Wilf-class since the only permutation containing it is
 the permutation \(\perm{1}\). The avoiders of this pattern therefore
 have generating function \(\var(x) = C(x)-x\).
 
@@ -123,9 +123,9 @@ numbers.
 \end{equation*}
 
 \nextvar[\varfine]
-It can be shown by use of \PropositionRef{prop:dom2} that the patterns
+It can be shown by use of the Second Dominating Pattern Rule that the patterns
 \textpattern{}{1}{0/0,1/1} and \(q_1 = \textpattern{}{1}{0/0,0/1,1/1}\) are
-coincident inside \(\av{\perm{2,3,1}}\). Consider the decomposition of a non-empty avoider of \(q_1\) in
+coincident under \(\perm{2,3,1}\). Consider the decomposition of a non-empty avoider of \(q_1\) in
 \(\av{\perm{2,3,1}}\) around the maximum:
 \begin{equation*}
     \scriptvar_1 =\varepsilon \sqcup
@@ -172,8 +172,8 @@ Computing these values gives
 \end{equation*}
 
 \section{Wilf-classes with patterns of length 2}
-By the use of coincidence classes established in
-\SectionRef{sec:coincs} we know that there are at most 95 Wilf-equivalence classes.
+From \SectionRef{sec:coincs} we know there are \(95\) coincidence classes and
+therefore at most that many Wilf-equivalence classes.
 
 The only symmetry that we are able to consider is \emph{reverse-complement-inverse} as this is the only symmetry that preserves the
 \(\perm{2,3,1}\) pattern. Using this symmetry we can find 61 classes of trivial
@@ -181,11 +181,10 @@ Wilf-equivalence, these equivalences being explained by either the patterns bein
 coincident in \(\av{\perm{2,3,1}}\), or by one pattern being the reverse-complement-inverse of some other pattern.
 
 Computing avoiders up to length 10 suggests that there are at least 23 Wilf-classes,
-of which 13 are non-trivial. Therefore there are Wilf-equivalences that are not
+of which 13 are not equal to coincidence classes (after taking symmetries). Therefore there seem to be Wilf-equivalences that are not
 explained by coincidences or symmetry.
 
-We will use two main methods of establishing Wilf-equivalence between mesh patterns of length \(2\)
-in \(\av{\perm{2,3,1}}\): the structural decomposition of avoiders, via generating functions; or the
+We will use two main methods of establishing these Wilf-equivalences: the structural decomposition of avoiders, via generating functions; or the
 structure of a general permutation containing the pattern, looking at a particular occurrence of the
 pattern in a permutation avoiding \(\perm{2,3,1}\). Sometimes it will be necessary to use both of
 these methods to consolidate a single Wilf-class.
@@ -214,7 +213,7 @@ in \(\av{231}\)
 \end{tikzpicture}
 \end{equation*}
 
-If there is an occurrence of \(m_1\) there must be a lowest occurrence of \(m_1\), \ie the occurrence has the lowest possible values for any occurrence. Now consider the top
+If there is an occurrence of \(m_1\) there must be a lowest occurrence of \(m_1\), \ie, the occurrence has the lowest possible values for any occurrence. Now consider the top
 regions, labelled \(A \et B\), the subpermutation contained in these regions must avoid the permutation \(231\). Also, the subpermutation in the region \(A\) must be a decreasing subsequence, otherwise an occurrence of \(231\) will be created with either of the points in the occurrence. Now, consider the region labelled \(C\), since we specified that we were focused on the lowest possible occurrence of \(m_1\) this region cannot contain an occurrence of either \(m_1\) or \(231\). We now have a structural decomposition of a container of \(m_1\) inside \(\av{231}\).
 
 Now consider a general occurrence of \(m_2\) in a permutation
