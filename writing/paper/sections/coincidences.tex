@@ -1,23 +1,39 @@
 Coincidences among small mesh patterns have been considered by
 \textcite{DBLP:journals/corr/ClaessonTU14}, in which the authors use the Simultaneous Shading Lemma,
-a closure result and one worked out special case to fully classify coincidences among mesh patterns
+a closure result and one special case to fully classify coincidences among mesh patterns
 of length 2.
 
 Recall that two patterns \(\lambda\) and \(\gamma\) are considered \emph{coincident} if the set of permutations
 that avoid \(\lambda\) is the same as the set of permutations that avoid \(\gamma\),
-\ie, \(\av{\lambda} = \av{\gamma}\). Equivalently we can say that they have the same set of
-\emph{containers}, \ie, \(\cont{\lambda} = \cont{\gamma}\).
+\ie, \(\av{\lambda} = \av{\gamma}\). This is equivalent to \(\lambad\) and \(\gamma\) being contained in
+the same set of permutations, \ie, \(\cont{\lambda} = \cont{\gamma}\).
 
-We will consider the avoidance sets \(\av{\pi,p}\) where \(\pi\) is a classical pattern of length 3
-and \(p\) is a mesh pattern of length 2 to establish sufficient conditions for two such
-sets to be coincident. The classical pattern \(\pi\) will be fixed and called
-the \emph{dominating pattern}. Given such a dominating pattern \(\pi\) we will write \(q_1 \coinc{\pi} q_2\) if for the mesh patterns, \(q_1\) and \(q_2\),  the sets \(\av{p,q_1}\) and \(\av{p,q_2}\) are coincident.
+We will consider the avoidance sets \(\av{\pi,p}\) where \(\pi\) is a fixed
+classical pattern of length 3 and \(p\) is a mesh pattern of length 2 that
+varies. The classical pattern \(\pi\) will be called the \emph{dominating
+pattern}. Given such a dominating pattern \(\pi\) we will write \(p_1
+\coinc{\pi} p_2\) if for the mesh patterns, \(p_1\) and \(p_2\),  the sets
+\(\av{\pi,p_1}\) and \(\av{\pi,p_2}\) are equal.
 
-Our first step is to calculate whether \(\av{p,q_1}\) and \(\av{p,q_2}\) are equal up to permutations of length 11 computationally, if they are we write \(q_1 \coinc[comp]{\pi} q_2\). If \(q_1 \coinc{\pi} q_2\), it can be seen that \(q_1 \coinc[comp]{\pi} q_2\), and therefore the \(\coinc{\pi}\)-equivalence classes form partitions of the \(\coinc[comp]{\pi}\)-coincidence classes.
+Our first step is to calculate whether \(\av{\pi,p_1}\) and \(\av{\pi,p_2}\) are
+equal up to permutations of length 11 computationally, if they are we write
+\(p_1 \coinc[comp]{\pi} p_2\). The equivalence relation \(\coinc{\pi}\) is a
+refinement of the equivalence relation \(\coinc[comp]{\pi}\), and therefore the
+\(\coinc{\pi}\)-equivalence classes form partitions of the
+\(\coinc[comp]{\pi}\)-coincidence classes.
 
-We then form three Propositions called ``Dominating Pattern Rules'', if the First Dominating
-Pattern Rule shows that \(q_1 \coinc{\pi} q_2\) then we write \(q_1 \coinc[(1)]{\pi} q_2\).
-If a combination of the First and Second Dominating Pattern Rules show that \(\av{p,q_1}= \av{p,q_2}\) then we write \(q_1 \coinc[(2)]{\pi} q_2\); similarly we write \(q_1 \coinc[(3)]{\pi} q_2\) if a combination of all three rules shows coincidences.
+If \(p_1 \coinc{\pi} p_2\), it can be seen that
+\(p_1 \coinc[comp]{\pi} p_2\), and therefore the \(\coinc{\pi}\)-equivalence
+classes form partitions of the \(\coinc[comp]{\pi}\)-coincidence classes.
+
+We then prove three propositions called ``Dominating Pattern Rules'', if the
+First Dominating Pattern Rule shows that \(p_1 \coinc{\pi} p_2\) then we write
+\(p_1 \coinc[(1)]{\pi} p_2\). If a combination of the First and Second
+Dominating Pattern Rules show that \(p_1 \coinc{\pi} p_2\) then we write
+\(p_1 \coinc[(2)]{\pi} p_2\); similarly we write \(p_1 \coinc[(3)]{\pi} p_2\) if
+a combination of all three rules shows coincidences. These three equivalence
+relations are successive refinements of \(\coinc{\pi}\). Therefore if we find
+that \eg, \(\coinc[(1)]{\pi} = \coinc[comp]{\pi}\) then \(\coinc[(1)]{\pi} = \coinc{\pi}\).
 
 In order to describe the rules it is useful to have a notion for inserting points, ascents, and
 descents into a mesh pattern.
@@ -146,7 +162,7 @@ that there are at least \(29\) \(\coinc[comp]{321}\)-coincidence classes where t
     \label{prop:dom1}
     Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
     and a dominating classical pattern \(\pi = (\pi,\emptyset)\) such that
-    \(\setsize{\pi} \le \setsize{\sigma} + 1\), then \(m_1 \coinc{\pi} m_2 \) 
+    \(\setsize{\pi} \le \setsize{\sigma} + 1\), then \(m_1 \coinc{\pi} m_2 \)
     as a consequence of the first dominating pattern rule if
     \begin{enumerate}
         \item The mesh set \(R_2 = R_1 \cup \{(a,b)\}\)
@@ -291,19 +307,19 @@ of mesh patterns in cases where there is a dominating classical pattern.
     \(\omega\) contains \(m_1\) and consider the region corresponding to
     \((a,b)\) in \(R_1\). If the region is empty, the occurrence of \(m_1\) is trivially an occurrence
     of \(m_2\).
-    
+
     If the region is non-empty, then by \LemmaRef{lem:incdec} and
     condition~\eqref{prop:dom2:condc} of the proposition it must contain
     a decreasing subsequence.
     We can choose the topmost point in the region to replace the corresponding
     point in the mesh pattern and the points from the subsequence are now in
-    the box southeast of the point. 
-    
+    the box southeast of the point.
+
     The conditions on the mesh ensure that no elements of the permutation
     that were inside a region corresponding to an unshaded box in the occurrence
     of \(m_1\) would be in a region corresponding to a shaded box in an occurrence of
     \(m_2\).
-    
+
     Hence there are no
     points in the region corresponding to the box \((a,b)\) in the mesh
     pattern, and therefore we can shade this region. This implies that every
@@ -346,7 +362,7 @@ mesh patterns, confirming experimental observations.
 \subsection{Coincidence classes of Av(\{231, (12, \textit{R})\}).}
 When considering the coincidence classes of \(\av{\{\perm{2,3,1},\mperm{1,2}{R}\}}\)
 we first apply the two Dominating Pattern rules previously established.
-Starting from \(220\) classes, we result in \(85 \coinc[(1)]{231}\)-coincidence classes 
+Starting from \(220\) classes, we result in \(85 \coinc[(1)]{231}\)-coincidence classes
 reducing to \(59 \coinc[(2)]{231}\)-coincidence classes, considering mesh patterns with
 \(12\) as the underlying classical patterns. However we know that there are patterns
 where the coincidences are not explained by the rules given above.

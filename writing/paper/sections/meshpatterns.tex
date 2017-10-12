@@ -1,10 +1,10 @@
 A \emph{permutation} is a bijection from the set \(\nrange{n} = \setrange{1}{n}\) to itself. The
 set of all such bijections is denoted \(\mathfrak{S}_n\) and has \(n!\) elements. We can
 denote an individual permutation \(\pi\in\mathfrak{S}_n\) in \emph{one-line notation} by writing the
-entries of the permutation in order, therefore \(\pi = \perm{\pi(1),\pi(2),\dotso,\pi(n)}\). The
+entries of the permutation in order, therefore \(\pi = \perm{\pi(1),\pi(2),\dotsm,\pi(n)}\). The
 set \(\mathfrak{S}_0\) has exactly one element, the empty permutation \(\varepsilon\).
 
-\begin{definition}{(Order isomorphism.)}
+\begin{definition}
     Two strings of integers \(\alpha_1\alpha_2\dotsm\alpha_n\) and
     \(\beta_1\beta_2\dotsm\beta_n\) are said to be \emph{order isomorphic}
     if they share the same relative order, \ie, \(\alpha_r<\alpha_s\) if and
@@ -15,7 +15,7 @@ The definition of order isomorphism allows us to give the meaning of containment
 permutation patterns.
 \begin{definition}
     A permutation \(\pi\in\mathfrak{S}_n\) \emph{contains} the permutation \(\sigma\in\mathfrak{S}_k\) (\mbox{denoted}
-    \(\sigma \preceq \pi\)) if there is some sequence \( i_1,i_2,\dotsm{},i_k\)
+    \(\sigma \preceq \pi\)) if there is some sequence \( i_1,i_2,\dotsc,i_k\)
     such that \(1\le i_1<i_2<\dotsm<i_k\le n\) and the sequence \(\pi(i_1)\pi(i_2)\dotsm\pi(i_k)\) is order isomorphic to
     \(\sigma(1)\sigma(2)\dotsm\sigma(k)\). If this is the case the sequence
     \(\pi(i_1)\pi(i_2)\dotsm\pi(i_k)\) is called an \emph{occurrence} of \(\sigma\)
@@ -79,8 +79,7 @@ Formally defined by \textcite{journals/combinatorics/BrandenC11},
 an \emph{occurrence} of \(p\) in \(\pi\) is a subset \(\omega\) of the plot of
 \(\pi, G(\pi) = \{(i,\pi(i)\mid i\in\nrange{n}\}\) such that there are order-preserving
 injections \(\alpha,\beta:\nrange{k}\mapsto\nrange{n}\) satisfying the following two conditions.
-
-\noindent Firstly, \(\omega\) is an occurrence of \(\tau\) in the classical sense
+Firstly, \(\omega\) is an occurrence of \(\tau\) in the classical sense
   \begin{enumerate}[i.]
     \item \(\omega = \{(\alpha(i),\beta(j)):(i,j)\in G(\tau)\}\).
   \end{enumerate}\saveenum
@@ -93,26 +92,29 @@ injections \(\alpha,\beta:\nrange{k}\mapsto\nrange{n}\) satisfying the following
 We call \(R_{ij}\) the \emph{region corresponding to} \(\boks{i,j}\).
 
 \begin{example}
-    The pattern \(p=\mperm{2,1,3}{\{(0,1),(0,2),(1,0),(1,1),(2,1),(2,2)\}}=
+    The pattern \(p=\mperm{2,1,3}{\{\boks{0,1},\boks{0,2},\boks{1,0},\boks{1,1},\boks{2,1},\boks{2,2}\}}=
     \textpattern{}{ 2, 1, 3 }{ 0/1, 0/2, 1/0, 1/1, 2/1, 2/2 }\) is contained in
     \(\pi = \perm{3,4,2,1,5}\).
+    Let us consider the plot for the permutation \(\pi\). The subsequence \(325\) is
+    an occurrence of \(213\) in the classical sense and the remaining points of \(\pi\)
+    are not contained in the regions corresponding to the shaded boxes in \(p\).
+    \begin{equation*}
+        \pattern{1,3,5}{3,4,2,1,5}{0/2,0/3,0/4,
+                                   1/0,1/1,1/2,
+                                   2/0,2/1,2/2,
+                                   3/2,3/3,3/4,
+                                   4/2,4/3,4/4}
+    \end{equation*}
+    The subsequence \(325\) is therefore an occurrence of the pattern \(p\) in \(\pi\).
 \end{example}
 
-Let us consider the plot for the permutation \(\pi\). The subsequence \(325\) is
-an occurrence of \(213\) in the classical sense and the remaining points of \(\pi\)
-are not contained in the regions corresponding to the shaded boxes in \(p\).
-\begin{equation*}
-    \pattern{1,3,5}{3,4,2,1,5}{0/2,0/3,0/4,
-                               1/0,1/1,1/2,
-                               2/0,2/1,2/2,
-                               3/2,3/3,3/4,
-                               4/2,4/3,4/4}
-\end{equation*}
-The subsequence \(325\) is therefore an occurrence of the pattern \(p\) in \(\pi\).
+We denote the avoidance sets for mesh patterns in the same way as for
+classical patterns. Given a mesh pattern \(p=(\sigma,R)\) we say that \(\sigma\) is the \emph{underlying
+classical pattern} of \(p\).
 
 We define containment of a mesh pattern \(p\) in another mesh pattern \(q\) as above,
 with the additional condition that if \(\boks{i,j}\in R\text{ then } R_{ij}\) is
-contained in the mesh set of \(q\).
+contained in the mesh set of \(q\). More formally:
 
 \begin{definition}
 A mesh pattern \(q=(\kappa,T)\) \emph{contains} a mesh pattern \(p=(\tau,R)\) as a \emph{subpattern}
@@ -120,25 +122,20 @@ if \(\kappa\) contains \(p\) and \(\left(\bigcup_{\boks{i,j}\in R} R_{ij}\right)
 \end{definition}
 
 \begin{example}
-    The pattern \(p=\mperm{2,1,3}{\{(0,1),(0,2),(1,0),(2,2)\}}=
+    The pattern \(p=\mperm{2,1,3}{\{\boks{0,1},\boks{0,2},\boks{1,0},\boks{2,2}\}}=
     \textpattern{}{ 2, 1, 3 }{ 0/1, 0/2, 1/0, 2/2 }\) is contained in the pattern
-    \(r = \textpattern{}{4,2,3,1,5}{0/1,0/2,0/3,0/4,
+    \(q = \textpattern{}{4,2,3,1,5}{0/1,0/2,0/3,0/4,
                                1/0,1/1,1/2,1/3,1/4,
                                2/1,2/2,2/3,2/4,
                                3/2,3/4,
                                4/2,4/3,4/4} \) as a subpattern.
+    The highlighted points form an occurrence of \(p\) in \(q\)
+    \begin{equation*}
+        \pattern{1,2,5}{4,2,3,1,5}{0/1,0/2,0/3,0/4,
+                                   1/0,1/1,1/2,1/3,1/4,
+                                   2/1,2/2,2/3,2/4,
+                                   3/2,3/4,
+                                   4/2,4/3,4/4}
+    \end{equation*}
+    The permutation \(\perm{4,2,3,1,5}\) also contains \(p\) in the usual sense.
 \end{example}
-
-The highlighted points form an occurrence of \(p\) in \(r\)
-\begin{equation*}
-    \pattern{1,2,5}{4,2,3,1,5}{0/1,0/2,0/3,0/4,
-                               1/0,1/1,1/2,1/3,1/4,
-                               2/1,2/2,2/3,2/4,
-                               3/2,3/4,
-                               4/2,4/3,4/4}
-\end{equation*}
-The permutation \(\perm{4,2,3,1,5}\) also contains \(p\) in the usual sense.
-
-We denote the avoidance sets for mesh patterns in the same way as for
-classical patterns. Given a mesh pattern \(p=(\sigma,R)\) we say that \(\sigma\) is the \emph{underlying
-classical pattern} of \(p\).
