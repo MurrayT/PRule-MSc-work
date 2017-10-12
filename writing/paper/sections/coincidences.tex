@@ -5,7 +5,7 @@ of length 2.
 
 Recall that two patterns \(\lambda\) and \(\gamma\) are considered \emph{coincident} if the set of permutations
 that avoid \(\lambda\) is the same as the set of permutations that avoid \(\gamma\),
-\ie, \(\av{\lambda} = \av{\gamma}\). This is equivalent to \(\lambad\) and \(\gamma\) being contained in
+\ie, \(\av{\lambda} = \av{\gamma}\). This is equivalent to \(\lambda\) and \(\gamma\) being contained in
 the same set of permutations, \ie, \(\cont{\lambda} = \cont{\gamma}\).
 
 We will consider the avoidance sets \(\av{\pi,p}\) where \(\pi\) is a fixed
@@ -13,27 +13,31 @@ classical pattern of length 3 and \(p\) is a mesh pattern of length 2 that
 varies. The classical pattern \(\pi\) will be called the \emph{dominating
 pattern}. Given such a dominating pattern \(\pi\) we will write \(p_1
 \coinc{\pi} p_2\) if for the mesh patterns, \(p_1\) and \(p_2\),  the sets
-\(\av{\pi,p_1}\) and \(\av{\pi,p_2}\) are equal.
+\(\av{\pi,p_1}\) and \(\av{\pi,p_2}\) are equal. If this is the case we say
+the two mesh patterns are \emph{coincidenc under} \(\pi\).
 
 Our first step is to calculate whether \(\av{\pi,p_1}\) and \(\av{\pi,p_2}\) are
 equal up to permutations of length 11 computationally, if they are we write
 \(p_1 \coinc[comp]{\pi} p_2\). The equivalence relation \(\coinc{\pi}\) is a
 refinement of the equivalence relation \(\coinc[comp]{\pi}\), and therefore the
 \(\coinc{\pi}\)-equivalence classes form partitions of the
-\(\coinc[comp]{\pi}\)-coincidence classes.
-
-If \(p_1 \coinc{\pi} p_2\), it can be seen that
-\(p_1 \coinc[comp]{\pi} p_2\), and therefore the \(\coinc{\pi}\)-equivalence
-classes form partitions of the \(\coinc[comp]{\pi}\)-coincidence classes.
+\(\coinc[comp]{\pi}\)-equivalence classes.
 
 We then prove three propositions called ``Dominating Pattern Rules'', if the
 First Dominating Pattern Rule shows that \(p_1 \coinc{\pi} p_2\) then we write
 \(p_1 \coinc[(1)]{\pi} p_2\). If a combination of the First and Second
 Dominating Pattern Rules show that \(p_1 \coinc{\pi} p_2\) then we write
 \(p_1 \coinc[(2)]{\pi} p_2\); similarly we write \(p_1 \coinc[(3)]{\pi} p_2\) if
-a combination of all three rules shows coincidences. These three equivalence
-relations are successive refinements of \(\coinc{\pi}\). Therefore if we find
-that \eg, \(\coinc[(1)]{\pi} = \coinc[comp]{\pi}\) then \(\coinc[(1)]{\pi} = \coinc{\pi}\).
+a combination of all three rules shows coincidence. These three equivalence
+relations are successive refinements of \(\coinc{\pi}\). For future reference
+we record the following:
+
+\begin{note}
+\label{note:main}
+    If we find that \(\coinc[(i)]{\pi}\), for \(i = 1, 2\), or \(3\),
+    equals \(\coinc[comp]{\pi}\) then the equivalence relations \(\coinc[(i)]{\pi}\), \(\coinc{\pi}\),
+    and \(\coinc[comp]{\pi}\) are all equal.
+\end{note}
 
 In order to describe the rules it is useful to have a notion for inserting points, ascents, and
 descents into a mesh pattern.
@@ -95,7 +99,7 @@ p^\boks{2,1}= \pattern{}{1,3,2}{0/1,0/2,2/3,3/3}
 p^\boksup{2,1}
 = \pattern{}{1,3,2}{0/1,0/2,2/2,2/3,3/2,3/3}
 \end{equation*}
-\caption{The result of inserting a point into \(p=(12,\{(0,1),(2,2)\})\)}
+\caption{The result of inserting a point into \(p=(12,\{\boks{0,1},\boks{2,2}\})\)}
 \label{fig:addp}
 \end{figure}
 
@@ -136,7 +140,7 @@ p^{\boks{1,1}_a}= \pattern{}{4,2,3,5,1}{0/0,
                         3/0,3/5,
                         5/0,5/1,5/2,5/3,5/5}
 \end{equation*}
-\caption{The result of inserting an ascent into \(p=(231,\{(0,0),(1,0),(1,3),(3,0),(3,1),(3,3)\})\)}
+\caption{The result of inserting an ascent into \(p=(231,\{\boks{0,0},\boks{1,0},\boks{1,3},\boks{3,0},\boks{3,1},\boks{3,3}\})\)}
 \label{fig:adda}
 \end{figure}
 
@@ -155,23 +159,23 @@ pattern. By use of the previous results of \textcite{DBLP:journals/corr/Claesson
 the number of coincidence classes can be reduced to \(220\).
 
 \subsection{Coincidence classes of Av(\{321, (21, \textit{R})\})}
-Through experimentation, considering avoidance of permutations of up to length \(11\), we discover
-that there are at least \(29\) \(\coinc[comp]{321}\)-coincidence classes where the underlying classical pattern of the mesh pattern is \(21\).
+Through experimentation, considering avoidance of permutations up to length \(11\), we discover
+that there are \(29\) \(\coinc[comp]{321}\)-equivalence classes where the underlying classical pattern of the mesh pattern is \(21\).
 
 \begin{proposition}[First Dominating Pattern Rule]
     \label{prop:dom1}
     Given two mesh patterns \(m_1 =(\sigma, R_1)\) and \(m_2 = (\sigma, R_2)\),
     and a dominating classical pattern \(\pi = (\pi,\emptyset)\) such that
     \(\setsize{\pi} \le \setsize{\sigma} + 1\), then \(m_1 \coinc{\pi} m_2 \)
-    as a consequence of the first dominating pattern rule if
+    if
     \begin{enumerate}
-        \item The mesh set \(R_2 = R_1 \cup \{(a,b)\}\)
+        \item The mesh set \(R_2 = R_1 \cup \{\boks{a,b}\}\)
         \item \(\pi \preceq \sigma^\boks{a,b}\)\label{prop:dom1:cont}
     \end{enumerate}
 \end{proposition}
 
 This rule can be understood in graphical form. In the pattern in
-\FigureRef{fig:rule1} we can gain shading in the boxes \((0,2)\), \((2,0)\)
+\FigureRef{fig:rule1} we can gain shading in the boxes \(\boks{0,2}\), \(\boks{2,0}\)
 since if there is a point in either of these boxes there would be an occurrence of
 the dominating pattern \(\perm{3,2,1}\).
 
@@ -200,15 +204,12 @@ In order to prove the proposition we must first make the following note.
 \end{note}
 
 \begin{proof}[Proof of \PropositionRef{prop:dom1}]
-    We need to prove that \(m_1 \coinc{\pi} m_2\).
-
-    \noindent Assume without meaningful loss of generality that \(R_2 = R_1 \cup \{(a,b)\}\).
-    Since \(R_1\) is a subset of \(R_2\), \NoteRef{not:downcmesh} states that
+    Since \(R_1\) is a subset of \(R_2\), \NoteRef{not:downcmesh} implies that
     \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\).
 
     Now we consider a permutation \(\omega \in \av{\pi}\),
     containing an occurrence of \(m_1\). If there is a point in the
-    region corresponding to the box \((a,b)\), then that point, along with the
+    region corresponding to the box \(\boks{a,b}\), then that point, along with the
     points of the occurrence of \(m_1\), form an occurrence of \(\sigma^\boks{a,b}\).
     Then condition~\eqref{prop:dom1:cont} of the
     proposition implies an occurrence of \(\pi\). Therefore there can be no
@@ -220,16 +221,17 @@ In order to prove the proposition we must first make the following note.
     conclusion that \(m_1 \coinc{\pi} m_2\).
 \end{proof}
 
-All coincidence classes of \(\av{\{\perm{3,2,1}, \mperm{2,1}{R}\}}\) can be
-explained by application of \PropositionRef{prop:dom1}, thus explaining the
-29 experimental coincidence classes observed.
+After implementing the First Dominating Pattern Rule we find that there are
+\(29\) \(\coinc[(1)]{321}\)-classes, of mesh patterns where the underlying
+classical pattern is \(21\). By Note~\NoteRef{note:main} there are
+therefore exactly \(29\) \(\coinc{321}\)-classes.
 
 \subsection{Coincidence classes of Av(\{231, (21, \textit{R})\}).}
-By application of \PropositionRef{prop:dom1} we obtain \(43\) \(\coinc[(1)]{231}\)-coincidence
+By application of First Dominating Pattern Rule we obtain \(43\) \(\coinc[(1)]{231}\)-coincidence
 classes between mesh patterns with \(21\) as an underlying classical pattern.
 Experimentation shows that there are \(39 \coinc[comp]{231}\)-coincidence
-classes between mesh patterns with \(21\) as an underlying classical pattern, for example the following two patterns seem to be coincident in
-\(\av{\perm{2,3,1}}\) but this is not explained by \PropositionRef{prop:dom1}.
+classes between mesh patterns with \(21\) as an underlying classical pattern, for example the following two patterns are in the same
+\(\coinc[comp]{231}\)-class, but this is not explained by the First Dominating Pattern Rule.
 \begin{equation*}
     m_1 = \pattern{}{2,1}{0/0,0/1,0/2,1/0,2/1} \text{ and } m_2 = \pattern{}{2,1}{0/0,0/1,0/2,1/0,1/1,2/1}
 \end{equation*}
