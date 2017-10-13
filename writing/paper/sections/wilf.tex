@@ -33,7 +33,7 @@ were to allow other symmetries, then the equivalences calculated in the
 previous section do not necessarily hold.
 
 Throughout this section we will consider Wilf-equivalences of patterns
-whilst avoiding the \emph{dominating pattern} \(\perm{2,3,1}\). We will
+whilst avoiding the \emph{dominating pattern} \(\perm{2,3,1}\), if two patterns \(p_1 \et p_2\) are Wilf-equivalent we will denote this \(p_1\weqv{231}p_2\), similarly when computational methods indicate that two patterns are Wilf equivalent under \(231\) we write \(p_1\weqv[comp]{231}p_2\). We will
 use \(\mathcal{C}\) to denote \(\av{\perm{2,3,1}}\) and \(C(x)\) will
 be the usual Catalan generating function satisfying \(C(x) = 1 + xC(x)^2\).
 The fact that \(C(x)\) is the generating function for \(\mathcal{C}\)
@@ -84,7 +84,7 @@ due to the fact that every permutation, except the empty
 permutation, must contain an occurrence of all of these patterns.
 
 The pattern \(\textpattern{}{1}{0/0,1/0,0/1,1/1}\) is in its own
-Wilf-class since the only permutation containing it is
+\(\weqv{231}\)-equivalence class since the only permutation containing it is
 the permutation \(\perm{1}\). The avoiders of this pattern therefore
 have generating function \(\var(x) = C(x)-x\).
 
@@ -145,7 +145,7 @@ decomposition as before to get
 \decompmax{0/1,1/0}{\mathcal{C}}{}{}{\mathcal{C}\setminus\varepsilon}
 \end{equation*}
 The pattern \(q_3 = \textpattern{}{1}{0/0,0/1,1/0}\) is the reverse-complement-inverse
-of \(q_2\) and hence the avoiders of \(q_2\) and \(q_3\) (\(\scriptvar_2\) and \(\scriptvar_3\)) are equinumerous.
+of \(q_2\) and hence the avoiders of \(q_2\) and \(q_3\) (\(\scriptvar_2\) and \(\scriptvar_3\)) are equinumerous, and so \(q_1 \weqv{231} q_2 \weqv{231}q_3\).
 All of these classes have the same generating function, namely
 \begin{equation}
     \var(x) = 1 + xC(x)(C(x)-1). \label{eqn:maxlgen}
@@ -180,7 +180,7 @@ The only symmetry that we are able to consider is \emph{reverse-complement-inver
 Wilf-equivalence, these equivalences being explained by either the patterns being
 coincident in \(\av{\perm{2,3,1}}\), or by one pattern being the reverse-complement-inverse of some other pattern.
 
-Computing avoiders up to length 10 suggests that there are at least 23 Wilf-classes,
+Computing avoiders up to length 10 suggests that there are at least 23 \(\weqv{231}\)-equivalence classes,
 of which 13 are not equal to coincidence classes (after taking symmetries). Therefore there seem to be Wilf-equivalences that are not
 explained by coincidences or symmetry.
 
@@ -191,8 +191,7 @@ these methods to consolidate a single Wilf-class.
 
 \subsection{}
 \nextvar
-The following patterns are experimentally Wilf-equivalent up to length 10 in
-\(\av{\perm{2,3,1}}\)
+The following patterns are in the same \(\weqv[comp]{231}\)-equivalence class
 \begin{gather}
     m_1 = \pattern{}{1,2}{0/0,0/1,1/1,1/2,2/0,2/1},
     m_2 = \pattern{}{2,1}{0/0,0/1,1/1,1/2,2/0,2/1}, \label{eq:singleud}\\
@@ -200,8 +199,7 @@ The following patterns are experimentally Wilf-equivalent up to length 10 in
     m_4 = \pattern{}{2,1}{0/1,0/2,1/0,1/1,1/2,2/0} \label{eq:other}
 \end{gather}
 
-First we prove the Wilf-equivalence between \(m_1\) and \(m_2\) shown in
-\eqref{eq:singleud}, by considering the form of a general permutation containing
+First we prove that \(m_1 \weqv{231} m_2\) by considering the form of a general permutation containing
 either of the two patterns. First looking at a general occurrence of \(m_1\) in a permutation
 in \(\av{231}\)
 \begin{equation*}
@@ -256,7 +254,7 @@ start with it's minimum, i.e., it is a member of \(\mathcal{\varmaxl}_3\) descri
 in \SectionRef{wilf1}.
 Since both \(\mathcal{\varmaxl}_1\) and \(\mathcal{\varmaxl}_3\) have the same
 enumeration, \(\scriptvar_3\) and \(\scriptvar_4\) must also have
-the same enumeration and are therefore Wilf-equivalent.
+the same enumeration and are therefore \(m_3\weqv{m_4}\).
 
 Now we must consolidate these two subclasses. In order to do this we must
 consider the decomposition around the leftmost point of a permutation in
@@ -266,8 +264,7 @@ consider the decomposition around the leftmost point of a permutation in
     \decompleft{1/0,0/1}{\scriptvar_1}{}{}{\mathcal{\varmaxl}_3}
 \end{equation*}
 It is therefore obvious that avoiders of \(m_1\) and avoiders of \(m_4\)
-have the same enumeration, and therefore all four patterns are Wilf-equivalent
-in \(\av{\perm{2,3,1}}\) with generating function satisfying
+have the same enumeration, and therefore \(m_1 \weqv{231} m_2 \weqv{231}m_3\weqv{m_4}\) with generating function satisfying
 \begin{equation*}
     \var(x) = 1 + x\var(x)\varmaxl(x)
 \end{equation*}
@@ -279,8 +276,7 @@ This can be enumerated to give the sequence
 
 \subsection{}
 \nextvar
-The following patterns are experimentally Wilf-equivalent up to length 10 in
-\(\av{\perm{2,3,1}}\)
+The patterns \(m_1 \et m_2\) are in the same \(\weqv[comp]{231}\)-equivalence class
 \begin{equation*}
     m_1 = \pattern{}{1,2}{1/0,1/1,1/2,2/0,2/1} \text{ and }
     m_2 = \pattern{}{2,1}{0/1,1/0,1/1,1/2,2/1}
