@@ -1,12 +1,13 @@
 Coincidences among small mesh patterns have been considered by
-\textcite{DBLP:journals/corr/ClaessonTU14}, in which the authors use the Simultaneous Shading Lemma,
-a closure result and one special case to fully classify coincidences among mesh patterns
-of length 2.
+\textcite{DBLP:journals/corr/ClaessonTU14}, in which the authors use the
+Simultaneous Shading Lemma, a closure result and one special case to fully
+classify coincidences among mesh patterns of length 2.
 
-Recall that two patterns \(\lambda\) and \(\gamma\) are considered \emph{coincident} if the set of permutations
-that avoid \(\lambda\) is the same as the set of permutations that avoid \(\gamma\),
-\ie, \(\av{\lambda} = \av{\gamma}\). This is equivalent to \(\lambda\) and \(\gamma\) being contained in
-the same set of permutations, \ie, \(\cont{\lambda} = \cont{\gamma}\).
+Recall that two patterns \(\lambda\) and \(\gamma\) are considered
+\emph{coincident} if the set of permutations that avoid \(\lambda\) is the same
+as the set of permutations that avoid \(\gamma\), \ie, \(\av{\lambda} =
+\av{\gamma}\). This is equivalent to \(\lambda\) and \(\gamma\) being contained
+in the same set of permutations, \ie, \(\cont{\lambda} = \cont{\gamma}\).
 
 We will consider the avoidance sets \(\av{\pi,p}\) where \(\pi\) is a fixed
 classical pattern of length 3 and \(p\) is a mesh pattern of length 2 that
@@ -34,19 +35,20 @@ we record the following:
 
 \begin{note}
 \label{note:main}
-    If we find that \(\coinc[(i)]{\pi}\), for \(i = 1, 2\), or \(3\),
-    equals \(\coinc[comp]{\pi}\) then the equivalence relations \(\coinc[(i)]{\pi}\), \(\coinc{\pi}\),
-    and \(\coinc[comp]{\pi}\) are all equal.
+    If we find that \(\coinc[(i)]{\pi}\), for \(i = 1, 2\), or \(3\), equals
+    \(\coinc[comp]{\pi}\) then the equivalence relations \(\coinc[(i)]{\pi}\),
+    \(\coinc{\pi}\), and \(\coinc[comp]{\pi}\) are all equal.
 \end{note}
 
-In order to describe the rules it is useful to have a notion for inserting points, ascents, and
-descents into a mesh pattern.
+In order to describe the rules it is useful to have a notion for inserting
+points, ascents, and descents into a mesh pattern.
 \begin{definition}
 \label{def:ap}
-Let \(p=(\tau,R)\) be a mesh pattern of length \(n\) such that \(\boks{i,j}\notin R\). We define
-a mesh pattern \(p^\boks{i,j} = (\tau^\prime,R^\prime)\) of length \(n+1\) as the pattern where a
-point is \emph{inserted} into the box \(\boks{i,j}\) in \(G(p)\). Formally the new underlying
-classical pattern is defined by
+Let \(p=(\tau,R)\) be a mesh pattern of length \(n\) such that
+\(\boks{i,j}\notin R\). We define a mesh pattern \(p^\boks{i,j} =
+(\tau^\prime,R^\prime)\) of length \(n+1\) as the pattern where a point is
+\emph{inserted} into the box \(\boks{i,j}\) in \(G(p)\). Formally the new
+underlying classical pattern is defined by
 \begin{equation*}
 \tau^\prime(k) = \begin{cases}
     j+1 & \text{if } k = i+1\\
@@ -67,11 +69,11 @@ R^\prime=&\{\boks{k,\ell}\mid k\le i, \ell\le j, \boks{k,\ell}\in R\} \cup\\
 \end{equation*}
 \end{definition}
 In addition, we give the following definitions:
-
 \begin{definition}
-Let \(p=(\tau,R)\) be a mesh pattern of length \(n\) such that \(\boks{i,j}\notin R\) and
-\(p^\boks{i,j} = (\tau^\prime,R^\prime)\) is as defined in \DefinitionRef{def:ap}. We define
-the following four modifications of \(p^\boks{i,j}\).
+Let \(p=(\tau,R)\) be a mesh pattern of length \(n\) such that
+\(\boks{i,j}\notin R\) and \(p^\boks{i,j} = (\tau^\prime,R^\prime)\) is as
+defined in \DefinitionRef{def:ap}. We define the following four modifications of
+\(p^\boks{i,j}\).
 \begin{align*}
 p^\boksup{i,j} &= (\tau^\prime, R^\prime \cup \{\boks{i,j+1},\boks{i+1,j+1}\})\\
 p^\boksright{i,j} &= (\tau^\prime, R^\prime \cup \{\boks{i+1,j},\boks{i+1,j+1}\})\\
@@ -79,8 +81,9 @@ p^\boksdown{i,j} &= (\tau^\prime, R^\prime \cup \{\boks{i,j},\boks{i+1,j}\})\\
 p^\boksleft{i,j} &= (\tau^\prime, R^\prime \cup \{\boks{i,j},\boks{i,j+1}\})\\
 \end{align*}
 \end{definition}
-Informally, these are considering the topmost, rightmost, leftmost, or bottommost point in
-\(\boks{i,j}\). We collect the resulting mesh patterns in a set
+Informally, these are considering the topmost, rightmost, leftmost, or
+bottommost point in \(\boks{i,j}\). We collect the resulting mesh patterns in a
+set
 \begin{equation*}
 p^\boksall{i,j}=\left\{
 p^\boks{i,j},
@@ -104,10 +107,11 @@ p^\boksup{2,1}
 \end{figure}
 
 \begin{definition}
-Let \(p=(\tau,R)\) be a mesh pattern of length \(n\) such that \(\boks{i,j}\notin R\). We define
-a mesh pattern \(p^{\boks{i,j}_a} = (\tau^\prime,R^\prime)\) (\(p^{\boks{i,j}_d}\)) of length \(n+2\)
-as the pattern where an ascent (descent) is \emph{inserted} into the box \(\boks{i,j}\) in \(G(p)\).
-Formally the new underlying classical pattern is defined by
+Let \(p=(\tau,R)\) be a mesh pattern of length \(n\) such that
+\(\boks{i,j}\notin R\). We define a mesh pattern \(p^{\boks{i,j}_a} =
+(\tau^\prime,R^\prime)\) (\(p^{\boks{i,j}_d}\)) of length \(n+2\) as the pattern
+where an ascent (descent) is \emph{inserted} into the box \(\boks{i,j}\) in
+\(G(p)\). Formally the new underlying classical pattern is defined by
 \begin{equation*}
 \tau^\prime(k) = \begin{cases}
     j+t & \text{if } k = i+t,t\in\{1,2\}\\
@@ -140,27 +144,32 @@ p^{\boks{1,1}_a}= \pattern{}{4,2,3,5,1}{0/0,
                         3/0,3/5,
                         5/0,5/1,5/2,5/3,5/5}
 \end{equation*}
-\caption{The result of inserting an ascent into \(p=(231,\{\boks{0,0},\boks{1,0},\boks{1,3},\boks{3,0},\boks{3,1},\boks{3,3}\})\)}
+\caption{The result of inserting an ascent into
+\(p=(231,\{\boks{0,0},\boks{1,0},\boks{1,3},\boks{3,0},\boks{3,1},\boks{3,3}\})\)}
 \label{fig:adda}
 \end{figure}
 
-We now attempt to fully classify coincidences in families characterised by avoidance
-of a classical pattern of length \(3\) and a mesh pattern of length \(2\), that is
-finding and explaining all coincidences between mesh patterns \(m\) and \(m^\prime\), \(m\coinc{\pi} m^\prime\),
-where \(\pi\) is a classical pattern of length \(3\).
+We now attempt to fully classify coincidences in families characterised by
+avoidance of a classical pattern of length \(3\) and a mesh pattern of length
+\(2\), that is finding and explaining all coincidences between mesh patterns
+\(m\) and \(m^\prime\), \(m\coinc{\pi} m^\prime\), where \(\pi\) is a classical
+pattern of length \(3\).
 
 It can be easily seen that in order to classify coincidences one need only
-consider coincidences within the family of mesh patterns with the same underlying
-classical pattern, this is due to the fact that \(\perm{2,1}\in\av{\mperm{1,2}{R}}\)
-and \(\perm{1,2}\in\av{\{\mperm{2,1}{R}\}}\) for all mesh-sets \(R\).
+consider coincidences within the family of mesh patterns with the same
+underlying classical pattern, this is due to the fact that
+\(\perm{2,1}\in\av{\mperm{1,2}{R}}\) and
+\(\perm{1,2}\in\av{\{\mperm{2,1}{R}\}}\) for all mesh-sets \(R\).
 
-We know that there are a total of \(512\) mesh-sets for each underlying classical
-pattern. By use of the previous results of \textcite{DBLP:journals/corr/ClaessonTU14}
-the number of coincidence classes can be reduced to \(220\).
+We know that there are a total of \(512\) mesh-sets for each underlying
+classical pattern. By use of the previous results of
+\textcite{DBLP:journals/corr/ClaessonTU14} the number of coincidence classes can
+be reduced to \(220\).
 
 \subsection{Coincidence classes of Av(\{321, (21, \textit{R})\})}
-Through experimentation, considering avoidance of permutations up to length \(11\), we discover
-that there are \(29\) \(\coinc[comp]{321}\)-equivalence classes where the underlying classical pattern of the mesh pattern is \(21\).
+Through experimentation, considering avoidance of permutations up to length
+\(11\), we discover that there are \(29\) \(\coinc[comp]{321}\)-equivalence
+classes where the underlying classical pattern of the mesh pattern is \(21\).
 
 \begin{proposition}[First Dominating Pattern Rule]
     \label{prop:dom1}
@@ -207,13 +216,13 @@ In order to prove the proposition we must first make the following note.
     Since \(R_1\) is a subset of \(R_2\), \NoteRef{not:downcmesh} implies that
     \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\).
 
-    Now we consider a permutation \(\omega \in \av{\pi}\),
-    containing an occurrence of \(m_1\). If there is a point in the
-    region corresponding to the box \(\boks{a,b}\), then that point, along with the
-    points of the occurrence of \(m_1\), form an occurrence of \(\sigma^\boks{a,b}\).
-    Then condition~\eqref{prop:dom1:cont} of the
-    proposition implies an occurrence of \(\pi\). Therefore there can be no
-    points in this region, which implies the occurrence of \(m_1\) is an occurrence of \(m_2\). Hence every occurrence of
+    Now we consider a permutation \(\omega \in \av{\pi}\), containing an
+    occurrence of \(m_1\). If there is a point in the region corresponding to
+    the box \(\boks{a,b}\), then that point, along with the points of the
+    occurrence of \(m_1\), form an occurrence of \(\sigma^\boks{a,b}\). Then
+    condition~\eqref{prop:dom1:cont} of the proposition implies an occurrence of
+    \(\pi\). Therefore there can be no points in this region, which implies the
+    occurrence of \(m_1\) is an occurrence of \(m_2\). Hence every occurrence of
     \(m_1\) is in fact an occurrence of \(m_2\), and we have that
     \(\av{\{\pi,m_2\}} \subseteq \av{\{\pi,m_1\}}\).
 
@@ -222,27 +231,29 @@ In order to prove the proposition we must first make the following note.
 \end{proof}
 
 After implementing the First Dominating Pattern Rule we find that there are
-\(29\) \(\coinc[(1)]{321}\)-equivalence classes, of mesh patterns where the underlying
-classical pattern is \(21\). By \NoteRef{note:main} there are
+\(29\) \(\coinc[(1)]{321}\)-equivalence classes, of mesh patterns where the
+underlying classical pattern is \(21\). By \NoteRef{note:main} there are
 therefore exactly \(29\) \(\coinc{321}\)-equivalence classes.
 
 \subsection{Coincidence classes of Av(\{231, (21, \textit{R})\}).}
-By application of First Dominating Pattern Rule we obtain \(43\) \(\coinc[(1)]{231}\)-equivalence
-classes between mesh patterns with \(21\) as an underlying classical pattern.
-Experimentation shows that there are \(39 \coinc[comp]{231}\)-equivalence
-classes between mesh patterns with \(21\) as an underlying classical pattern, for example the following two patterns are in the same
-\(\coinc[comp]{231}\)-equivalence class, but this is not explained by the First Dominating Pattern Rule.
+By application of First Dominating Pattern Rule we obtain \(43\)
+\(\coinc[(1)]{231}\)-equivalence classes between mesh patterns with \(21\) as an
+underlying classical pattern. Experimentation shows that there are \(39
+\coinc[comp]{231}\)-equivalence classes between mesh patterns with \(21\) as an
+underlying classical pattern, for example the following two patterns are in the
+same \(\coinc[comp]{231}\)-equivalence class, but this is not explained by the
+First Dominating Pattern Rule.
 \begin{equation*}
     m_1 = \pattern{}{2,1}{0/0,0/1,0/2,1/0,2/1} \text{ and } m_2 = \pattern{}{2,1}{0/0,0/1,0/2,1/0,1/1,2/1}
 \end{equation*}
 
-Consider an occurrence of \(m_1\) in a permutation in \(\av{\perm{2,3,1}}\), consisting
-of elements \(x\) and \(y\). If the region corresponding
-to the box \(\boks{1,1}\) is empty we have an occurrence of \(m_2\). Otherwise, if there is any
-ascent in this box then we would have an occurrence of \(\perm{2,3,1}\),
-however, since the permutation is in \(\av{\perm{2,3,1}}\) this is not possible. This box
-must therefore contain a (non-empty) decreasing subsequence.
- This gives rise to the following lemma:
+Consider an occurrence of \(m_1\) in a permutation in \(\av{\perm{2,3,1}}\),
+consisting of elements \(x\) and \(y\). If the region corresponding to the box
+\(\boks{1,1}\) is empty we have an occurrence of \(m_2\). Otherwise, if there is
+any ascent in this box then we would have an occurrence of \(\perm{2,3,1}\),
+however, since the permutation is in \(\av{\perm{2,3,1}}\) this is not possible.
+This box must therefore contain a (non-empty) decreasing subsequence. This gives
+rise to the following lemma:
 
 \begin{lemma}
     \label{lem:incdec}
@@ -263,10 +274,11 @@ Going back to our example mesh patterns
         \filldraw (1.33,1.66) circle (3pt);
     \end{tikzpicture}
 \end{equation*}
-we know that the region corresponding to the box \(\boks{1,1}\) contains a decreasing subsequence.
-If we let \(z\) be the topmost point in this decreasing subsequence, then \(xz\)
-is an occurrence of \(m_2\). This shows that our two example patterns are coincident.
-This example generalises into the following rule.
+we know that the region corresponding to the box \(\boks{1,1}\) contains a
+decreasing subsequence. If we let \(z\) be the topmost point in this decreasing
+subsequence, then \(xz\) is an occurrence of \(m_2\). This shows that our two
+example patterns are coincident. This example generalises into the following
+rule.
 
 \begin{proposition}[Second Dominating Pattern Rule]
     \label{prop:dom2}
@@ -274,63 +286,65 @@ This example generalises into the following rule.
     and a dominating classical pattern \(\pi = (\pi,\emptyset)\) such that
     \(\setsize{\pi} \le \setsize{\sigma} + 2\), then \(m_1 \coinc{\pi} m_2 \)
     if
+\begin{enumerate}
+  \item The mesh set \(R_2 = R_1 \cup \{\boks{a,b}\}\)
+  \item\label{prop:dom2:cond} Any one of the following four conditions hold
     \begin{enumerate}
-        \item The mesh set \(R_2 = R_1 \cup \{\boks{a,b}\}\)
-        \item\label{prop:dom2:cond} Any one of the following four conditions hold \begin{enumerate}
-                \item\label{prop:dom2:condc} \(\pi \preceq \sigma^{\boks{a,b}_a}\) and
-                        \begin{enumerate}
-                            \item \((a+1,b) \in \sigma\) and \(\boks{a+1,b-1}\notin R_1\) and \\
-                                \(\boks{x,b-1}\in R_1 \implies \boks{x,b} \in R_1 \) (where \(x\neq a,a+1\)) and\\
-                                  \(\boks{a+1,y}\in R_1 \implies \boks{a,y} \in R_1\) (where \(y\neq b-1,b\)).
-                            \item \((a,b+1) \in \sigma\) and \(\boks{a-1,b+1}\notin R_1\) and \\
-                                  \(\boks{x,b+1}\in R_1 \implies \boks{x,b} \in R_1\) (where \(x\neq a-1,a\)) and\\
-                                  \(\boks{a-1,y}\in R_1 \implies \boks{a,y} \in R_1\) (where \(y\neq b,b+1\)).
-                        \end{enumerate}
-                    \item \(\pi \preceq \sigma^{\boks{a,b}_d}\) and
-                        \begin{enumerate}
-                            \item \((a+1,b+1) \in \sigma\) and \(\boks{a+1,b+1}\notin R_1\) and \\
-                                  \(\boks{x,b+1}\in R_1 \implies \boks{x,b} \in R_1\) (where \(x\neq a,a+1\)) and\\
-                                  \(\boks{a+1,y}\in R_1 \implies \boks{a,y} \in R_1\) (where \(y\neq b,b+1\)).
-                            \item \((a,b) \in \sigma\) and \(\boks{a-1,b-1}\notin R_1\) and \\
-                                  \(\boks{x,b-1}\in R_1 \implies \boks{x,b} \in R_1\) (where \(x\neq a-1,a\)) and\\
-                                  \(\boks{a-1,y}\in R_1 \implies \boks{a,y} \in R_1\)  (where \(y\neq b-1,b\)).
-                        \end{enumerate}
-                \end{enumerate}
+    \item\label{prop:dom2:condc} \(\pi \preceq \sigma^{\boks{a,b}_a}\) and
+      \begin{enumerate}
+        \item \((a+1,b) \in \sigma\) and \(\boks{a+1,b-1}\notin R_1\) and \\
+          \(\boks{x,b-1}\in R_1 \implies \boks{x,b} \in R_1 \) (where \(x\neq a,a+1\)) and\\
+          \(\boks{a+1,y}\in R_1 \implies \boks{a,y} \in R_1\) (where \(y\neq b-1,b\)).
+        \item \((a,b+1) \in \sigma\) and \(\boks{a-1,b+1}\notin R_1\) and \\
+          \(\boks{x,b+1}\in R_1 \implies \boks{x,b} \in R_1\) (where \(x\neq a-1,a\)) and\\
+          \(\boks{a-1,y}\in R_1 \implies \boks{a,y} \in R_1\) (where \(y\neq b,b+1\)).
+      \end{enumerate}
+    \item \(\pi \preceq \sigma^{\boks{a,b}_d}\) and
+      \begin{enumerate}
+        \item \((a+1,b+1) \in \sigma\) and \(\boks{a+1,b+1}\notin R_1\) and \\
+          \(\boks{x,b+1}\in R_1 \implies \boks{x,b} \in R_1\) (where \(x\neq a,a+1\)) and\\
+          \(\boks{a+1,y}\in R_1 \implies \boks{a,y} \in R_1\) (where \(y\neq b,b+1\)).
+        \item \((a,b) \in \sigma\) and \(\boks{a-1,b-1}\notin R_1\) and \\
+          \(\boks{x,b-1}\in R_1 \implies \boks{x,b} \in R_1\) (where \(x\neq a-1,a\)) and\\
+          \(\boks{a-1,y}\in R_1 \implies \boks{a,y} \in R_1\)  (where \(y\neq b-1,b\)).
+      \end{enumerate}
     \end{enumerate}
+\end{enumerate}
 \end{proposition}
 \begin{proof}
-    By \NoteRef{not:downcmesh} we only need to show that an occurrence of \(m_1\)
-    implies an occurrence of \(m_2\).
-    We consider taking the first branch of every choice in condition~\eqref{prop:dom2:cond}.
-    Consider a permutation \(\omega \in \av{\pi}\). Suppose
-    \(\omega\) contains \(m_1\) and consider the region corresponding to
-    \(\boks{a,b}\) in \(R_1\). If the region is empty, the occurrence of \(m_1\) is trivially an occurrence
-    of \(m_2\).
-
-    If the region is non-empty, then by \LemmaRef{lem:incdec} and
-    condition~\eqref{prop:dom2:condc} of the proposition it must contain
-    a decreasing subsequence.
-    We can choose the topmost point in the region to replace the corresponding
-    point in the mesh pattern and the points from the subsequence are now in
-    the box southeast of the point.
-
-    The conditions on the mesh ensure that no elements of the permutation
-    that were inside a region corresponding to an unshaded box in the occurrence
-    of \(m_1\) would be in a region corresponding to a shaded box in an occurrence of
+    By \NoteRef{not:downcmesh} we only need to show that an occurrence of
+    \(m_1\) implies an occurrence of \(m_2\). We consider taking the first
+    branch of every choice in condition~\eqref{prop:dom2:cond}. Consider a
+    permutation \(\omega \in \av{\pi}\). Suppose \(\omega\) contains \(m_1\) and
+    consider the region corresponding to \(\boks{a,b}\) in \(R_1\). If the
+    region is empty, the occurrence of \(m_1\) is trivially an occurrence of
     \(m_2\).
 
-    Hence there are no
-    points in the region corresponding to the box \(\boks{a,b}\) in the mesh
-    pattern, and therefore we can shade this region. This implies that every
-    occurrence of \(m_1\) in \(\av{\pi}\) can be modified into an occurrence of \(m_2\)
-    so \(\av{\{\pi,m_2\}} \subseteq \av{\{\pi,m_1\}}\).
+    If the region is non-empty, then by \LemmaRef{lem:incdec} and
+    condition~\eqref{prop:dom2:condc} of the proposition it must contain a
+    decreasing subsequence. We can choose the topmost point in the region to
+    replace the corresponding point in the mesh pattern and the points from the
+    subsequence are now in the box southeast of the point.
+
+    The conditions on the mesh ensure that no elements of the permutation that
+    were inside a region corresponding to an unshaded box in the occurrence of
+    \(m_1\) would be in a region corresponding to a shaded box in an occurrence
+    of \(m_2\).
+
+    Hence there are no points in the region corresponding to the box
+    \(\boks{a,b}\) in the mesh pattern, and therefore we can shade this region.
+    This implies that every occurrence of \(m_1\) in \(\av{\pi}\) can be
+    modified into an occurrence of \(m_2\) so \(\av{\{\pi,m_2\}} \subseteq
+    \av{\{\pi,m_1\}}\).
 
     Similar arguments cover the remainder of the branches.
 \end{proof}
 
-This proposition essentially states that we slide all of the points in the box we desire
-to shade diagonally, and chose the topmost/bottommost point to replace the original
-point in the mesh pattern. \FigureRef{fig:d2} show how the cases apply to a general container of \(m_1\) to transform it into a container of \(m_2\), the circled points are the same points in the permutation.
+This proposition essentially states that we slide all of the points in the box
+we desire to shade diagonally, and chose the topmost/bottommost point to replace
+the original point in the mesh pattern. \FigureRef{fig:d2} show how the cases
+apply to a general container of \(m_1\) to transform it into a container of
+\(m_2\), the circled points are the same points in the permutation.
 \begin{figure}
 \begin{tikzpicture}
 	\modpattern[3]{1,2}{2,1}{0/0,0/1,0/2,1/0,2/1}
@@ -353,16 +367,18 @@ point in the mesh pattern. \FigureRef{fig:d2} show how the cases apply to a gene
 \end{figure}
 
 After implementing the Second Dominating Pattern Rule we find that there are
-\(39\) \(\coinc[(2)]{231}\)-equivalence classes, of mesh patterns where the underlying
-classical pattern is \(21\). By \NoteRef{note:main} there are
+\(39\) \(\coinc[(2)]{231}\)-equivalence classes, of mesh patterns where the
+underlying classical pattern is \(21\). By \NoteRef{note:main} there are
 therefore exactly \(39\) \(\coinc{231}\)-equivalence classes.
 
 \subsection{Coincidence classes of Av(\{231, (12, \textit{R})\}).}
-When considering the coincidence classes of \(\av{\{\perm{2,3,1},\mperm{1,2}{R}\}}\)
-we first apply the two Dominating Pattern rules previously established.
-Starting from \(220\) classes, we result in \(85 \coinc[(1)]{231}\)-equivalence classes
-reducing to \(59 \coinc[(2)]{231}\)-equivalence classes, considering mesh patterns with
-\(12\) as the underlying classical patterns. However there are fewer \(\coinc[comp]{231}\)-equivalence classes.
+When considering the coincidence classes of
+\(\av{\{\perm{2,3,1},\mperm{1,2}{R}\}}\) we first apply the two Dominating
+Pattern rules previously established. Starting from \(220\) classes, we result
+in \(85 \coinc[(1)]{231}\)-equivalence classes reducing to \(59
+\coinc[(2)]{231}\)-equivalence classes, considering mesh patterns with \(12\) as
+the underlying classical patterns. However there are fewer
+\(\coinc[comp]{231}\)-equivalence classes.
 
 For example the patterns
 \begin{equation*}
@@ -371,21 +387,20 @@ For example the patterns
 are \(\coinc[comp]{231}\)-equivalent.
 
 Consider an occurrence of \(m_1\) in a permutation, if the region corresponding
-to the box \(\boks{1,0}\) is empty then we have an occurrence of \(m_2\). Now look at
-the case when this region is not empty, and consider choosing the rightmost
-point in the region.
-This gives us an occurrence of the following mesh pattern.
+to the box \(\boks{1,0}\) is empty then we have an occurrence of \(m_2\). Now
+look at the case when this region is not empty, and consider choosing the
+rightmost point in the region. This gives us an occurrence of the following mesh
+pattern.
 \begin{equation*}
     \pattern{}{2,1,3}{0/3,2/0,2/1,3/0,3/1,3/2}
 \end{equation*}
-By application of First Dominating Patter Rule we obtain the following
-mesh pattern
+By application of First Dominating Pattern Rule we obtain the following mesh
+pattern
 \begin{equation*}
     \pattern{2,3}{2,1,3}{0/3,1/3,2/0,2/1,3/0,3/1,3/2}
 \end{equation*}
-The highlighted points are an occurrence
-of the mesh pattern \(m_2\). This gives rise to the following
-rule:
+The highlighted points are an occurrence of the mesh pattern \(m_2\). This gives
+rise to the following rule:
 
 \begin{proposition}[Third Dominating Pattern Rule]
     \label{prop:dom3}
@@ -400,53 +415,53 @@ rule:
     \end{enumerate}
 \end{proposition}
 \begin{proof}
-    \NoteRef{not:downcmesh} implies \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\) as before.
-    Now consider a permutation \(\omega \in \av{\pi}\) that contains an
-    occurrence of \(m_1\). If the region corresponding to the box \(\boks{a,b}\)
-    is empty then we have an occurrence of \(m_2\).
-    By condition~\ref{prop:dom3:condocc} of the proposition there exists
-    a pattern \(r\) in \(m_1^\boksall{a,b}\) such that \(m_2\) is a subpattern in some
-    pattern \(r'\) coincident with \(r\). If the region is non-empty then there exists
-    an occurrence of \(r\) in \(\omega\). Therefore there is an occurrence of \(r'\)
-    in \(\omega\), which implies that there is an occurrence of \(m_2\) in \(\omega\).
-    Thus \(\av{\{\pi,m_2\}} \subseteq \av{\{\pi,m_1\}}\) and the
-    two patterns are coincident.
+    \NoteRef{not:downcmesh} implies \(\av{\{\pi,m_1\}} \subseteq \av{\{\pi,m_2\}}\)
+as before. Now consider a permutation \(\omega \in \av{\pi}\) that contains an
+occurrence of \(m_1\). If the region corresponding to the box \(\boks{a,b}\) is
+empty then we have an occurrence of \(m_2\). By
+condition~\ref{prop:dom3:condocc} of the proposition there exists a pattern
+\(r\) in \(m_1^\boksall{a,b}\) such that \(m_2\) is a subpattern in some pattern
+\(r'\) coincident with \(r\). If the region is non-empty then there exists an
+occurrence of \(r\) in \(\omega\). Therefore, there is an occurrence of \(r'\) in
+\(\omega\), which implies that there is an occurrence of \(m_2\) in \(\omega\).
+Thus \(\av{\{\pi,m_2\}} \subseteq \av{\{\pi,m_1\}}\) and the two patterns are
+coincident.
 \end{proof}
 
 After implementing the Third Dominating Pattern Rule we find that there are
-\(56\) \(\coinc[(3)]{231}\)-equivalence classes, of mesh patterns where the underlying
-classical pattern is \(12\). By \NoteRef{note:main} there are
+\(56\) \(\coinc[(3)]{231}\)-equivalence classes, of mesh patterns where the
+underlying classical pattern is \(12\). By \NoteRef{note:main} there are
 therefore exactly \(56\) \(\coinc{231}\)-equivalence classes, since we have
-observed \(56\) \(\coinc[comp]{231}\)-equivalence classes through experimentation.
+observed \(56\) \(\coinc[comp]{231}\)-equivalence classes through
+experimentation.
 
 \subsection{Coincidence classes of Av(\{321, (12, \textit{R})\}).}
-When considering coincidences of mesh patterns with underlying classical
-pattern \(\perm{1,2}\) in \(\av{\perm{3,2,1}}\) application of the previously
+When considering coincidences of mesh patterns with underlying classical pattern
+\(\perm{1,2}\) in \(\av{\perm{3,2,1}}\) application of the previously
 established rules gives no coincidences. Through experimentation we discover
-that there are \(7\) \(\coinc[comp]{321}\)-equivalence classes are unexplained.
-Since the number of coincidences is
-so small we will reason for these coincidences without attempting to generalise
-into concrete rules.
+that there are \(7\) \(\coinc[comp]{321}\)-equivalence classes that are
+unexplained. Since the number of coincidences is so small we will reason for
+these coincidences without attempting to generalise into concrete rules.
 
-Intuitively, it is easy to see why our previous rules have no
-power here. It is impossible to add a single point to a mesh pattern \((12, R)\) and
-create an occurrence of \(\pi = \perm{3,2,1}\). It is also impossible to have
-a position where addition of an ascent, or descent, provides extra
-shading power.
+Intuitively, it is easy to see why our previous rules have no power here. It is
+impossible to add a single point to a mesh pattern \((12, R)\) and create an
+occurrence of \(\pi = \perm{3,2,1}\). It is also impossible to have a position
+where addition of an ascent, or descent, provides extra shading power.
 
 The patterns
 \begin{equation*}
-    m_1 = \pattern{}{1,2}{0/0, 0/2, 1/1, 1/2, 2/1} \text { and } m_2 \pattern{}{1,2}{0/0, 0/1, 0/2, 1/1, 1/2, 2/1}
+    m_1 = \pattern{}{1,2}{0/0, 0/2, 1/1, 1/2, 2/1} \et m_2 \pattern{}{1,2}{0/0,
+    0/1, 0/2, 1/1, 1/2, 2/1}
 \end{equation*}
 are \(\coinc[comp]{321}\)-equivalent. (There are 3 symmetries of these
 patterns that are also equivalent to each other by the same reasoning.)
 
-Consider the region corresponding to the box \(\boks{0,1}\) in any occurrence of \(m_1\)
-in a permutation. By \LemmaRef{lem:incdec} it must contain an increasing subsequence.
-If the region is empty then we have an occurrence of \(m_2\).
-If there is only one point in the region we can choose this point to replace the \(1\) in
-the mesh pattern to get the required shading. If there is more than one point then
-choosing the two leftmost points gives us the following mesh pattern.
+Consider the region corresponding to the box \(\boks{0,1}\) in any occurrence of
+\(m_1\) in a permutation. By \LemmaRef{lem:incdec} it must contain an increasing
+subsequence. If the region is empty then we have an occurrence of \(m_2\). If
+there is only one point in the region we can choose this point to replace the
+\(1\) in the mesh pattern to get the required shading. If there is more than one
+point then choosing the two leftmost points gives us the following mesh pattern.
 \begin{equation*}
     \pattern{3,4}{2,3,1,4}{0/0, 0/1, 0/2, 0/3, 0/4,
                             1/0, 1/1, 1/2, 1/3, 1/4,
@@ -454,13 +469,13 @@ choosing the two leftmost points gives us the following mesh pattern.
                             3/1, 3/2, 3/3, 3/4,
                             4/1, 4/2, 4/3}
 \end{equation*}
-Here the two highlighted points are the original two points.
-The other two points are an occurrence of the pattern
-we \(m_2\), and hence the two patterns are coincident.
-It is also possible to calculate this coincidence by an extension of the Third
-Dominating rule, where we allow a sequence of point addition operations, this
-is discussed further in the future work section.
-Because of symmetries we have dealt with \(4\) out of the \(7\) \(\coinc[comp]{321}\)-equivalence classes.
+Here the two highlighted points are the original two points. The other two
+points are an occurrence of the pattern we \(m_2\), and hence the two patterns
+are coincident. It is also possible to calculate this coincidence by an
+extension of the Third Dominating rule, where we allow a sequence of point
+addition operations, this is discussed further in the future work section.
+Because of symmetries we have dealt with \(4\) out of the \(7\)
+\(\coinc[comp]{321}\)-equivalence classes.
 
 Now consider the patterns
 \begin{equation*}
@@ -486,10 +501,11 @@ We call this number \(n\).
             \draw (2.5,0.5) node {\(X\)};
         \end{tikzpicture}
     \end{equation*}
-        Now we need to consider the box labelled \(X\). If this box is empty then
-        we have an occurrence of \(m_2\) and are done. If this box contains
-        any points then we gain some extra shading on the mesh pattern
-        as any points in the boxes \(\boks{1,2}\) and \(\boks{1,3}\) would create an occurrence of the dominating pattern \(\perm{3,2,1}\)
+        Now we need to consider the box labelled \(X\). If this box is empty
+        then we have an occurrence of \(m_2\) and are done. If this box contains
+        any points then we gain some extra shading on the mesh pattern as any
+        points in the boxes \(\boks{1,2}\) and \(\boks{1,3}\) would create an
+        occurrence of the dominating pattern \(\perm{3,2,1}\)
      \begin{equation*}
         \begin{tikzpicture}[scale=0.5]
             \modpattern[5]{2,3}{1,2,3}{0/1,0/2,0/3,1/1,1/2,1/3,2/1,3/0,3/1,3/2}
@@ -503,6 +519,6 @@ We call this number \(n\).
 By induction we have that every occurrence of \(m_1\) leads to an occurrence of \(m_2\)
 and by \NoteRef{not:downcmesh} every occurrence of \(m_2\) is an occurrence of
 \(m_1\) so the two patterns are coincident.
-This argument applies to another two pairs of classes. Therefore in
-total in \(\av{\{\perm{3,2,1}, \mperm{1,2}{R}\}}\) there are \(\coinc{321}\)-equivalence
-classes.
+This argument applies to another two pairs of classes. Therefore we have
+explained all 7 of the coincidences in \(\av{\{\perm{3,2,1}, \mperm{1,2}{R}\}}\)
+and there are 213 \(\coinc{321}\)-equivalence classes.

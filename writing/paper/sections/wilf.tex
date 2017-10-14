@@ -12,11 +12,10 @@ Coincident patterns are trivially Wilf-equivalent: if \(\av[k]{R} = \av[k]{S}\)
 then trivially \(\size{\av[k]{R}} = \size{\av[k]{S}}\). Coincidence is
 therefore a stronger equivalence condition than Wilf-equivalence.
 
-When examining Wilf-equivalences we can use a number of symmetries to reduce
-the amount of work required. It can be seen that the reverse, complement
-and inverse operations (see \FigureRef{fig:symm}) preserve enumeration, and
-therefore classes related by these symmetries are trivially
-Wilf-equivalent.
+When examining Wilf-equivalences we can use a number of symmetries to reduce the
+amount of work required. It can be seen that the reverse, complement and inverse
+operations (see \FigureRef{fig:symm}) preserve enumeration, and therefore
+classes related by these symmetries are trivially Wilf-equivalent.
 \begin{figure}[!htb]
 \begin{align*}
     \rev{\textpattern{}{2,3,1}{}} &= \textpattern{}{1,3,2}{}\\
@@ -33,11 +32,14 @@ were to allow other symmetries, then the equivalences calculated in the
 previous section do not necessarily hold.
 
 In the remainder of the paper we will consider Wilf-equivalences of patterns
-whilst avoiding the \emph{dominating pattern} \(\perm{2,3,1}\), if two patterns \(p_1 \et p_2\) are Wilf-equivalent we will denote this \(p_1\weqv{231}p_2\), similarly when computational methods indicate that two patterns are Wilf equivalent under \(231\) we write \(p_1\weqv[comp]{231}p_2\). We will
-use \(\mathcal{C}\) to denote \(\av{\perm{2,3,1}}\) and \(C(x)\) will
-be the usual Catalan generating function satisfying \(C(x) = 1 + xC(x)^2\).
-The fact that \(C(x)\) is the generating function for \(\mathcal{C}\)
-can be seen by structural decomposition around the maximum, as
+whilst avoiding the \emph{dominating pattern} \(\perm{2,3,1}\), if two patterns
+\(p_1 \et p_2\) are Wilf-equivalent we will denote this \(p_1\weqv{231}p_2\),
+similarly when computational methods indicate that two patterns are Wilf
+equivalent under \(231\) we write \(p_1\weqv[comp]{231}p_2\). We will use
+\(\mathcal{C}\) to denote \(\av{\perm{2,3,1}}\) and \(C(x)\) will be the usual
+Catalan generating function satisfying \(C(x) = 1 + xC(x)^2\). The fact that
+\(C(x)\) is the generating function for \(\mathcal{C}\) can be seen by
+structural decomposition around the maximum, as
 shown in \FigureRef{fig:decompmax}.
 
 \begin{figure}[!ht]
@@ -54,13 +56,15 @@ elements in \(A\) lie below all of the elements in \(B\). We call \(A\) the
 \emph{lower-left section} and \(B\) the \emph{upper-right section}.
 
 We can also decompose a permutation avoiding \(\perm{2,3,1}\) around the
-leftmostpoint, giving a similar figure.
+leftmost point, giving a similar figure.
 
 \subsection{Wilf-classes with mesh patterns of length 1.}
 \label{wilf1}
-When considering the mesh patterns of length \(2\) it will be useful to know
-the Wilf-equivalence classes of the mesh patterns of length \(1\) inside
-\(\av{\perm{2,3,1}}\), this means that we are considering the \(\weqv{231}\)-equivalence classes of mesh patterns with underlying classical pattern \(1\).
+When considering the mesh patterns of length \(2\) it will be useful to know the
+Wilf-equivalence classes of the mesh patterns of length \(1\) inside
+\(\av{\perm{2,3,1}}\), this means that we are considering the
+\(\weqv{231}\)-equivalence classes of mesh patterns with underlying classical
+pattern \(1\).
 
 The patterns in the following set are coincident,
 \begin{equation*}
@@ -123,8 +127,8 @@ numbers.
 \nextvar[\varfine]
 It can be shown by use of the Second Dominating Pattern Rule that the patterns
 \textpattern{}{1}{0/0,1/1} and \(q_1 = \textpattern{}{1}{0/0,0/1,1/1}\) are
-coincident under \(\perm{2,3,1}\). Consider the decomposition of a non-empty avoider of \(q_1\) in
-\(\av{\perm{2,3,1}}\) around the maximum:
+coincident under \(\perm{2,3,1}\). Consider the decomposition of a non-empty
+avoider of \(q_1\) in \(\av{\perm{2,3,1}}\) around the maximum:
 \begin{equation*}
     \scriptvar_1 =\varepsilon \sqcup
 \decompmax{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}
@@ -142,9 +146,11 @@ decomposition as before to get
     \mathcal{\var}_2 =\varepsilon \sqcup
 \decompmax{0/1,1/0}{\mathcal{C}}{}{}{\mathcal{C}\setminus\varepsilon}
 \end{equation*}
-The pattern \(q_3 = \textpattern{}{1}{0/0,0/1,1/0}\) is the reverse-complement-inverse
-of \(q_2\) and hence the avoiders of \(q_2\) and \(q_3\) (\(\scriptvar_2\) and \(\scriptvar_3\)) are equinumerous, and so \(q_1 \weqv{231} q_2 \weqv{231}q_3\).
-All of these classes have the same generating function, namely
+The pattern \(q_3 = \textpattern{}{1}{0/0,0/1,1/0}\) is the
+reverse-complement-inverse of \(q_2\) and hence the avoiders of \(q_2\) and
+\(q_3\) (\(\scriptvar_2\) and \(\scriptvar_3\)) are equinumerous, and so \(q_1
+\weqv{231} q_2 \weqv{231}q_3\). All of these classes have the same generating
+function, namely
 \begin{equation}
     \var(x) = 1 + xC(x)(C(x)-1). \label{eqn:maxlgen}
 \end{equation}
@@ -173,19 +179,24 @@ Computing these values gives
 From \SectionRef{sec:coincs} we know there are \(95\) coincidence classes and
 therefore at most that many Wilf-equivalence classes.
 
-The only symmetry that we are able to consider is \emph{reverse-complement-inverse} as this is the only symmetry that preserves the
-\(\perm{2,3,1}\) pattern. Using this symmetry we can find 61 classes of trivial
-Wilf-equivalence, these equivalences being explained by either the patterns being
-coincident in \(\av{\perm{2,3,1}}\), or by one pattern being the reverse-complement-inverse of some other pattern.
+The only symmetry that we are able to consider is
+\emph{reverse-complement-inverse} as this is the only symmetry that preserves
+the \(\perm{2,3,1}\) pattern. Using this symmetry we can find 61 classes of
+trivial Wilf-equivalence, these equivalences being explained by either the
+patterns being coincident in \(\av{\perm{2,3,1}}\), or by one pattern being the
+reverse-complement-inverse of some other pattern.
 
-Computing avoiders up to length 10 gives 23 \(\weqv[comp]{231}\)-equivalence classes,
-of which 13 are not equal to coincidence classes (after taking symmetries). Therefore there seem to be Wilf-equivalences that are not
-explained by coincidences or symmetry.
+Computing avoiders up to length 10 gives 23 \(\weqv[comp]{231}\)-equivalence
+classes, of which 13 are not equal to coincidence classes (after taking
+symmetries). Therefore there seem to be Wilf-equivalences that are not explained
+by coincidences or symmetry.
 
-We will use two main methods of establishing these Wilf-equivalences: the structural decomposition of avoiders, via generating functions; or the
-structure of a general permutation containing the pattern, looking at a particular occurrence of the
-pattern in a permutation avoiding \(\perm{2,3,1}\). Sometimes it will be necessary to use both of
-these methods to consolidate a single Wilf-class.
+We will use two main methods of establishing these Wilf-equivalences: the
+structural decomposition of avoiders, via generating functions; or the structure
+of a general permutation containing the pattern, looking at a particular
+occurrence of the pattern in a permutation avoiding \(\perm{2,3,1}\). Sometimes
+it will be necessary to use both of these methods to consolidate a single
+Wilf-class.
 
 \subsection{}
 \nextvar
@@ -209,8 +220,16 @@ in \(\av{231}\)
 \end{tikzpicture}
 \end{equation*}
 
-If there is an occurrence of \(m_1\) there must be a lowest occurrence of \(m_1\), \ie, the occurrence has the lowest possible values for any occurrence. Now consider the top
-regions, labelled \(A \et B\), the subpermutation contained in the union of these regions must avoid the permutation \(231\). Also, the subpermutation in the region \(A\) must be a decreasing subsequence, otherwise an occurrence of \(231\) will be created with either of the points in the occurrence of \(m_1\). Now, consider the region labelled \(C\), since we specified that we were focused on the lowest possible occurrence of \(m_1\) this region cannot contain an occurrence of either \(m_1\) or \(231\). This is a full structural decomposition of a container of \(m_1\) inside \(\av{231}\).
+If there is an occurrence of \(m_1\) there must be a lowest occurrence of
+\(m_1\), \ie, the occurrence has the lowest possible values for any occurrence.
+Now consider the top regions, labelled \(A \et B\), the subpermutation contained
+in the union of these regions must avoid the permutation \(231\). Also, the
+subpermutation in the region \(A\) must be a decreasing subsequence, otherwise
+an occurrence of \(231\) will be created with either of the points in the
+occurrence of \(m_1\). Now, consider the region labelled \(C\), since we
+specified that we were focused on the lowest possible occurrence of \(m_1\) this
+region cannot contain an occurrence of either \(m_1\) or \(231\). This is a full
+structural decomposition of a container of \(m_1\) inside \(\av{231}\).
 
 Now consider a general occurrence of \(m_2\) in a permutation
 in \(\av{231}\)
@@ -223,20 +242,28 @@ in \(\av{231}\)
 \end{tikzpicture}
 \end{equation*}
 
-Similarly to a container of \(m_1\) we will look at the lowest possible occurrence of \(m_2\), and as before the regions \(A^\prime \et B^\prime\) together contain an avoider of \(231\) and \(A\) contains a decreasing subsequence. Since we are considering the lowest occurrence of \(m_2\) the region \(C^\prime\) does not contain an occurrence of either \(m_2\) or \(231\).
+Similarly to a container of \(m_1\) we will look at the lowest possible
+occurrence of \(m_2\), and as before the regions \(A^\prime \et B^\prime\)
+together contain an avoider of \(231\) and \(A\) contains a decreasing
+subsequence. Since we are considering the lowest occurrence of \(m_2\) the
+region \(C^\prime\) does not contain an occurrence of either \(m_2\) or \(231\).
 
-Since all the regions in both of these cases contain the same parts,  the classes defined by containment of \(m_1\) and \(m_2\) inside \(\av{\perm{2,3,1}}\) are
-equinumerous and therefore so are their avoiders.
+Since all the regions in both of these cases contain the same parts,  the
+classes defined by containment of \(m_1\) and \(m_2\) inside
+\(\av{\perm{2,3,1}}\) are equinumerous and therefore so are their avoiders.
 
-Consider the class, \(\scriptvar_3\), of permutations defined by avoiding \(\perm{2,3,1}\) and \(m_3\). We can decompose a member of this class around the maximum
+Consider the class, \(\scriptvar_3\), of permutations defined by avoiding
+\(\perm{2,3,1}\) and \(m_3\). We can decompose a member of this class around the
+maximum
 \begin{equation*}
     \scriptvar_3 = \varepsilon \sqcup
     \decompmax{1/0,0/1}{\scriptvar_3}{}{}{\mathcal{\varmaxl}_1}
 \end{equation*}
-Only the first point in the top right region can
-create an occurrence of \(m_3\) if and only if it is the
-element with largest value in this region, therefore the partial permutation
-in this region must avoid starting with the maximum, \ie, be in \(\mathcal{\varmaxl}_1 = \av{\textpattern{}{1}{0/0,0/1,1/1}}\) described
+Only the first point in the top right region can create an occurrence of \(m_3\)
+if and only if it is the element with largest value in this region, therefore
+the partial permutation in this region must avoid starting with the maximum,
+\ie, be in \(\mathcal{\varmaxl}_1 = \av{\textpattern{}{1}{0/0,0/1,1/1}}\)
+described
 in \SectionRef{wilf1}.
 
 Looking at avoiders of \(\perm{2,3,1}\) and \(m_4\) we
@@ -261,8 +288,9 @@ consider the decomposition around the leftmost point of a permutation in
     \scriptvar_1 = \varepsilon \sqcup
     \decompleft{1/0,0/1}{\scriptvar_1}{}{}{\mathcal{\varmaxl}_3}
 \end{equation*}
-It is therefore clear that avoiders of \(m_1\) and avoiders of \(m_4\)
-have the same enumeration, and therefore \(m_1 \weqv{231} m_2 \weqv{231}m_3\weqv{m_4}\) with generating function satisfying
+It is therefore clear that avoiders of \(m_1\) and avoiders of \(m_4\) have the
+same enumeration, and therefore \(m_1 \weqv{231} m_2 \weqv{231}m_3\weqv{m_4}\)
+with generating function satisfying
 \begin{equation*}
     \var(x) = 1 + x\var(x)\varmaxl(x)
 \end{equation*}
@@ -279,32 +307,32 @@ The patterns \(m_1 \et m_2\) are in the same \(\weqv[comp]{231}\)-equivalence cl
     m_1 = \pattern{}{1,2}{1/0,1/1,1/2,2/0,2/1} \text{ and }
     m_2 = \pattern{}{2,1}{0/1,1/0,1/1,1/2,2/1}
 \end{equation*}
-Let \(\scriptvar_1\) be the set of avoiders of \(m_1\) in \(\av{231}\). By structural decomposition
-around the leftmost point we have
+Let \(\scriptvar_1\) be the set of avoiders of \(m_1\) in \(\av{231}\). By
+structural decomposition around the leftmost point we have
 \begin{equation*}
     \scriptvar_1 = \varepsilon \sqcup
     \decompleft{0/1,1/0}{\scriptvar_1}{}{}{\scriptvar^\prime_1}
 \end{equation*}
 
 \noindent
-Here \(\scriptvar^\prime_1\) is a permutation avoiding \(\perm{2,3,1}, m_1\)
-and \(\textpattern{}{1}{0/0,0/1,1/0}\).
-Now consider the decomposition of a permutation in \(\scriptvar^\prime_1\). It can
-once again be decomposed around the leftmost point
+Here \(\scriptvar^\prime_1\) is a permutation avoiding \(\perm{2,3,1}, m_1\) and
+\(\textpattern{}{1}{0/0,0/1,1/0}\). Now consider the decomposition of a
+permutation in \(\scriptvar^\prime_1\). It can once again be decomposed around
+the leftmost point
 \begin{equation*}
     \scriptvar^\prime_1 = \varepsilon \sqcup
     \decompleft{0/1,1/0}{\scriptstyle \scriptvar_1\setminus\varepsilon}{}{}{\scriptvar^\prime_1}
 \end{equation*}
-This is a complete decomposition of avoiders of \(m_1\). Now we
-look at an avoider of \(m_2\), decomposed around the leftmost point
+This is a complete decomposition of avoiders of \(m_1\). Now we look at an
+avoider of \(m_2\), decomposed around the leftmost point
 \begin{equation*}
     \scriptvar_2 = \varepsilon \sqcup
     \decompleft{0/1,1/0}{\scriptvar^\prime_2}{}{}{\scriptvar_2}
 \end{equation*}
 
 Where \(\scriptvar^\prime_2\) is a permutation avoiding \(\perm{2,3,1}, m_2\)
-and \(\textpattern{}{1}{0/0,0/1,1/1}\).
-Again we use the same method of decomposition of a permutation in \(\scriptvar^\prime_2\)
+and \(\textpattern{}{1}{0/0,0/1,1/1}\). Again we use the same method of
+decomposition of a permutation in \(\scriptvar^\prime_2\)
 \begin{equation*}
     \scriptvar^\prime_2 = \varepsilon \sqcup
     \decompleft{0/1,1/0}{\scriptvar^\prime_2}{}{}{\scriptstyle \scriptvar_2\setminus\varepsilon}
@@ -326,6 +354,8 @@ Evaluating \(\var(x)\) gives us the sequence
 \end{equation*}
 Which is an offset of the Motzkin numbers.
 
-In order to establish the remainder of the Wilf-equivalences of the form \(\av{\{\perm{2,3,1},p\}}\) where \(p\)
-is a mesh pattern of length \(2\) we can use similar methods to allow us to consolidate experimental classes into
-actual classes, these methods allow us to explain all 23 of the observed Wilf-classes seen in experimentation.
+In order to establish the remainder of the Wilf-equivalences of the form
+\(\av{\{\perm{2,3,1},p\}}\) where \(p\) is a mesh pattern of length \(2\) we can
+use similar methods to allow us to consolidate experimental classes into actual
+classes, these methods allow us to explain all 23 of the observed Wilf-classes
+seen in experimentation.
