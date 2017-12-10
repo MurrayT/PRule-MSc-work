@@ -133,8 +133,9 @@ avoider of \(q_1\) in \(\av{\perm{2,3,1}}\) around the maximum:
     \scriptvar_1 =\varepsilon \sqcup
 \decompmax{0/1,1/0}{\mathcal{C}\setminus\varepsilon}{}{}{\mathcal{C}}
 \end{equation*}
-This can be explained succinctly by the fact that a permutation containing
-\(q_1\) starts with its maximum, and by not allowing the lower-left section of the
+This can be explained succinctly by the fact that a permutation contains
+\(q_1\) if and only if it starts with its maximum, and by not allowing the
+lower-left section of the
 \(\perm{2,3,1}\) avoider to be empty we prevent an occurrence from ever
 happening.
 
@@ -244,7 +245,7 @@ in \(\av{231}\)
 
 Similarly to a container of \(m_1\) we will look at the lowest possible
 occurrence of \(m_2\), and as before the regions \(A^\prime \et B^\prime\)
-together contain an avoider of \(231\) and \(A\) contains a decreasing
+together contain an avoider of \(231\) and \(A^\prime\) contains a decreasing
 subsequence. Since we are considering the lowest occurrence of \(m_2\) the
 region \(C^\prime\) does not contain an occurrence of either \(m_2\) or \(231\).
 
@@ -272,11 +273,11 @@ can perform a similar decomposition around the maximum to get
     \scriptvar_4 = \varepsilon \sqcup
     \decompmax{1/0,0/1}{\scriptvar_4}{}{}{\mathcal{\varmaxl}_3}
 \end{equation*}
-An occurrence of \(m_4\) can never occur in the
-top right region. It could only occur between the maximum and the first point
+An occurrence of \(m_4\) can never occur entirely within the
+top right region, since the maximum is to the left and above any point in this region. It could only occur between the maximum and the first point
 in the region, if and only if this first point is the lowest valued element in
 this region, so this top right region must contain a sub-permutation that does not
-start with it's minimum, i.e., it is a member of \(\mathcal{\varmaxl}_3 = \av{\av{\textpattern{}{1}{0/0,0/1,1/0}}}\).
+start with it's minimum, i.e., it is a member of \(\mathcal{\varmaxl}_3 = \av{\textpattern{}{1}{0/0,0/1,1/0}}\).
 Since both \(\mathcal{\varmaxl}_1\) and \(\mathcal{\varmaxl}_3\) have the same
 enumeration, \(\scriptvar_3\) and \(\scriptvar_4\) must also have
 the same enumeration and are therefore \(m_3\weqv{231}m_4\).

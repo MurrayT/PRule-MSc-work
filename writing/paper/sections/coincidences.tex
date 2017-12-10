@@ -15,7 +15,7 @@ varies. The classical pattern \(\pi\) will be called the \emph{dominating
 pattern}. Given such a dominating pattern \(\pi\) we will write \(p_1
 \coinc{\pi} p_2\) if for the mesh patterns, \(p_1\) and \(p_2\),  the sets
 \(\av{\pi,p_1}\) and \(\av{\pi,p_2}\) are equal. If this is the case we say
-the two mesh patterns are \emph{coincidenc under} \(\pi\).
+the two mesh patterns are \emph{coincident under} \(\pi\).
 
 Our first step is to calculate whether \(\av{\pi,p_1}\) and \(\av{\pi,p_2}\) are
 equal up to permutations of length 11 computationally, if they are we write
@@ -109,8 +109,8 @@ p^\boksup{2,1}
 \begin{definition}
 Let \(p=(\tau,R)\) be a mesh pattern of length \(n\) such that
 \(\boks{i,j}\notin R\). We define a mesh pattern \(p^{\boks{i,j}_a} =
-(\tau^\prime,R^\prime)\) (\(p^{\boks{i,j}_d}\)) of length \(n+2\) as the pattern
-where an ascent (descent) is \emph{inserted} into the box \(\boks{i,j}\) in
+(\tau^\prime,R^\prime)\) (respectively, \(p^{\boks{i,j}_d}\)) of length \(n+2\) as the pattern
+where an ascent (respectively descent) is \emph{inserted} into the box \(\boks{i,j}\) in
 \(G(p)\). Formally the new underlying classical pattern is defined by
 \begin{equation*}
 \tau^\prime(k) = \begin{cases}
@@ -122,6 +122,7 @@ where an ascent (descent) is \emph{inserted} into the box \(\boks{i,j}\) in
 \end{cases}
 \end{equation*}
 The ordering of the top branch determines whether an ascent(or descent) is added.
+
 The mesh becomes
 \begin{equation*}
 \begin{aligned}
@@ -132,6 +133,7 @@ R^\prime=&\{\boks{k,\ell}\mid k\le i, \ell\le j, \boks{k,\ell}\in R\} \cup\\
 &\{\boks{i+1,j},\boks{i+1,j+1},\boks{i+1,j+2}\}
 \end{aligned}
 \end{equation*}
+meaning that the ascent (or descent) is not allowed to be split in the box.
 \end{definition}
 An example of adding an ascent to a mesh pattern can be seen in \FigureRef{fig:adda}.
 \begin{figure}
@@ -377,8 +379,8 @@ When considering the coincidence classes of
 Pattern rules previously established. Starting from \(220\) classes, we result
 in \(85 \coinc[(1)]{231}\)-equivalence classes reducing to \(59
 \coinc[(2)]{231}\)-equivalence classes, considering mesh patterns with \(12\) as
-the underlying classical patterns. However there are fewer
-\(\coinc[comp]{231}\)-equivalence classes.
+the underlying classical patterns. However there are
+\(56 \coinc[comp]{231}\)-equivalence classes.
 
 For example the patterns
 \begin{equation*}
