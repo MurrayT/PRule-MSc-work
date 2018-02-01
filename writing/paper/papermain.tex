@@ -1,8 +1,8 @@
-\documentclass[11pt, a4paper]{amsart}
-\usepackage{amsaddr}
+\documentclass[final, nomarks]{dmtcs-episciences}
 \usepackage[backend=bibtex,bibencoding=utf8,style=ieee, sorting=nty]{biblatex}
 \addbibresource{references.bib}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 %\usepackage[english]{babel}
 \usepackage{mathtools}
 \usepackage{permpatts}
@@ -10,23 +10,26 @@
 \tikzset{->-/.style={decoration={
   markings,
   mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+\usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{enumerate}
 \usepackage{xspace}
 \usepackage{xinttools}
 \usepackage{tabularx}
-\usepackage[hidelinks]{hyperref}
 
 \input{sections/preamble}
-
-\title{Equivalence classes of mesh patterns with a dominating pattern}
 \input{authorblock}
-\subjclass[2010]{Primary: 05A05; Secondary: 05A15}
-
+\title{Equivalence classes of mesh patterns with a dominating pattern\thanks{Research partially supported by grant 141761-051 from the Icelandic Research Fund.}}
+\affiliation{School of Computer Science, Reykjavik University, Reykjavik, Iceland}
+\received{2017-4-25}
+\revised{2017-10-17}
+\accepted{2018-1-16}
+\publicationdetails{19}{2018}{2}{6}{3283}
+\keywords{permutation, pattern, mesh pattern, pattern coincidence}
 
 \begin{document}
-\input{sections/abstract}
 \maketitle
-\thispagestyle{empty}
+\input{sections/abstract}
 \section{Introduction}
 \input{sections/introduction}
 \section{Mesh patterns}
